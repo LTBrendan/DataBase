@@ -19,7 +19,7 @@ public class Connect {
 	/**
 	 * Constructor of the class
 	 */
-	public Connect() {
+	public Connect(String adress, String login, String password) {
 
 		/**
 		 * Connection to the data base Using jdbc Need the database adress, the
@@ -27,7 +27,7 @@ public class Connect {
 		 */
 		try {
 			System.out.println("\nConnection to database...");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:projet", "SYSTEM", "NeV#projet19#TeP");
+			conn = DriverManager.getConnection(adress, login, password);
 			System.out.println("Successful connection !");
 		} catch (SQLException e) {
 			System.out.println("Connection error");

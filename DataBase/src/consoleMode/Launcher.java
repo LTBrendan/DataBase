@@ -3,6 +3,6 @@ package consoleMode;
 public class Launcher {
 
 	public static void main(String[] args) {
-		new Connect();
+		new Connect("a", "a", "a");
 	}
 }
