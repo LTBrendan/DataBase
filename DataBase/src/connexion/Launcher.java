@@ -53,22 +53,36 @@ public class Launcher {
 					if (currentUser.getConnexionList().isEmpty()) {
 						System.out.println ("Your connexion list is empty");
 					} else {
-						System.out.println("adress ?");
-						String adress = sc.next();
+						System.out.println("Connexion name ?");
+						String connexionName = sc.next();
 						System.out.println("login ?");
 						login = sc.next();
 						System.out.println("password ?");
 						String password = sc.next();
-						new Connect(adress, login, password);
+						Connect connect = null;
+						for (UserConnexion uc : currentUser.getConnexionList()) {
+							if (uc.getConnexionName ().equals(connexionName)) {
+								if (uc.getLogin().equals(login)) {
+									if (uc.getPassword().equals(password)) {
+										connect = new Connect(uc.getAdresse(), login, password);
+									}
+								}
+							}
+						}
+						if (connect == null) {
+							System.out.println("Connexion failed");
+						}
 					}
 				} else {
+					System.out.println("Choose a name for your connexion ?");
+					String connexionName = sc.next();
 					System.out.println("adress ?");
 					String adress = sc.next();
 					System.out.println("login ?");
 					login = sc.next();
 					System.out.println("password ?");
 					String password = sc.next();
-					currentUser.addNewConnexion(new UserConnexion(adress, login, password));
+					currentUser.addNewConnexion(new UserConnexion(adress, connexionName, login, password));
 				}
 			} else {
 				System.out.println("This user does not exist");
