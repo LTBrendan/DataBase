@@ -13,7 +13,7 @@ public class User implements Serializable {
 
 		this.setPass(pass);
 		this.setLogin(login);
-
+		this.connexionList = new ArrayList<UserConnexion>();
 	}
 
 	public void setLogin(String login) {
@@ -35,4 +35,9 @@ public class User implements Serializable {
 	public void addNewConnexion (UserConnexion connexion) {
 		this.connexionList.add(connexion);
 	}
+
+	public ArrayList<UserConnexion> getConnexionList() {
+		return this.connexionList;
+	}
+
 }

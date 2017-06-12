@@ -83,4 +83,15 @@ public class UserManager {
 		return ret;
 	}
 	
+	public User getUser (String login , String pass) {
+		User ret = null;
+		for (User us : UserManager.userList) {
+			if (us.getLogin().equals(login)) {
+				if (us.getPass().equals(pass)) {
+					ret = us;
+				}
+			}
+		}
+		return ret;
+	}
 }
