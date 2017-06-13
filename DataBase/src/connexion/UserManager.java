@@ -81,7 +81,7 @@ public class UserManager {
 		boolean ret = false;
 		for (User us : UserManager.userList) {
 			if (us.getLogin ().equals(login)) {
-				if (us.getPass ().equals (pass)) {
+				if (us.getPass ().equals (encrypter.encrypt(pass))) {
 					ret = true;
 				}
 			}
@@ -93,7 +93,7 @@ public class UserManager {
 		User ret = null;
 		for (User us : UserManager.userList) {
 			if (us.getLogin().equals(login)) {
-				if (us.getPass().equals(pass)) {
+				if (us.getPass().equals(encrypter.encrypt(pass))) {
 					ret = us;
 				}
 			}
