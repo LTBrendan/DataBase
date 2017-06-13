@@ -128,10 +128,7 @@ public class Create {
 				}
 				if (choicePrimaryKey.equalsIgnoreCase("y")) {
 					queryCreation += primaryKey.toUpperCase();
-				}
-				if (i < columns) {
-					System.out.println("You must have a primary key in your table");
-					break;
+					primaryKeyUse = true;
 				}
 			}
 
@@ -139,8 +136,12 @@ public class Create {
 			if (i < columns) {
 				queryCreation += ", ";
 			} else {
-				queryCreation += ")";
-				System.out.println(queryCreation);
+				queryCreation += ")";	
+				System.out.println(queryCreation);			
+			}
+			if (primaryKeyUse == false) {
+				System.out.println("You must have a primary key");
+				queryCreation = null;
 			}
 		}
 		return queryCreation;

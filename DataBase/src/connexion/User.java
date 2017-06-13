@@ -3,11 +3,22 @@ package connexion;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String login;
 	private String pass;
+	private ImageIcon avatar;
+	public ImageIcon getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(ImageIcon avatar) {
+		this.avatar = avatar;
+	}
+
 	private ArrayList<UserConnexion> connexionList;
 	public User(String login, String pass) {
 

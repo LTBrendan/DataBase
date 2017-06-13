@@ -141,7 +141,7 @@ public class Launcher {
 			Connect connect = null;
 			for (UserConnexion uc : currentUser.getConnexionList()) {
 				if (uc.getConnexionName().equals(connexionName)) {
-							connect = new Connect(uc.getAdresse(), uc.getLogin(), uc.getPassword());
+							connect = new Connect(uc.getAdresse(), uc.getLogin(), uc.getPassword(), currentUser);
 				}
 			}
 			if (connect == null) {
