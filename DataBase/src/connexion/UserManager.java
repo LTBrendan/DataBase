@@ -94,4 +94,25 @@ public class UserManager {
 		}
 		return ret;
 	}
+	
+	public String toString () {
+		String ret = "";
+		for (User us : UserManager.userList){
+			ret += us.toString ()+"\n";
+		}
+		return ret;
+	}
+	
+	public static User removeUser (String login, String pass) {
+		User ret = null;
+		for (User us : UserManager.userList) {
+			if (us.getLogin().equals(login)) {
+				if (us.getPass().equals(pass)) {
+					ret = us;
+				}
+			}
+		}
+		UserManager.userList.remove(ret);
+		return ret;
+	}
 }

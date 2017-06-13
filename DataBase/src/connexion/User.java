@@ -39,5 +39,8 @@ public class User implements Serializable {
 	public ArrayList<UserConnexion> getConnexionList() {
 		return this.connexionList;
 	}
-
+	
+	public String toString (){
+		return "Login : "+this.getLogin()+"\nPassword : "+this.getPass();
+	}
 }
