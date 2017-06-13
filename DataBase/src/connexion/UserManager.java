@@ -66,6 +66,9 @@ public class UserManager {
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
+		if (!UserManager.checkUser ("admin", "admin")) {
+			UserManager.createUser("admin", "admin");
+		}
 		
 	}
 	
@@ -113,7 +116,7 @@ public class UserManager {
 		User ret = null;
 		for (User us : UserManager.userList) {
 			if (us.getLogin().equals(login)) {
-				if (us.getPass().equals(pass)) {
+				if (us.getPass().equals(encrypter.encrypt(pass))) {
 					ret = us;
 				}
 			}

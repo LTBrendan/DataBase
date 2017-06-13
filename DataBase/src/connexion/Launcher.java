@@ -11,43 +11,48 @@ public class Launcher {
 	public static void main(String[] args) {
 		UserManager.load();
 		System.out.println(um.toString());
-		System.out.println("connect\nadd\nremove");
-		String s = sc.next();
+		User currentUser = Launcher.connect();
 		
-		while (!s.equals("connect") && !s.equals("add") && !s.equals("remove")) {
-			System.out.println("connect\nadd");
-			s = sc.next();
-		}
-
-		if (s.equals("add")) {
-			Launcher.add();
-		}
-
-		if (s.equals("connect")) {
-			User currentUser = Launcher.connect();
+		if (currentUser != null) {
+			User admin = um.getUser("admin", "admin");
+			String s = "";
 			
-			if (currentUser != null) {
-				System.out.println("use an existing connexion\ncreate a new connexion");
+			if (currentUser.equals(admin)) {
+				System.out.println("add\nremove\nlogout");
+				s = sc.next ();
+				
+				while (!s.equals("add") && !s.equals("remove") && !s.equals("logout")) {
+					System.out.println("add\nremove\nlogout");
+					s = sc.next();
+				}
+
+				if (s.equals("add")) {
+					Launcher.add();
+				}
+
+				if (s.equals("remove")) {
+					Launcher.remove();
+				}
+			} else {
+				System.out.println("use existing connexion\ncreate a new connexion\nlogout");
 				s = sc.next();
 				
-				while (!s.equals("new") && !s.equals("use")) {
-					System.out.println("use an existing connexion\ncreate a new connexion");
+				while (!s.equals("use") && !s.equals("new") && !s.equals("logout")) {
+					System.out.println("use existing connexion\ncreate a new connexion\nlogout");
 					s = sc.next();
 				}
 				
 				if (s.equals("use")) {
 					Launcher.useConnexion(currentUser);
-				} else {
-					Launcher.addConnexion(currentUser);
 				}
 				
-			} else {
-				System.out.println("This user does not exist");
+				if (s.equals("new")) {
+					Launcher.addConnexion(currentUser);
+				}
 			}
-		}
 
-		if (s.equals("remove")) {
-			Launcher.remove();
+		} else {
+			System.out.println("This user does not exist");
 		}
 		sc.close();
 		um.save();
@@ -83,20 +88,20 @@ public class Launcher {
 		if (removed != null) {
 			System.out.println("Type undo to undo, confirm to confirm");
 			String s = sc.next();
-			
+
 			while (!s.equals("undo") && !s.equals("confirm")) {
 				System.out.println("Type undo to undo, confirm to confirm");
 				s = sc.next();
 			}
-			
+
 			if (s.equals("undo")) {
 				UserManager.createUser(removed.getLogin(), removed.getPass());
 			}
-			
+
 			if (s.equals("confirm")) {
 				System.out.println("User removed");
 			}
-			
+
 		} else {
 			System.out.println("This user does not exist");
 		}
@@ -118,6 +123,18 @@ public class Launcher {
 	private static void useConnexion(User currentUser) {
 		if (currentUser.getConnexionList().isEmpty()) {
 			System.out.println("Your connexion list is empty");
+			System.out.println("Create a new one\nlogout");
+			String s = sc.next();
+
+			while (!s.equals("new") && !s.equals("logout")) {
+				System.out.println("create a new one\nlogout");
+				s = sc.next();
+			}
+			
+			if (s.equals("new")){
+				Launcher.addConnexion(currentUser);
+			}
+			
 		} else {
 			System.out.println("Connexion name ?");
 			String connexionName = sc.next();
