@@ -11,10 +11,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
 public class UserManager {
 	
 	private static ArrayList<User> userList;
-	
+	private static String mykey = "1234567891234567";
+    private static SecretKey key = new SecretKeySpec(mykey.getBytes(), "AES");
+    private static AES encrypter = new AES(key);
+    
 	public UserManager () {
 		UserManager.userList = new ArrayList<User>();
 	}
@@ -64,8 +70,8 @@ public class UserManager {
 	}
 	
 	public static void createUser (String login, String pass) {
-		if (!UserManager.checkUser(login, pass)) {
-			UserManager.userList.add(new User (login, pass));
+		if (!UserManager.checkUser(login, encrypter.encrypt (pass))) {
+			UserManager.userList.add(new User (login, encrypter.encrypt(pass)));
 		}else {
 			System.out.println("This user already exists");
 		}
