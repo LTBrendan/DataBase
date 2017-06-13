@@ -138,18 +138,10 @@ public class Launcher {
 		} else {
 			System.out.println("Connexion name ?");
 			String connexionName = sc.next();
-			System.out.println("login ?");
-			String login = sc.next();
-			System.out.println("password ?");
-			String password = sc.next();
 			Connect connect = null;
 			for (UserConnexion uc : currentUser.getConnexionList()) {
 				if (uc.getConnexionName().equals(connexionName)) {
-					if (uc.getLogin().equals(login)) {
-						if (uc.getPassword().equals(password)) {
-							connect = new Connect(uc.getAdresse(), login, password);
-						}
-					}
+							connect = new Connect(uc.getAdresse(), uc.getLogin(), uc.getPassword());
 				}
 			}
 			if (connect == null) {
