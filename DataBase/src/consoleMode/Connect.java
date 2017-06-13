@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import connexion.User;
+import exception.ExceptionHandler;
 import game.GameManager;
 
 public class Connect {
@@ -79,7 +80,7 @@ public class Connect {
 				resultat = this.executeQuery(Insert.getQuery());
 
 			} else if ((want.toLowerCase().contains("select")) || (want.toLowerCase().contains("4"))) {
-				Select.getQuery();
+				Select.display(resultat = this.executeQuery(Select.getQuery()));
 
 			} else if ((want.toLowerCase().contains("delete")) || (want.toLowerCase().contains("5"))) {
 				resultat = this.executeQuery(Delete.getQuery());
@@ -104,6 +105,9 @@ public class Connect {
 					queryExpert = br.readLine();
 					resultat = statement.executeQuery(queryExpert);
 					System.out.println("Successful query execution !");
+					if (queryExpert.toLowerCase().contains("select")) {
+						Select.display(resultat);
+					}
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					e.printStackTrace();
@@ -149,11 +153,11 @@ public class Connect {
 	public ResultSet executeQuery(String query) {
 		ResultSet ret = null;
 		try {
-			statement.executeQuery(query);
+			ret = statement.executeQuery(query);
 			System.out.println("Query successfully executed !");
 		} catch (SQLException e) {
 			System.out.println("Query error !");
-			e.printStackTrace();
+			System.out.println(ExceptionHandler.analyse((e.getMessage ())));
 		}
 		return ret;
 	}

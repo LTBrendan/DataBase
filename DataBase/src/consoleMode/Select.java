@@ -17,28 +17,25 @@ public class Select {
 	 * @param table
 	 *            The name of the table
 	 */
-	public static void getQuery() {
+	public static String getQuery() {
 
 		System.out.println("\nTable name ?");
 		System.out.print("> ");
-		String tableName = null;
+		String tableName = "";
 		try {
 			tableName = br.readLine();
-			// selectAll(tableName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		return "SELECT * FROM " +tableName;
+	}
+	
+	public static void display (ResultSet rs) {
+		
 		try {
-
-			// Get the number of columns
-			ResultSet rs = Connect.getStatement().executeQuery("SELECT * FROM " + tableName);
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int columnCount = rsmd.getColumnCount();
-
-			// Execute the query
-			System.out.println("\nExecuting \"SELECT *\" query...");
-
+			
 			// Display the select query
 			String displayQuery = "";
 			for (int i = 1; i < columnCount; i++) {
@@ -58,7 +55,9 @@ public class Select {
 			System.out.println("\nSuccessful query execution !");
 		} catch (SQLException e) {
 			System.out.println("Query error !");
-			e.printStackTrace();
+			//e.printStackTrace();
+		} catch (NullPointerException ex){
+			
 		}
 	}
 }
