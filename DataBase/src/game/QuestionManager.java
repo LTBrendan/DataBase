@@ -26,7 +26,7 @@ public class QuestionManager {
 	private void generateQuestions() {
 		this.allQuestion = new HashMap<String, ArrayList<String>>();
 		try {
-			FileReader fr = new FileReader("questionAndAnswer.twt");
+			FileReader fr = new FileReader("source/questionAndAnswer.twt");
 			BufferedReader bf = new BufferedReader(fr);
 			Scanner sc = new Scanner(bf);
 			sc.useDelimiter("\\s*:\\s*");
