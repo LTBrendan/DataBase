@@ -70,52 +70,52 @@ public class Connect {
 				e.printStackTrace();
 			}
 
-			if ((want.toLowerCase().contains("create")) || (want.toLowerCase().contains("1"))) {
+			if ((want.toLowerCase().contains("create")) || (want.equals("1"))) {
 				resultat = this.executeQuery(Create.getQuery());
 				
-			} else if ((want.toLowerCase().contains("drop")) || (want.toLowerCase().contains("2"))) {
+			} else if ((want.toLowerCase().contains("drop")) || (want.equals("2"))) {
 				resultat = this.executeQuery(Drop.getQuery());
 
-			} else if ((want.toLowerCase().contains("insert")) || (want.toLowerCase().contains("3"))) {
+			} else if ((want.toLowerCase().contains("insert")) || (want.equals("3"))) {
 				resultat = this.executeQuery(Insert.getQuery());
 
-			} else if ((want.toLowerCase().contains("select")) || (want.toLowerCase().contains("4"))) {
+			} else if ((want.toLowerCase().contains("select")) || (want.equals("4"))) {
 				Select.display(resultat = this.executeQuery(Select.getQuery()));
 
-			} else if ((want.toLowerCase().contains("delete")) || (want.toLowerCase().contains("5"))) {
+			} else if ((want.toLowerCase().contains("delete")) || (want.equals("5"))) {
 				resultat = this.executeQuery(Delete.getQuery());
 
-			} else if ((want.toLowerCase().contains("play")) || (want.toLowerCase().contains("6"))) {
+			} else if ((want.toLowerCase().contains("play")) || (want.equals("6"))) {
 
 				GameManager game = new GameManager (this.currentUser, this);
-				System.out.println("Choose the number of question");
+				System.out.println("Choose the number of question (max : 50)");
 				int questionNumber = 0;
 				try {
 				questionNumber = Integer.parseInt(br.readLine());
+				while (questionNumber <= 0 && questionNumber >50) {
+					System.out.println("Choose the number of question (max : 50)");
+					questionNumber = Integer.parseInt(br.readLine());
+				}
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 				game.launchGame (questionNumber);
 
-			} else if ((want.toLowerCase().contains("expert")) || (want.toLowerCase().contains("7"))) {
+			} else if ((want.toLowerCase().contains("expert")) || (want.equals("7"))) {
 				System.out.println("\nWrite here your query");
 				System.out.print("> ");
 				String queryExpert;
 				try {
 					queryExpert = br.readLine();
-					resultat = statement.executeQuery(queryExpert);
-					System.out.println("Successful query execution !");
+					resultat = this.executeQuery(queryExpert);
 					if (queryExpert.toLowerCase().contains("select")) {
 						Select.display(resultat);
 					}
-				} catch (SQLException e) {
-					System.out.println("Query error !");
-					e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 
-			} else if ((!want.toLowerCase().contains("quit")) && (!want.toLowerCase().contains("8"))) {
+			} else if ((!want.toLowerCase().contains("quit")) && (want.equals("8"))) {
 				System.out.println("Sorry, but I don't know what you want...");
 			}
 		}

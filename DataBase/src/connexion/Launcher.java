@@ -12,16 +12,17 @@ public class Launcher {
 		UserManager.load();
 		System.out.println(um.toString());
 		User currentUser = Launcher.connect();
-		
+
 		if (currentUser != null) {
 			User admin = um.getUser("admin", "admin");
 			String s = "";
-			
+
 			if (currentUser.equals(admin)) {
-				System.out.println("add\nremove\nlogout");
-				s = sc.next ();
-				
-				while (!s.equals("add") && !s.equals("remove") && !s.equals("logout")) {
+				System.out.println("add\nremove\nuse existing connexion\ncreate a new connexion\nlogout");
+				s = sc.next();
+
+				while (!s.equals("add") && !s.equals("remove") && !s.equals("use") && !s.equals("new")
+						&& !s.equals("logout")) {
 					System.out.println("add\nremove\nlogout");
 					s = sc.next();
 				}
@@ -33,19 +34,28 @@ public class Launcher {
 				if (s.equals("remove")) {
 					Launcher.remove();
 				}
+
+				if (s.equals("use")) {
+					Launcher.useConnexion(currentUser);
+				}
+
+				if (s.equals("new")) {
+					Launcher.addConnexion(currentUser);
+				}
+
 			} else {
 				System.out.println("use existing connexion\ncreate a new connexion\nlogout");
 				s = sc.next();
-				
+
 				while (!s.equals("use") && !s.equals("new") && !s.equals("logout")) {
 					System.out.println("use existing connexion\ncreate a new connexion\nlogout");
 					s = sc.next();
 				}
-				
+
 				if (s.equals("use")) {
 					Launcher.useConnexion(currentUser);
 				}
-				
+
 				if (s.equals("new")) {
 					Launcher.addConnexion(currentUser);
 				}
@@ -130,18 +140,19 @@ public class Launcher {
 				System.out.println("create a new one\nlogout");
 				s = sc.next();
 			}
-			
-			if (s.equals("new")){
+
+			if (s.equals("new")) {
 				Launcher.addConnexion(currentUser);
 			}
-			
+
 		} else {
 			System.out.println("Connexion name ?");
 			String connexionName = sc.next();
 			Connect connect = null;
 			for (UserConnexion uc : currentUser.getConnexionList()) {
 				if (uc.getConnexionName().equals(connexionName)) {
-							connect = new Connect(uc.getAdresse(), uc.getLogin(), uc.getPassword(), currentUser);
+					System.out.println(uc.getAdresse());
+					connect = new Connect(uc.getAdresse(), uc.getLogin(), uc.getPassword(), currentUser);
 				}
 			}
 			if (connect == null) {

@@ -42,5 +42,12 @@ public class GameManager {
 		connex.executeQuery("INSERT INTO Game VALUES (0, 'Kent', 'Clark', 40)");
 		connex.executeQuery("INSERT INTO Game VALUES (1, 'Wayne', 'Bruce', 45)");
 		connex.executeQuery("INSERT INTO Game VALUES (2, 'Prince', 'Diana', 25)");
+		connex.executeQuery("INSERT INTO Game VALUES (3, 'Parker', 'Peter', 27)");
+		connex.executeQuery("INSERT INTO Game VALUES (4, 'Stark', 'Tony', 50)");
+		connex.executeQuery("INSERT INTO Game VALUES (5, 'Rogers', 'Steven', 25)");
+		connex.executeQuery("INSERT INTO Game VALUES (6, 'Cage', 'Luke', 21)");
+		connex.executeQuery("INSERT INTO Game VALUES (7, 'Banner', 'Bruce', 48)");
+		connex.executeQuery("INSERT INTO Game VALUES (8, 'Odinson', 'Thor', 34)");
+		connex.executeQuery("INSERT INTO Game VALUES (9, 'Howlett', 'James', 48)");
 	}
 }

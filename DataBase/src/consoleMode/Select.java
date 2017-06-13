@@ -52,7 +52,6 @@ public class Select {
 				System.out.print(rs.getString(columnCount));
 				System.out.print("\n");
 			}
-			System.out.println("\nSuccessful query execution !");
 		} catch (SQLException e) {
 			System.out.println("Query error !");
 			//e.printStackTrace();
