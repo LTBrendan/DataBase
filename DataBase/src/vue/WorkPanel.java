@@ -29,12 +29,19 @@ public class WorkPanel extends JSplitPane {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel upPanel;
-	private JScrollPane upScrollPane;
+	private static JPanel upPanel;
+	private static JScrollPane upScrollPane;
 	private JPanel downPanel;
 	private JPanel menuBarPanel;
-	private JTextPane textPane;
+	private static JTextPane textPane;
 	private JScrollPane downScrollPane;
+	
+	private static JLabel executeLabel;
+	private static JLabel clearLabel;
+	private static JLabel saveLabel;
+	private static JLabel exportLabel;
+	private static JLabel executeAllLabel;
+	private static JLabel importLabel;
 	
 	public WorkPanel() {
 		
@@ -52,13 +59,13 @@ public class WorkPanel extends JSplitPane {
 
 	private JPanel createUpPanel() {
 		
-		this.upPanel = new JPanel();
-		this.upPanel.setBorder(null);
-		this.upPanel.setBackground(new Color(54,57,62));
-		this.upPanel.setForeground(new Color(255, 255, 255));
-		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		WorkPanel.upPanel = new JPanel();
+		WorkPanel.upPanel.setBorder(null);
+		WorkPanel.upPanel.setBackground(new Color(54,57,62));
+		WorkPanel.upPanel.setForeground(new Color(255, 255, 255));
+		WorkPanel.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		return this.upPanel;
+		return WorkPanel.upPanel;
 	}
 	
 	private JScrollPane createUpScrollPane(JPanel panel) {
@@ -77,11 +84,11 @@ public class WorkPanel extends JSplitPane {
 		UIManager.put("ScrollBar.shadow", new ColorUIResource(new Color(57, 57, 62)));
 		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(57, 57, 62)));
 		
-		this.upScrollPane = new JScrollPane(panel);
-		this.upScrollPane.setPreferredSize(new Dimension(20,250));
-		this.upScrollPane.setBorder(null);
+		WorkPanel.upScrollPane = new JScrollPane(panel);
+		WorkPanel.upScrollPane.setPreferredSize(new Dimension(20,250));
+		WorkPanel.upScrollPane.setBorder(null);
 		
-		return this.upScrollPane;
+		return WorkPanel.upScrollPane;
 	}
 	
 	private JPanel createDownPanel() {
@@ -101,32 +108,32 @@ public class WorkPanel extends JSplitPane {
 		this.menuBarPanel.setForeground(new Color(255, 255, 255));
 		this.menuBarPanel.setLayout(new GridLayout(0, 6, 0, 0));
 		
-		JLabel executeLabel = new JLabel("Execute");
+		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeLabel.addMouseListener(new MenuButtonListener());
 		executeLabel.setForeground(new Color(255, 255, 255));
 
-		JLabel clearLabel = new JLabel("Clear");
+		clearLabel = new JLabel("Clear");
 		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		clearLabel.addMouseListener(new MenuButtonListener());
 		clearLabel.setForeground(new Color(255, 255, 255));
 
-		JLabel saveLabel = new JLabel("Save");
+		saveLabel = new JLabel("Save");
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		saveLabel.addMouseListener(new MenuButtonListener());
 		saveLabel.setForeground(new Color(255, 255, 255));
 
-		JLabel exportLabel = new JLabel("Export");
+		exportLabel = new JLabel("Export");
 		exportLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		exportLabel.addMouseListener(new MenuButtonListener());
 		exportLabel.setForeground(new Color(255, 255, 255));
 		
-		JLabel executeAllLabel = new JLabel("Execute All");
+		executeAllLabel = new JLabel("Execute All");
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeAllLabel.addMouseListener(new MenuButtonListener());
 		executeAllLabel.setForeground(new Color(255, 255, 255));
 		
-		JLabel importLabel = new JLabel("Import");
+		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		importLabel.addMouseListener(new MenuButtonListener());
 		importLabel.setForeground(new Color(255, 255, 255));
@@ -143,11 +150,11 @@ public class WorkPanel extends JSplitPane {
 	
 	private JTextPane createTextPane() {
 		
-		this.textPane = new JTextPane();
-		this.textPane.setBorder(null);
-		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
-		this.textPane.setBackground(new Color(54, 57, 62));
-		this.textPane.setForeground(new Color(255, 255, 255));
+		WorkPanel.textPane = new JTextPane();
+		WorkPanel.textPane.setBorder(null);
+		WorkPanel.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
+		WorkPanel.textPane.setBackground(new Color(54, 57, 62));
+		WorkPanel.textPane.setForeground(new Color(255, 255, 255));
 		
 		StyleContext cont = StyleContext.getDefaultStyleContext();
 		AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
@@ -155,9 +162,9 @@ public class WorkPanel extends JSplitPane {
 		Style c = cont.getStyle("default");
 		c.addAttributes(attr);
 		
-		this.textPane.setStyledDocument(new WordBasedStyledDocument(this.textPane.getLogicalStyle(), c));
+		WorkPanel.textPane.setStyledDocument(new WordBasedStyledDocument(WorkPanel.textPane.getLogicalStyle(), c));
 		
-		return this.textPane;
+		return WorkPanel.textPane;
 	}
 	
 	private JScrollPane createDownScrollPane(JPanel panel) {
@@ -166,5 +173,53 @@ public class WorkPanel extends JSplitPane {
 		this.downScrollPane.setBorder(null);
 		
 		return this.downScrollPane;
+	}
+
+	public static JLabel getExecuteLabel() {
+		return executeLabel;
+	}
+
+	public static JLabel getClearLabel() {
+		return clearLabel;
+	}
+
+	public static JLabel getSaveLabel() {
+		return saveLabel;
+	}
+
+	public static JLabel getExportLabel() {
+		return exportLabel;
+	}
+
+	public static JLabel getExecuteAllLabel() {
+		return executeAllLabel;
+	}
+
+	public static JLabel getImportLabel() {
+		return importLabel;
+	}
+
+	public static JPanel getUpPanel() {
+		return upPanel;
+	}
+
+	public static void setUpPanel(JPanel upPanel) {
+		WorkPanel.upPanel = upPanel;
+	}
+
+	public static JScrollPane getUpScrollPane() {
+		return upScrollPane;
+	}
+
+	public static void setUpScrollPane(JScrollPane upScrollPane) {
+		WorkPanel.upScrollPane = upScrollPane;
+	}
+
+	public static JTextPane getTextPane() {
+		return textPane;
+	}
+	
+	public static void setLeftComponent(Object object) {
+		WorkPanel.setLeftComponent(object);
 	}
 }
