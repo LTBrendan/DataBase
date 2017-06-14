@@ -266,6 +266,7 @@ public class BaseDeDonnees {
 		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(57, 57, 62)));
 
 		scrollPane = new JScrollPane(panel_1);
+		scrollPane.setPreferredSize(new Dimension(20,250));
 		scrollPane.setBorder(null);
 		// scrollPane.setBackground(new Color(54,57,62));
 		splitPane.setLeftComponent(scrollPane);
