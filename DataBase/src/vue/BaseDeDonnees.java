@@ -95,7 +95,7 @@ public class BaseDeDonnees {
 		avatarLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		statePanel.add(avatarLabel);
 		avatarLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		avatarLabel.setIcon(new ImageIcon("D:\\workspace\\DataBaseApp\\rsc\\user-16.png"));
+		avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
 
 		JLabel userNamePanel = new JLabel("Admin");
 		userNamePanel.setBounds(0, 75, 80, 36);
@@ -184,7 +184,7 @@ public class BaseDeDonnees {
 		});
 		minimizePanel.add(lblNewLabel);
 		lblNewLabel.setBackground(new Color(40, 43, 48));
-		lblNewLabel.setIcon(new ImageIcon("D:\\workspace\\DataBaseApp\\rsc\\minimize.PNG"));
+		lblNewLabel.setIcon(new ImageIcon("rsc\\minimize.PNG"));
 
 		JPanel maximizePanel = new JPanel();
 		maximizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -201,7 +201,7 @@ public class BaseDeDonnees {
 		});
 		maximizePanel.add(lblNewLabel_1, BorderLayout.CENTER);
 		lblNewLabel_1.setBackground(new Color(40, 43, 48));
-		lblNewLabel_1.setIcon(new ImageIcon("D:\\workspace\\DataBaseApp\\rsc\\maximize.PNG"));
+		lblNewLabel_1.setIcon(new ImageIcon("rsc\\maximize.PNG"));
 
 		JPanel closePanel = new JPanel();
 		closePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -213,7 +213,7 @@ public class BaseDeDonnees {
 		lblNewLabel_2.addMouseListener(new LabelCloseListener());
 		closePanel.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(40, 43, 48));
-		lblNewLabel_2.setIcon(new ImageIcon("D:\\workspace\\DataBaseApp\\rsc\\close.PNG"));
+		lblNewLabel_2.setIcon(new ImageIcon("rsc\\close.PNG"));
 
 		JPanel panel = new JPanel();
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
