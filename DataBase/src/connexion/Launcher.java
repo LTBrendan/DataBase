@@ -1,11 +1,10 @@
 package connexion;
 
-import java.util.Scanner;
+
 import consoleMode.*;
+import static utils.Scan.sc;
 
 public class Launcher {
-
-	private static Scanner sc = new Scanner(System.in);
 	private static UserManager um = new UserManager();
 
 	public static void main(String[] args) {

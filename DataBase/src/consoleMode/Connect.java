@@ -1,9 +1,7 @@
 package consoleMode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,10 +10,10 @@ import java.sql.Statement;
 import connexion.User;
 import exception.ExceptionHandler;
 import game.GameManager;
+import static utils.Scan.sc;
 
 public class Connect {
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	private Connection conn = null;
 	private static Statement statement = null;
 	private ResultSet resultat = null;
@@ -53,6 +51,7 @@ public class Connect {
 		}
 
 		String want = " ";
+
 		while ((!want.toLowerCase().contains("quit")) && (!want.toLowerCase().contains("8"))) {
 			System.out.println("\nWhat do you want to do ?");
 			System.out.println("1 - CREATE : create a new table on your dataBase");
@@ -64,59 +63,100 @@ public class Connect {
 			System.out.println("7 - EXPERT MODE : write the full query");
 			System.out.println("8 - QUIT   : exit the app");
 			System.out.print("> ");
-			try {
-				want = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
+			want = sc.next();
 			if ((want.toLowerCase().contains("create")) || (want.equals("1"))) {
-				resultat = this.executeQuery(Create.getQuery());
 				
+				try {
+					resultat = this.executeQuery(Create.getQuery());
+					System.out.println("Query successfully executed !");
+					
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println("create : " + ExceptionHandler.analyse((e.getMessage())));
+				}
+
 			} else if ((want.toLowerCase().contains("drop")) || (want.equals("2"))) {
-				resultat = this.executeQuery(Drop.getQuery());
+				
+				try {
+					resultat = this.executeQuery(Drop.getQuery());
+					System.out.println("Query successfully executed !");
+
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println("drop : " + ExceptionHandler.analyse((e.getMessage())));
+				}
 
 			} else if ((want.toLowerCase().contains("insert")) || (want.equals("3"))) {
-				resultat = this.executeQuery(Insert.getQuery());
+				
+				try {
+					resultat = this.executeQuery(Insert.getQuery());
+					System.out.println("Query successfully executed !");
+					
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println("insert : " + ExceptionHandler.analyse((e.getMessage())));
+				}
 
 			} else if ((want.toLowerCase().contains("select")) || (want.equals("4"))) {
-				Select.display(resultat = this.executeQuery(Select.getQuery()));
+				
+				try {
+					Select.display(resultat = this.executeQuery(Select.getQuery()));
+					System.out.println("Query successfully executed !");
+					
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println("select : " + ExceptionHandler.analyse((e.getMessage())));
+				}
 
 			} else if ((want.toLowerCase().contains("delete")) || (want.equals("5"))) {
-				resultat = this.executeQuery(Delete.getQuery());
+				
+				try {
+					resultat = this.executeQuery(Delete.getQuery());
+					System.out.println("Query successfully executed !");
+					
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println("delete : " + ExceptionHandler.analyse((e.getMessage())));
+				}
+			}
 
-			} else if ((want.toLowerCase().contains("play")) || (want.equals("6"))) {
-
-				GameManager game = new GameManager (this.currentUser, this);
+			else if ((want.toLowerCase().contains("play")) || (want.equals("6"))) {
+				GameManager game = new GameManager(this.currentUser, this);
 				System.out.println("Choose the number of question (max : 50)");
 				int questionNumber = 0;
-				try {
-				questionNumber = Integer.parseInt(br.readLine());
-				while (questionNumber <= 0 && questionNumber >50) {
+				questionNumber = Integer.parseInt(sc.next());
+
+				while (questionNumber <= 0 && questionNumber > 50) {
 					System.out.println("Choose the number of question (max : 50)");
-					questionNumber = Integer.parseInt(br.readLine());
+					questionNumber = Integer.parseInt(sc.next());
 				}
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				}
-				game.launchGame (questionNumber);
+				game.launchGame(questionNumber);
 
 			} else if ((want.toLowerCase().contains("expert")) || (want.equals("7"))) {
 				System.out.println("\nWrite here your query");
 				System.out.print("> ");
 				String queryExpert;
+
 				try {
-					queryExpert = br.readLine();
+					
+					while((queryExpert = sc.nextLine()).length() == 0);
+					
 					resultat = this.executeQuery(queryExpert);
+
 					if (queryExpert.toLowerCase().contains("select")) {
 						Select.display(resultat);
 					}
-				} catch (IOException e) {
-					e.printStackTrace();
+
+				} catch (SQLException e) {
+					System.out.println("Query error !");
+					System.out.println(ExceptionHandler.analyse((e.getMessage())));
 				}
 
-			} else if ((!want.toLowerCase().contains("quit")) && (want.equals("8"))) {
-				System.out.println("Sorry, but I don't know what you want...");
+			} else if ((want.toLowerCase().contains("quit")) || (want.equals("8"))) {
+				quit();
+				
+			} else {
+				System.out.println("Sorry but I don't understand what you wanna do");
 			}
 		}
 	}
@@ -128,6 +168,7 @@ public class Connect {
 		if (resultat != null) {
 			try {
 				resultat.close();
+				System.out.println("Result set closed");
 			} catch (SQLException ignore) {
 
 			}
@@ -136,6 +177,7 @@ public class Connect {
 		if (statement != null) {
 			try {
 				statement.close();
+				System.out.println("Statement closed");
 			} catch (SQLException ignore) {
 
 			}
@@ -144,21 +186,19 @@ public class Connect {
 		if (conn != null) {
 			try {
 				conn.close();
+				System.out.println("Connexion closed");
 			} catch (SQLException ignore) {
 
 			}
 		}
+		utils.Scan.close();
+		System.out.println("See you soon !! :)");
 	}
 
-	public ResultSet executeQuery(String query) {
+	public ResultSet executeQuery(String query) throws SQLException {
 		ResultSet ret = null;
-		try {
-			ret = statement.executeQuery(query);
-			System.out.println("Query successfully executed !");
-		} catch (SQLException e) {
-			System.out.println("Query error !");
-			System.out.println(ExceptionHandler.analyse((e.getMessage ())));
-		}
+		System.out.println(query);
+		ret = statement.executeQuery(query);
 		return ret;
 	}
 

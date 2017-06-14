@@ -136,8 +136,7 @@ public class Create {
 			if (i < columns) {
 				queryCreation += ", ";
 			} else {
-				queryCreation += ")";	
-				System.out.println(queryCreation);			
+				queryCreation += ")";		
 			}
 			if (primaryKeyUse == false) {
 				System.out.println("You must have a primary key");
