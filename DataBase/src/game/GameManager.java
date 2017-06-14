@@ -9,6 +9,7 @@ import connexion.User;
 import consoleMode.Connect;
 import consoleMode.Select;
 import exception.ExceptionHandler;
+import logs.Log;
 
 public class GameManager {
 	User currentUser;
@@ -39,6 +40,7 @@ public class GameManager {
 	}
 
 	public void launchGame(int questionNumber) {
+		Log.database("SQL game started");
 		this.createTable();
 		this.insertValues();
 		qm = new QuestionManager(questionNumber);
@@ -76,8 +78,9 @@ public class GameManager {
 		try {
 			connex.executeQuery("DROP TABLE " + this.tableName);
 			System.out.println("Query successfully executed !");
+			Log.database("table for game dropped");
 		} catch (SQLException ex) {
-
+			Log.database("error dropping table for game");
 		}
 	}
 
@@ -91,9 +94,10 @@ public class GameManager {
 				connex.executeQuery("CREATE TABLE " + this.tableName
 						+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
 			} catch (SQLException ex) {
-
+				Log.database("error creating tabl for game");
 			}
 		}
+		Log.database("table for game created");
 	}
 
 	private void insertValues() {

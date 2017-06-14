@@ -1,7 +1,8 @@
 package consoleMode;
 
-import java.sql.Connection;
+import static utils.Scan.sc;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.sql.Statement;
 import connexion.User;
 import exception.ExceptionHandler;
 import game.GameManager;
-import static utils.Scan.sc;
+import logs.Log;
 
 public class Connect {
 
@@ -32,9 +33,11 @@ public class Connect {
 			System.out.println("\nConnection to database...");
 			conn = DriverManager.getConnection(adress, login, password);
 			System.out.println("Successful connection !");
+			Log.out("connexion established : "+adress);
 			this.currentUser = currentUser;
 		} catch (SQLException e) {
 			System.out.println("Connection error");
+			Log.out("unable to connect to database"+adress);
 			e.printStackTrace();
 		}
 
@@ -44,9 +47,10 @@ public class Connect {
 		try {
 			System.out.println("\nCreating statement...");
 			statement = conn.createStatement();
-			System.out.println("Successful statement creation !");
+			Log.database("statement created");
 		} catch (SQLException e1) {
 			System.out.println("Statement creation error !");
+			Log.database("error creating statement");
 			e1.printStackTrace();
 		}
 
@@ -65,58 +69,73 @@ public class Connect {
 			System.out.print("> ");
 			want = sc.next();
 			if ((want.toLowerCase().contains("create")) || (want.equals("1"))) {
+				String query = Create.getQuery();
 				
 				try {
-					resultat = this.executeQuery(Create.getQuery());
+					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
+					Log.database("query executed : "+query);
 					
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("create : " + ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+query);
 				}
 
 			} else if ((want.toLowerCase().contains("drop")) || (want.equals("2"))) {
+				String query = Drop.getQuery();
 				
 				try {
-					resultat = this.executeQuery(Drop.getQuery());
+					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
+					Log.database("query executed : "+query);
 
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("drop : " + ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+query);
 				}
 
 			} else if ((want.toLowerCase().contains("insert")) || (want.equals("3"))) {
+				String query = Insert.getQuery();
 				
 				try {
-					resultat = this.executeQuery(Insert.getQuery());
+					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
+					Log.database("query executed : "+query);
 					
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("insert : " + ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+query);
 				}
 
 			} else if ((want.toLowerCase().contains("select")) || (want.equals("4"))) {
+				String query = Select.getQuery();
 				
 				try {
-					Select.display(resultat = this.executeQuery(Select.getQuery()));
+					Select.display(resultat = this.executeQuery(query));
 					System.out.println("Query successfully executed !");
+					Log.database("query executed : "+query);
 					
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("select : " + ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+query);
 				}
 
 			} else if ((want.toLowerCase().contains("delete")) || (want.equals("5"))) {
+				String query = Delete.getQuery();
 				
 				try {
-					resultat = this.executeQuery(Delete.getQuery());
+					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
+					Log.database("query executed : "+query);
 					
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("delete : " + ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+query);
 				}
 			}
 
@@ -131,11 +150,12 @@ public class Connect {
 					questionNumber = Integer.parseInt(sc.next());
 				}
 				game.launchGame(questionNumber);
+				Log.database("game end");
 
 			} else if ((want.toLowerCase().contains("expert")) || (want.equals("7"))) {
 				System.out.println("\nWrite here your query");
 				System.out.print("> ");
-				String queryExpert;
+				String queryExpert = "";
 
 				try {
 					
@@ -146,10 +166,12 @@ public class Connect {
 					if (queryExpert.toLowerCase().contains("select")) {
 						Select.display(resultat);
 					}
+					Log.database("query executed : "+queryExpert);
 
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println(ExceptionHandler.analyse((e.getMessage())));
+					Log.database("error executing query : "+queryExpert);
 				}
 
 			} else if ((want.toLowerCase().contains("quit")) || (want.equals("8"))) {
@@ -168,7 +190,7 @@ public class Connect {
 		if (resultat != null) {
 			try {
 				resultat.close();
-				System.out.println("Result set closed");
+				Log.database ("Result set closed");
 			} catch (SQLException ignore) {
 
 			}
@@ -177,7 +199,7 @@ public class Connect {
 		if (statement != null) {
 			try {
 				statement.close();
-				System.out.println("Statement closed");
+				Log.database("statement closed");
 			} catch (SQLException ignore) {
 
 			}
@@ -186,13 +208,13 @@ public class Connect {
 		if (conn != null) {
 			try {
 				conn.close();
-				System.out.println("Connexion closed");
+				Log.database("connexion closed");
 			} catch (SQLException ignore) {
 
 			}
 		}
-		utils.Scan.close();
 		System.out.println("See you soon !! :)");
+		Log.database("disconnected from data base");
 	}
 
 	public ResultSet executeQuery(String query) throws SQLException {
