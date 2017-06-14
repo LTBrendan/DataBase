@@ -1,44 +1,35 @@
 package consoleMode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import static utils.Scan.sc;
 
+/**
+ * This class allows to generate 'Create' instruction
+ */
 public class Create {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
 	/**
-	 * Create a new table
-	 *
-	 * @param tableName
-	 *            The name of the table
+	 * This method ask the user to construct the query
+	 * @return the query
 	 */
 	public static String getQuery() {
 
 		System.out.println("\nTable name ?");
 		System.out.print("> ");
 		String tableName = null;
-		try {
-			tableName = br.readLine();
-			// dropTable(tableName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		tableName = sc.next();
 
 		String queryCreation = "CREATE TABLE " + tableName + "(";
 		boolean primaryKeyUse = false;
+		boolean primaryKeyTurn = false;
 
 		// Get the number of columns
 		int columns = 0;
 		System.out.println("\nNumber of column(s) ?");
 		System.out.print("> ");
 		try {
-			columns = Integer.parseInt(br.readLine());
+			columns = Integer.parseInt(sc.next());
 		} catch (java.lang.NumberFormatException e1) {
 			e1.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
 		}
 
 		// For each column, what name and type is
@@ -48,11 +39,7 @@ public class Create {
 			String name = null;
 			System.out.println("\nName of column " + i + " ?");
 			System.out.print("> ");
-			try {
-				name = br.readLine() + " ";
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			name = sc.next() + " ";
 
 			if (name != null) {
 				queryCreation += name.toUpperCase();
@@ -63,11 +50,7 @@ public class Create {
 			int numberOfTerms = 0;
 			System.out.println("\nType of column " + i + " ? (VARCHAR2, NUMBER, DATE)");
 			System.out.print("> ");
-			try {
-				type = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			type = sc.next();
 
 			// If VARCHAR2
 			if ((name != null) && (type.equalsIgnoreCase("varchar2"))) {
@@ -75,44 +58,12 @@ public class Create {
 				// Get numbers of terms max
 				System.out.println("\nNumber of terms ? (VARCHAR2(?))");
 				System.out.print("> ");
-				try {
-					numberOfTerms = Integer.parseInt(br.readLine());
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
+				numberOfTerms = Integer.parseInt(sc.next());
 				queryCreation += type.toUpperCase() + "(" + numberOfTerms + ")";
 
 				// if NUMBER or DATE
 			} else {
 				queryCreation += type.toUpperCase();
-			}
-
-			// Column NOT NULL
-			String notNull = " NOT NULL ";
-			System.out.println("\nNot Null ? (Y / N)");
-			System.out.print("> ");
-			String choiceNN = null;
-			try {
-				choiceNN = br.readLine();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			if (choiceNN.equalsIgnoreCase("y")) {
-				queryCreation += notNull.toUpperCase();
-			}
-
-			// Column UNIQUE
-			String unique = " UNIQUE ";
-			System.out.println("\nUnique ? (Y / N)");
-			System.out.print("> ");
-			String choiceUQ = null;
-			try {
-				choiceUQ = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			if (choiceUQ.equalsIgnoreCase("y")) {
-				queryCreation += unique.toUpperCase();
 			}
 
 			// Primary Key
@@ -121,28 +72,50 @@ public class Create {
 				System.out.print("> ");
 				String primaryKey = " CONSTRAINT pk" + name + " PRIMARY KEY ";
 				String choicePrimaryKey = null;
-				try {
-					choicePrimaryKey = br.readLine();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				choicePrimaryKey = sc.next();
 				if (choicePrimaryKey.equalsIgnoreCase("y")) {
 					queryCreation += primaryKey.toUpperCase();
 					primaryKeyUse = true;
+					primaryKeyTurn = true;
 				}
 			}
+			System.out.println(primaryKeyTurn);
+			if (!primaryKeyTurn) {
+				// Column NOT NULL
+				String notNull = " NOT NULL ";
+				System.out.println("\nNot Null ? (Y / N)");
+				System.out.print("> ");
+				String choiceNN = null;
+				choiceNN = sc.next();
+				if (choiceNN.equalsIgnoreCase("y")) {
+					queryCreation += notNull.toUpperCase();
+				}
+
+				// Column UNIQUE
+				String unique = " UNIQUE ";
+				System.out.println("\nUnique ? (Y / N)");
+				System.out.print("> ");
+				String choiceUQ = null;
+				choiceUQ = sc.next();
+				if (choiceUQ.equalsIgnoreCase("y")) {
+					queryCreation += unique.toUpperCase();
+				}
+			}
+			primaryKeyTurn = false;
 
 			// Shaping of the query
 			if (i < columns) {
 				queryCreation += ", ";
 			} else {
-				queryCreation += ")";		
-			}
-			if (primaryKeyUse == false) {
-				System.out.println("You must have a primary key");
-				queryCreation = null;
+				queryCreation += ")";
 			}
 		}
+		
+		if (primaryKeyUse == false) {
+			System.out.println("You must have a primary key");
+			queryCreation = null;
+		}
+		
 		return queryCreation;
 	}
 }

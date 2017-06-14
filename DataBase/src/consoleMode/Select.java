@@ -1,35 +1,32 @@
 package consoleMode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import static utils.Scan.sc;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+/**
+ * This class allows to generate 'Select' instruction
+ */
 public class Select {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
 	/**
-	 * Select all the values of the table
-	 *
-	 * @param table
-	 *            The name of the table
+	 * This method ask the user to construct the query
+	 * @return the query
 	 */
 	public static String getQuery() {
 
 		System.out.println("\nTable name ?");
 		System.out.print("> ");
 		String tableName = "";
-		try {
-			tableName = br.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		tableName = sc.next();
 		return "SELECT * FROM " +tableName;
 	}
 	
+	/**
+	 * This class this play a Select ResultSet
+	 * @param rs the ResultSet to display
+	 */
 	public static void display (ResultSet rs) {
 		
 		try {

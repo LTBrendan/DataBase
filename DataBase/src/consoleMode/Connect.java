@@ -13,37 +13,46 @@ import exception.ExceptionHandler;
 import game.GameManager;
 import logs.Log;
 
+/**
+ * This class allows a user to connect to a database
+ *
+ */
 public class Connect {
 
+	// the database connexion
 	private Connection conn = null;
+	// the statement that allows to execute query from java
 	private static Statement statement = null;
+	// the ResultSet that receive query results
 	private ResultSet resultat = null;
+	// the user using database
 	private User currentUser;
 
 	/**
-	 * Constructor of the class
+	 * Constructor of the class Connect
+	 * 
+	 * @param adress database address
+	 * @param login user's login for the database
+	 * @param password user's password for the database
+	 * @param currentUser user attempting to connect the database
 	 */
 	public Connect(String adress, String login, String password, User currentUser) {
 
-		/**
-		 * Connection to the data base Using JDBC Need the database address, the
-		 * username and the password
-		 */
+		// Connection to the data base Using JDBC. Need the database address,
+		// the username and the password
 		try {
 			System.out.println("\nConnection to database...");
 			conn = DriverManager.getConnection(adress, login, password);
 			System.out.println("Successful connection !");
-			Log.out("connexion established : "+adress);
+			Log.out("connexion established : " + adress);
 			this.currentUser = currentUser;
 		} catch (SQLException e) {
 			System.out.println("Connection error");
-			Log.out("unable to connect to database"+adress);
+			Log.out("unable to connect to database" + adress);
 			e.printStackTrace();
 		}
 
-		/**
-		 * Creation of a statement The statement allow to execute query after
-		 */
+		// Creation of a statement that allows to execute query after
 		try {
 			System.out.println("\nCreating statement...");
 			statement = conn.createStatement();
@@ -53,8 +62,14 @@ public class Connect {
 			Log.database("error creating statement");
 			e1.printStackTrace();
 		}
-
-		String want = " ";
+		this.start();
+	}
+	
+	/**
+	 * This method start interaction with user
+	 */
+	private void start () {
+		String want = "";
 
 		while ((!want.toLowerCase().contains("quit")) && (!want.toLowerCase().contains("8"))) {
 			System.out.println("\nWhat do you want to do ?");
@@ -70,72 +85,72 @@ public class Connect {
 			want = sc.next();
 			if ((want.toLowerCase().contains("create")) || (want.equals("1"))) {
 				String query = Create.getQuery();
-				
+
 				try {
 					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
-					Log.database("query executed : "+query);
-					
+					Log.database("query executed : " + query);
+
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("create : " + ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+query);
+					Log.database("error executing query : " + query);
 				}
 
 			} else if ((want.toLowerCase().contains("drop")) || (want.equals("2"))) {
 				String query = Drop.getQuery();
-				
+
 				try {
 					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
-					Log.database("query executed : "+query);
+					Log.database("query executed : " + query);
 
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("drop : " + ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+query);
+					Log.database("error executing query : " + query);
 				}
 
 			} else if ((want.toLowerCase().contains("insert")) || (want.equals("3"))) {
 				String query = Insert.getQuery();
-				
+
 				try {
 					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
-					Log.database("query executed : "+query);
-					
+					Log.database("query executed : " + query);
+
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("insert : " + ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+query);
+					Log.database("error executing query : " + query);
 				}
 
 			} else if ((want.toLowerCase().contains("select")) || (want.equals("4"))) {
 				String query = Select.getQuery();
-				
+
 				try {
 					Select.display(resultat = this.executeQuery(query));
 					System.out.println("Query successfully executed !");
-					Log.database("query executed : "+query);
-					
+					Log.database("query executed : " + query);
+
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("select : " + ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+query);
+					Log.database("error executing query : " + query);
 				}
 
 			} else if ((want.toLowerCase().contains("delete")) || (want.equals("5"))) {
 				String query = Delete.getQuery();
-				
+
 				try {
 					resultat = this.executeQuery(query);
 					System.out.println("Query successfully executed !");
-					Log.database("query executed : "+query);
-					
+					Log.database("query executed : " + query);
+
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println("delete : " + ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+query);
+					Log.database("error executing query : " + query);
 				}
 			}
 
@@ -158,25 +173,26 @@ public class Connect {
 				String queryExpert = "";
 
 				try {
-					
-					while((queryExpert = sc.nextLine()).length() == 0);
-					
+
+					while ((queryExpert = sc.nextLine()).length() == 0)
+						;
+
 					resultat = this.executeQuery(queryExpert);
 
 					if (queryExpert.toLowerCase().contains("select")) {
 						Select.display(resultat);
 					}
-					Log.database("query executed : "+queryExpert);
+					Log.database("query executed : " + queryExpert);
 
 				} catch (SQLException e) {
 					System.out.println("Query error !");
 					System.out.println(ExceptionHandler.analyse((e.getMessage())));
-					Log.database("error executing query : "+queryExpert);
+					Log.database("error executing query : " + queryExpert);
 				}
 
 			} else if ((want.toLowerCase().contains("quit")) || (want.equals("8"))) {
 				quit();
-				
+
 			} else {
 				System.out.println("Sorry but I don't understand what you wanna do");
 			}
@@ -190,7 +206,7 @@ public class Connect {
 		if (resultat != null) {
 			try {
 				resultat.close();
-				Log.database ("Result set closed");
+				Log.database("Result set closed");
 			} catch (SQLException ignore) {
 
 			}
@@ -216,6 +232,12 @@ public class Connect {
 		Log.database("disconnected from data base");
 	}
 
+	/**
+	 * This method execute the queries writen by the user
+	 * @param query the query to execute
+	 * @return query result, null if error
+	 * @throws SQLException only if a SQLException is raised
+	 */
 	public ResultSet executeQuery(String query) throws SQLException {
 		ResultSet ret = null;
 		System.out.println(query);
@@ -223,6 +245,10 @@ public class Connect {
 		return ret;
 	}
 
+	/**
+	 * Getter for statement attribute
+	 * @return the statement
+	 */
 	public static Statement getStatement() {
 		return statement;
 	}
