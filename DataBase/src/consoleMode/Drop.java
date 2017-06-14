@@ -1,31 +1,22 @@
 package consoleMode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import static utils.Scan.sc;
 
+/**
+ * This class allows to generate 'Drop' instruction
+ */
 public class Drop {
-
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+	
 	/**
-	 * Drop a table that exist
-	 *
-	 * @param tableName
-	 *            The name of the table
+	 * This method ask the user to construct the query
+	 * @return the query
 	 */
 	public static String getQuery() {
 
 		System.out.println("\nTable name ?");
 		System.out.print("> ");
 		String tableName = null;
-		try {
-			tableName = br.readLine();
-			// dropTable(tableName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		tableName = sc.next();
 		return "DROP TABLE " + tableName;
 	}
 }

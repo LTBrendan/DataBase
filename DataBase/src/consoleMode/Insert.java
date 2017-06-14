@@ -1,34 +1,27 @@
 package consoleMode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import static utils.Scan.sc;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+/**
+ * This class allows to generate 'Insert' instruction
+ */
 public class Insert {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
 	/**
-	 * Add values into the new table
-	 *
-	 * @param table
-	 *            The name of the table
+	 * This method ask the user to construct the query
+	 * @return the query
 	 */
 	public static String getQuery() {
 
 		System.out.println("\nTable name ?");
 		System.out.print("> ");
 		String tableName = null;
-		try {
-			tableName = br.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		tableName = sc.next();
 
-		String queryInsertion = null;
+		String queryInsertion = "";
 
 		try {
 			// Get the number of columns
@@ -54,13 +47,13 @@ public class Insert {
 				// If NUMBER
 				if (type.equalsIgnoreCase("number")) {
 					System.out.print("> ");
-					number = Integer.parseInt(br.readLine());
+					number = Integer.parseInt(sc.next());
 					queryInsertion += number;
 
 					// If VARCHAR2 or DATE
 				} else {
 					System.out.print("> ");
-					line = "'" + br.readLine() + "'";
+					line = "'" + sc.next() + "'";
 					queryInsertion += line;
 				}
 
@@ -74,7 +67,7 @@ public class Insert {
 
 			System.out.println(queryInsertion);
 
-		} catch (SQLException | IOException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

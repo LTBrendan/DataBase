@@ -1,0 +1,15 @@
+15:21:09	out       Logfile opened
+15:21:09	out       Logfiles cleaned
+15:21:14	out       connexion attempt (login : brendan)
+15:21:14	out       successful connexion
+15:21:20	out       data base connexion attempt : ProjetDB
+15:21:20	out       connexion established : jdbc:oracle:thin:@localhost:1521:PROJETDB
+15:21:20	database  statement created
+15:22:09	database  query executed : CREATE TABLE game(PRIMARY NUMBER CONSTRAINT PKPRIMARY  PRIMARY KEY , NAME VARCHAR2(10) UNIQUE , SURNAME VARCHAR2(20) NOT NULL )
+15:22:30	database  query executed : DROP TABLE game
+15:22:33	database  Result set closed
+15:22:33	database  statement closed
+15:22:33	database  connexion closed
+15:22:33	database  disconnected from data base
+15:22:34	out       disconnected
+15:22:34	out       Logfile closed
