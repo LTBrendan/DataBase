@@ -33,7 +33,9 @@ import javax.swing.text.StyleContext;
 
 import controller.LabelCloseListener;
 import controller.MenuButtonListener;
+import controller.MouseMovementAdapter;
 import controller.TextFieldListener;
+import controller.WindowResizer;
 import utils.WordBasedStyledDocument;
 
 /**
@@ -84,7 +86,12 @@ public class BaseDeDonnees {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		
+		MouseMovementAdapter.setMAIN_FRAME(frame);
+		try {
+			WindowResizer.WINDOW_RESIZER.register(frame);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		JPanel statePanel = new JPanel();
 		statePanel.setPreferredSize(new Dimension(80, 456));
@@ -198,7 +205,7 @@ public class BaseDeDonnees {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				frame.setState(Frame.NORMAL);
+				frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 			}
 		});
 		maximizePanel.add(lblNewLabel_1, BorderLayout.CENTER);
