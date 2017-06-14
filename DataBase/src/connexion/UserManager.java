@@ -14,18 +14,32 @@ import java.util.ArrayList;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * This class allows to manage users by loading their information from a file and saving it to the same file
+ *
+ */
 public class UserManager {
-	
+	//list containing all users and their information
 	private static ArrayList<User> userList;
+	//key used to generate the secret key
 	private static String mykey = "1234567891234567";
+	//the secret key used to encrypt user's password
     private static SecretKey key = new SecretKeySpec(mykey.getBytes(), "AES");
+    //the encrypter used to encrypt user's password
     private static AES encrypter = new AES(key);
     
+	/**
+	 * Constructor for the user manager
+	 */
 	public UserManager () {
 		UserManager.userList = new ArrayList<User>();
 	}
-	public void save () {
-		
+	
+	/**
+	 * This method save the users in the user list into a file named user 
+	 */
+	public static void save () {
+		 
 		try {
 			FileOutputStream fos = new FileOutputStream ("source/user");
 			BufferedOutputStream bos = new BufferedOutputStream (fos);
@@ -40,6 +54,9 @@ public class UserManager {
 				
 	}
 	
+	/**
+	 * This method load the users contained in the file 'user' and add them to the user list
+	 */
 	public static void load () {
 		File file = new File ("source/user");
 		if (!file.exists()) {
@@ -72,6 +89,11 @@ public class UserManager {
 		
 	}
 	
+	/**
+	 * This method add a new user to theu user list. Do nothing if a user with the same login and same password exists
+	 * @param login new user's login
+	 * @param pass new user's password
+	 */
 	public static void createUser (String login, String pass) {
 		if (!UserManager.checkUser(login, encrypter.encrypt (pass))) {
 			UserManager.userList.add(new User (login, encrypter.encrypt(pass)));
@@ -80,6 +102,12 @@ public class UserManager {
 		}
 	}
 	
+	/**
+	 * This method check if a user with login and password exists in the user list
+	 * @param login login to test
+	 * @param pass pass password to test
+	 * @return true only if a user exists with the informations in parameter
+	 */
 	public static boolean checkUser (String login, String pass) {
 		boolean ret = false;
 		for (User us : UserManager.userList) {
@@ -92,6 +120,12 @@ public class UserManager {
 		return ret;
 	}
 	
+	/**
+	 * This method return the user with the information in parameter
+	 * @param login user's login
+	 * @param pass user's password
+	 * @return the user if found, null if no
+	 */
 	public User getUser (String login , String pass) {
 		User ret = null;
 		for (User us : UserManager.userList) {
@@ -104,6 +138,7 @@ public class UserManager {
 		return ret;
 	}
 	
+	
 	public String toString () {
 		String ret = "";
 		for (User us : UserManager.userList){
@@ -112,6 +147,12 @@ public class UserManager {
 		return ret;
 	}
 	
+	/**
+	 * This method remove a user with the informations in parameter
+	 * @param login user's login
+	 * @param pass user's password
+	 * @return the removed user if found, null if no
+	 */
 	public static User removeUser (String login, String pass) {
 		User ret = null;
 		for (User us : UserManager.userList) {

@@ -1,0 +1,9 @@
+11:56:40	out       Logfile opened
+11:56:40	out       Logfiles cleaned
+11:56:43	out       connexion attempt (login : admin)
+11:56:43	out       successful connexion
+11:56:47	out       user created (login : test)
+11:56:50	out       user removed (login : test)
+11:56:53	out       action confirmed
+11:56:55	out       disconnected
+11:56:55	out       Logfile closed

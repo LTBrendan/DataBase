@@ -1,0 +1,14 @@
+12:11:49	out       Logfile opened
+12:11:49	out       Logfiles cleaned
+12:11:52	out       connexion attempt (login : test)
+12:11:52	out       connexion failed
+12:11:57	out       connexion attempt (login : brendan)
+12:11:57	out       successful connexion
+12:12:02	out       data base connexion attempt : ProjetDB
+12:12:03	out       connexion established : jdbc:oracle:thin:@localhost:1521:PROJETDB
+12:12:03	database  statement created
+12:12:04	database  statement closed
+12:12:04	database  connexion closed
+12:12:04	database  disconnected from data base
+12:12:07	out       disconnected
+12:12:07	out       Logfile closed

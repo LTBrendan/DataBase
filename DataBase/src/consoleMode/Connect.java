@@ -213,7 +213,6 @@ public class Connect {
 
 			}
 		}
-		System.out.println("See you soon !! :)");
 		Log.database("disconnected from data base");
 	}
 

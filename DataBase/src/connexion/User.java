@@ -5,21 +5,28 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+/**
+ * This class allows to manipulate users
+ *
+ */
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	//user's login for the application
 	private String login;
+	//user's password for the application
 	private String pass;
-	private ImageIcon avatar;
-	public ImageIcon getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(ImageIcon avatar) {
-		this.avatar = avatar;
-	}
-
+	//contains all user's connexion
 	private ArrayList<UserConnexion> connexionList;
+	private ImageIcon avatar;
+	
+	
+
+	/**
+	 * Constructor for class User
+	 * @param login user's login
+	 * @param pass user's password
+	 */
 	public User(String login, String pass) {
 
 		this.setPass(pass);
@@ -27,28 +34,68 @@ public class User implements Serializable {
 		this.connexionList = new ArrayList<UserConnexion>();
 	}
 
+	/**
+	 * Setter for login attribute
+	 * @param login the new login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * Setter for password attribute
+	 * @param pass the new password
+	 */
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
 
+	/**
+	 * Getter for login attribute
+	 * @return user's login
+	 */
 	public String getLogin() {
 		return this.login;
 	}
 
+	/**
+	 * Getter for password attribute
+	 * @return user's password
+	 */
 	public String getPass() {
 		return this.pass;
 	}
 	
+	/**
+	 * Add a new connexion to the list
+	 * @param connexion the connexion to add to the list
+	 */
 	public void addNewConnexion (UserConnexion connexion) {
 		this.connexionList.add(connexion);
 	}
-
+	
+	/**
+	 * Getter for connexionList attribute
+	 * @return user's connexionList
+	 */
 	public ArrayList<UserConnexion> getConnexionList() {
 		return this.connexionList;
+	}
+	
+	/**
+	 * Getter for avatar attribute
+	 * @return user's avatar
+	 */
+	public ImageIcon getAvatar() {
+		return avatar;
+	}
+
+	/**
+	 * Setter for avatar attribute
+	 * @param avatar the new avatar
+	 */
+	public void setAvatar(ImageIcon avatar) {
+		this.avatar = avatar;
 	}
 	
 	public String toString (){
