@@ -81,7 +81,7 @@ public class BaseDeDonnees {
 		frame.setPreferredSize(new Dimension(1080, 720));
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setBounds(100, 100, 1080, 720);
-		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
 		JPanel statePanel = new JPanel();
