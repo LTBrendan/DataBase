@@ -84,6 +84,8 @@ public class BaseDeDonnees {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
+		
+		
 		JPanel statePanel = new JPanel();
 		statePanel.setPreferredSize(new Dimension(80, 456));
 		statePanel.setBackground(new Color(30, 33, 36));
@@ -324,8 +326,6 @@ public class BaseDeDonnees {
 		panel_3.add(importLabel);
 		splitPane.setDividerLocation(0);
 		splitPane.setDividerLocation(0.8);
-		//splitPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { scrollPane, panel_2, txtpnK,
-		//		panel_3, executeLabel, executeAllLabel, clearLabel, saveLabel, exportLabel, importLabel }));
 	}
 
 	public static JTextPane getTextPane() {
