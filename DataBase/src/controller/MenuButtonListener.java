@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import vue.BaseDeDonnees;
+import vue.WorkPanel;
 
 public class MenuButtonListener implements MouseListener {
 
@@ -36,16 +36,16 @@ public class MenuButtonListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		
-		panel.add(new JLabel("Query : " + BaseDeDonnees.getTextPane().getText()), BorderLayout.NORTH);
-		BaseDeDonnees.setPanel_1(panel);
-		
-		JScrollPane scrollPane = new JScrollPane(panel);
-		scrollPane.setPreferredSize(new Dimension(20,250));
-		BaseDeDonnees.setScrollPane(scrollPane);
-
-		BaseDeDonnees.getSplitPane().setLeftComponent(scrollPane);
+	//	if ((e.getSource() == WorkPanel.getExecuteLabel()) || (e.getSource() == WorkPanel.getExecuteAllLabel())){
+			JPanel panel = new JPanel();
+			panel.setLayout(new BorderLayout());
+			
+			panel.add(new JLabel("Query : " + WorkPanel.getTextPane().getText()), BorderLayout.NORTH);
+			WorkPanel.setUpPanel(panel);
+			
+			JScrollPane scrollPane = new JScrollPane(panel);
+			scrollPane.setPreferredSize(new Dimension(20,250));
+			WorkPanel.setUpScrollPane(scrollPane);
+	//	}
 	}
 }
