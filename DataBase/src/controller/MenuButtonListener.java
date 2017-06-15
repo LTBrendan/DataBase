@@ -1,21 +1,21 @@
 package controller;
 
-
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
-import vue.BaseDeDonnees;
+import vue.DetailPanel;
+import vue.Launcher;
+import vue.MainPanel;
+import vue.PreSettingPanel;
 
 public class MenuButtonListener implements MouseListener {
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 
 	}
 
@@ -36,16 +36,24 @@ public class MenuButtonListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		
-		panel.add(new JLabel("Query : " + BaseDeDonnees.getTextPane().getText()), BorderLayout.NORTH);
-		BaseDeDonnees.setPanel_1(panel);
-		
-		JScrollPane scrollPane = new JScrollPane(panel);
-		scrollPane.setPreferredSize(new Dimension(20,250));
-		BaseDeDonnees.setScrollPane(scrollPane);
 
-		BaseDeDonnees.getSplitPane().setLeftComponent(scrollPane);
+		if (e.getComponent().equals(Launcher.getStatePanel().getAvatarLabel())) {
+			DetailPanel.setWorkPanel(new PreSettingPanel());
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+		}
+
+		if (e.getComponent().equals(Launcher.getStatePanel().getUserNameLabel())) {
+			System.out.println("Coming Soon !");
+		}
+
+		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
+			JLabel label = new JLabel(
+					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText() + ":\n");
+			label.setForeground(new Color(255, 255, 255));
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel();
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
+
+			Launcher.getMainPanel().getDetailPanel().revalidate();
+		}
 	}
 }
