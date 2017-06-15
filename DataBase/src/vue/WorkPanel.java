@@ -157,10 +157,9 @@ public class WorkPanel extends JSplitPane {
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		saveLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			executeLabel.setForeground(new Color(255,255,255));
+			saveLabel.setForeground(new Color(255,255,255));
 		else
-			executeLabel.setForeground(new Color(0,0,0));
-		saveLabel.setForeground(new Color(255, 255, 255));
+			saveLabel.setForeground(new Color(0,0,0));
 
 		exportLabel = new JLabel("Export");
 		exportLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -174,10 +173,9 @@ public class WorkPanel extends JSplitPane {
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeAllLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			executeLabel.setForeground(new Color(255,255,255));
+			executeAllLabel.setForeground(new Color(255,255,255));
 		else
-			executeLabel.setForeground(new Color(0,0,0));
-		executeAllLabel.setForeground(new Color(255, 255, 255));
+			executeAllLabel.setForeground(new Color(0,0,0));
 
 		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

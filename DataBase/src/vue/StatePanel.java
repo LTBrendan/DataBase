@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -21,45 +22,67 @@ public class StatePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JPanel upPanel;
+	private JPanel downPanel;
 	private JLabel avatarLabel;
 	private JLabel userNameLabel;
 	private JSeparator separator;
-	
+
 	private static StatePanel statePanel;
 
 	public StatePanel() {
-		
+
 		this.setPreferredSize(new Dimension(80, 456));
 		this.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 
-		this.add(createAvatarLanel());
+		this.add(createUpPanel(), BorderLayout.NORTH);
 
-		this.add(createUserNameLabel());
+		JLabel stats = new JLabel();
+		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		stats.setToolTipText("Stats");
+		if (Launcher.color == 54)
+			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsWhite.PNG"));
+		else
+			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsBlack.PNG"));
 
-		this.add(createSeparator());
-		
+		this.add(stats, BorderLayout.SOUTH);
+
 		statePanel = this;
+	}
+
+	private JPanel createUpPanel() {
+
+		upPanel = new JPanel(new BorderLayout());
+		upPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		upPanel.add(createAvatarLanel(), BorderLayout.NORTH);
+		upPanel.add(createUserNameLabel(), BorderLayout.CENTER);
+		upPanel.add(createSeparator(), BorderLayout.SOUTH);
+
+		return upPanel;
 	}
 
 	private JLabel createAvatarLanel() {
 
-		this.avatarLabel = new JLabel("");
-		this.avatarLabel.setBounds(0, 0, 80, 75);
+		this.avatarLabel = new JLabel();
+	//	this.avatarLabel.setBounds(0, 0, 80, 75);
 		this.avatarLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.avatarLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		this.avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
 		this.avatarLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.avatarLabel.addMouseListener(new MenuButtonListener());
-		
+
 		return this.avatarLabel;
 	}
 
 	private JLabel createUserNameLabel() {
 
 		this.userNameLabel = new JLabel("Admin");
-		this.userNameLabel.setBounds(0, 75, 80, 36);
-		this.userNameLabel.setForeground(Color.WHITE);
+	//	this.userNameLabel.setBounds(0, 75, 80, 36);
+		if (Launcher.color == 54)
+			this.userNameLabel.setForeground(Color.WHITE);
+		else
+			this.userNameLabel.setForeground(Color.BLACK);
 		this.userNameLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		this.userNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -67,21 +90,21 @@ public class StatePanel extends JPanel {
 	}
 
 	public JSeparator createSeparator() {
-		
+
 		this.separator = new JSeparator();
-		this.separator.setBounds(10, 109, 60, 2);
+	//	this.separator.setBounds(10, 109, 60, 2);
 
 		return this.separator;
 	}
-	
+
 	public static StatePanel getStatePanel() {
 		return statePanel;
 	}
-	
+
 	public JComponent getAvatarLabel() {
 		return statePanel.avatarLabel;
 	}
-	
+
 	public JComponent getUserNameLabel() {
 		return statePanel.userNameLabel;
 	}

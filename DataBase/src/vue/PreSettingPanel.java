@@ -59,20 +59,31 @@ public class PreSettingPanel extends JPanel {
 		logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(logoutLabel);
 		logoutLabel.setToolTipText("Disconnect and change user");
-		logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logout.PNG"));
+		if (Launcher.color == 54)
+			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutWhite.PNG"));
+		else
+			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutBlack.PNG"));
+		
 
 		quitLabel = new JLabel();
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(quitLabel);
 		quitLabel.setToolTipText("Disconnect user and quit the app");
-		quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quit.PNG"));
+		if (Launcher.color == 54)
+			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitWhite.PNG"));
+		else
+			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitBlack.PNG"));	
+		
 		quitLabel.addMouseListener(new LabelCloseListener());
 
 		settingLabel = new JLabel();
 		settingLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(settingLabel);
 		settingLabel.setToolTipText("Go to user's and app's settings");
-		settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\setting.PNG"));
+		if (Launcher.color == 54)
+			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingWhite.PNG"));
+		else
+			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingBlack.PNG"));	
 		settingLabel.addMouseListener(new MenuButtonListener());
 
 		preSettingPanel = this;

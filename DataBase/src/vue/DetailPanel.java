@@ -115,7 +115,11 @@ public class DetailPanel extends JPanel {
 				 Launcher.getFrame().setState(Frame.ICONIFIED);
 			 }
 		 });
-		this.minimizeLabel.setIcon(new ImageIcon("rsc\\minimize.PNG"));
+		if (Launcher.color == 54)
+			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusWhite.PNG"));
+		else
+			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusBlack.PNG"));
+		
 		this.minimizePanel.add(this.minimizeLabel);
 
 		return this.minimizePanel;
@@ -135,9 +139,13 @@ public class DetailPanel extends JPanel {
 				Launcher.getFrame().setExtendedState(Frame.MAXIMIZED_BOTH);
 			}
 		});
-		this.maximizeLabel.setIcon(new ImageIcon("rsc\\maximize.PNG"));
+		if (Launcher.color == 54)
+			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandWhite.PNG"));
+		else
+			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandBlack.PNG"));
+		
 		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
-
+		this.maximizePanel.add(new JLabel("   "), BorderLayout.EAST);
 		return this.maximizePanel;
 	}
 
@@ -151,7 +159,11 @@ public class DetailPanel extends JPanel {
 		this.closeLabel = new JLabel("");
 		this.closeLabel.addMouseListener(new LabelCloseListener());
 		this.closeLabel.setBackground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
-		this.closeLabel.setIcon(new ImageIcon("rsc\\close.PNG"));
+		if (Launcher.color == 54)
+			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
+		else
+			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeBlack.PNG"));
+		
 		this.closePanel.add(this.closeLabel);
 
 		return this.closePanel;
