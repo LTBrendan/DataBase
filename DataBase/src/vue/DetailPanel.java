@@ -4,7 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -98,12 +102,12 @@ public class DetailPanel extends JPanel {
 		this.minimizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.minimizeLabel = new JLabel();
-		// this.minimizeLabel.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mousePressed(MouseEvent e) {
-		// frame.setState(Frame.ICONIFIED);
-		// }
-		// });
+		this.minimizeLabel.addMouseListener(new MouseAdapter() {
+			 @Override
+			 public void mousePressed(MouseEvent e) {
+				 Launcher.getFrame().setState(Frame.ICONIFIED);
+			 }
+		 });
 		this.minimizeLabel.setBackground(new Color(40, 43, 48));
 		this.minimizeLabel.setIcon(new ImageIcon("rsc\\minimize.PNG"));
 		this.minimizePanel.add(this.minimizeLabel);
@@ -119,12 +123,12 @@ public class DetailPanel extends JPanel {
 		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.maximizeLabel = new JLabel();
-		// this.maximizeLabel.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mouseReleased(MouseEvent e) {
-		// frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-		// }
-		// });
+		this.maximizeLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				Launcher.getFrame().setExtendedState(Frame.MAXIMIZED_BOTH);
+			}
+		});
 		this.maximizeLabel.setBackground(new Color(40, 43, 48));
 		this.maximizeLabel.setIcon(new ImageIcon("rsc\\maximize.PNG"));
 		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
@@ -151,16 +155,16 @@ public class DetailPanel extends JPanel {
 	private JPanel createCenterPanel() {
 
 		this.centerPanel = new JPanel();
-		// this.centerPanel.addMouseMotionListener(new MouseMotionAdapter() {
-		// public void mouseDragged(MouseEvent evt) {
-		// loginMouseDragged(evt);
-		// }
-		// });
-		// this.centerPanel.addMouseListener(new MouseAdapter() {
-		// public void mousePressed(MouseEvent evt) {
-		// loginMousePressed(evt);
-		// }
-		// });
+		this.centerPanel.addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent evt) {
+				frameMouseDragged(evt);
+			}
+		});
+		this.centerPanel.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent evt) {
+				frameMousePressed(evt);
+			}
+		});
 		this.centerPanel.setBackground(new Color(54, 57, 62));
 
 		return this.centerPanel;
@@ -173,5 +177,18 @@ public class DetailPanel extends JPanel {
 	public static void setWorkPanel(JPanel workPanel) {
 		detailPanel.remove(detailPanel.getWorkPanel());
 		detailPanel.add(workPanel);
+	}
+	
+	int xy, xx;
+
+	private void frameMouseDragged(MouseEvent evt) {
+		int depX = evt.getX() - xx;
+		int depY = evt.getY() - xy;
+		Launcher.getFrame().setLocation(Launcher.getFrame().getX() + depX, Launcher.getFrame().getY() + depY);
+	}
+
+	private void frameMousePressed(MouseEvent evt) {
+		xx = evt.getX();
+		xy = evt.getY();
 	}
 }

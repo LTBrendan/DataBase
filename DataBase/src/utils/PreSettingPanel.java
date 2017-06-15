@@ -1,14 +1,15 @@
-package vue;
+package utils;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import java.awt.Cursor;
 
 public class PreSettingPanel extends JPanel {
 
@@ -16,12 +17,10 @@ public class PreSettingPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static PreSettingPanel preSettingPanel;
-	
-	private JLabel logoutLabel;
-	private JLabel quitLabel;
-	private JLabel settingLabel;
-	
+
+	/**
+	 * Create the panel.
+	 */
 	public PreSettingPanel() {
 
 		this.setBackground(new Color(54, 57, 62));
@@ -29,7 +28,7 @@ public class PreSettingPanel extends JPanel {
 
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(new Color(54, 57, 62));
-		northPanel.setPreferredSize(new Dimension(10, 250));
+		northPanel.setPreferredSize(new Dimension(10, 125));
 		add(northPanel, BorderLayout.NORTH);
 
 		JPanel westPanel = new JPanel();
@@ -39,7 +38,7 @@ public class PreSettingPanel extends JPanel {
 
 		JPanel southPanel = new JPanel();
 		southPanel.setBackground(new Color(54, 57, 62));
-		southPanel.setPreferredSize(new Dimension(10, 250));
+		southPanel.setPreferredSize(new Dimension(10, 125));
 		add(southPanel, BorderLayout.SOUTH);
 
 		JPanel eastPanel = new JPanel();
@@ -52,42 +51,22 @@ public class PreSettingPanel extends JPanel {
 		add(centerPanel, BorderLayout.CENTER);
 		centerPanel.setLayout(new GridLayout(0, 3, 0, 0));
 
-		logoutLabel = new JLabel();
+		JLabel logoutLabel = new JLabel();
 		logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(logoutLabel);
 		logoutLabel.setToolTipText("Disconnect and change user");
 		logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logout.PNG"));
 
-		quitLabel = new JLabel();
+		JLabel quitLabel = new JLabel();
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(quitLabel);
 		quitLabel.setToolTipText("Disconnect user and quit the app");
 		quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quit.PNG"));
 
-		settingLabel = new JLabel();
+		JLabel settingLabel = new JLabel();
 		settingLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(settingLabel);
 		settingLabel.setToolTipText("Go to user's and app's settings");
 		settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\setting.PNG"));
-
-		preSettingPanel = this;
 	}
-
-	public static PreSettingPanel getPreSettingPanel() {
-		return preSettingPanel;
-	}
-
-	public JLabel getLogoutLabel() {
-		return preSettingPanel.logoutLabel;
-	}
-
-	public JLabel getQuitLabel() {
-		return preSettingPanel.quitLabel;
-	}
-
-	public JLabel getSettingLabel() {
-		return preSettingPanel.settingLabel;
-	}
-	
-	
 }

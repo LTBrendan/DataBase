@@ -222,8 +222,7 @@ public abstract class MouseMovementAdapter extends MouseAdapter {
 	 * If reDispatch is equal to true every mouseListener and
 	 * mouseMotionListener of the main frame is updated with the right event
 	 * 
-	 * @param e
-	 *            the mouseEvent
+	 * @param e the mouseEvent
 	 */
 	private final void redispatchToMainFrame(MouseEvent e) {
 		if (MAIN_FRAME != null) {

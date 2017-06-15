@@ -55,5 +55,9 @@ public class MenuButtonListener implements MouseListener {
 
 			Launcher.getMainPanel().getDetailPanel().revalidate();
 		}
+		
+		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel())){
+			
+		}
 	}
 }
