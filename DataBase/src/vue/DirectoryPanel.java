@@ -25,7 +25,7 @@ public class DirectoryPanel extends JPanel {
 	
 	public DirectoryPanel() {
 		
-		this.setBackground(new Color(46, 49, 54));
+		this.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
 		this.setPreferredSize(new Dimension(225, 456));
 		this.setLayout(new BorderLayout(0, 0));
 		
@@ -38,7 +38,7 @@ public class DirectoryPanel extends JPanel {
 	private JPanel createSearchPanel() {
 		
 		this.searchPanel = new JPanel();
-		this.searchPanel.setBackground(new Color(46, 49, 53));
+		this.searchPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
 		this.searchPanel.setPreferredSize(new Dimension(225, 60));
 		this.searchPanel.setLayout(null);
 		
@@ -52,8 +52,8 @@ public class DirectoryPanel extends JPanel {
 		
 		this.separator = new JSeparator();
 		this.separator.setBounds(0, 58, 225, 2);
-		this.separator.setForeground(new Color(40, 43, 48));
-		this.separator.setBackground(new Color(40, 43, 48));
+		this.separator.setForeground(new Color(Launcher.color - 7, Launcher.color - 4, Launcher.color -1));
+		this.separator.setBackground(new Color(Launcher.color - 7, Launcher.color - 4, Launcher.color -1));
 		
 		return this.separator;
 	}
@@ -67,7 +67,7 @@ public class DirectoryPanel extends JPanel {
 		this.searchTexte.setText("Rechercher...");
 		this.searchTexte.setForeground(Color.WHITE);
 		this.searchTexte.setBorder(null);
-		this.searchTexte.setBackground(new Color(36, 39, 43));
+		this.searchTexte.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
 		this.searchTexte.addFocusListener(new TextFieldListener());
 		this.searchPanel.add(searchTexte);
 		this.searchTexte.setColumns(10);
@@ -78,7 +78,7 @@ public class DirectoryPanel extends JPanel {
 	private JPanel createBottomPanel() {
 		
 		this.bottomPanel = new JPanel();
-		this.bottomPanel.setBackground(new Color(41, 44, 49));
+		this.bottomPanel.setBackground(new Color(Launcher.color - 13, Launcher.color - 10, Launcher.color - 5));
 		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
 		
 		return this.bottomPanel;

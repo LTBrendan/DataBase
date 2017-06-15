@@ -84,8 +84,11 @@ public class WorkPanel extends JSplitPane {
 
 		this.upPanel = new JPanel();
 		this.upPanel.setBorder(null);
-		this.upPanel.setBackground(new Color(54,57,62));
-		this.upPanel.setForeground(new Color(255,255,255));
+		this.upPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		if (Launcher.color == 54)
+			this.upPanel.setForeground(new Color(255,255,255));
+		else
+			this.upPanel.setForeground(new Color(0,0,0));
 		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		return this.upPanel;
@@ -93,19 +96,19 @@ public class WorkPanel extends JSplitPane {
 
 	private JScrollPane createUpScrollPane(JPanel panel) {
 
-		UIManager.put("ScrollBar.trackHighlightForeground", (new Color(57, 57, 62)));
-		UIManager.put("scrollbar", (new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.thumb", new ColorUIResource(new Color(57, 57, 62)));
+		UIManager.put("ScrollBar.trackHighlightForeground", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("scrollbar", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.thumb", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
 		UIManager.put("ScrollBar.thumbHeight", 2);
-		UIManager.put("ScrollBar.background", (new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.thumbDarkShadow", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.thumbShadow", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.thumbHighlight", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.trackForeground", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.trackHighlight", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.foreground", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.shadow", new ColorUIResource(new Color(57, 57, 62)));
-		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(57, 57, 62)));
+		UIManager.put("ScrollBar.background", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.thumbDarkShadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.thumbShadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.thumbHighlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.trackForeground", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.trackHighlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.foreground", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.shadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
+		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
 
 		this.upScrollPane = new JScrollPane(panel);
 		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
@@ -127,39 +130,62 @@ public class WorkPanel extends JSplitPane {
 	private JPanel createMenuBarPanel() {
 
 		this.menuBarPanel = new JPanel();
-		this.menuBarPanel.setBackground(new Color(54, 57, 62));
-		this.menuBarPanel.setForeground(new Color(255, 255, 255));
+		this.menuBarPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		if (Launcher.color == 54)
+			this.menuBarPanel.setForeground(new Color(255,255,255));
+		else
+			this.menuBarPanel.setForeground(new Color(0,0,0));
 		this.menuBarPanel.setLayout(new GridLayout(0, 6, 0, 0));
 
 		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeLabel.addMouseListener(new MenuButtonListener());
-		executeLabel.setForeground(new Color(255, 255, 255));
+		if (Launcher.color == 54)
+			executeLabel.setForeground(new Color(255,255,255));
+		else
+			executeLabel.setForeground(new Color(0,0,0));
 
 		clearLabel = new JLabel("Clear");
 		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		clearLabel.addMouseListener(new MenuButtonListener());
-		clearLabel.setForeground(new Color(255, 255, 255));
+		if (Launcher.color == 54)
+			clearLabel.setForeground(new Color(255,255,255));
+		else
+			clearLabel.setForeground(new Color(0,0,0));
 
 		saveLabel = new JLabel("Save");
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		saveLabel.addMouseListener(new MenuButtonListener());
+		if (Launcher.color == 54)
+			executeLabel.setForeground(new Color(255,255,255));
+		else
+			executeLabel.setForeground(new Color(0,0,0));
 		saveLabel.setForeground(new Color(255, 255, 255));
 
 		exportLabel = new JLabel("Export");
 		exportLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		exportLabel.addMouseListener(new MenuButtonListener());
-		exportLabel.setForeground(new Color(255, 255, 255));
+		if (Launcher.color == 54)
+			exportLabel.setForeground(new Color(255,255,255));
+		else
+			exportLabel.setForeground(new Color(0,0,0));
 
 		executeAllLabel = new JLabel("Execute All");
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeAllLabel.addMouseListener(new MenuButtonListener());
+		if (Launcher.color == 54)
+			executeLabel.setForeground(new Color(255,255,255));
+		else
+			executeLabel.setForeground(new Color(0,0,0));
 		executeAllLabel.setForeground(new Color(255, 255, 255));
 
 		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		importLabel.addMouseListener(new MenuButtonListener());
-		importLabel.setForeground(new Color(255, 255, 255));
+		if (Launcher.color == 54)
+			importLabel.setForeground(new Color(255,255,255));
+		else
+			importLabel.setForeground(new Color(0,0,0));
 
 		this.menuBarPanel.add(executeLabel);
 		this.menuBarPanel.add(executeAllLabel);
@@ -176,8 +202,11 @@ public class WorkPanel extends JSplitPane {
 		this.textPane = new JTextPane();
 		this.textPane.setBorder(null);
 		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
-		this.textPane.setBackground(new Color(54, 57, 62));
-		this.textPane.setForeground(new Color(255, 255, 255));
+		this.textPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		if (Launcher.color == 54)
+			textPane.setForeground(new Color(255,255,255));
+		else
+			textPane.setForeground(new Color(0,0,0));
 
 		StyleContext cont = StyleContext.getDefaultStyleContext();
 		AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);

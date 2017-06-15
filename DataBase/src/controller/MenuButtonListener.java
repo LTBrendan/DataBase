@@ -48,7 +48,10 @@ public class MenuButtonListener implements MouseListener {
 		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
 			JLabel label = new JLabel(
 					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText() + ":\n");
-			label.setForeground(new Color(255, 255, 255));
+			if (Launcher.color == 54)
+				label.setForeground(new Color(255, 255, 255));
+			else 
+				label.setForeground(new Color(0, 0, 0));
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel();
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
 

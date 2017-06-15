@@ -17,6 +17,8 @@ public class Launcher {
 	private MainPanel mainPanel = new MainPanel();
 	private static Launcher launcher;
 	
+	public static int color = 247;
+	
 	/**
 	 * Launch the application.
 	 */

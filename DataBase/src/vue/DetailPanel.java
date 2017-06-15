@@ -44,7 +44,7 @@ public class DetailPanel extends JPanel {
 
 	protected DetailPanel() {
 
-		this.setBackground(new Color(54, 57, 62));
+		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
@@ -58,7 +58,7 @@ public class DetailPanel extends JPanel {
 	}
 
 	public DetailPanel(JPanel panel) {
-		this.setBackground(new Color(54, 57, 62));
+		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
@@ -69,7 +69,7 @@ public class DetailPanel extends JPanel {
 	public JPanel createMenuPanel() {
 
 		this.menuPanel = new JPanel();
-		this.menuPanel.setBackground(new Color(54, 57, 62));
+		this.menuPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.menuPanel.setPreferredSize(new Dimension(225, 60));
 		this.menuPanel.setLayout(new BorderLayout(0, 0));
 
@@ -83,8 +83,8 @@ public class DetailPanel extends JPanel {
 	private JSeparator createSeparator() {
 
 		this.separator = new JSeparator();
-		this.separator.setForeground(new Color(40, 43, 48));
-		this.separator.setBackground(new Color(40, 43, 48));
+		this.separator.setForeground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
+		this.separator.setBackground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
 
 		return this.separator;
 	}
@@ -92,7 +92,7 @@ public class DetailPanel extends JPanel {
 	private JPanel createControlPanel() {
 
 		this.controlPanel = new JPanel();
-		this.controlPanel.setBackground(new Color(54, 57, 62));
+		this.controlPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.controlPanel.setLayout(new GridLayout(0, 3, 0, 0));
 		this.controlPanel.add(createMinimizePanel());
 		this.controlPanel.add(createMaximizePanel());
@@ -105,7 +105,7 @@ public class DetailPanel extends JPanel {
 
 		this.minimizePanel = new JPanel();
 		this.minimizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.minimizePanel.setBackground(new Color(54, 57, 62));
+		this.minimizePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.minimizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.minimizeLabel = new JLabel();
@@ -125,7 +125,7 @@ public class DetailPanel extends JPanel {
 
 		this.maximizePanel = new JPanel();
 		this.maximizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.maximizePanel.setBackground(new Color(54, 57, 62));
+		this.maximizePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.maximizeLabel = new JLabel();
@@ -145,12 +145,12 @@ public class DetailPanel extends JPanel {
 
 		this.closePanel = new JPanel();
 		this.closePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.closePanel.setBackground(new Color(54, 57, 62));
+		this.closePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		this.closePanel.setLayout(new BorderLayout(0, 0));
 
 		this.closeLabel = new JLabel("");
 		this.closeLabel.addMouseListener(new LabelCloseListener());
-		this.closeLabel.setBackground(new Color(40, 43, 48));
+		this.closeLabel.setBackground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
 		this.closeLabel.setIcon(new ImageIcon("rsc\\close.PNG"));
 		this.closePanel.add(this.closeLabel);
 
@@ -170,7 +170,7 @@ public class DetailPanel extends JPanel {
 				frameMousePressed(evt);
 			}
 		});
-		this.centerPanel.setBackground(new Color(54, 57, 62));
+		this.centerPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 		return this.centerPanel;
 	}

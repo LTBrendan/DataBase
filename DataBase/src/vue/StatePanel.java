@@ -30,7 +30,7 @@ public class StatePanel extends JPanel {
 	public StatePanel() {
 		
 		this.setPreferredSize(new Dimension(80, 456));
-		this.setBackground(new Color(30, 33, 36));
+		this.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
 		this.setLayout(null);
 
 		this.add(createAvatarLanel());
