@@ -86,7 +86,6 @@ public class WorkPanel extends JSplitPane {
 		this.upPanel.setBorder(null);
 		this.upPanel.setBackground(new Color(54,57,62));
 		this.upPanel.setForeground(new Color(255,255,255));
-		this.upPanel.setForeground(new Color(255, 255, 255));
 		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		return this.upPanel;

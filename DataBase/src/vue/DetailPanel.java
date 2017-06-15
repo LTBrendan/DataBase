@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -35,6 +36,9 @@ public class DetailPanel extends JPanel {
 	private JPanel centerPanel;
 	
 	private WorkPanel workPanel = new WorkPanel();
+	private SettingPanel settingPanel = new SettingPanel();
+	private PreSettingPanel preSettingPanel = new PreSettingPanel();
+	private JComponent actualPanel;
 	
 	private static DetailPanel detailPanel;
 
@@ -44,8 +48,11 @@ public class DetailPanel extends JPanel {
 		this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
+		detailPanel = this;
+		
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(workPanel, BorderLayout.CENTER);
+		this.actualPanel = this.getWorkPanel();
 		
 		detailPanel = this;
 	}
@@ -108,7 +115,6 @@ public class DetailPanel extends JPanel {
 				 Launcher.getFrame().setState(Frame.ICONIFIED);
 			 }
 		 });
-		this.minimizeLabel.setBackground(new Color(40, 43, 48));
 		this.minimizeLabel.setIcon(new ImageIcon("rsc\\minimize.PNG"));
 		this.minimizePanel.add(this.minimizeLabel);
 
@@ -129,7 +135,6 @@ public class DetailPanel extends JPanel {
 				Launcher.getFrame().setExtendedState(Frame.MAXIMIZED_BOTH);
 			}
 		});
-		this.maximizeLabel.setBackground(new Color(40, 43, 48));
 		this.maximizeLabel.setIcon(new ImageIcon("rsc\\maximize.PNG"));
 		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
 
@@ -170,15 +175,6 @@ public class DetailPanel extends JPanel {
 		return this.centerPanel;
 	}
 	
-	public WorkPanel getWorkPanel() {
-		return detailPanel.workPanel;
-	}
-
-	public static void setWorkPanel(JPanel workPanel) {
-		detailPanel.remove(detailPanel.getWorkPanel());
-		detailPanel.add(workPanel);
-	}
-	
 	int xy, xx;
 
 	private void frameMouseDragged(MouseEvent evt) {
@@ -190,5 +186,39 @@ public class DetailPanel extends JPanel {
 	private void frameMousePressed(MouseEvent evt) {
 		xx = evt.getX();
 		xy = evt.getY();
+	}
+	
+	public WorkPanel getWorkPanel() {
+		return detailPanel.workPanel;
+	}
+
+	public SettingPanel getSettingPanel() {
+		return detailPanel.settingPanel;
+	}
+	
+	public PreSettingPanel getPreSettingPanel() {
+		return detailPanel.preSettingPanel;
+	}
+	
+	public static void setWorkPanel() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getWorkPanel();
+		detailPanel.add(detailPanel.getWorkPanel());
+	}
+	
+	public static void setSettingPanel() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getSettingPanel();
+		detailPanel.add(detailPanel.getSettingPanel());
+	}
+	
+	public static void setPreSettingPanel() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getPreSettingPanel();
+		detailPanel.add(detailPanel.getPreSettingPanel());
+	}
+	
+	public JComponent getActualPanel() {
+		return detailPanel.actualPanel;
 	}
 }

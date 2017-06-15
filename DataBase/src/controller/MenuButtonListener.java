@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import vue.DetailPanel;
 import vue.Launcher;
 import vue.MainPanel;
-import vue.PreSettingPanel;
 
 public class MenuButtonListener implements MouseListener {
 
@@ -38,7 +37,7 @@ public class MenuButtonListener implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 
 		if (e.getComponent().equals(Launcher.getStatePanel().getAvatarLabel())) {
-			DetailPanel.setWorkPanel(new PreSettingPanel());
+			DetailPanel.setPreSettingPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 		}
 
@@ -56,8 +55,9 @@ public class MenuButtonListener implements MouseListener {
 			Launcher.getMainPanel().getDetailPanel().revalidate();
 		}
 		
-		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel())){
-			
+		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getPreSettingPanel().getSettingLabel())){
+			DetailPanel.setSettingPanel();
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
 		}
 	}
 }

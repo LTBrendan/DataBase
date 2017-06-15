@@ -10,6 +10,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.LabelCloseListener;
+import controller.MenuButtonListener;
+
 public class PreSettingPanel extends JPanel {
 
 	/**
@@ -63,12 +66,14 @@ public class PreSettingPanel extends JPanel {
 		centerPanel.add(quitLabel);
 		quitLabel.setToolTipText("Disconnect user and quit the app");
 		quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quit.PNG"));
+		quitLabel.addMouseListener(new LabelCloseListener());
 
 		settingLabel = new JLabel();
 		settingLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(settingLabel);
 		settingLabel.setToolTipText("Go to user's and app's settings");
 		settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\setting.PNG"));
+		settingLabel.addMouseListener(new MenuButtonListener());
 
 		preSettingPanel = this;
 	}
