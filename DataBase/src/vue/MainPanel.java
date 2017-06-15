@@ -43,12 +43,12 @@ public class MainPanel extends JPanel {
 		mainPanel.directoryPanel = directoryPanel;
 	}
 
-	public static DetailPanel getDetailPanel() {
+	public DetailPanel getDetailPanel() {
 		return mainPanel.detailPanel;
 	}
 
 	public static void setDetailPanel(DetailPanel detailPanel) {
-		mainPanel.remove(getDetailPanel());
+		mainPanel.remove(mainPanel.getDetailPanel());
 		mainPanel.add(detailPanel);
 	}
 	

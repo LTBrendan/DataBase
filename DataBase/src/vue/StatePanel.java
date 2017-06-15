@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -75,5 +76,13 @@ public class StatePanel extends JPanel {
 	
 	public static StatePanel getStatePanel() {
 		return statePanel;
+	}
+	
+	public JComponent getAvatarLabel() {
+		return statePanel.avatarLabel;
+	}
+	
+	public JComponent getUserNameLabel() {
+		return statePanel.userNameLabel;
 	}
 }

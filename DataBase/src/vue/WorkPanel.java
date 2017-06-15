@@ -84,11 +84,10 @@ public class WorkPanel extends JSplitPane {
 
 		this.upPanel = new JPanel();
 		this.upPanel.setBorder(null);
-		// WorkPanel.upPanel.setBackground(new Color(54,57,62));
+		this.upPanel.setBackground(new Color(54,57,62));
+		this.upPanel.setForeground(new Color(255,255,255));
 		this.upPanel.setForeground(new Color(255, 255, 255));
 		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		this.upPanel.add(new JLabel("Bonjour"));
 
 		return this.upPanel;
 	}
@@ -200,7 +199,7 @@ public class WorkPanel extends JSplitPane {
 		return this.downScrollPane;
 	}
 
-	public static JLabel getExecuteLabel() {
+	public JLabel getExecuteLabel() {
 		return executeLabel;
 	}
 
@@ -224,11 +223,11 @@ public class WorkPanel extends JSplitPane {
 		return importLabel;
 	}
 
-	public static JPanel getUpPanel() {
+	public JPanel getUpPanel() {
 		return workPanel.upPanel;
 	}
 
-	public static void setUpPanel(JPanel upPanel) {
+	public void setUpPanel(JPanel upPanel) {
 		workPanel.upPanel = upPanel;
 	}
 
@@ -236,11 +235,11 @@ public class WorkPanel extends JSplitPane {
 		return workPanel.upScrollPane;
 	}
 
-	public static void setUpScrollPane(JScrollPane upScrollPane) {
+	public void setUpScrollPane(JScrollPane upScrollPane) {
 		workPanel.upScrollPane = upScrollPane;
 	}
 
-	public static JTextPane getTextPane() {
+	public JTextPane getTextPane() {
 		return workPanel.textPane;
 	}
 

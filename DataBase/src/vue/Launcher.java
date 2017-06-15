@@ -76,5 +76,5 @@ public class Launcher {
 
 	public static void setMainPanel(MainPanel mainPanel) {
 		launcher.mainPanel = mainPanel;
-	}	
+	}
 }

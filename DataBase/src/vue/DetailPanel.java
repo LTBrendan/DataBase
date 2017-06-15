@@ -166,12 +166,12 @@ public class DetailPanel extends JPanel {
 		return this.centerPanel;
 	}
 	
-	public static WorkPanel getWorkPanel() {
+	public WorkPanel getWorkPanel() {
 		return detailPanel.workPanel;
 	}
 
 	public static void setWorkPanel(JPanel workPanel) {
-		detailPanel.remove(getWorkPanel());
+		detailPanel.remove(detailPanel.getWorkPanel());
 		detailPanel.add(workPanel);
 	}
 }

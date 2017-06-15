@@ -1,11 +1,16 @@
 package controller;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JLabel;
+
 import vue.DetailPanel;
+import vue.Launcher;
 import vue.MainPanel;
-import vue.SettingPanel;
+import vue.PreSettingPanel;
 
 public class MenuButtonListener implements MouseListener {
 
@@ -31,33 +36,24 @@ public class MenuButtonListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// // if ((e.getSource() == WorkPanel.getExecuteLabel()) ||
-		// (e.getSource()
-		// // == WorkPanel.getExecuteAllLabel())){
-		// JPanel panel = new JPanel();
-		// panel.setLayout(new BorderLayout());
-		//
-		// panel.add(new JLabel("Query : " + WorkPanel.getTextPane().getText()),
-		// BorderLayout.NORTH);
-		// //WorkPanel.setUpPanel(panel);
-		//
-		// JScrollPane scrollPane = new JScrollPane(panel);
-		// scrollPane.setPreferredSize(new Dimension(20, 250));
-		// //WorkPanel.setUpScrollPane(scrollPane);
-		//
-		// DetailPanel.setWorkPanel(new WorkPanel(scrollPane,
-		// WorkPanel.getDownScrollPane()));
-		// DetailPanel.getWorkPanel().repaint();
-		// // WorkPanel.setLeftComponent(scrollPane);
-		//
-		//// WorkPanel.getUpPanel().add(new JLabel("Query : " +
-		// WorkPanel.getTextPane().getText()), BorderLayout.NORTH);
-		//// WorkPanel.getUpPanel().repaint();
-		//
-		// Launcher.getFrame().repaint();
-		// // }
 
-		DetailPanel.setWorkPanel(new SettingPanel());
-		MainPanel.getDetailPanel().repaint();
+		if (e.getComponent().equals(Launcher.getStatePanel().getAvatarLabel())) {
+			DetailPanel.setWorkPanel(new PreSettingPanel());
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+		}
+
+		if (e.getComponent().equals(Launcher.getStatePanel().getUserNameLabel())) {
+			System.out.println("Coming Soon !");
+		}
+
+		if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
+			JLabel label = new JLabel(
+					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText() + ":\n");
+			label.setForeground(new Color(255, 255, 255));
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel();
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
+
+			Launcher.getMainPanel().getDetailPanel().revalidate();
+		}
 	}
 }
