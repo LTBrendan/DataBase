@@ -19,8 +19,18 @@ public class User implements Serializable {
 	//contains all user's connexion
 	private ArrayList<UserConnexion> connexionList;
 	private ImageIcon avatar;
+	//user's color identifier
+	private int color;
 	
 	
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
 
 	/**
 	 * Constructor for class User
