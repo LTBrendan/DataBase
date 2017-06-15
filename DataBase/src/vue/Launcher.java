@@ -12,8 +12,10 @@ import controller.WindowResizer;
 
 public class Launcher {
 
-	private JFrame frame;
-
+	private static JFrame frame;
+	private static StatePanel statePanel = new StatePanel();
+	private static MainPanel mainPanel = new MainPanel();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +49,30 @@ public class Launcher {
 			e1.printStackTrace();
 		}
 
-		frame.getContentPane().add(new StatePanel(), BorderLayout.WEST);
-		frame.getContentPane().add(new MainPanel(), BorderLayout.CENTER);
+		frame.getContentPane().add(statePanel, BorderLayout.WEST);
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		
+		frame.pack();
+		frame.repaint();
 	}
+
+	public static JFrame getFrame() {
+		return frame;
+	}
+
+	public static StatePanel getStatePanel() {
+		return statePanel;
+	}
+
+	public static void setStatePanel(StatePanel statePanel) {
+		Launcher.statePanel = statePanel;
+	}
+
+	public static MainPanel getMainPanel() {
+		return mainPanel;
+	}
+
+	public static void setMainPanel(MainPanel mainPanel) {
+		Launcher.mainPanel = mainPanel;
+	}	
 }

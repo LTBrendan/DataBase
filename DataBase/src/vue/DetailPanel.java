@@ -29,18 +29,29 @@ public class DetailPanel extends JPanel {
 	private JPanel closePanel;
 	private JLabel closeLabel;
 	private JPanel centerPanel;
+	
+	private static WorkPanel workPanel = new WorkPanel();
 
-	public DetailPanel() {
+	protected DetailPanel() {
 
 		this.setBackground(new Color(54, 57, 62));
 		this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
 		this.add(createMenuPanel(), BorderLayout.NORTH);
-		this.add(new WorkPanel(), BorderLayout.CENTER);
+		this.add(workPanel, BorderLayout.CENTER);
 	}
 
-	private JPanel createMenuPanel() {
+	public DetailPanel(JPanel panel) {
+		this.setBackground(new Color(54, 57, 62));
+		this.setPreferredSize(new Dimension(468, 452));
+		this.setLayout(new BorderLayout(0, 0));
+
+		this.add(createMenuPanel(), BorderLayout.NORTH);
+		this.add(panel, BorderLayout.CENTER);
+	}
+	
+	public JPanel createMenuPanel() {
 
 		this.menuPanel = new JPanel();
 		this.menuPanel.setBackground(new Color(54, 57, 62));
@@ -149,5 +160,13 @@ public class DetailPanel extends JPanel {
 		this.centerPanel.setBackground(new Color(54, 57, 62));
 
 		return this.centerPanel;
+	}
+	
+	public static WorkPanel getWorkPanel() {
+		return workPanel;
+	}
+
+	public static void setWorkPanel(WorkPanel workPanel) {
+		DetailPanel.workPanel = workPanel;
 	}
 }

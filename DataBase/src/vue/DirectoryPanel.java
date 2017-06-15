@@ -21,7 +21,7 @@ public class DirectoryPanel extends JPanel {
 	private JTextField searchTexte;
 	private JPanel bottomPanel;
 	
-	protected DirectoryPanel() {
+	public DirectoryPanel() {
 		
 		this.setBackground(new Color(46, 49, 54));
 		this.setPreferredSize(new Dimension(225, 456));

@@ -21,7 +21,7 @@ public class StatePanel extends JPanel {
 	private JLabel userNameLabel;
 	private JSeparator separator;
 
-	protected StatePanel() {
+	public StatePanel() {
 		
 		this.setPreferredSize(new Dimension(80, 456));
 		this.setBackground(new Color(30, 33, 36));
