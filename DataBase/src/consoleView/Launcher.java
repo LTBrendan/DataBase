@@ -72,10 +72,10 @@ public class Launcher {
 
 		while (!s.equalsIgnoreCase("logout")) {
 			System.out.println("Select an action :");
-			System.out.println("Connect to a database\nNew database connection\nLog out");
+			System.out.println("Connect to a database\nNew database connection\nParameter\nLog out");
 			s = sc.next();
 
-			while (!s.equalsIgnoreCase("connect") && !s.equalsIgnoreCase("new") && !s.equalsIgnoreCase("logout")) {
+			while (!s.equalsIgnoreCase("connect") && !s.equalsIgnoreCase("new") && !s.equalsIgnoreCase("parameter") && !s.equalsIgnoreCase("logout")) {
 				System.out.println("Select an action :");
 				System.out.println("Connect to a database\nAdd a new database connection\nLog out");
 				s = sc.next();
@@ -86,6 +86,10 @@ public class Launcher {
 
 			if (s.equalsIgnoreCase("new")) {
 				Launcher.newConnect();
+			}
+			
+			if (s.equalsIgnoreCase("parameter")) {
+				Launcher.parameter();
 			}
 
 		}
@@ -102,11 +106,11 @@ public class Launcher {
 		while (!s.equalsIgnoreCase("logout")) {
 
 			System.out.println("Select an action :");
-			System.out.println("Add user\nRemove user\nConnect to a database\nNew database connection\nLog out");
+			System.out.println("Add user\nRemove user\nConnect to a database\nNew database connection\nParameter\nLog out");
 			s = sc.next();
 
 			while (!s.equalsIgnoreCase("add") && !s.equalsIgnoreCase("remove") && !s.equalsIgnoreCase("connect")
-					&& !s.equalsIgnoreCase("new") && !s.equalsIgnoreCase("logout")) {
+					&& !s.equalsIgnoreCase("new") && !s.equalsIgnoreCase("parameter") && !s.equalsIgnoreCase("logout")) {
 				System.out.println("Select an action :");
 				System.out.println(
 						"Add user\nRemove user\nConnect to a database\nAdd a new database connection\nLog out");
@@ -127,6 +131,10 @@ public class Launcher {
 
 			if (s.equalsIgnoreCase("new")) {
 				Launcher.newConnect();
+			}
+			
+			if (s.equalsIgnoreCase("parameter")) {
+				Launcher.parameter();
 			}
 		}
 
@@ -193,6 +201,32 @@ public class Launcher {
 			}
 		}
 
+	}
+	
+	private static void parameter ()	{
+		String s = "";
+		System.out.println("Change login");
+		s = sc.next();
+		
+		while (!s.equalsIgnoreCase("change")) {
+			System.out.println("Change login");
+			s = sc.next();
+		}
+		
+		if (s.equalsIgnoreCase("change")) {
+			Launcher.changeLogin ();
+		}
+	}
+	
+	private static void changeLogin () {
+		Log.out("Attempt to change login");
+		System.out.println("Choose a new login");
+		String login = "";
+		login = sc.next();
+		System.out.println("Enter your password");
+		String password = "";
+		password = sc.next();
+		mc.changeLogin(currentUser, password, login);
 	}
 
 	private static void useConnect() {
