@@ -2,13 +2,12 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,12 +30,12 @@ public class WorkPanel extends JSplitPane {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static JPanel upPanel;
-	private static JScrollPane upScrollPane;
+	private JPanel upPanel;
+	private JScrollPane upScrollPane;
 	private JPanel downPanel;
 	private JPanel menuBarPanel;
-	private static JTextPane textPane;
-	private static JScrollPane downScrollPane;
+	private JTextPane textPane;
+	private JScrollPane downScrollPane;
 
 	private static JLabel executeLabel;
 	private static JLabel clearLabel;
@@ -44,6 +43,8 @@ public class WorkPanel extends JSplitPane {
 	private static JLabel exportLabel;
 	private static JLabel executeAllLabel;
 	private static JLabel importLabel;
+
+	private static WorkPanel workPanel;
 
 	public WorkPanel() {
 
@@ -58,9 +59,11 @@ public class WorkPanel extends JSplitPane {
 		this.setDividerLocation(0.8);
 
 		this.repaint();
+
+		workPanel = this;
 	}
 
-	public WorkPanel(JScrollPane comp, JScrollPane comp2) {
+	public WorkPanel(Component comp, Component comp2) {
 
 		this.setDoubleBuffered(true);
 		this.setOneTouchExpandable(true);
@@ -73,19 +76,21 @@ public class WorkPanel extends JSplitPane {
 		this.setDividerLocation(0.8);
 
 		this.repaint();
+
+		workPanel = this;
 	}
 
 	private JPanel createUpPanel() {
 
-		WorkPanel.upPanel = new JPanel();
-		WorkPanel.upPanel.setBorder(null);
+		this.upPanel = new JPanel();
+		this.upPanel.setBorder(null);
 		// WorkPanel.upPanel.setBackground(new Color(54,57,62));
-		WorkPanel.upPanel.setForeground(new Color(255, 255, 255));
-		WorkPanel.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		this.upPanel.setForeground(new Color(255, 255, 255));
+		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		WorkPanel.upPanel.add(new JLabel("Bonjour"));
+		this.upPanel.add(new JLabel("Bonjour"));
 
-		return WorkPanel.upPanel;
+		return this.upPanel;
 	}
 
 	private JScrollPane createUpScrollPane(JPanel panel) {
@@ -104,11 +109,11 @@ public class WorkPanel extends JSplitPane {
 		UIManager.put("ScrollBar.shadow", new ColorUIResource(new Color(57, 57, 62)));
 		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(57, 57, 62)));
 
-		WorkPanel.upScrollPane = new JScrollPane(panel);
-		WorkPanel.upScrollPane.setPreferredSize(new Dimension(20, 250));
-		WorkPanel.upScrollPane.setBorder(null);
+		this.upScrollPane = new JScrollPane(panel);
+		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
+		this.upScrollPane.setBorder(null);
 
-		return WorkPanel.upScrollPane;
+		return this.upScrollPane;
 	}
 
 	private JPanel createDownPanel() {
@@ -130,14 +135,7 @@ public class WorkPanel extends JSplitPane {
 
 		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				MainPanel.setDetailPanel(new DetailPanel(new StatePanel()));
-				MainPanel.getDetailPanel().repaint();
-				Launcher.getFrame().repaint();
-			}
-		});
+		executeLabel.addMouseListener(new MenuButtonListener());
 		executeLabel.setForeground(new Color(255, 255, 255));
 
 		clearLabel = new JLabel("Clear");
@@ -177,11 +175,11 @@ public class WorkPanel extends JSplitPane {
 
 	private JTextPane createTextPane() {
 
-		WorkPanel.textPane = new JTextPane();
-		WorkPanel.textPane.setBorder(null);
-		WorkPanel.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
-		WorkPanel.textPane.setBackground(new Color(54, 57, 62));
-		WorkPanel.textPane.setForeground(new Color(255, 255, 255));
+		this.textPane = new JTextPane();
+		this.textPane.setBorder(null);
+		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
+		this.textPane.setBackground(new Color(54, 57, 62));
+		this.textPane.setForeground(new Color(255, 255, 255));
 
 		StyleContext cont = StyleContext.getDefaultStyleContext();
 		AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
@@ -189,17 +187,17 @@ public class WorkPanel extends JSplitPane {
 		Style c = cont.getStyle("default");
 		c.addAttributes(attr);
 
-		WorkPanel.textPane.setStyledDocument(new WordBasedStyledDocument(WorkPanel.textPane.getLogicalStyle(), c));
+		this.textPane.setStyledDocument(new WordBasedStyledDocument(this.textPane.getLogicalStyle(), c));
 
-		return WorkPanel.textPane;
+		return this.textPane;
 	}
 
 	private JScrollPane createDownScrollPane(JPanel panel) {
 
-		WorkPanel.downScrollPane = new JScrollPane(panel);
-		WorkPanel.downScrollPane.setBorder(null);
+		this.downScrollPane = new JScrollPane(panel);
+		this.downScrollPane.setBorder(null);
 
-		return WorkPanel.downScrollPane;
+		return this.downScrollPane;
 	}
 
 	public static JLabel getExecuteLabel() {
@@ -227,26 +225,30 @@ public class WorkPanel extends JSplitPane {
 	}
 
 	public static JPanel getUpPanel() {
-		return upPanel;
+		return workPanel.upPanel;
 	}
 
 	public static void setUpPanel(JPanel upPanel) {
-		WorkPanel.upPanel = upPanel;
+		workPanel.upPanel = upPanel;
 	}
 
 	public static JScrollPane getUpScrollPane() {
-		return upScrollPane;
+		return workPanel.upScrollPane;
 	}
 
 	public static void setUpScrollPane(JScrollPane upScrollPane) {
-		WorkPanel.upScrollPane = upScrollPane;
+		workPanel.upScrollPane = upScrollPane;
 	}
 
 	public static JTextPane getTextPane() {
-		return textPane;
+		return workPanel.textPane;
 	}
 
 	public static JScrollPane getDownScrollPane() {
-		return downScrollPane;
+		return workPanel.downScrollPane;
+	}
+
+	public static WorkPanel getWorkPanel() {
+		return workPanel;
 	}
 }

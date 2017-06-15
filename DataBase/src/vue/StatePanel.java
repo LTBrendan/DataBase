@@ -2,6 +2,7 @@ package vue;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+
+import controller.MenuButtonListener;
 
 public class StatePanel extends JPanel {
 
@@ -20,6 +23,8 @@ public class StatePanel extends JPanel {
 	private JLabel avatarLabel;
 	private JLabel userNameLabel;
 	private JSeparator separator;
+	
+	private static StatePanel statePanel;
 
 	public StatePanel() {
 		
@@ -32,6 +37,8 @@ public class StatePanel extends JPanel {
 		this.add(createUserNameLabel());
 
 		this.add(createSeparator());
+		
+		statePanel = this;
 	}
 
 	private JLabel createAvatarLanel() {
@@ -41,7 +48,9 @@ public class StatePanel extends JPanel {
 		this.avatarLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.avatarLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		this.avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
-
+		this.avatarLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.avatarLabel.addMouseListener(new MenuButtonListener());
+		
 		return this.avatarLabel;
 	}
 
@@ -62,5 +71,9 @@ public class StatePanel extends JPanel {
 		this.separator.setBounds(10, 109, 60, 2);
 
 		return this.separator;
+	}
+	
+	public static StatePanel getStatePanel() {
+		return statePanel;
 	}
 }

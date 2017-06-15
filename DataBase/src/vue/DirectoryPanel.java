@@ -21,6 +21,8 @@ public class DirectoryPanel extends JPanel {
 	private JTextField searchTexte;
 	private JPanel bottomPanel;
 	
+	private static DirectoryPanel directoryPanel;
+	
 	public DirectoryPanel() {
 		
 		this.setBackground(new Color(46, 49, 54));
@@ -29,6 +31,8 @@ public class DirectoryPanel extends JPanel {
 		
 		this.add(createSearchPanel(), BorderLayout.NORTH);
 		this.add(createBottomPanel(), BorderLayout.SOUTH);
+		
+		directoryPanel = this;
 	}
 	
 	private JPanel createSearchPanel() {
@@ -78,5 +82,9 @@ public class DirectoryPanel extends JPanel {
 		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
 		
 		return this.bottomPanel;
+	}
+	
+	public static DirectoryPanel getDirectoryPanel() {
+		return directoryPanel;
 	}
 }

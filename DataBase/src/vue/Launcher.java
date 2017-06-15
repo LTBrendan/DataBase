@@ -12,9 +12,10 @@ import controller.WindowResizer;
 
 public class Launcher {
 
-	private static JFrame frame;
-	private static StatePanel statePanel = new StatePanel();
-	private static MainPanel mainPanel = new MainPanel();
+	private JFrame frame;
+	private StatePanel statePanel = new StatePanel();
+	private MainPanel mainPanel = new MainPanel();
+	private static Launcher launcher;
 	
 	/**
 	 * Launch the application.
@@ -23,8 +24,7 @@ public class Launcher {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Launcher window = new Launcher();
-					window.frame.setVisible(true);
+					new Launcher().frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,6 +42,8 @@ public class Launcher {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
+		launcher = this;
+		
 		MouseMovementAdapter.setMAIN_FRAME(frame);
 		try {
 			WindowResizer.WINDOW_RESIZER.register(frame);
@@ -57,22 +59,22 @@ public class Launcher {
 	}
 
 	public static JFrame getFrame() {
-		return frame;
+		return launcher.frame;
 	}
 
 	public static StatePanel getStatePanel() {
-		return statePanel;
+		return launcher.statePanel;
 	}
 
 	public static void setStatePanel(StatePanel statePanel) {
-		Launcher.statePanel = statePanel;
+		launcher.statePanel = statePanel;
 	}
 
 	public static MainPanel getMainPanel() {
-		return mainPanel;
+		return launcher.mainPanel;
 	}
 
 	public static void setMainPanel(MainPanel mainPanel) {
-		Launcher.mainPanel = mainPanel;
+		launcher.mainPanel = mainPanel;
 	}	
 }

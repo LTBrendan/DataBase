@@ -11,43 +11,48 @@ public class MainPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static DirectoryPanel directoryPanel = new DirectoryPanel();
-	private static DetailPanel detailPanel = new DetailPanel();
+	private DirectoryPanel directoryPanel = new DirectoryPanel();
+	private DetailPanel detailPanel = new DetailPanel();
+	
+	private static MainPanel mainPanel;
 	
 	public MainPanel() {
 		
 		this.setLayout(new BorderLayout(0, 0));
-		System.out.println(MainPanel.detailPanel.getName());
 		this.add(directoryPanel, BorderLayout.WEST);
 		this.add(detailPanel, BorderLayout.CENTER);
+		
+		mainPanel = this;
 	}
 	
-	public MainPanel(JPanel panel) {
-		
-		this.setLayout(new BorderLayout(0, 0));
-		
-		this.add(directoryPanel, BorderLayout.WEST);
-		this.add(panel, BorderLayout.CENTER);
-		
-		this.repaint();
-	}
+//	public MainPanel(JPanel panel) {
+//		
+//		this.setLayout(new BorderLayout(0, 0));
+//
+//		this.add(directoryPanel, BorderLayout.WEST);
+//		this.add(panel, BorderLayout.CENTER);
+//		
+//		this.repaint();
+//	}
 
 	public static DirectoryPanel getDirectoryPanel() {
-		return directoryPanel;
+		return mainPanel.directoryPanel;
 	}
 
 	public static void setDirectoryPanel(DirectoryPanel directoryPanel) {
-		MainPanel.directoryPanel = directoryPanel;
+		mainPanel.directoryPanel = directoryPanel;
 	}
 
 	public static DetailPanel getDetailPanel() {
-		System.out.println("getDetailPanel");
-		return detailPanel;
+		return mainPanel.detailPanel;
 	}
 
 	public static void setDetailPanel(DetailPanel detailPanel) {
-		System.out.println("setDetailPanel");
-		MainPanel.detailPanel = detailPanel;
-		System.out.println(MainPanel.detailPanel.getName());
+		mainPanel.remove(getDetailPanel());
+		mainPanel.add(detailPanel);
+	}
+	
+	public static MainPanel getMainPanel(){
+		return mainPanel;
 	}
 }

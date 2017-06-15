@@ -11,10 +11,17 @@ public class SettingPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private static SettingPanel settingPanel;
+	
 	public SettingPanel() {
 		
-		System.out.println("Setting Panel");
 		this.setBackground(new Color(54,57,62));
+		
+		settingPanel = this;
+	}
+	
+	public static SettingPanel getSettingPanel() {
+		return settingPanel;
 	}
 	
 }

@@ -30,7 +30,9 @@ public class DetailPanel extends JPanel {
 	private JLabel closeLabel;
 	private JPanel centerPanel;
 	
-	private static WorkPanel workPanel = new WorkPanel();
+	private WorkPanel workPanel = new WorkPanel();
+	
+	private static DetailPanel detailPanel;
 
 	protected DetailPanel() {
 
@@ -40,6 +42,8 @@ public class DetailPanel extends JPanel {
 
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(workPanel, BorderLayout.CENTER);
+		
+		detailPanel = this;
 	}
 
 	public DetailPanel(JPanel panel) {
@@ -163,10 +167,11 @@ public class DetailPanel extends JPanel {
 	}
 	
 	public static WorkPanel getWorkPanel() {
-		return workPanel;
+		return detailPanel.workPanel;
 	}
 
-	public static void setWorkPanel(WorkPanel workPanel) {
-		DetailPanel.workPanel = workPanel;
+	public static void setWorkPanel(JPanel workPanel) {
+		detailPanel.remove(getWorkPanel());
+		detailPanel.add(workPanel);
 	}
 }
