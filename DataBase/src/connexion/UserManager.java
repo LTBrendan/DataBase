@@ -90,15 +90,13 @@ public class UserManager {
 	}
 	
 	/**
-	 * This method add a new user to theu user list. Do nothing if a user with the same login and same password exists
+	 * This method add a new user to the user list. Do nothing if a user with the same login and same password exists
 	 * @param login new user's login
 	 * @param pass new user's password
 	 */
 	public static void createUser (String login, String pass) {
-		if (!UserManager.checkUser(login, encrypter.encrypt (pass))) {
+		if (!UserManager.checkUser(login, pass)) {
 			UserManager.userList.add(new User (login, encrypter.encrypt(pass)));
-		}else {
-			System.out.println("This user already exists");
 		}
 	}
 	
@@ -153,16 +151,33 @@ public class UserManager {
 	 * @param pass user's password
 	 * @return the removed user if found, null if no
 	 */
-	public static User removeUser (String login, String pass) {
-		User ret = null;
+	public static void removeUser (String login, String pass) {
+		User removed = null;
 		for (User us : UserManager.userList) {
 			if (us.getLogin().equals(login)) {
 				if (us.getPass().equals(encrypter.encrypt(pass))) {
-					ret = us;
+					removed = us;
 				}
 			}
 		}
-		UserManager.userList.remove(ret);
+		UserManager.userList.remove(removed);
+	}
+	
+	public static boolean checkLogin (String login) {
+		boolean ret = false;
+		ArrayList<String> logins = new ArrayList<String>();
+		
+		for (User us : UserManager.userList) {
+			logins.add(us.getLogin());
+		}
+		
+		if (logins.contains(login)) {
+			ret = true;
+		}
 		return ret;
+	}
+	
+	public static ArrayList<User> getUserList () {
+		return UserManager.userList;
 	}
 }

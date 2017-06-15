@@ -1,9 +1,8 @@
 package consoleMode;
 
 import static utils.Scan.sc;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+
+import consoleControler.DatabaseControler;
 
 /**
  * This class allows to generate 'Insert' instruction
@@ -12,6 +11,7 @@ public class Insert {
 
 	/**
 	 * This method ask the user to construct the query
+	 * 
 	 * @return the query
 	 */
 	public static String getQuery() {
@@ -22,53 +22,41 @@ public class Insert {
 		tableName = sc.next();
 
 		String queryInsertion = "";
+		String[] columnName = DatabaseControler.getColumnName(tableName);
+		String[] columnType = DatabaseControler.getColumnType(tableName);
+		// Initialize the query
+		queryInsertion = "INSERT INTO " + tableName + " VALUES (";
 
-		try {
-			// Get the number of columns
-			ResultSet rs = Connect.getStatement().executeQuery("SELECT * FROM " + tableName);
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int columnCount = rsmd.getColumnCount();
+		// For each column, insert a value
+		for (int i = 0; i < columnName.length; i++) {
+			String name = columnName[i];
+			String type = columnType[i];
+			// Display the name of the column, the type and the number of
+			// terms max
+			System.out.println(name + " (Type : " + type.toLowerCase() + ")");
 
-			// Initialize the query
-			queryInsertion = "INSERT INTO " + tableName + " VALUES (";
+			int number = 0;
+			String line = null;
 
-			// For each column, insert a value
-			for (int i = 1; i <= columnCount; i++) {
-				String name = rsmd.getColumnName(i);
-				String type = rsmd.getColumnTypeName(i);
+			// If NUMBER
+			if (type.equalsIgnoreCase("number")) {
+				System.out.print("> ");
+				number = Integer.parseInt(sc.next());
+				queryInsertion += number;
 
-				// Display the name of the column, the type and the number of
-				// terms max
-				System.out.println(name + "( Type : " + type.toLowerCase() + "(" + rsmd.getColumnDisplaySize(i) + "))");
-
-				int number = 0;
-				String line = null;
-
-				// If NUMBER
-				if (type.equalsIgnoreCase("number")) {
-					System.out.print("> ");
-					number = Integer.parseInt(sc.next());
-					queryInsertion += number;
-
-					// If VARCHAR2 or DATE
-				} else {
-					System.out.print("> ");
-					line = "'" + sc.next() + "'";
-					queryInsertion += line;
-				}
-
-				// Shaping of the query
-				if (i < columnCount) {
-					queryInsertion += ", ";
-				} else {
-					queryInsertion += ")";
-				}
+				// If VARCHAR2 or DATE
+			} else {
+				System.out.print("> ");
+				line = "'" + sc.next() + "'";
+				queryInsertion += line;
 			}
 
-			System.out.println(queryInsertion);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
+			// Shaping of the query
+			if (i < columnName.length - 1) {
+				queryInsertion += ", ";
+			} else {
+				queryInsertion += ")";
+			}
 		}
 
 		return queryInsertion;

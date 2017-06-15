@@ -1,0 +1,13 @@
+11:33:05	out       Logfile opened
+11:33:05	out       Logfiles cleaned
+11:33:12	out       connection attempt : brendan
+11:33:12	out       successful connection
+11:33:18	out       Database connection attempt : ProjetDB
+11:33:18	database  statement created
+11:33:18	out       connexion established : jdbc:oracle:thin:@localhost:1521:PROJETDB
+11:33:18	out       successful connection : ProjetDB
+11:33:37	database  query executed : create table test (primary number constraint pktest primary key)
+11:33:41	database  query executed : DROP TABLE test
+11:33:43	database  disconnected from data base
+11:33:44	out       logged out
+11:33:44	out       Logfile closed

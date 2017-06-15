@@ -1,47 +1,50 @@
-package connexion;
+package consoleControler;
 
-import consoleMode.*;
-import logs.Log;
 
-import static utils.Scan.sc;
+import connexion.User;
+import connexion.UserManager;
 
 /**
  * This class contains the main to launch the application
  *
  */
-public class Launcher {
-	private static UserManager um = new UserManager();
-
-	/**
-	 * The applications enter point
-	 * @param args 
-	 */
-	public static void main(String[] args) {
-		//log opened
-		Log.open();
-		//log cleaned
-		Log.clean();
+public class MainControler {
+	
+	protected static UserManager um;
+	protected User currentUser;
+	public MainControler () {
+		
+		um = new UserManager();
 		//load all users
 		UserManager.load();
-		System.out.println(um.toString());
-		User currentUser = Launcher.connect();
+		
+	}
+	
+	public void save (){
+		UserManager.save();
+	}
+	
+	public String getCurrentUserName () {
+		return this.currentUser.getLogin();
+	}
+	
+	public boolean checkUser (String login, String password) {
+		return UserManager.checkUser(login, password);
+	}
+	
+	protected boolean checkLogin (String login) {
+		return UserManager.checkLogin(login);
+	}
+	
+
+
+	/*public static void main(String[] args) {
 		String  s = "";
 		while (currentUser == null && !s.equals("quit")) {
 			System.out.println("This user does not exist");
 			Log.out("connexion failed");
-			System.out.println ("Type quit to quit, connect to try again");
-			s = sc.next ();
 			
-			while (!s.equals("quit") && !s.equals("connect")) {
-				System.out.println ("Type quit to quit, connect to try again");
-				s = sc.next ();
-				
-			}
 			
-			while (s.equals("connect")) {
-				currentUser = Launcher.connect();
-				s ="";
-			}
 			
 		}
 		
@@ -62,22 +65,22 @@ public class Launcher {
 					}
 
 					if (s.equals("add")) {
-						Launcher.add();
+						MainControler.add();
 						s = "";
 					}
 
 					if (s.equals("remove")) {
-						Launcher.remove();
+						MainControler.remove();
 						s = "";
 					}
 
 					if (s.equals("use")) {
-						Launcher.useConnexion(currentUser);
+						MainControler.useConnexion(currentUser);
 						s = "";
 					}
 
 					if (s.equals("new")) {
-						Launcher.addConnexion(currentUser);
+						MainControler.addConnexion(currentUser);
 						s = "";
 					}
 
@@ -99,12 +102,12 @@ public class Launcher {
 					}
 
 					if (s.equals("use")) {
-						Launcher.useConnexion(currentUser);
+						MainControler.useConnexion(currentUser);
 						s = "";
 					}
 
 					if (s.equals("new")) {
-						Launcher.addConnexion(currentUser);
+						MainControler.addConnexion(currentUser);
 						s = "";
 					}
 
@@ -124,9 +127,7 @@ public class Launcher {
 
 	}
 
-	/**
-	 * This method allows the application administrator to add a new user
-	 */
+	
 	private static void add() {
 		System.out.println("Login ?");
 		String login = sc.next();
@@ -148,9 +149,7 @@ public class Launcher {
 		}
 	}
 
-	/**
-	 * This method allows the administrator to remove an existing user
-	 */
+	
 	private static void remove() {
 		System.out.println("Login ?");
 		String login = sc.next();
@@ -161,13 +160,10 @@ public class Launcher {
 			Log.out("user removed (login : " + login + ")");
 		}
 		if (removed != null) {
-			System.out.println("Type undo to undo, confirm to confirm");
-			String s = sc.next();
+			
+			
 
-			while (!s.equals("undo") && !s.equals("confirm")) {
-				System.out.println("Type undo to undo, confirm to confirm");
-				s = sc.next();
-			}
+			
 
 			if (s.equals("undo")) {
 				UserManager.createUser(removed.getLogin(), removed.getPass());
@@ -184,29 +180,16 @@ public class Launcher {
 		}
 	}
 
-	/**
-	 * This method allows a user to connect himself to the application if he possesses an account
-	 * @return the currentUser if he connected successfully, null if not
-	 */
-	private static User connect() {
-		User ret = null;
-		System.out.println("Login ?");
-		String login = sc.next();
-		System.out.println("Password ?");
-		String pass = sc.next();
-		Log.out("connexion attempt (login : " + login + ")");
-		if (UserManager.checkUser(login, pass)) {
-			System.out.println("Connected as " + login);
-			Log.out("successful connexion");
-			ret = um.getUser(login, pass);
+	*/
+	public boolean connect  (String login, String password) {
+		boolean ret = UserManager.checkUser(login, password);
+		if (ret) {
+			this.currentUser = um.getUser(login, password);
 		}
 		return ret;
 	}
 
-	/**
-	 * This method allows a user to connect himself to a database contained in his connexionList
-	 * @param currentUser the user attempting to connect to one of his database
-	 */
+	/*
 	private static void useConnexion(User currentUser) {
 		if (currentUser.getConnexionList().isEmpty()) {
 			System.out.println("Your connexion list is empty");
@@ -219,7 +202,7 @@ public class Launcher {
 			}
 
 			if (s.equals("new")) {
-				Launcher.addConnexion(currentUser);
+				MainControler.addConnexion(currentUser);
 			}
 
 		} else {
@@ -240,10 +223,7 @@ public class Launcher {
 		}
 	}
 
-	/**
-	 * This method allows a user to add a new connexion to his connexionList
-	 * @param currentUser the user to add a new connexion
-	 */
+	
 	private static void addConnexion(User currentUser) {
 		System.out.println("Choose a name for your connexion ?");
 		String connexionName = sc.next();
@@ -256,5 +236,5 @@ public class Launcher {
 		currentUser.addNewConnexion(new UserConnexion(adress, connexionName, login, password));
 		Log.out("new data base added to " + currentUser.getLogin() + "'s list : (name : " + connexionName
 				+ ", adress : " + adress + ")");
-	}
+	}*/
 }

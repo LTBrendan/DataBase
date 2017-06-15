@@ -1,0 +1,10 @@
+11:37:56	out       Logfile opened
+11:37:56	out       Logfiles cleaned
+11:37:59	out       connection attempt : brendan
+11:37:59	out       successful connection
+11:38:03	out       Database connection attempt : ProjetDB
+11:38:03	out       successful connection : ProjetDB
+11:38:04	database  statement created
+11:38:05	database  disconnected from data base
+11:38:06	out       logged out
+11:38:06	out       Logfile closed

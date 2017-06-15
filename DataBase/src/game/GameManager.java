@@ -2,41 +2,27 @@ package game;
 
 import static utils.Scan.sc;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import connexion.User;
-import consoleMode.Connect;
-import consoleMode.Select;
+import consoleControler.DatabaseControler;
 import exception.ExceptionHandler;
 import logs.Log;
 
 public class GameManager {
-	User currentUser;
-	Connect connex;
+	DatabaseControler dc;
 	QuestionManager qm;
 	String tableName = "Game";
 
-	public GameManager(User currentUser, Connect connex) {
-		this.setCurrentUser(currentUser);
-		this.setCurrentConnexion(connex);
-
+	public GameManager(DatabaseControler dc) {
+		this.setDc (dc);
+	}
+	
+	public DatabaseControler getDc() {
+		return dc;
 	}
 
-	public Connect getCurrentConnexion() {
-		return connex;
-	}
-
-	public void setCurrentConnexion(Connect connex) {
-		this.connex = connex;
-	}
-
-	public User getCurrentUser() {
-		return currentUser;
-	}
-
-	public void setCurrentUser(User currentUser) {
-		this.currentUser = currentUser;
+	public void setDc(DatabaseControler dc) {
+		this.dc = dc;
 	}
 
 	public void launchGame(int questionNumber) {
@@ -51,18 +37,18 @@ public class GameManager {
 				System.out.println(st.substring(0, st.length() - 1));
 			}
 			System.out.print("Execute the query\n>");
-			String line;
-			while((line = sc.nextLine()).length() == 0);
+			String query;
+			while((query = sc.nextLine()).length() == 0);
 			try {
-				ResultSet resultat = connex.executeQuery(line);
-				if (line.toLowerCase().contains("select")) {
-					Select.display(resultat);
+				if (query.toLowerCase().contains("select")) {
+					dc.display(dc.executeQuery(query));
 				}
 			} catch (SQLException e) {
 				System.out.println("Query error !");
 				System.out.println("You didn't execute the query correctly !");
 				System.out.println(ExceptionHandler.analyse((e.getMessage())));
 			}
+			System.out.print("Write your answer\n>");
 			String answer = sc.next();
 			for (String st : qm.getQuestionList().get(s)) {
 				if (answer.equals(String.valueOf(st.charAt(0)))) {
@@ -76,9 +62,8 @@ public class GameManager {
 		}
 
 		try {
-			connex.executeQuery("DROP TABLE " + this.tableName);
-			System.out.println("Query successfully executed !");
-			Log.database("table for game dropped");
+			dc.executeQuery("DROP TABLE " + this.tableName);
+			Log.database("table for SQL game dropped");
 		} catch (SQLException ex) {
 			Log.database("error dropping table for game");
 		}
@@ -86,33 +71,33 @@ public class GameManager {
 
 	private void createTable() {
 		try {
-			connex.executeQuery("CREATE TABLE " + this.tableName
+			dc.executeQuery("CREATE TABLE " + this.tableName
 					+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
 		} catch (SQLException e) {
 			try {
 				this.tableName += (int) (Math.random() * Math.pow(10, 9));
-				connex.executeQuery("CREATE TABLE " + this.tableName
+				dc.executeQuery("CREATE TABLE " + this.tableName
 						+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
 			} catch (SQLException ex) {
-				Log.database("error creating tabl for game");
+				Log.database("error creating table for SQL game");
 			}
 		}
-		Log.database("table for game created");
+		Log.database("table for SQL game created");
 	}
 
 	private void insertValues() {
 
 		try {
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (0, 'Kent', 'Clark', 40)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (1, 'Wayne', 'Bruce', 45)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (2, 'Prince', 'Diana', 25)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (3, 'Parker', 'Peter', 27)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (4, 'Stark', 'Tony', 50)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (5, 'Rogers', 'Steven', 25)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (6, 'Cage', 'Luke', 21)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (7, 'Banner', 'Bruce', 48)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (8, 'Odinson', 'Thor', 34)");
-			connex.executeQuery("INSERT INTO "+this.tableName+" VALUES (9, 'Howlett', 'James', 48)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (0, 'Kent', 'Clark', 40)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (1, 'Wayne', 'Bruce', 45)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (2, 'Prince', 'Diana', 25)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (3, 'Parker', 'Peter', 27)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (4, 'Stark', 'Tony', 50)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (5, 'Rogers', 'Steven', 25)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (6, 'Cage', 'Luke', 21)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (7, 'Banner', 'Bruce', 48)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (8, 'Odinson', 'Thor', 34)");
+			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (9, 'Howlett', 'James', 48)");
 
 		} catch (SQLException e) {
 			System.out.println("Query error !");

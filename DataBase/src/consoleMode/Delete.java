@@ -21,10 +21,14 @@ public class Delete {
 		System.out.println("\nAll values (Y / N) ?");
 		System.out.print("> ");
 		String choice = sc.next();
-
+		while (!choice.equalsIgnoreCase("y") && !choice.equalsIgnoreCase("n")) {
+			System.out.println("\nAll values (Y / N) ?");
+			System.out.print("> ");
+			choice = sc.next();
+		}
 		if (choice.equalsIgnoreCase("y")) {
 			ret = deleteAllValues(tableName);
-		} else {
+		} else if(choice.equalsIgnoreCase("n")) {
 			ret = deleteValues(tableName);
 		}
 		return ret;
@@ -49,7 +53,7 @@ public class Delete {
 	}
 
 	/**
-	 * This method construct a query that delete allthe values from table
+	 * This method construct a query that delete all the values from table
 	 * @param table the table's name
 	 * @return the query
 	 */
