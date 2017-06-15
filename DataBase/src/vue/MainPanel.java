@@ -24,16 +24,6 @@ public class MainPanel extends JPanel {
 		
 		mainPanel = this;
 	}
-	
-//	public MainPanel(JPanel panel) {
-//		
-//		this.setLayout(new BorderLayout(0, 0));
-//
-//		this.add(directoryPanel, BorderLayout.WEST);
-//		this.add(panel, BorderLayout.CENTER);
-//		
-//		this.repaint();
-//	}
 
 	public static DirectoryPanel getDirectoryPanel() {
 		return mainPanel.directoryPanel;
