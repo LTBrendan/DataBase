@@ -8,14 +8,14 @@ import javax.crypto.SecretKey;
  * This class has static methods used to encrypt user's passwords
  *
  */
-class AES {
+public class AES {
 	private Cipher ecipher;
 	private Cipher dcipher;
 
 	/**
 	 * @param key the key used to encrypt passwords
 	 */
-	AES(SecretKey key) {
+	public AES(SecretKey key) {
 		try {
 			ecipher = Cipher.getInstance("AES");
 			dcipher = Cipher.getInstance("AES");

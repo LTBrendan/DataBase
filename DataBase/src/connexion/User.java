@@ -12,17 +12,15 @@ import javax.swing.ImageIcon;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	//user's login for the application
+	// user's login for the application
 	private String login;
-	//user's password for the application
+	// user's password for the application
 	private String pass;
-	//contains all user's connexion
+	// contains all user's connexion
 	private ArrayList<UserConnexion> connexionList;
 	private ImageIcon avatar;
-	//user's color identifier
+	// user's color identifier
 	private int color;
-	
-	
 
 	public int getColor() {
 		return color;
@@ -62,6 +60,7 @@ public class User implements Serializable {
 
 	/**
 	 * Getter for login attribute
+	 * 
 	 * @return user's login
 	 */
 	public String getLogin() {
@@ -70,20 +69,21 @@ public class User implements Serializable {
 
 	/**
 	 * Getter for password attribute
+	 * 
 	 * @return user's password
 	 */
 	public String getPass() {
 		return this.pass;
 	}
-	
+
 	/**
 	 * Add a new connexion to the list
 	 * @param connexion the connexion to add to the list
 	 */
-	public void addNewConnexion (UserConnexion connexion) {
+	public void addNewConnexion(UserConnexion connexion) {
 		this.connexionList.add(connexion);
 	}
-	
+
 	/**
 	 * Getter for connexionList attribute
 	 * @return user's connexionList
@@ -91,7 +91,7 @@ public class User implements Serializable {
 	public ArrayList<UserConnexion> getConnexionList() {
 		return this.connexionList;
 	}
-	
+
 	/**
 	 * Getter for avatar attribute
 	 * @return user's avatar
@@ -107,16 +107,18 @@ public class User implements Serializable {
 	public void setAvatar(ImageIcon avatar) {
 		this.avatar = avatar;
 	}
-	
-	public String toString (){
-		return "Login : "+this.getLogin()+"\nPassword : "+this.getPass();
+
+	public String toString() {
+		return "Login : " + this.getLogin() + "\nPassword : " + this.getPass();
 	}
-	
-	public boolean equals (User anotherUs) {
+
+	public boolean equals(User anotherUs) {
 		boolean ret = false;
-		if (this.getLogin().equals(anotherUs.getLogin ()) && this.getPass().equals(anotherUs.getPass())) {
-			ret = true;
+		if (anotherUs != null) {
+			if (this.getLogin().equals(anotherUs.getLogin()) && this.getPass().equals(anotherUs.getPass())) {
+				ret = true;
+			}
 		}
-		return  ret;
+		return ret;
 	}
 }

@@ -95,7 +95,7 @@ public class UserManager {
 	 * @param pass new user's password
 	 */
 	public static void createUser (String login, String pass) {
-		if (!UserManager.checkUser(login, pass)) {
+		if (!UserManager.checkLogin(login)) {
 			UserManager.userList.add(new User (login, encrypter.encrypt(pass)));
 		}
 	}
@@ -177,7 +177,7 @@ public class UserManager {
 		return ret;
 	}
 	
-	public static ArrayList<User> getUserList () {
+	public ArrayList<User> getUserList () {
 		return UserManager.userList;
 	}
 }
