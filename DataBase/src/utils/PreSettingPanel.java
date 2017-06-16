@@ -1,15 +1,14 @@
 package utils;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.SwingConstants;
-import java.awt.GridLayout;
-import java.awt.Cursor;
 
 public class PreSettingPanel extends JPanel {
 
