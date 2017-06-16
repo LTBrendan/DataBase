@@ -1,0 +1,13 @@
+16:53:50	out       Logfile opened
+16:53:50	out       Logfiles cleaned
+16:53:56	out       Logfile opened
+16:53:56	out       Logfiles cleaned
+17:04:46	out       Logfile opened
+17:04:46	out       Logfiles cleaned
+17:04:50	out       connection attempt : mathis
+17:04:50	out       successful connection
+17:04:57	out       Database connection attempt : projet
+17:04:57	err       connection failed : projet
+17:05:34	out       New connexion added to mathis's list
+17:05:40	out       logged out
+17:05:40	out       Logfile closed

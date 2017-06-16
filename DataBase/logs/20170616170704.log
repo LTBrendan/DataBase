@@ -1,0 +1,12 @@
+17:06:49	out       Logfile opened
+17:06:49	out       Logfiles cleaned
+17:06:53	out       connection attempt : mathis
+17:06:53	out       successful connection
+17:06:58	out       Database connection attempt : projet
+17:06:58	out       successful connection : projet
+17:06:59	database  statement created
+17:07:01	database  statement closed
+17:07:01	database  connexion closed
+17:07:01	database  disconnected from data base
+17:07:04	out       logged out
+17:07:04	out       Logfile closed

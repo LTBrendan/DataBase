@@ -3,11 +3,15 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
+import connexion.UserConnexion;
 import controller.TextFieldListener;
 
 public class DirectoryPanel extends JPanel {
@@ -16,10 +20,15 @@ public class DirectoryPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel searchPanel;
 	private JSeparator separator;
 	private JTextField searchTexte;
+	
 	private JPanel bottomPanel;
+	
+	private JPanel centerPanel;
+	private JScrollPane centerScrollPane;
 	
 	private static DirectoryPanel directoryPanel;
 	
@@ -30,6 +39,7 @@ public class DirectoryPanel extends JPanel {
 		this.setLayout(new BorderLayout(0, 0));
 		
 		this.add(createSearchPanel(), BorderLayout.NORTH);
+		this.add(createCenterPanel(), BorderLayout.CENTER);
 		this.add(createBottomPanel(), BorderLayout.SOUTH);
 		
 		directoryPanel = this;
@@ -52,8 +62,8 @@ public class DirectoryPanel extends JPanel {
 		
 		this.separator = new JSeparator();
 		this.separator.setBounds(0, 58, 225, 2);
-		this.separator.setForeground(new Color(Launcher.color - 7, Launcher.color - 4, Launcher.color -1));
-		this.separator.setBackground(new Color(Launcher.color - 7, Launcher.color - 4, Launcher.color -1));
+		this.separator.setForeground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
+		this.separator.setBackground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
 		
 		return this.separator;
 	}
@@ -75,11 +85,37 @@ public class DirectoryPanel extends JPanel {
 		return this.searchTexte;
 	}
 	
-	private JPanel createBottomPanel() {
+	private JScrollPane createCenterPanel() {
+		
+		this.centerPanel = new JPanel(new GridLayout(1, 1));
+		this.centerPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.centerPanel.setForeground(new Color(255,255,255));
+		
+		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {
+			JLabel connection = new JLabel(" - " + uc.getConnexionName());
+			connection.setForeground(Color.WHITE);
+			this.centerPanel.add(connection);
+		}
+
+		this.centerScrollPane = new JScrollPane(centerPanel);
+		this.centerScrollPane.setBorder(null);
+		this.centerScrollPane.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		
+		return this.centerScrollPane;
+	}
+	
+	public JPanel createBottomPanel() {
 		
 		this.bottomPanel = new JPanel();
-		this.bottomPanel.setBackground(new Color(Launcher.color - 13, Launcher.color - 10, Launcher.color - 5));
+		this.bottomPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
 		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
+		
+		JLabel addLabel = new JLabel(" + Add new Connection");
+		addLabel.setForeground(Color.WHITE);
+		this.bottomPanel.add(addLabel);
+		
+		addLabel.setHorizontalAlignment(JLabel.CENTER);
+		addLabel.setVerticalAlignment(bottomPanel.getHeight() / 2);
 		
 		return this.bottomPanel;
 	}

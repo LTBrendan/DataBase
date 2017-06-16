@@ -1,5 +1,6 @@
 package consoleControler;
 
+import connexion.User;
 import connexion.UserConnexion;
 import connexion.UserManager;
 import consoleView.Connect;
@@ -35,6 +36,7 @@ public class LauncherControler extends MainControler {
 
 	public void addDatabase(String connectionName, String address, String login, String password) {
 		currentUser.addNewConnexion(new UserConnexion(address, connectionName, login, password));
+		save();
 	}
 
 	public boolean addUser(String login, String password) {
@@ -80,5 +82,9 @@ public class LauncherControler extends MainControler {
 	
 	public static LauncherControler getLauncherControler() {
 		return launcherControler;
+	}
+	
+	public User getCurrentUser() {
+		return launcherControler.currentUser;
 	}
 }
