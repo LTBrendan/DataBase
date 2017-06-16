@@ -111,4 +111,12 @@ public class User implements Serializable {
 	public String toString (){
 		return "Login : "+this.getLogin()+"\nPassword : "+this.getPass();
 	}
+	
+	public boolean equals (User anotherUs) {
+		boolean ret = false;
+		if (this.getLogin().equals(anotherUs.getLogin ()) && this.getPass().equals(anotherUs.getPass())) {
+			ret = true;
+		}
+		return  ret;
+	}
 }
