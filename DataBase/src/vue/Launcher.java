@@ -7,19 +7,20 @@ import java.awt.Frame;
 
 import javax.swing.JFrame;
 
-import controller.MouseMovementAdapter;
-import controller.WindowResizer;
+import consoleControler.DatabaseControler;
 
 public class Launcher {
 
 	private JFrame frame;
 	private StatePanel statePanel = new StatePanel();
 	private MainPanel mainPanel = new MainPanel();
+	
+	private static DatabaseControler databaseControler;
 	private static Launcher launcher;
-	
-	//public static int color = 247;
+
+	// public static int color = 247;
 	public static int color = 54;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -36,7 +37,7 @@ public class Launcher {
 	}
 
 	public Launcher() {
-		
+
 		frame = new JFrame("DataBase app");
 		frame.setUndecorated(true);
 		frame.setPreferredSize(new Dimension(1080, 720));
@@ -46,17 +47,17 @@ public class Launcher {
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
 		launcher = this;
-		
-//		MouseMovementAdapter.setMAIN_FRAME(frame);
-//		try {
-//			WindowResizer.WINDOW_RESIZER.register(frame);
-//		} catch (Exception e1) {
-//			e1.printStackTrace();
-//		}
+
+		// MouseMovementAdapter.setMAIN_FRAME(frame);
+		// try {
+		// WindowResizer.WINDOW_RESIZER.register(frame);
+		// } catch (Exception e1) {
+		// e1.printStackTrace();
+		// }
 
 		frame.getContentPane().add(statePanel, BorderLayout.WEST);
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		
+
 		frame.pack();
 		frame.repaint();
 	}
@@ -79,5 +80,9 @@ public class Launcher {
 
 	public static void setMainPanel(MainPanel mainPanel) {
 		launcher.mainPanel = mainPanel;
+	}
+	
+	public static DatabaseControler getDataBaseController() {
+		return databaseControler;
 	}
 }

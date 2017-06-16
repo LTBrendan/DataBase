@@ -30,12 +30,16 @@ public class DatabaseControler extends MainControler {
 	private String address;
 	private String login;
 	private String password;
+	
+	private static DatabaseControler databaseControler;
 
 	public DatabaseControler(String address, String login, String password) {
 		super();
 		this.setAddress(address);
 		this.setLogin(login);
 		this.setPassword(password);
+		
+		databaseControler = this;
 		// Connection to the data base Using JDBC. Need the database address,
 		// the username and the password
 		try {
@@ -247,6 +251,7 @@ public class DatabaseControler extends MainControler {
 
 		}
 	}
+	
 	public void quit () {
 		if (statement != null) {
 			try {
@@ -265,5 +270,9 @@ public class DatabaseControler extends MainControler {
 
 			}
 		}
+	}
+	
+	public static DatabaseControler getDataBaseControler(){
+		return databaseControler;
 	}
 }

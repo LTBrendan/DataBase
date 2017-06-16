@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import vue.Launcher;
+
 public class LabelCloseListener implements MouseListener {
 
 	@Override
@@ -27,6 +29,11 @@ public class LabelCloseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		try {
+			Launcher.getDataBaseController().quit();
+		} catch (NullPointerException h){
+			
+		}
 		System.exit(0);
 	}
 
