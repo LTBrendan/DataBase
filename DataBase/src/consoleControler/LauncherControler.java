@@ -60,7 +60,7 @@ public class LauncherControler extends MainControler {
 				um.getUser(currentLogin, password).setLogin (newLogin);
 				Log.out("login changed : "+newLogin);
 				
-			}else {
+			} else {
 				System.out.println("Login already used");
 				Log.err("login already used");
 			}

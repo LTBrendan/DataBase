@@ -93,7 +93,12 @@ public class DirectoryPanel extends JPanel {
 		
 		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {
 			JLabel connection = new JLabel(" - " + uc.getConnexionName());
-			connection.setForeground(Color.WHITE);
+			if (Launcher.color == 54)
+				connection.setForeground(new Color(255,255,255));
+			else
+				connection.setForeground(new Color(0,0,0));
+				
+			//connection.setVerticalAlignment(HEIGHT);
 			this.centerPanel.add(connection);
 		}
 
