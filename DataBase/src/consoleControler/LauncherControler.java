@@ -6,11 +6,14 @@ import consoleView.Connect;
 import logs.Log;
 
 public class LauncherControler extends MainControler {
+	
+	private static LauncherControler launcherControler;
 
 	public LauncherControler() {
 
 		super();
-
+		
+		launcherControler = this;
 	}
 
 	public void connectDatabase(String connectionName) {
@@ -65,5 +68,17 @@ public class LauncherControler extends MainControler {
 			Log.err("wrong password");
 		}
 		this.save();
+	}
+	
+	public boolean connect (String login, String password) {
+		boolean ret = UserManager.checkUser(login, password);
+		if (ret) {
+			this.currentUser = um.getUser(login, password);
+		}
+		return ret;
+	}
+	
+	public static LauncherControler getLauncherControler() {
+		return launcherControler;
 	}
 }

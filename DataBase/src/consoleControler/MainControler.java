@@ -35,12 +35,4 @@ public class MainControler {
 	protected boolean checkLogin (String login) {
 		return UserManager.checkLogin(login);
 	}
-	
-	public boolean connect  (String login, String password) {
-		boolean ret = UserManager.checkUser(login, password);
-		if (ret) {
-			this.currentUser = um.getUser(login, password);
-		}
-		return ret;
-	}
 }

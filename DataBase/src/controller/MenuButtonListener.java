@@ -43,10 +43,6 @@ public class MenuButtonListener implements MouseListener {
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
-		} else if (e.getComponent().equals(Launcher.getStatePanel().getUserNameLabel())) {
-			
-			System.out.println("Coming Soon !");
-			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
 			
 			JLabel label = new JLabel(

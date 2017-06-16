@@ -8,15 +8,17 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 
 import consoleControler.DatabaseControler;
+import consoleControler.LauncherControler;
 
 public class Launcher {
 
 	private JFrame frame;
-	private StatePanel statePanel = new StatePanel();
-	private MainPanel mainPanel = new MainPanel();
+	private StatePanel statePanel;
+	private MainPanel mainPanel;
 	
 	private static DatabaseControler databaseControler;
 	private static Launcher launcher;
+	private static LauncherControler launcherControler;
 
 	// public static int color = 247;
 	public static int color = 54;
@@ -24,7 +26,8 @@ public class Launcher {
 	/**
 	 * Launch the application.
 	 */
-	public static void main() {
+	public static void main(LauncherControler launcherControler) {
+		Launcher.launcherControler = launcherControler;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,6 +58,9 @@ public class Launcher {
 		// e1.printStackTrace();
 		// }
 
+		statePanel = new StatePanel();
+		mainPanel = new MainPanel();
+		
 		frame.getContentPane().add(statePanel, BorderLayout.WEST);
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 
@@ -84,5 +90,13 @@ public class Launcher {
 	
 	public static DatabaseControler getDataBaseController() {
 		return databaseControler;
+	}
+	
+	public LauncherControler getLauncherControler() {
+		return launcher.launcherControler;
+	}
+	
+	public static Launcher getLauncher() {
+		return launcher;
 	}
 }

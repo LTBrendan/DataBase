@@ -23,6 +23,7 @@ public class StatePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel upPanel;
 	private JLabel avatarLabel;
 	private JLabel userNameLabel;
@@ -138,7 +139,9 @@ public class StatePanel extends JPanel {
 		downPanel.add(stats);
 		downPanel.add(game);
 		downPanel.add(export);
-		downPanel.add(admin);
+		
+		if (Launcher.getLauncher().getLauncherControler().getCurrentUserName().equals("admin"))
+			downPanel.add(admin);
 		
 		return downPanel;
 	}
@@ -168,7 +171,7 @@ public class StatePanel extends JPanel {
 
 	private JLabel createUserNameLabel() {
 
-		this.userNameLabel = new JLabel("Admin");
+		this.userNameLabel = new JLabel(Launcher.getLauncher().getLauncherControler().getCurrentUserName());
 		if (Launcher.color == 54)
 			this.userNameLabel.setForeground(Color.WHITE);
 		else

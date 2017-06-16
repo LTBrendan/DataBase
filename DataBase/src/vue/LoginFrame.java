@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import consoleControler.LauncherControler;
 import controller.LabelCloseListener;
 import controller.LoginButtonListener;
 import controller.TextFieldListener;
@@ -35,6 +36,7 @@ public class LoginFrame extends JFrame {
 	private JLabel closeLabel;
 	
 	private static LoginFrame loginFrame;
+	private LauncherControler launcherControler = new LauncherControler();
 
 	/**
 	 * Launch the application.
@@ -135,5 +137,17 @@ public class LoginFrame extends JFrame {
 	
 	public static LoginFrame getLoginFrame() {
 		return loginFrame;
+	}
+
+	public JTextField getLoginField() {
+		return loginFrame.loginField;
+	}
+
+	public JPasswordField getPasswordField() {
+		return loginFrame.passwordField;
+	}	
+	
+	public LauncherControler getLauncherControler() {
+		return loginFrame.launcherControler;
 	}
 }

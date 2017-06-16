@@ -33,8 +33,9 @@ public class LabelCloseListener implements MouseListener {
 			Launcher.getDataBaseController().quit();
 		} catch (NullPointerException h){
 			
+		} finally {
+			System.exit(0);
 		}
-		System.exit(0);
 	}
 
 }
