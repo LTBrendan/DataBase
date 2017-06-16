@@ -1,0 +1,21 @@
+12:43:43	out       Logfile opened
+12:43:43	out       Logfiles cleaned
+12:43:52	out       connection attempt : admin
+12:43:52	out       successful connection
+12:44:03	out       Database connection attempt : projetDB
+12:44:03	err       connection failed : projetDB
+12:45:27	out       New connexion added to admin's list
+12:45:36	out       Database connection attempt : projetM
+12:45:36	out       successful connection : projetM
+12:45:40	database  statement created
+12:45:49	database  query executed : SELECT * FROM test
+12:46:07	database  query executed : INSERT INTO test VALUES (20)
+12:46:13	database  query executed : INSERT INTO test VALUES (254)
+12:46:17	database  query executed : SELECT * FROM test
+12:46:27	database  query executed : DROP TABLE test
+12:46:32	err       query error (select) : Table ou vue inexistante
+
+12:46:36	database  statement closed
+12:46:36	database  connexion closed
+12:46:36	database  disconnected from data base
+12:46:41	out       Logfile closed
