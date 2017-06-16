@@ -105,7 +105,8 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
                         word.toUpperCase().trim().equals("TRUE") ||
                         word.toUpperCase().trim().equals("UNION") ||
                         word.toUpperCase().trim().equals("UNIQUE") ||
-                        word.toUpperCase().trim().equals("WHERE"));
+                        word.toUpperCase().trim().equals("WHERE") ||
+                        word.toUpperCase().trim().equals("COUNT("));
     }
 	
 
