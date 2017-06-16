@@ -82,6 +82,7 @@ public class StatePanel extends JPanel {
 		search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		search.setToolTipText("search");
 		search.setHorizontalAlignment(downPanel.getWidth() / 2);
+		search.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchWhite.PNG"));
 		else

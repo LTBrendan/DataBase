@@ -3,6 +3,7 @@ package consoleControler;
 import static utils.Scan.sc;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -211,6 +212,28 @@ public class DatabaseControler extends MainControler {
 			ret = new String[count];
 			for (int i = 1; i <= count; i++) {
 				ret[i - 1] = rsmd.getColumnTypeName(i);
+			}
+		} catch (SQLException e) {
+
+		}
+		return ret;
+	}
+	
+	public String[] getTableName() {
+		
+		DatabaseMetaData dmd = null;
+		String[] ret = null;
+		try {
+			dmd = conn.getMetaData();
+
+			ResultSet rs = dmd.getTables(conn.getCatalog(),null,"%",null);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			
+			int count = rsmd.getColumnCount();
+			ret = new String[count];
+			
+			for (int i = 1; i <= count; i++) {
+				ret[i - 1] = rsmd.getColumnName(i);
 			}
 		} catch (SQLException e) {
 
