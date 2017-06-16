@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -64,6 +65,27 @@ public class MenuButtonListener implements MouseListener {
 			DetailPanel.setSettingPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 			MainPanel.getMainPanel().getDetailPanel().repaint();
+			
+		}else if (e.getComponent().equals(Launcher.getStatePanel().getEditor())) {
+			
+			DetailPanel.setWorkPanel();
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
+			
+		} else if (e.getComponent().equals(Launcher.getStatePanel().getHome())) {
+			
+			DetailPanel.setHomePanel();
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
+			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getMaximizeLabel())) {
+			
+			Launcher.getFrame().setLocationRelativeTo(null);
+			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getMinimizeLabel())) {
+			
+			Launcher.getFrame().setState(Frame.ICONIFIED);
+			
 		}
 	}
 }

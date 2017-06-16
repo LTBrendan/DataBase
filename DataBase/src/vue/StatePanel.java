@@ -55,12 +55,13 @@ public class StatePanel extends JPanel {
 	private JPanel createDownPanel() {
 
 		downPanel = new JPanel(new GridLayout(8, 0));
-		downPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		downPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
 
 		home = new JLabel();
 		home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		home.setToolTipText("Home");
 		home.setHorizontalAlignment(downPanel.getWidth() / 2);
+		home.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
 		else
@@ -70,6 +71,7 @@ public class StatePanel extends JPanel {
 		editor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		editor.setToolTipText("editor");
 		editor.setHorizontalAlignment(downPanel.getWidth() / 2);
+		editor.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorWhite.PNG"));
 		else
@@ -155,7 +157,6 @@ public class StatePanel extends JPanel {
 	private JLabel createAvatarLanel() {
 
 		this.avatarLabel = new JLabel();
-		// this.avatarLabel.setBounds(0, 0, 80, 75);
 		this.avatarLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.avatarLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		this.avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
@@ -168,7 +169,6 @@ public class StatePanel extends JPanel {
 	private JLabel createUserNameLabel() {
 
 		this.userNameLabel = new JLabel("Admin");
-		// this.userNameLabel.setBounds(0, 75, 80, 36);
 		if (Launcher.color == 54)
 			this.userNameLabel.setForeground(Color.WHITE);
 		else
@@ -182,7 +182,6 @@ public class StatePanel extends JPanel {
 	public JSeparator createSeparator() {
 
 		this.separator = new JSeparator();
-		// this.separator.setBounds(10, 109, 60, 2);
 
 		return this.separator;
 	}
@@ -197,5 +196,37 @@ public class StatePanel extends JPanel {
 
 	public JComponent getUserNameLabel() {
 		return statePanel.userNameLabel;
+	}
+
+	public JLabel getHome() {
+		return statePanel.home;
+	}
+
+	public JLabel getEditor() {
+		return statePanel.editor;
+	}
+
+	public JLabel getSearch() {
+		return statePanel.search;
+	}
+
+	public JLabel getVisual() {
+		return statePanel.visual;
+	}
+
+	public JLabel getStats() {
+		return statePanel.stats;
+	}
+
+	public JLabel getGame() {
+		return statePanel.game;
+	}
+
+	public JLabel getExport() {
+		return statePanel.export;
+	}
+
+	public JLabel getAdmin() {
+		return statePanel.admin;
 	}
 }

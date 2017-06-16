@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -17,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 import controller.LabelCloseListener;
+import controller.MenuButtonListener;
 
 public class DetailPanel extends JPanel {
 
@@ -34,13 +34,13 @@ public class DetailPanel extends JPanel {
 	private JPanel closePanel;
 	private JLabel closeLabel;
 	private JPanel centerPanel;
-	
+
 	private WorkPanel workPanel = new WorkPanel();
 	private SettingPanel settingPanel = new SettingPanel();
 	private PreSettingPanel preSettingPanel = new PreSettingPanel();
 	private HomePanel homePanel = new HomePanel();
 	private JComponent actualPanel;
-	
+
 	private static DetailPanel detailPanel;
 
 	protected DetailPanel() {
@@ -50,12 +50,10 @@ public class DetailPanel extends JPanel {
 		this.setLayout(new BorderLayout(0, 0));
 
 		detailPanel = this;
-		
+
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(homePanel, BorderLayout.CENTER);
 		this.actualPanel = this.getHomePanel();
-		
-		detailPanel = this;
 	}
 
 	public DetailPanel(JPanel panel) {
@@ -66,7 +64,7 @@ public class DetailPanel extends JPanel {
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(panel, BorderLayout.CENTER);
 	}
-	
+
 	public JPanel createMenuPanel() {
 
 		this.menuPanel = new JPanel();
@@ -110,17 +108,12 @@ public class DetailPanel extends JPanel {
 		this.minimizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.minimizeLabel = new JLabel();
-		this.minimizeLabel.addMouseListener(new MouseAdapter() {
-			 @Override
-			 public void mousePressed(MouseEvent e) {
-				 Launcher.getFrame().setState(Frame.ICONIFIED);
-			 }
-		 });
+		this.minimizeLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusWhite.PNG"));
 		else
 			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusBlack.PNG"));
-		
+
 		this.minimizePanel.add(this.minimizeLabel);
 
 		return this.minimizePanel;
@@ -134,17 +127,12 @@ public class DetailPanel extends JPanel {
 		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.maximizeLabel = new JLabel();
-		this.maximizeLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				Launcher.getFrame().setExtendedState(Frame.MAXIMIZED_BOTH);
-			}
-		});
+		this.maximizeLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandWhite.PNG"));
 		else
 			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandBlack.PNG"));
-		
+
 		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
 		this.maximizePanel.add(new JLabel("   "), BorderLayout.EAST);
 		return this.maximizePanel;
@@ -164,7 +152,7 @@ public class DetailPanel extends JPanel {
 			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
 		else
 			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeBlack.PNG"));
-		
+
 		this.closePanel.add(this.closeLabel);
 
 		return this.closePanel;
@@ -187,7 +175,7 @@ public class DetailPanel extends JPanel {
 
 		return this.centerPanel;
 	}
-	
+
 	int xy, xx;
 
 	private void frameMouseDragged(MouseEvent evt) {
@@ -200,7 +188,7 @@ public class DetailPanel extends JPanel {
 		xx = evt.getX();
 		xy = evt.getY();
 	}
-	
+
 	public WorkPanel getWorkPanel() {
 		return detailPanel.workPanel;
 	}
@@ -208,40 +196,52 @@ public class DetailPanel extends JPanel {
 	public SettingPanel getSettingPanel() {
 		return detailPanel.settingPanel;
 	}
-	
+
 	public PreSettingPanel getPreSettingPanel() {
 		return detailPanel.preSettingPanel;
 	}
-	
+
 	public HomePanel getHomePanel() {
 		return detailPanel.homePanel;
 	}
-	
+
 	public static void setHomePanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getHomePanel();
 		detailPanel.add(detailPanel.getHomePanel());
 	}
-	
+
 	public static void setWorkPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getWorkPanel();
 		detailPanel.add(detailPanel.getWorkPanel());
 	}
-	
+
 	public static void setSettingPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getSettingPanel();
 		detailPanel.add(detailPanel.getSettingPanel());
 	}
-	
+
 	public static void setPreSettingPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getPreSettingPanel();
 		detailPanel.add(detailPanel.getPreSettingPanel());
 	}
-	
+
 	public JComponent getActualPanel() {
 		return detailPanel.actualPanel;
+	}
+
+	public JLabel getMinimizeLabel() {
+		return detailPanel.minimizeLabel;
+	}
+
+	public JLabel getMaximizeLabel() {
+		return detailPanel.maximizeLabel;
+	}
+
+	public JLabel getCloseLabel() {
+		return detailPanel.closeLabel;
 	}
 }

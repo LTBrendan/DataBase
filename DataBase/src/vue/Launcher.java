@@ -47,12 +47,12 @@ public class Launcher {
 
 		launcher = this;
 		
-		MouseMovementAdapter.setMAIN_FRAME(frame);
-		try {
-			WindowResizer.WINDOW_RESIZER.register(frame);
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
+//		MouseMovementAdapter.setMAIN_FRAME(frame);
+//		try {
+//			WindowResizer.WINDOW_RESIZER.register(frame);
+//		} catch (Exception e1) {
+//			e1.printStackTrace();
+//		}
 
 		frame.getContentPane().add(statePanel, BorderLayout.WEST);
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
