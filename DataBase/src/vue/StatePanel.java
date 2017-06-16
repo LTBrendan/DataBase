@@ -57,6 +57,42 @@ public class StatePanel extends JPanel {
 		downPanel = new JPanel(new GridLayout(8, 0));
 		downPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
+		home = new JLabel();
+		home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		home.setToolTipText("Home");
+		home.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
+		else
+			home.setIcon(new ImageIcon("rsc\\stateBar\\homeBlack.PNG"));
+		
+		editor = new JLabel();
+		editor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		editor.setToolTipText("editor");
+		editor.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorWhite.PNG"));
+		else
+			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorBlack.PNG"));
+		
+		search = new JLabel();
+		search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		search.setToolTipText("search");
+		search.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			search.setIcon(new ImageIcon("rsc\\stateBar\\searchWhite.PNG"));
+		else
+			search.setIcon(new ImageIcon("rsc\\stateBar\\searchBlack.PNG"));
+		
+		visual = new JLabel();
+		visual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		visual.setToolTipText("visual");
+		visual.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualWhite.PNG"));
+		else
+			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualBlack.PNG"));
+		
 		stats = new JLabel();
 		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		stats.setToolTipText("Stats");
@@ -66,7 +102,41 @@ public class StatePanel extends JPanel {
 		else
 			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsBlack.PNG"));
 
+		game = new JLabel();
+		game.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		game.setToolTipText("game");
+		game.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			game.setIcon(new ImageIcon("rsc\\stateBar\\gameWhite.PNG"));
+		else
+			game.setIcon(new ImageIcon("rsc\\stateBar\\gameBlack.PNG"));
+		
+		export = new JLabel();
+		export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		export.setToolTipText("export");
+		export.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			export.setIcon(new ImageIcon("rsc\\stateBar\\exportWhite.PNG"));
+		else
+			export.setIcon(new ImageIcon("rsc\\stateBar\\exportBlack.PNG"));
+		
+		admin = new JLabel();
+		admin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		admin.setToolTipText("admin");
+		admin.setHorizontalAlignment(downPanel.getWidth() / 2);
+		if (Launcher.color == 54)
+			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminWhite.PNG"));
+		else
+			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminBlack.PNG"));
+		
+		downPanel.add(home);
+		downPanel.add(editor);
+		downPanel.add(search);
+		downPanel.add(visual);
 		downPanel.add(stats);
+		downPanel.add(game);
+		downPanel.add(export);
+		downPanel.add(admin);
 		
 		return downPanel;
 	}
