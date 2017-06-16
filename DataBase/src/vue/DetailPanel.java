@@ -38,6 +38,7 @@ public class DetailPanel extends JPanel {
 	private WorkPanel workPanel = new WorkPanel();
 	private SettingPanel settingPanel = new SettingPanel();
 	private PreSettingPanel preSettingPanel = new PreSettingPanel();
+	private HomePanel homePanel = new HomePanel();
 	private JComponent actualPanel;
 	
 	private static DetailPanel detailPanel;
@@ -51,8 +52,8 @@ public class DetailPanel extends JPanel {
 		detailPanel = this;
 		
 		this.add(createMenuPanel(), BorderLayout.NORTH);
-		this.add(workPanel, BorderLayout.CENTER);
-		this.actualPanel = this.getWorkPanel();
+		this.add(homePanel, BorderLayout.CENTER);
+		this.actualPanel = this.getHomePanel();
 		
 		detailPanel = this;
 	}
@@ -210,6 +211,16 @@ public class DetailPanel extends JPanel {
 	
 	public PreSettingPanel getPreSettingPanel() {
 		return detailPanel.preSettingPanel;
+	}
+	
+	public HomePanel getHomePanel() {
+		return detailPanel.homePanel;
+	}
+	
+	public static void setHomePanel() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getHomePanel();
+		detailPanel.add(detailPanel.getHomePanel());
 	}
 	
 	public static void setWorkPanel() {

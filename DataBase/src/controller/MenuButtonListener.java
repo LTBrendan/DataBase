@@ -37,11 +37,17 @@ public class MenuButtonListener implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 
 		if (e.getComponent().equals(Launcher.getStatePanel().getAvatarLabel())) {
+			
 			DetailPanel.setPreSettingPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
+			
 		} else if (e.getComponent().equals(Launcher.getStatePanel().getUserNameLabel())) {
+			
 			System.out.println("Coming Soon !");
+			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
+			
 			JLabel label = new JLabel(
 					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText() + ":\n");
 			if (Launcher.color == 54)
@@ -50,11 +56,14 @@ public class MenuButtonListener implements MouseListener {
 				label.setForeground(new Color(0, 0, 0));
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel();
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
-
 			Launcher.getMainPanel().getDetailPanel().revalidate();
+			Launcher.getMainPanel().getDetailPanel().repaint();
+			
 		}else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getPreSettingPanel().getSettingLabel())){
+			
 			DetailPanel.setSettingPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
 		}
 	}
 }
