@@ -70,12 +70,12 @@ public class SettingPanel extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if (darkThemeButton.isSelected()) {
-					Launcher.color = 54;
+					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
+					Launcher.getLauncher().getLauncherControler().save();
 				} else {
-					Launcher.color = 247;
+					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(247);
+					Launcher.getLauncher().getLauncherControler().save();
 				}
-				Launcher.getFrame().repaint();
-				Launcher.getFrame().revalidate();
 			}
 		});
 		darkThemeButton.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
@@ -89,12 +89,13 @@ public class SettingPanel extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if (whiteThemeButton.isSelected()) {
-					Launcher.color = 247;
+					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(247);
+					Launcher.getLauncher().getLauncherControler().save();
 				} else {
-					Launcher.color = 54;
+					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
+					Launcher.getLauncher().getLauncherControler().save();
 				}
-				Launcher.getFrame().repaint();
-				Launcher.getFrame().revalidate();
+				
 			}
 		});
 		whiteThemeButton.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));

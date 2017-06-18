@@ -21,13 +21,23 @@ public class Launcher {
 	private static LauncherControler launcherControler;
 
 	// public static int color = 247;
-	public static int color = 54;
-
+	public static int color;// = 54;
+	
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(LauncherControler launcherControler) {
+		
 		Launcher.launcherControler = launcherControler;
+		
+		//launcherControler.save();
+		
+		if (!(launcherControler.getCurrentUser().getColor() > 247) || !(launcherControler.getCurrentUser().getColor() < 54))
+			color = launcherControler.getCurrentUser().getColor();
+		else 
+			color = 54;
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

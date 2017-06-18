@@ -2,6 +2,7 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -87,8 +88,20 @@ public class DirectoryPanel extends JPanel {
 	
 	private JScrollPane createCenterPanel() {
 		
-		this.centerPanel = new JPanel(new GridLayout(1, 1));
-		this.centerPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.centerPanel = new JPanel(new GridLayout(15, 1)){
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Component add(Component comp) {
+                if(this.getComponentCount() == 15)
+                    this.setLayout(new GridLayout(0, 1));
+                return super.add(comp);
+            }
+
+        };
+        
+        this.centerPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
 		this.centerPanel.setForeground(new Color(255,255,255));
 		
 		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {

@@ -199,6 +199,7 @@ public class WorkPanel extends JSplitPane {
 
 		this.textPane = new JTextPane();
 		this.textPane.setBorder(null);
+		this.textPane.setDragEnabled(true);
 		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
 		this.textPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		if (Launcher.color == 54)
