@@ -31,22 +31,30 @@ public class LoginButtonListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		boolean connected = false;
-		try {
-			
-			if (LoginFrame.getLoginFrame().getLauncherControler().connect(LoginFrame.getLoginFrame().getLoginField().getText(), new String(LoginFrame.getLoginFrame().getPasswordField().getPassword()))) {
-				Launcher.main(LoginFrame.getLoginFrame().getLauncherControler());
-				connected = true;
+		
+		if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getLoginButton())) {
+			boolean connected = false;
+			try {
+				
+				if (LoginFrame.getLoginFrame().getLauncherControler().connect(LoginFrame.getLoginFrame().getLoginField().getText(), new String(LoginFrame.getLoginFrame().getPasswordField().getPassword()))) {
+					Launcher.main(LoginFrame.getLoginFrame().getLauncherControler());
+					connected = true;
+				}
+				
+			} catch (NullPointerException n){
+				
+			} finally {
+				
+				if (connected == false)
+					InvalidInformations.main(null);
+				else
+					LoginFrame.getLoginFrame().setVisible(false);
+				
 			}
+		
+		} else if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getCreateNewUserLoginLabel())) {
 			
-		} catch (NullPointerException n){
-			
-		} finally {
-			
-			if (connected == false)
-				InvalidInformations.main(null);
-			else
-				LoginFrame.getLoginFrame().setVisible(false);
+			LoginFrame.getLoginFrame().changeContentPanel();
 			
 		}
 		

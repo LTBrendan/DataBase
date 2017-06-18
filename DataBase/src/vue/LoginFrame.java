@@ -23,6 +23,7 @@ import consoleControler.LauncherControler;
 import controller.CreateUserTextFieldListener;
 import controller.LabelCloseListener;
 import controller.LoginButtonListener;
+import controller.MenuButtonListener;
 import controller.TextFieldListener;
 
 public class LoginFrame extends JFrame {
@@ -41,6 +42,7 @@ public class LoginFrame extends JFrame {
 	private JPasswordField passwordField;
 	private JButton loginButton;
 	private JLabel closeLabel;
+	private JLabel createNewUserLoginLabel;
 
 	private JPanel createUserPane;
 	private JLabel loginTextLabel;
@@ -169,6 +171,12 @@ public class LoginFrame extends JFrame {
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(145, 214, 186, 2);
+		
+		createNewUserLoginLabel = new JLabel();
+		createNewUserLoginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		createNewUserLoginLabel.setIcon(new ImageIcon("rsc\\login\\addUserWhite.png"));
+		createNewUserLoginLabel.setBounds(417, 267, 48, 47);
+		createNewUserLoginLabel.addMouseListener(new LoginButtonListener());
 
 		loginPane.add(focusedTextField);
 		loginPane.add(closeLabel);
@@ -180,6 +188,7 @@ public class LoginFrame extends JFrame {
 		loginPane.add(loginButton);
 		loginPane.add(userLabel);
 		loginPane.add(passwordLabel);
+		loginPane.add(createNewUserLoginLabel);
 		
 		return loginPane;
 	}
@@ -243,7 +252,7 @@ public class LoginFrame extends JFrame {
 		createUserButton.setBorder(null);
 		createUserButton.setBounds(132, 260, 89, 23);
 		createUserButton.setBackground(new Color(30, 33, 38));
-		createUserButton.addMouseListener(new LoginButtonListener());
+		//createUserButton.addMouseListener(new MenuButtonListener());
 		
 		JSeparator confirmPasswordSeparator = new JSeparator();
 		confirmPasswordSeparator.setBounds(133, 221, 186, 2);
@@ -315,6 +324,14 @@ public class LoginFrame extends JFrame {
 	
 	public JLabel getWrongPasswordLabel() {
 		return loginFrame.wrongPasswordLabel;
+	}
+	
+	public JLabel getCreateNewUserLoginLabel() {
+		return loginFrame.createNewUserLoginLabel;
+	}
+	
+	public JButton getLoginButton() {
+		return loginFrame.loginButton;
 	}
 
 	public void changeContentPanel(){

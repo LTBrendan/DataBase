@@ -40,6 +40,10 @@ public class InvalidInfoButtonListener implements MouseListener {
 			LoginFrame.getLoginFrame().changeContentPanel();
 			InvalidInformations.getInvalidInformations().setVisible(false);
 			
+		} else if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getCreateNewUserLoginLabel())) {
+			
+			LoginFrame.getLoginFrame().changeContentPanel();
+			
 		}
 		
 	}

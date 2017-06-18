@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import vue.DetailPanel;
 import vue.Launcher;
+import vue.LoginFrame;
 import vue.MainPanel;
 
 public class MenuButtonListener implements MouseListener {
