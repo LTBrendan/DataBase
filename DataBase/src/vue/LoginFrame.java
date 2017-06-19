@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import consoleControler.LauncherControler;
 import controller.CreateUserTextFieldListener;
+import controller.KeyboardListener;
 import controller.LabelCloseListener;
 import controller.LoginButtonListener;
 import controller.TextFieldListener;
@@ -158,6 +159,7 @@ public class LoginFrame extends JFrame {
 		passwordField.setForeground(new Color(255, 255, 255));
 		passwordField.setBounds(145, 192, 186, 20);
 		passwordField.addFocusListener(new TextFieldListener());
+		passwordField.addKeyListener(new KeyboardListener());
 
 		loginButton = new JButton("Login");
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

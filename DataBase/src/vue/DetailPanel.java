@@ -40,6 +40,7 @@ public class DetailPanel extends JPanel {
 	private PreSettingPanel preSettingPanel = new PreSettingPanel();
 	private HomePanel homePanel = new HomePanel();
 	private SearchPanel searchPanel = new SearchPanel();
+	private AdminPanel adminPanel = new AdminPanel();
 	private JComponent actualPanel;
 
 	private static DetailPanel detailPanel;
@@ -209,6 +210,10 @@ public class DetailPanel extends JPanel {
 	public SearchPanel getSearchPanel() {
 		return detailPanel.searchPanel;
 	}
+	
+	public AdminPanel getAdminPanel() {
+		return detailPanel.adminPanel;
+	}
 
 	public static void setSearchPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
@@ -238,6 +243,12 @@ public class DetailPanel extends JPanel {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getPreSettingPanel();
 		detailPanel.add(detailPanel.getPreSettingPanel());
+	}
+	
+	public static void setAdminPanel() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getAdminPanel();
+		detailPanel.add(detailPanel.getAdminPanel());
 	}
 
 	public JComponent getActualPanel() {

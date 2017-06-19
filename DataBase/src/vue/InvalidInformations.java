@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -71,6 +72,7 @@ public class InvalidInformations extends JDialog {
 		buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		buttonPane.setBackground(new Color(54, 57, 62));
+		buttonPane.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 
 		okButton = new JButton("OK");
 		okButton.setBackground(new Color(30, 33, 38));

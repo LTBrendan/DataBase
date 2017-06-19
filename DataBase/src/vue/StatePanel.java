@@ -128,6 +128,7 @@ public class StatePanel extends JPanel {
 		admin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		admin.setToolTipText("admin");
 		admin.setHorizontalAlignment(downPanel.getWidth() / 2);
+		admin.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminWhite.PNG"));
 		else
