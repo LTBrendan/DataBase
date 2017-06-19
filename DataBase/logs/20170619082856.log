@@ -1,0 +1,18 @@
+21:53:03	out       Logfile opened
+21:53:03	out       Logfiles cleaned
+21:53:08	out       connection attempt : mathis
+21:53:08	err       connection failed
+18:43:00	out       Logfile opened
+18:43:00	out       Logfiles cleaned
+08:28:34	out       Logfile opened
+08:28:34	out       Logfiles cleaned
+08:28:42	out       connection attempt : brendan
+08:28:42	out       successful connection
+08:28:47	out       Database connection attempt : ProjetDB
+08:28:47	out       successful connection : ProjetDB
+08:28:49	database  statement created
+08:28:54	database  statement closed
+08:28:54	database  connexion closed
+08:28:54	database  disconnected from data base
+08:28:56	out       logged out
+08:28:56	out       Logfile closed

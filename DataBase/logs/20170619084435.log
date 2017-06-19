@@ -1,0 +1,10 @@
+08:43:07	out       Logfile opened
+08:43:07	out       Logfiles cleaned
+08:43:22	out       connection attempt : blabla
+08:43:22	err       connection failed
+08:43:39	out       connection attempt : brendan
+08:43:39	out       successful connection
+08:44:26	out       Attempt to change login
+08:44:31	err       login already used
+08:44:35	out       logged out
+08:44:35	out       Logfile closed
