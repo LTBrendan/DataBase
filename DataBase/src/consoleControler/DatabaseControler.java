@@ -42,7 +42,7 @@ public class DatabaseControler extends MainControler {
 		
 		databaseControler = this;
 		// Connection to the data base Using JDBC. Need the database address,
-		// the username and the password
+		// the user name and the password
 		try {
 			System.out.println("\nConnection to database...");
 			conn = DriverManager.getConnection(address, login, password);
@@ -96,6 +96,7 @@ public class DatabaseControler extends MainControler {
 			try {
 				String query = Create.getQuery();
 				this.executeQuery(query);
+				System.out.println(query);
 				Log.database("query executed : "+query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
@@ -269,7 +270,7 @@ public class DatabaseControler extends MainControler {
 			}
 		} catch (SQLException e) {
 			System.out.println("Query error !");
-			// e.printStackTrace();
+			System.out.println (ExceptionHandler.analyse (e.getMessage()));
 		} catch (NullPointerException ex) {
 
 		}
