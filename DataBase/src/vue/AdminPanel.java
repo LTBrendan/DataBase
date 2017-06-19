@@ -15,9 +15,6 @@ import connexion.User;
 import connexion.UserManager;
 import controller.DeleteButtonListener;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class AdminPanel extends JPanel {
 
 	/**
@@ -29,6 +26,8 @@ public class AdminPanel extends JPanel {
 	private JPanel centerPanel;
 	private JPanel userListPanel;
 	private JScrollPane scrollPane;
+
+	private static AdminPanel adminPanel;
 
 	/**
 	 * Create the panel.
@@ -59,31 +58,32 @@ public class AdminPanel extends JPanel {
 		userListPanel.setForeground(new Color(255, 255, 255));
 
 		for (User uc : UserManager.getUserList()) {
+
 			JPanel userPanel = new JPanel(new BorderLayout());
 			userPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-			
+
 			JLabel tiretLabel = new JLabel(" - ");
 			if (Launcher.color == 54)
 				tiretLabel.setForeground(new Color(255, 255, 255));
 			else
 				tiretLabel.setForeground(new Color(0, 0, 0));
-			
+
 			JLabel userLabel = new JLabel(uc.getLogin());
 			if (Launcher.color == 54)
 				userLabel.setForeground(new Color(255, 255, 255));
 			else
 				userLabel.setForeground(new Color(0, 0, 0));
-			
+
 			JLabel deleteUser = new JLabel();
 			deleteUser.setIcon(new ImageIcon("rsc\\login\\error.png"));
 			deleteUser.setVisible(true);
 			deleteUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			deleteUser.addMouseListener(new DeleteButtonListener(uc.getLogin(), uc.getPass()));
-			
+
 			userPanel.add(tiretLabel, BorderLayout.WEST);
 			userPanel.add(deleteUser, BorderLayout.EAST);
 			userPanel.add(userLabel, BorderLayout.CENTER);
-			
+
 			userListPanel.add(userPanel);
 		}
 
@@ -92,7 +92,7 @@ public class AdminPanel extends JPanel {
 
 		titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		titlePanel.setForeground(new Color(255,255,255));
+		titlePanel.setForeground(new Color(255, 255, 255));
 
 		JLabel lblAdminSettings = new JLabel("Admin Settings");
 
@@ -104,6 +104,12 @@ public class AdminPanel extends JPanel {
 		add(centerPanel, BorderLayout.CENTER);
 
 	}
-	
-	
+
+	public JPanel getUserListPanel() {
+		return adminPanel.userListPanel;
+	}
+
+	public static JPanel getAdminPanel() {
+		return adminPanel;
+	}
 }

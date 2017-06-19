@@ -15,29 +15,28 @@ public class Launcher {
 	private JFrame frame;
 	private StatePanel statePanel;
 	private MainPanel mainPanel;
-	
+
 	private static DatabaseControler databaseControler;
 	private static Launcher launcher;
 	private static LauncherControler launcherControler;
 
-	// public static int color = 247;
-	public static int color;// = 54;
-	
-	
+	public static int color;
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(LauncherControler launcherControler) {
-		
+
 		Launcher.launcherControler = launcherControler;
-		
-		//launcherControler.save();
-		
-		if (!(launcherControler.getCurrentUser().getColor() > 247) || !(launcherControler.getCurrentUser().getColor() < 54))
+
+		// launcherControler.save();
+
+		if (!(launcherControler.getCurrentUser().getColor() > 247)
+				|| !(launcherControler.getCurrentUser().getColor() < 54))
 			color = launcherControler.getCurrentUser().getColor();
-		else 
+		else
 			color = 54;
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,7 +69,7 @@ public class Launcher {
 
 		statePanel = new StatePanel();
 		mainPanel = new MainPanel();
-		
+
 		frame.getContentPane().add(statePanel, BorderLayout.WEST);
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 
@@ -97,15 +96,15 @@ public class Launcher {
 	public static void setMainPanel(MainPanel mainPanel) {
 		launcher.mainPanel = mainPanel;
 	}
-	
+
 	public static DatabaseControler getDataBaseController() {
 		return databaseControler;
 	}
-	
+
 	public LauncherControler getLauncherControler() {
 		return launcher.launcherControler;
 	}
-	
+
 	public static Launcher getLauncher() {
 		return launcher;
 	}

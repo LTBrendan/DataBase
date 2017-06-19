@@ -247,6 +247,7 @@ public class DetailPanel extends JPanel {
 	
 	public static void setAdminPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.adminPanel = new AdminPanel();
 		detailPanel.actualPanel = detailPanel.getAdminPanel();
 		detailPanel.add(detailPanel.getAdminPanel());
 	}
