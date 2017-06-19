@@ -97,6 +97,20 @@ public class MenuButtonListener implements MouseListener {
 			DetailPanel.setAdminPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 			MainPanel.getMainPanel().getDetailPanel().repaint();
+		
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDirectoryPanel().getAddLabel())) {
+			
+			DetailPanel.setNewConnection();
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
+			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getNewConnection().getAddDatabaseButton())) {
+			
+			Launcher.getLauncher().getLauncherControler().addDatabase(Launcher.getMainPanel().getDetailPanel().getNewConnection().getNameField().getText(), Launcher.getMainPanel().getDetailPanel().getNewConnection().getAdressField().getText(), Launcher.getMainPanel().getDetailPanel().getNewConnection().getLoginField().getText(), Launcher.getMainPanel().getDetailPanel().getNewConnection().getPasswordField().getText());
+			Launcher.getMainPanel().getDirectoryPanel().setDirectoryPanel();
+			DetailPanel.setWorkPanel();
+			MainPanel.getMainPanel().getDetailPanel().revalidate();
+			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
 		}
 	}

@@ -24,6 +24,10 @@ public class MainControler {
 		UserManager.save();
 	}
 	
+	public void load() {
+		UserManager.load();
+	}
+	
 	public String getCurrentUserName () {
 		return this.currentUser.getLogin();
 	}

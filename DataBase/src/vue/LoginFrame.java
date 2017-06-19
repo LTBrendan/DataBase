@@ -25,6 +25,7 @@ import controller.KeyboardListener;
 import controller.LabelCloseListener;
 import controller.LoginButtonListener;
 import controller.TextFieldListener;
+import logs.Log;
 
 public class LoginFrame extends JFrame {
 
@@ -60,6 +61,7 @@ public class LoginFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Log.open();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -88,7 +90,7 @@ public class LoginFrame extends JFrame {
 
 		loginPane = new JPanel();
 		createUserPane = new JPanel();
-
+		
 		focusedTextField = new JTextField();
 		focusedTextField.setEditable(false);
 		focusedTextField.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

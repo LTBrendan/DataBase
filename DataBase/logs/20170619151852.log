@@ -1,0 +1,5 @@
+15:17:39	out       Logfile opened
+15:17:46	out       successful connection : test
+15:17:47	out       unable to connect to databasetest
+15:18:52	database  disconnected from data base
+15:18:52	out       Logfile closed

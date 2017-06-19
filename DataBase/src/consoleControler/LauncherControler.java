@@ -37,6 +37,7 @@ public class LauncherControler extends MainControler {
 	public void addDatabase(String connectionName, String address, String login, String password) {
 		currentUser.addNewConnexion(new UserConnexion(address, connectionName, login, password));
 		save();
+		load();
 	}
 
 	public boolean addUser(String login, String password) {
@@ -50,7 +51,6 @@ public class LauncherControler extends MainControler {
 	}
 
 	public void removeUser(String login, String password) {
-		System.out.println("DEBUG");
 		UserManager.removeUser(login, password);
 	}
 

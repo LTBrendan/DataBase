@@ -29,8 +29,6 @@ public class Launcher {
 
 		Launcher.launcherControler = launcherControler;
 
-		// launcherControler.save();
-
 		if (!(launcherControler.getCurrentUser().getColor() > 247)
 				|| !(launcherControler.getCurrentUser().getColor() < 54))
 			color = launcherControler.getCurrentUser().getColor();
@@ -102,7 +100,7 @@ public class Launcher {
 	}
 
 	public LauncherControler getLauncherControler() {
-		return launcher.launcherControler;
+		return Launcher.launcherControler;
 	}
 
 	public static Launcher getLauncher() {

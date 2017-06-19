@@ -43,9 +43,6 @@ public class ConfirmDeleteButton implements MouseListener {
 			ConfirmDelete.getConfirmDelete().setVisible(false);
 			
 			try {
-				
-				 System.out.println(login);
-				 System.out.println(UserManager.decrypt(password));
 				 Launcher.getLauncher().getLauncherControler().removeUser(login,
 				 UserManager.decrypt(password));
 				 

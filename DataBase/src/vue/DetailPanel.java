@@ -41,6 +41,7 @@ public class DetailPanel extends JPanel {
 	private HomePanel homePanel = new HomePanel();
 	private SearchPanel searchPanel = new SearchPanel();
 	private AdminPanel adminPanel = new AdminPanel();
+	private NewConnectionPanel newConnection = new NewConnectionPanel();
 	private JComponent actualPanel;
 
 	private static DetailPanel detailPanel;
@@ -215,6 +216,16 @@ public class DetailPanel extends JPanel {
 		return detailPanel.adminPanel;
 	}
 
+	public NewConnectionPanel getNewConnection() {
+		return detailPanel.newConnection;
+	}
+	
+	public static void setNewConnection() {
+		detailPanel.remove(detailPanel.getActualPanel());
+		detailPanel.actualPanel = detailPanel.getNewConnection();
+		detailPanel.add(detailPanel.getNewConnection());
+	}
+	
 	public static void setSearchPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getSearchPanel();

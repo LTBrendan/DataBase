@@ -25,7 +25,7 @@ public class MainPanel extends JPanel {
 		mainPanel = this;
 	}
 
-	public static DirectoryPanel getDirectoryPanel() {
+	public DirectoryPanel getDirectoryPanel() {
 		return mainPanel.directoryPanel;
 	}
 

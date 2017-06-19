@@ -40,7 +40,8 @@ public class AdminPanel extends JPanel {
 
 		centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(0, 4, 0, 0));
-
+		centerPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		
 		userListPanel = new JPanel(new GridLayout(15, 1)) {
 
 			private static final long serialVersionUID = 1L;
@@ -89,19 +90,23 @@ public class AdminPanel extends JPanel {
 
 		scrollPane = new JScrollPane(userListPanel);
 		scrollPane.setBorder(null);
+		scrollPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 		titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		titlePanel.setForeground(new Color(255, 255, 255));
 
 		JLabel lblAdminSettings = new JLabel("Admin Settings");
-
+		lblAdminSettings.setForeground(new Color(255, 255, 255));
+		
 		titlePanel.add(lblAdminSettings);
 
 		centerPanel.add(scrollPane);
 
 		add(titlePanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
+		
+		setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 	}
 

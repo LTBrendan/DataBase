@@ -13,6 +13,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 import connexion.UserConnexion;
+import controller.ConnectDataBaseListener;
+import controller.MenuButtonListener;
 import controller.TextFieldListener;
 
 public class DirectoryPanel extends JPanel {
@@ -27,6 +29,7 @@ public class DirectoryPanel extends JPanel {
 	private JTextField searchTexte;
 	
 	private JPanel bottomPanel;
+	private JLabel addLabel;
 	
 	private JPanel centerPanel;
 	private JScrollPane centerScrollPane;
@@ -105,11 +108,13 @@ public class DirectoryPanel extends JPanel {
 		this.centerPanel.setForeground(new Color(255,255,255));
 		
 		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {
+			
 			JLabel connection = new JLabel(" - " + uc.getConnexionName());
 			if (Launcher.color == 54)
 				connection.setForeground(new Color(255,255,255));
 			else
 				connection.setForeground(new Color(0,0,0));
+			connection.addMouseListener(new ConnectDataBaseListener(uc.getConnexionName()));
 				
 			//connection.setVerticalAlignment(HEIGHT);
 			this.centerPanel.add(connection);
@@ -128,8 +133,9 @@ public class DirectoryPanel extends JPanel {
 		this.bottomPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
 		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
 		
-		JLabel addLabel = new JLabel(" + Add new Connection");
+		addLabel = new JLabel(" + Add new Connection");
 		addLabel.setForeground(Color.WHITE);
+		addLabel.addMouseListener(new MenuButtonListener());
 		this.bottomPanel.add(addLabel);
 		
 		addLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -141,4 +147,14 @@ public class DirectoryPanel extends JPanel {
 	public static DirectoryPanel getDirectoryPanel() {
 		return directoryPanel;
 	}
+
+	public JLabel getAddLabel() {
+		return addLabel;
+	}
+	
+	public void setDirectoryPanel() {
+		this.remove(centerScrollPane);
+		this.add(createCenterPanel(), BorderLayout.CENTER);
+	}
+		
 }
