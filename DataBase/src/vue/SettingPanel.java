@@ -134,17 +134,23 @@ public class SettingPanel extends JPanel {
 		
 		newLogin = new JTextField("New login...");
 		newLogin.addFocusListener(new TextFieldListener());
-		if (Launcher.color == 54)
+		if (Launcher.color == 54) {
+			newLogin.setBackground(new Color(54,57,62));
 			newLogin.setForeground(new Color(255,255,255));
-		else
+		} else {
+			newLogin.setBackground(new Color(255,255,255));
 			newLogin.setForeground(new Color(0,0,0));
+		}
 		
 		newPassword = new JPasswordField("Password");
 		newPassword.addFocusListener(new TextFieldListener());
-		if (Launcher.color == 54)
+		if (Launcher.color == 54) {
+			newPassword.setBackground(new Color(54,57,62));
 			newPassword.setForeground(new Color(255,255,255));
-		else
+		} else {
+			newPassword.setBackground(new Color(255,255,255));
 			newPassword.setForeground(new Color(0,0,0));
+		}
 		
 		validateChange = new JButton("Validate");
 		validateChange.setBorder(null);

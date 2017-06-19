@@ -54,7 +54,18 @@ public class LoginButtonListener implements MouseListener {
 		
 		} else if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getCreateNewUserLoginLabel())) {
 			
-			LoginFrame.getLoginFrame().changeContentPanel();
+			LoginFrame.getLoginFrame().createUserContentPanel();
+			
+		} else if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getCreateUserButton())) {
+			
+			try {	
+				LoginFrame.getLoginFrame().getLauncherControler().addUser(LoginFrame.getLoginFrame().getLoginField().getText(), new String(LoginFrame.getLoginFrame().getCreateUserPasswordField().getPassword()));
+				LoginFrame.getLoginFrame().getLauncherControler().save();
+				
+				LoginFrame.getLoginFrame().loginContentPanel();
+			} catch (Exception e) {
+				
+			}
 			
 		}
 		

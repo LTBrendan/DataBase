@@ -180,7 +180,7 @@ public class UserManager {
 		return ret;
 	}
 	
-	public ArrayList<User> getUserList () {
+	public static ArrayList<User> getUserList () {
 		return UserManager.userList;
 	}
 }

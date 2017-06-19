@@ -21,9 +21,9 @@ import javax.swing.border.EmptyBorder;
 
 import consoleControler.LauncherControler;
 import controller.CreateUserTextFieldListener;
+import controller.KeyboardListener;
 import controller.LabelCloseListener;
 import controller.LoginButtonListener;
-import controller.MenuButtonListener;
 import controller.TextFieldListener;
 
 public class LoginFrame extends JFrame {
@@ -52,7 +52,7 @@ public class LoginFrame extends JFrame {
 	private JPasswordField confirmPasswordField;
 	private JButton createUserButton;
 	private JLabel wrongPasswordLabel;
-	
+
 	private static LoginFrame loginFrame;
 	private LauncherControler launcherControler = new LauncherControler();
 
@@ -78,7 +78,7 @@ public class LoginFrame extends JFrame {
 	public LoginFrame() {
 
 		this.setLocationRelativeTo(null);
-		
+
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 475, 325);
@@ -86,31 +86,34 @@ public class LoginFrame extends JFrame {
 
 		loginFrame = this;
 
+		loginPane = new JPanel();
+		createUserPane = new JPanel();
+
 		focusedTextField = new JTextField();
 		focusedTextField.setEditable(false);
 		focusedTextField.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		focusedTextField.setBorder(null);
 		focusedTextField.setColumns(10);
 		focusedTextField.setBackground(new Color(54, 57, 62));
-		
+
 		avatarLabel = new JLabel();
 		avatarLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		avatarLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
-		
+
 		closeLabel = new JLabel();
 		closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
 		closeLabel.addMouseListener(new LabelCloseListener());
-		
+
 		loginField = new JTextField("");
 		loginField.setBorder(null);
 		loginField.setBackground(new Color(54, 57, 62));
 		loginField.setForeground(new Color(255, 255, 255));
 		loginField.setColumns(10);
-		
+
 		this.setContentPane(loginPanel());
-		
+
 		this.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent evt) {
 				frameMouseDragged(evt);
@@ -122,12 +125,11 @@ public class LoginFrame extends JFrame {
 				frameMousePressed(evt);
 			}
 		});
-		
+
 	}
-	
+
 	private JPanel loginPanel() {
-		
-		loginPane = new JPanel();
+
 		loginPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		loginPane.setBackground(new Color(54, 57, 62));
 		loginPane.setLayout(null);
@@ -137,11 +139,11 @@ public class LoginFrame extends JFrame {
 		avatarLabel.setBounds(199, 43, 90, 70);
 
 		closeLabel.setBounds(445, 11, 20, 20);
-		
+
 		userLabel = new JLabel();
 		userLabel.setIcon(new ImageIcon("rsc\\login\\userWhite.png"));
 		userLabel.setBounds(115, 145, 20, 16);
-		
+
 		loginField.setBounds(145, 137, 186, 20);
 		loginField.setText("Login");
 		loginField.addFocusListener(new TextFieldListener());
@@ -149,7 +151,7 @@ public class LoginFrame extends JFrame {
 		passwordLabel = new JLabel();
 		passwordLabel.setIcon(new ImageIcon("rsc\\login\\passwordWhite.png"));
 		passwordLabel.setBounds(115, 196, 20, 16);
-		
+
 		passwordField = new JPasswordField("Password");
 		passwordField.setBorder(null);
 		passwordField.setColumns(10);
@@ -157,6 +159,7 @@ public class LoginFrame extends JFrame {
 		passwordField.setForeground(new Color(255, 255, 255));
 		passwordField.setBounds(145, 192, 186, 20);
 		passwordField.addFocusListener(new TextFieldListener());
+		passwordField.addKeyListener(new KeyboardListener());
 
 		loginButton = new JButton("Login");
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -171,7 +174,7 @@ public class LoginFrame extends JFrame {
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(145, 214, 186, 2);
-		
+
 		createNewUserLoginLabel = new JLabel();
 		createNewUserLoginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createNewUserLoginLabel.setIcon(new ImageIcon("rsc\\login\\addUserWhite.png"));
@@ -189,55 +192,54 @@ public class LoginFrame extends JFrame {
 		loginPane.add(userLabel);
 		loginPane.add(passwordLabel);
 		loginPane.add(createNewUserLoginLabel);
-		
+
 		return loginPane;
 	}
 
 	private JPanel createUserPanel() {
-		
-		createUserPane = new JPanel();
+
 		createUserPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		createUserPane.setBackground(new Color(54, 57, 62));
 		createUserPane.setLayout(null);
-		
+
 		focusedTextField.setBounds(10, 11, 86, 20);
-		
+
 		avatarLabel.setBounds(20, 36, 90, 70);
-		
+
 		closeLabel.setBounds(445, 11, 20, 20);
-		
+
 		loginTextLabel = new JLabel("Login :");
 		loginTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		loginTextLabel.setForeground(Color.WHITE);
 		loginTextLabel.setBounds(133, 54, 46, 14);
-		
+
 		loginField.setBounds(133, 69, 186, 20);
 		loginField.setText("");
 		loginField.addFocusListener(new TextFieldListener());
-		
+
 		JSeparator loginSeparator = new JSeparator();
 		loginSeparator.setBounds(133, 91, 186, 2);
-		
+
 		passwordTextLabel = new JLabel("Password :");
 		passwordTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		passwordTextLabel.setForeground(Color.WHITE);
 		passwordTextLabel.setBounds(132, 118, 71, 14);
-		
+
 		createUserPasswordField = new JPasswordField();
 		createUserPasswordField.setBorder(null);
 		createUserPasswordField.setColumns(10);
 		createUserPasswordField.setBackground(new Color(54, 57, 62));
 		createUserPasswordField.setForeground(new Color(255, 255, 255));
 		createUserPasswordField.setBounds(133, 137, 186, 20);
-		
+
 		JSeparator passwordSeparator = new JSeparator();
 		passwordSeparator.setBounds(133, 159, 186, 2);
-		
+
 		confirmPasswordTextLabel = new JLabel("Confirm password");
 		confirmPasswordTextLabel.setForeground(Color.WHITE);
 		confirmPasswordTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		confirmPasswordTextLabel.setBounds(133, 182, 120, 14);
-		
+
 		confirmPasswordField = new JPasswordField("");
 		confirmPasswordField.setForeground(Color.WHITE);
 		confirmPasswordField.setColumns(10);
@@ -245,46 +247,45 @@ public class LoginFrame extends JFrame {
 		confirmPasswordField.setBackground(new Color(54, 57, 62));
 		confirmPasswordField.setBounds(133, 199, 186, 20);
 		confirmPasswordField.addKeyListener(new CreateUserTextFieldListener());
-		
+
 		createUserButton = new JButton("Create user");
 		createUserButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createUserButton.setForeground(Color.WHITE);
 		createUserButton.setBorder(null);
 		createUserButton.setBounds(132, 260, 89, 23);
 		createUserButton.setBackground(new Color(30, 33, 38));
-		//createUserButton.addMouseListener(new MenuButtonListener());
-		
+		createUserButton.addMouseListener(new LoginButtonListener());
+
 		JSeparator confirmPasswordSeparator = new JSeparator();
 		confirmPasswordSeparator.setBounds(133, 221, 186, 2);
-		
+
 		wrongPasswordLabel = new JLabel();
 		wrongPasswordLabel.setIcon(new ImageIcon("rsc\\login\\error.png"));
 		wrongPasswordLabel.setBounds(329, 199, 16, 17);
 		wrongPasswordLabel.setVisible(false);
-		
-		
+
 		createUserPane.add(focusedTextField);
 		createUserPane.add(closeLabel);
 		createUserPane.add(avatarLabel);
-		
+
 		createUserPane.add(loginTextLabel);
 		createUserPane.add(loginField);
 		createUserPane.add(loginSeparator);
-		
+
 		createUserPane.add(passwordTextLabel);
 		createUserPane.add(createUserPasswordField);
 		createUserPane.add(passwordSeparator);
-		
+
 		createUserPane.add(confirmPasswordTextLabel);
 		createUserPane.add(confirmPasswordField);
 		createUserPane.add(confirmPasswordSeparator);
-		
+
 		createUserPane.add(createUserButton);
 		createUserPane.add(wrongPasswordLabel);
-		
+
 		return createUserPane;
 	}
-	
+
 	int xy, xx;
 
 	private void frameMouseDragged(MouseEvent evt) {
@@ -313,7 +314,7 @@ public class LoginFrame extends JFrame {
 	public LauncherControler getLauncherControler() {
 		return loginFrame.launcherControler;
 	}
-	
+
 	public JPasswordField getConfirmPasswordField() {
 		return confirmPasswordField;
 	}
@@ -321,23 +322,37 @@ public class LoginFrame extends JFrame {
 	public JPasswordField getCreateUserPasswordField() {
 		return createUserPasswordField;
 	}
-	
+
 	public JLabel getWrongPasswordLabel() {
 		return loginFrame.wrongPasswordLabel;
 	}
-	
+
 	public JLabel getCreateNewUserLoginLabel() {
 		return loginFrame.createNewUserLoginLabel;
 	}
-	
+
 	public JButton getLoginButton() {
 		return loginFrame.loginButton;
 	}
 
-	public void changeContentPanel(){
+	public JButton getCreateUserButton() {
+		return loginFrame.createUserButton;
+	}
+
+	public void loginContentPanel() {
+
+		loginPane = new JPanel();
+		loginFrame.setContentPane(loginFrame.loginPanel());
+		loginFrame.revalidate();
+		loginFrame.repaint();
+	}
+
+	public void createUserContentPanel() {
+
+		createUserPane = new JPanel();
 		loginFrame.setContentPane(loginFrame.createUserPanel());
 		loginFrame.revalidate();
 		loginFrame.repaint();
 	}
-	
+
 }
