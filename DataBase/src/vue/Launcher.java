@@ -16,7 +16,7 @@ public class Launcher {
 	private StatePanel statePanel;
 	private MainPanel mainPanel;
 
-	private static DatabaseControler databaseControler;
+	private DatabaseControler databaseControler;
 	private static Launcher launcher;
 	private static LauncherControler launcherControler;
 
@@ -96,7 +96,7 @@ public class Launcher {
 	}
 
 	public static DatabaseControler getDataBaseController() {
-		return databaseControler;
+		return launcher.databaseControler;
 	}
 
 	public LauncherControler getLauncherControler() {
@@ -105,5 +105,9 @@ public class Launcher {
 
 	public static Launcher getLauncher() {
 		return launcher;
+	}
+
+	public static void setDatabaseControler(DatabaseControler dc) {
+		launcher.databaseControler = dc;
 	}
 }

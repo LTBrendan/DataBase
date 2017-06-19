@@ -2,13 +2,15 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import java.awt.FlowLayout;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 public class SearchPanel extends JPanel {
 
@@ -16,103 +18,79 @@ public class SearchPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private JPanel notConnectedPanel;
-
-	private JPanel connectedPanel;
-	private JPanel tableListPanel;
-	private JScrollPane tableListScrollPane;
+	private JTextField tableNameField;
+	private JTextField textField;
+	private JTextField txtWhere;
 
 	/**
 	 * Create the panel.
 	 */
 	public SearchPanel() {
 
-		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		//this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		setLayout(new BorderLayout(0, 0));
 		
-		try {
-			add(connectedPanel(), BorderLayout.EAST);
-		} catch (Exception p) {
-			add(notConnectedPanel(), BorderLayout.EAST);
-		}
+		JPanel tableNamePanel = new JPanel();
+		tableNamePanel.setBackground(Color.DARK_GRAY);
+		add(tableNamePanel, BorderLayout.NORTH);
+		tableNamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		tableNameField = new JTextField();
+		tableNameField.setText("Table name");
+		tableNameField.setBackground(Color.BLACK);
+		tableNameField.setFont(new Font("Calibri", Font.PLAIN, 11));
+		tableNameField.setForeground(Color.WHITE);
+		tableNamePanel.add(tableNameField);
+		tableNameField.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel attributesPanel = new JPanel();
+		attributesPanel.setBackground(Color.DARK_GRAY);
+		panel.add(attributesPanel, BorderLayout.CENTER);
+		attributesPanel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("WHERE");
+		lblNewLabel.setBounds(51, 1, 61, 17);
+		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		attributesPanel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(113, 0, 112, 17);
+		textField.setBackground(Color.GRAY);
+		attributesPanel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("=");
+		lblNewLabel_1.setBounds(225, 0, 46, 17);
+		lblNewLabel_1.setBackground(Color.DARK_GRAY);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		attributesPanel.add(lblNewLabel_1);
+		
+		txtWhere = new JTextField();
+		txtWhere.setBounds(268, 0, 112, 17);
+		txtWhere.setBackground(Color.GRAY);
+		attributesPanel.add(txtWhere);
+		txtWhere.setColumns(10);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setPreferredSize(new Dimension(10, 15));
+		add(panel_1, BorderLayout.SOUTH);
+		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel label = new JLabel("+");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(label);
+		
+		JLabel lblSearch = new JLabel("Search");
+		lblSearch.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblSearch);
+
 	}
 
-	private JPanel notConnectedPanel() {
-
-		notConnectedPanel = new JPanel(new FlowLayout());
-		notConnectedPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		
-		JLabel notConnected = new JLabel("You are not connected to a dataBase, please connect and try again");
-		notConnected.setForeground(Color.WHITE);
-		
-		notConnectedPanel.add(notConnected);
-		
-		return notConnectedPanel;
-	}
-
-	private JPanel connectedPanel() {
-		
-		connectedPanel = new JPanel();
-
-		this.tableListPanel = new JPanel(new GridLayout(15, 1)) {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public Component add(Component comp) {
-				if (this.getComponentCount() == 15)
-					this.setLayout(new GridLayout(0, 1));
-				return super.add(comp);
-			}
-
-		};
-
-		this.tableListPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
-		this.tableListPanel.setForeground(new Color(255, 255, 255));
-
-		for (String tn : Launcher.getDataBaseController().getTableName()) {
-			JLabel connection = new JLabel(" - " + tn);
-			if (Launcher.color == 54)
-				connection.setForeground(new Color(255, 255, 255));
-			else
-				connection.setForeground(new Color(0, 0, 0));
-
-			// connection.setVerticalAlignment(HEIGHT);
-			this.tableListPanel.add(connection);
-		}
-
-		this.tableListScrollPane = new JScrollPane(tableListPanel);
-		this.tableListScrollPane.setBorder(null);
-		this.tableListScrollPane.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
-
-		connectedPanel.add(tableListScrollPane);
-		
-		return connectedPanel;
-	}
-
-	public void setConnectedPanel() {
-		
-		this.remove(notConnectedPanel);
-		this.add(connectedPanel);
-	
-	}
-	
-	public void setNotConnectedPanel() {
-		
-		this.remove(connectedPanel);
-		this.add(notConnectedPanel);
-		
-	}
-	
-	public void changePanel() {
-		
-		try {
-			add(connectedPanel(), BorderLayout.EAST);
-		} catch (Exception p) {
-			add(notConnectedPanel(), BorderLayout.EAST);
-		}
-		
-	}
-	
 }

@@ -1,0 +1,13 @@
+16:10:02	out       Logfile opened
+16:10:02	out       Logfiles cleaned
+16:10:06	out       connection attempt : mat
+16:10:06	out       successful connection
+16:10:12	out       Database connection attempt : Projet
+16:10:12	out       successful connection : Projet
+16:10:12	database  statement created
+16:10:30	database  query executed : select table_name from dba_tables
+16:11:05	database  statement closed
+16:11:05	database  connexion closed
+16:11:05	database  disconnected from data base
+16:11:08	out       logged out
+16:11:08	out       Logfile closed

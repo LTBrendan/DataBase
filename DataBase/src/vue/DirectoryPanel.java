@@ -3,6 +3,7 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -114,7 +115,8 @@ public class DirectoryPanel extends JPanel {
 				connection.setForeground(new Color(255,255,255));
 			else
 				connection.setForeground(new Color(0,0,0));
-			connection.addMouseListener(new ConnectDataBaseListener(uc.getConnexionName()));
+			connection.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			connection.addMouseListener(new ConnectDataBaseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 				
 			//connection.setVerticalAlignment(HEIGHT);
 			this.centerPanel.add(connection);
@@ -136,6 +138,7 @@ public class DirectoryPanel extends JPanel {
 		addLabel = new JLabel(" + Add new Connection");
 		addLabel.setForeground(Color.WHITE);
 		addLabel.addMouseListener(new MenuButtonListener());
+		addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.bottomPanel.add(addLabel);
 		
 		addLabel.setHorizontalAlignment(JLabel.CENTER);

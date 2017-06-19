@@ -3,14 +3,17 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import consoleControler.DatabaseControler;
 import vue.Launcher;
 
 public class ConnectDataBaseListener implements MouseListener {
 
-	String name;
+	String adress, login, password;
 	
-	public ConnectDataBaseListener(String connectionName) { 
-		name = connectionName;
+	public ConnectDataBaseListener(String connectionAdress, String connectionLogin, String connectionPassword) { 
+		adress = connectionAdress;
+		login = connectionLogin;
+		password = connectionPassword;
 	}
 	
 	@Override
@@ -35,7 +38,7 @@ public class ConnectDataBaseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		Launcher.getLauncher().getLauncherControler().connectDatabase(name);
+		Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
 	}
 
 }

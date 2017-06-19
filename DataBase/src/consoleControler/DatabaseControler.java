@@ -3,7 +3,6 @@ package consoleControler;
 import static utils.Scan.sc;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -31,7 +30,7 @@ public class DatabaseControler extends MainControler {
 	private String address;
 	private String login;
 	private String password;
-	
+
 	private static DatabaseControler databaseControler;
 
 	public DatabaseControler(String address, String login, String password) {
@@ -39,7 +38,7 @@ public class DatabaseControler extends MainControler {
 		this.setAddress(address);
 		this.setLogin(login);
 		this.setPassword(password);
-		
+
 		databaseControler = this;
 		// Connection to the data base Using JDBC. Need the database address,
 		// the user name and the password
@@ -54,6 +53,7 @@ public class DatabaseControler extends MainControler {
 				System.out.println("\nCreating statement...");
 				statement = conn.createStatement();
 				Log.database("statement created");
+				System.out.println("Statement created");
 			} catch (SQLException e2) {
 				System.out.println("Statement creation error !");
 				Log.database("error creating statement");
@@ -62,7 +62,7 @@ public class DatabaseControler extends MainControler {
 		} catch (SQLException e1) {
 			System.out.println("Connection error");
 			Log.out("unable to connect to database" + address);
-			e1.printStackTrace();
+			// e1.printStackTrace();
 		}
 		exec = new QueryExecutor(conn, statement);
 	}
@@ -97,11 +97,11 @@ public class DatabaseControler extends MainControler {
 				String query = Create.getQuery();
 				this.executeQuery(query);
 				System.out.println(query);
-				Log.database("query executed : "+query);
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println("create : " + ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error (create) : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error (create) : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 
@@ -109,11 +109,11 @@ public class DatabaseControler extends MainControler {
 			try {
 				String query = Drop.getQuery();
 				this.executeQuery(query);
-				Log.database("query executed : "+query);
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println("drop : " + ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error (drop) : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error (drop) : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 
@@ -121,23 +121,23 @@ public class DatabaseControler extends MainControler {
 			try {
 				String query = Insert.getQuery();
 				this.executeQuery(query);
-				Log.database("query executed : "+query);
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println("insert : " + ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error (insert) : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error (insert) : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 
 		if (want.equalsIgnoreCase("select") || want.equals("4")) {
 			try {
 				String query = Select.getQuery();
-				display (this.executeQuery(query));
-				Log.database("query executed : "+query);
+				display(this.executeQuery(query));
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println("select : " + ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error (select) : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error (select) : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 
@@ -145,11 +145,11 @@ public class DatabaseControler extends MainControler {
 			try {
 				String query = Delete.getQuery();
 				this.executeQuery(query);
-				Log.database("query executed : "+query);
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println("delete : " + ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error (delete) : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error (delete) : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 
@@ -171,17 +171,17 @@ public class DatabaseControler extends MainControler {
 			try {
 				String query = Connect.getExpertQuery();
 				if (query.toLowerCase().contains("select")) {
-					display (this.executeQuery(query));
+					display(this.executeQuery(query));
 				}
-				
+
 				else {
 					this.executeQuery(query);
 				}
-				Log.database("query executed : "+query);
+				Log.database("query executed : " + query);
 			} catch (SQLException e) {
 				System.out.println("Query error");
 				System.out.println(ExceptionHandler.analyse(e.getMessage()));
-				Log.err ("query error : "+ExceptionHandler.analyse(e.getMessage()));
+				Log.err("query error : " + ExceptionHandler.analyse(e.getMessage()));
 			}
 		}
 	}
@@ -219,28 +219,47 @@ public class DatabaseControler extends MainControler {
 		}
 		return ret;
 	}
-	
-	public String[] getTableName() {
-		
-		DatabaseMetaData dmd = null;
-		String[] ret = null;
-		try {
-			dmd = conn.getMetaData();
 
-			ResultSet rs = dmd.getTables(conn.getCatalog(),null,"%",null);
-			ResultSetMetaData rsmd = rs.getMetaData();
-			
-			int count = rsmd.getColumnCount();
-			ret = new String[count];
-			
-			for (int i = 1; i <= count; i++) {
-				ret[i - 1] = rsmd.getColumnName(i);
-			}
-		} catch (SQLException e) {
+	// public String[] getTableName() {
 
-		}
-		return ret;
-	}
+	// String[] ret = null;
+	// try {
+	//
+	// ResultSet rs = exec.executeQuery("Select table_name from all_tables");
+	// //Select * from (Select table_name from dba_tables)
+	// ResultSetMetaData rsmd = rs.getMetaData();
+	//
+	// int count = rsmd.getColumnCount();
+	// ret = new String[250];
+	// while (rs.next())
+	// for (int i = 1; i <= 250; i++) {
+	// ret[i - 1] = rs.getString(i);
+	// }
+	// } catch (SQLException e) {
+	//
+	// }
+
+	//
+	// try {
+	// ResultSet rs = exec.executeQuery("Select table_name from all_tables");
+	// ResultSetMetaData rsmd = rs.getMetaData();
+	// int columnCount = rsmd.getColumnCount();
+	// int i =0;
+	// // For each line of the table
+	// while (rs.next()) {
+	// ret[i] = (rs.getString(columnCount));
+	// i++;
+	// }
+	// } catch (SQLException e) {
+	// System.out.println("Query error !");
+	// System.out.println (ExceptionHandler.analyse (e.getMessage()));
+	// } catch (NullPointerException ex) {
+	//
+	// }
+	//
+	//
+	// return ret;
+	// }
 
 	public ResultSet executeQuery(String query) throws SQLException {
 		return exec.executeQuery(query);
@@ -270,13 +289,13 @@ public class DatabaseControler extends MainControler {
 			}
 		} catch (SQLException e) {
 			System.out.println("Query error !");
-			System.out.println (ExceptionHandler.analyse (e.getMessage()));
+			System.out.println(ExceptionHandler.analyse(e.getMessage()));
 		} catch (NullPointerException ex) {
 
 		}
 	}
-	
-	public void quit () {
+
+	public void quit() {
 		if (statement != null) {
 			try {
 				statement.close();
@@ -295,8 +314,8 @@ public class DatabaseControler extends MainControler {
 			}
 		}
 	}
-	
-	public static DatabaseControler getDataBaseControler(){
+
+	public static DatabaseControler getDataBaseControler() {
 		return databaseControler;
 	}
 }
