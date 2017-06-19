@@ -56,13 +56,13 @@ public class MenuButtonListener implements MouseListener {
 			Launcher.getMainPanel().getDetailPanel().revalidate();
 			Launcher.getMainPanel().getDetailPanel().repaint();
 			
-		}else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getPreSettingPanel().getSettingLabel())){
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getPreSettingPanel().getSettingLabel())){
 			
 			DetailPanel.setSettingPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
-		}else if (e.getComponent().equals(Launcher.getStatePanel().getEditor())) {
+		} else if (e.getComponent().equals(Launcher.getStatePanel().getEditor())) {
 			
 			DetailPanel.setWorkPanel();
 			MainPanel.getMainPanel().getDetailPanel().revalidate();

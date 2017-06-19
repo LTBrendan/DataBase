@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import consoleControler.LauncherControler;
+
 /**
  * This class allows to manage users by loading their information from a file and saving it to the same file
  *

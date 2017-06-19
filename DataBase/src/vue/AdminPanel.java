@@ -3,14 +3,20 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import connexion.User;
 import connexion.UserManager;
+import controller.DeleteButtonListener;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminPanel extends JPanel {
 
@@ -53,13 +59,32 @@ public class AdminPanel extends JPanel {
 		userListPanel.setForeground(new Color(255, 255, 255));
 
 		for (User uc : UserManager.getUserList()) {
-			JLabel userLabel = new JLabel(" - " + uc.getLogin());
+			JPanel userPanel = new JPanel(new BorderLayout());
+			userPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+			
+			JLabel tiretLabel = new JLabel(" - ");
+			if (Launcher.color == 54)
+				tiretLabel.setForeground(new Color(255, 255, 255));
+			else
+				tiretLabel.setForeground(new Color(0, 0, 0));
+			
+			JLabel userLabel = new JLabel(uc.getLogin());
 			if (Launcher.color == 54)
 				userLabel.setForeground(new Color(255, 255, 255));
 			else
 				userLabel.setForeground(new Color(0, 0, 0));
-
-			userListPanel.add(userLabel);
+			
+			JLabel deleteUser = new JLabel();
+			deleteUser.setIcon(new ImageIcon("rsc\\login\\error.png"));
+			deleteUser.setVisible(true);
+			deleteUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			deleteUser.addMouseListener(new DeleteButtonListener(uc.getLogin(), uc.getPass()));
+			
+			userPanel.add(tiretLabel, BorderLayout.WEST);
+			userPanel.add(deleteUser, BorderLayout.EAST);
+			userPanel.add(userLabel, BorderLayout.CENTER);
+			
+			userListPanel.add(userPanel);
 		}
 
 		scrollPane = new JScrollPane(userListPanel);
@@ -79,4 +104,6 @@ public class AdminPanel extends JPanel {
 		add(centerPanel, BorderLayout.CENTER);
 
 	}
+	
+	
 }

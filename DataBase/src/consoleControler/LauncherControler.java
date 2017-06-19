@@ -50,6 +50,7 @@ public class LauncherControler extends MainControler {
 	}
 
 	public void removeUser(String login, String password) {
+		System.out.println("DEBUG");
 		UserManager.removeUser(login, password);
 	}
 
