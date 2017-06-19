@@ -40,6 +40,7 @@ public class User implements Serializable {
 		this.setPass(pass);
 		this.setLogin(login);
 		this.connexionList = new ArrayList<UserConnexion>();
+		this.color = 54;
 	}
 
 	/**

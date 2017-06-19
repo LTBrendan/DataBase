@@ -73,6 +73,9 @@ public class UserManager {
 			ObjectInputStream ois = new ObjectInputStream (bis);
 			Object read;
 			while ((read = ois.readObject ()) != null) {
+				User us = (User)read;
+				if (us.getColor() != 54 && us.getColor() != 247) 
+					us.setColor(54);
 				userList.add ((User)read);
 			}
 			ois.close ();
