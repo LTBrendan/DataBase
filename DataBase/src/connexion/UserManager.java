@@ -185,4 +185,8 @@ public class UserManager {
 	public static ArrayList<User> getUserList () {
 		return UserManager.userList;
 	}
+	
+	public static String decrypt (String toDecrypt) {
+		return encrypter.decrypt(toDecrypt);
+	}
 }

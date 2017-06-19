@@ -40,4 +40,14 @@ public class AES {
 		}
 		return null;
 	}
+	
+	 public String decrypt(String str) {
+         try {
+             byte[] dec = new sun.misc.BASE64Decoder().decodeBuffer(str);
+             byte[] utf8 = dcipher.doFinal(dec);
+             return new String(utf8, "UTF-8");
+         } catch (Exception e) {
+         }
+         return null;
+     }
 }
