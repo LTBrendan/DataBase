@@ -95,21 +95,7 @@ public class WorkPanel extends JSplitPane {
 	}
 
 	private JScrollPane createUpScrollPane(JPanel panel) {
-
-		UIManager.put("ScrollBar.trackHighlightForeground", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("scrollbar", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.thumb", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.thumbHeight", 2);
-		UIManager.put("ScrollBar.background", (new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.thumbDarkShadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.thumbShadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.thumbHighlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.trackForeground", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.trackHighlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.foreground", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.shadow", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8)));
-
+		
 		this.upScrollPane = new JScrollPane(panel);
 		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
 		this.upScrollPane.setBorder(null);
