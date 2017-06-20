@@ -68,11 +68,15 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
 
      private static final boolean isReservedWord(String word) {
          return(word.toUpperCase().trim().equals("AND") ||
+                 word.toUpperCase().trim().equals("COUNT") ||
+                 word.toUpperCase().trim().equals("CREATE") ||
         		 word.toUpperCase().trim().equals("CROSS") || 
                         word.toUpperCase().trim().equals("CURRENT_DATE") ||
                         word.toUpperCase().trim().equals("CURRENT_TIME") ||
                         word.toUpperCase().trim().equals("CURRENT_TIMESTAMP") ||
+                        word.toUpperCase().trim().equals("DELETE") ||
                         word.toUpperCase().trim().equals("DISTINCT") ||
+                        word.toUpperCase().trim().equals("DROP") ||
                         word.toUpperCase().trim().equals("EXCEPT") ||
                         word.toUpperCase().trim().equals("EXISTS") ||
                         word.toUpperCase().trim().equals("FALSE") ||
@@ -83,7 +87,9 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
                         word.toUpperCase().trim().equals("GROUP") ||
                         word.toUpperCase().trim().equals("HAVING") ||
                         word.toUpperCase().trim().equals("INNER") ||
+                        word.toUpperCase().trim().equals("INSERT") ||
                         word.toUpperCase().trim().equals("INTERSECT") ||
+                        word.toUpperCase().trim().equals("INTO") ||
                         word.toUpperCase().trim().equals("IS") ||
                         word.toUpperCase().trim().equals("JOIN") ||
                         word.toUpperCase().trim().equals("LIKE") ||
@@ -105,8 +111,8 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
                         word.toUpperCase().trim().equals("TRUE") ||
                         word.toUpperCase().trim().equals("UNION") ||
                         word.toUpperCase().trim().equals("UNIQUE") ||
-                        word.toUpperCase().trim().equals("WHERE") ||
-                        word.toUpperCase().trim().equals("COUNT("));
+                        word.toUpperCase().trim().equals("VALUES") ||
+                        word.toUpperCase().trim().equals("WHERE"));
     }
 	
 
