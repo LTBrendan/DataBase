@@ -44,9 +44,21 @@ public class MenuButtonListener implements MouseListener {
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
-			
-			JLabel label = new JLabel(
-					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText() + ":\n");
+			String query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText();
+			String result = query + ": \n";
+			if (query.toLowerCase().contains("create")) {
+				result +="table created \n";
+			}
+			if (query.toLowerCase().contains("insert")) {
+				result +="line inserted \n";
+			}
+			if (query.toLowerCase().contains("drop")) {
+				result +="table dropped \n";
+			}
+			if (query.toLowerCase().contains("delete")) {
+				result +="line deleted \n";
+			}
+			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>")+"</HTML>");
 			if (Launcher.color == 54)
 				label.setForeground(new Color(255, 255, 255));
 			else 
@@ -89,7 +101,7 @@ public class MenuButtonListener implements MouseListener {
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getSettingPanel().getValidateButton())) {
-			
+
 			Launcher.getLauncher().getLauncherControler().changeLogin(Launcher.getLauncher().getLauncherControler().getCurrentUserName(), new String(Launcher.getMainPanel().getDetailPanel().getSettingPanel().getNewPassword().getPassword()), Launcher.getMainPanel().getDetailPanel().getSettingPanel().getNewLogin().getText());
 			
 		} else if (e.getComponent().equals(Launcher.getStatePanel().getAdmin())) {
