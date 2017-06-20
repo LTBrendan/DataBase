@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import vue.LoginFrame;
+import view.vue.LoginFrame;
 
 public class CreateUserTextFieldListener implements KeyListener {
 

@@ -3,9 +3,9 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import vue.InvalidInformations;
-import vue.Launcher;
-import vue.LoginFrame;
+import view.vue.InvalidInformations;
+import view.vue.Launcher;
+import view.vue.LoginFrame;
 
 public class LoginButtonListener implements MouseListener {
 

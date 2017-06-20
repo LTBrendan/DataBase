@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import vue.ConfirmDelete;
+import view.vue.ConfirmDelete;
 
 public class DeleteButtonListener implements MouseListener {
 

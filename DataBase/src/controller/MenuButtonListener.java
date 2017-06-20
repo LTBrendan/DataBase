@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import exception.ExceptionHandler;
-import vue.DetailPanel;
-import vue.Launcher;
-import vue.MainPanel;
+import view.vue.DetailPanel;
+import view.vue.Launcher;
+import view.vue.MainPanel;
 
 public class MenuButtonListener implements MouseListener {
 

@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import logs.Log;
-import vue.Launcher;
+import view.vue.Launcher;
 
 public class LabelCloseListener implements MouseListener {
 

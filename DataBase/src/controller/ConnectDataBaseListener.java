@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import consoleControler.DatabaseControler;
 import logs.Log;
-import vue.Launcher;
+import view.vue.Launcher;
 
 public class ConnectDataBaseListener implements MouseListener {
 

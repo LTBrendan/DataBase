@@ -3,9 +3,9 @@ package controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import vue.InvalidInformations;
-import vue.Launcher;
-import vue.LoginFrame;
+import view.vue.InvalidInformations;
+import view.vue.Launcher;
+import view.vue.LoginFrame;
 
 public class KeyboardListener implements KeyListener {
 

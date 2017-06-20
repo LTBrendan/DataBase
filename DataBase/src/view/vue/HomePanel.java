@@ -1,4 +1,4 @@
-package vue;
+package view.vue;
 
 import java.awt.Color;
 import java.awt.Font;

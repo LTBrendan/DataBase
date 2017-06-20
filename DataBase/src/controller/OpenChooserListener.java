@@ -1,13 +1,13 @@
 package controller;
 
+import static utils.RWFile.read;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
 
-import vue.Launcher;
-
-import static utils.RWFile.read;
+import view.vue.Launcher;
 
 public class OpenChooserListener implements ActionListener {
 

@@ -3,8 +3,8 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import vue.InvalidInformations;
-import vue.LoginFrame;
+import view.vue.InvalidInformations;
+import view.vue.LoginFrame;
 
 public class InvalidInfoButtonListener implements MouseListener {
 
