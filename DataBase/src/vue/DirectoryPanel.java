@@ -20,6 +20,7 @@ import consoleControler.DatabaseControler;
 import controller.ConnectDataBaseListener;
 import controller.MenuButtonListener;
 import controller.TextFieldListener;
+import logs.Log;
 
 public class DirectoryPanel extends JPanel {
 
@@ -130,9 +131,15 @@ public class DirectoryPanel extends JPanel {
 			inLine.setIcon(new ImageIcon("rsc\\dataBase\\ok.png"));
 			try {
 				Launcher.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
+				Log.database ("connection established");
 			} catch (SQLException e) {
 				inLine.setIcon(new ImageIcon("rsc\\dataBase\\error.png"));
 			} finally {
+				try {
+					Launcher.getDataBaseController().quit();
+				} catch (NullPointerException ex) {
+
+				}
 				Launcher.setDatabaseControler(null);
 			}
 			connPanel.add(connection, BorderLayout.CENTER);
