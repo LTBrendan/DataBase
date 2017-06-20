@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.swing.JLabel;
@@ -80,7 +82,21 @@ public class MenuButtonListener implements MouseListener {
 					result +=ExceptionHandler.analyse (ex.getMessage());
 				}
 			}
-			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>")+"</HTML>");
+			if (query.toLowerCase().contains("select")) {
+				try {
+					ResultSet rs = Launcher.getDataBaseController().executeQuery(query);
+					ResultSetMetaData rsmd = rs.getMetaData();
+					int columnCount = rsmd.getColumnCount();
+					for (int i = 1; i < columnCount; i++) {
+						result += rsmd.getColumnName(i) + " \t|\t ";
+					}
+					result += rsmd.getColumnName(columnCount);
+					
+				} catch (SQLException ex) {
+					result +=ExceptionHandler.analyse (ex.getMessage());
+				}
+			}
+			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</HTML>");
 			if (Launcher.color == 54)
 				label.setForeground(new Color(255, 255, 255));
 			else 
