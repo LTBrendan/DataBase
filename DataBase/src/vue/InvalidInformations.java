@@ -79,7 +79,6 @@ public class InvalidInformations extends JDialog {
 		okButton.setBackground(new Color(30, 33, 38));
 		okButton.setForeground(new Color(255, 255, 255));
 		okButton.addMouseListener(new InvalidInfoButtonListener());
-		okButton.addKeyListener(new KeyboardListener());
 
 		createNewButton = new JButton("Create new user");
 		createNewButton.setBackground(new Color(30, 33, 38));
