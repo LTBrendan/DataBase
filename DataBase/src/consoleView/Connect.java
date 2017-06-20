@@ -9,6 +9,10 @@ import logs.Log;
  * This class allows a user to connect to a database
  *
  */
+/**
+ * @author Patate1er
+ *
+ */
 public class Connect {
 	
 	private DatabaseControler dc;
@@ -31,6 +35,9 @@ public class Connect {
 
 	}
 
+	/**
+	 * This method start to ask the user what he wants to do
+	 */
 	public void start() {
 		String want = "";
 
@@ -61,6 +68,10 @@ public class Connect {
 		}
 	}
 	
+	/**
+	 * This method ask user to write the query entirely
+	 * @return the query written by the user
+	 */
 	public static String getExpertQuery () {
 		System.out.println("\nWrite here your query");
 		System.out.print("> ");
@@ -70,6 +81,9 @@ public class Connect {
 		
 	}
 
+	/**
+	 * this method disconnect the user form the database
+	 */
 	public void quit() {
 		dc.quit();
 		Log.database("disconnected from data base");

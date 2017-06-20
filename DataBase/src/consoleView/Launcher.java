@@ -10,8 +10,9 @@ import logs.Log;
  *
  */
 public class Launcher {
-
+	//the LauncherControler
 	private static LauncherControler mc;
+	//the current user
 	private static String currentUser;
 	
 	public static void main(String[] args) {
@@ -34,6 +35,10 @@ public class Launcher {
 		Log.close();
 	}
 
+	/**
+	 * This method ask a user to connect with his login and password
+	 * @return true only if the couple of login and password exists in the UserManager's list
+	 */
 	private static boolean connect() {
 		System.out.println("Login ?");
 		String login = sc.next();
@@ -67,6 +72,9 @@ public class Launcher {
 		return ret;
 	}
 
+	/**
+	 * This method ask the user what he want to do
+	 */
 	private static void userAction() {
 		String s = "";
 
@@ -100,6 +108,9 @@ public class Launcher {
 		}
 	}
 
+	/**
+	 * This method ask the administrator what he want to do
+	 */
 	private static void adminAction() {
 		String s = "";
 
@@ -143,6 +154,9 @@ public class Launcher {
 		}
 	}
 
+	/**
+	 * This method allow the adminstrator to add a new user
+	 */
 	private static void add() {
 		System.out.println("Login ?");
 		String login = sc.next();
@@ -174,6 +188,9 @@ public class Launcher {
 		}
 	}
 
+	/**
+	 * This method allows the administrator to remove a user
+	 */
 	private static void remove() {
 		String s = "";
 		System.out.println("Login ?");
@@ -203,6 +220,9 @@ public class Launcher {
 
 	}
 	
+	/**
+	 * This method show the option in the application parameters
+	 */
 	private static void parameter ()	{
 		String s = "";
 		System.out.println("Change login");
@@ -218,6 +238,9 @@ public class Launcher {
 		}
 	}
 	
+	/**
+	 * This method allow a user to change his password
+	 */
 	private static void changeLogin () {
 		Log.out("Attempt to change login");
 		System.out.println("Choose a new login");
@@ -229,6 +252,9 @@ public class Launcher {
 		mc.changeLogin(currentUser, password, login);
 	}
 
+	/**
+	 * This method allow a user to use one of his database connection
+	 */
 	private static void useConnect() {
 		System.out.println("Connection name ?");
 		String connectionName = sc.next();
@@ -236,6 +262,9 @@ public class Launcher {
 		mc.connectDatabase(connectionName);
 	}
 
+	/**
+	 * This method allow a user to add a new database connection
+	 */
 	private static void newConnect() {
 		System.out.println("Choose a connection name ?");
 		String connectionName = sc.next();
