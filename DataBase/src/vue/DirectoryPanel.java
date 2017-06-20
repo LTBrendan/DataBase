@@ -7,6 +7,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -110,6 +111,9 @@ public class DirectoryPanel extends JPanel {
 		
 		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {
 			
+			JPanel connPanel = new JPanel(new BorderLayout());
+			connPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+			
 			JLabel connection = new JLabel(" - " + uc.getConnexionName());
 			if (Launcher.color == 54)
 				connection.setForeground(new Color(255,255,255));
@@ -119,7 +123,13 @@ public class DirectoryPanel extends JPanel {
 			connection.addMouseListener(new ConnectDataBaseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 				
 			//connection.setVerticalAlignment(HEIGHT);
-			this.centerPanel.add(connection);
+			
+			JLabel inLine = new JLabel();
+			inLine.setIcon(new ImageIcon("rsc\\dataBase\\ok.png"));
+			
+			connPanel.add(connection, BorderLayout.CENTER);
+			connPanel.add(inLine, BorderLayout.EAST);
+			this.centerPanel.add(connPanel);
 		}
 
 		this.centerScrollPane = new JScrollPane(centerPanel);

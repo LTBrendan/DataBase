@@ -135,7 +135,8 @@ public class SearchPanel extends JPanel {
 				JPanel fieldPanel = new JPanel();
 				fieldPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				fieldPanel.setLayout(new GridLayout(1, 2));
-				fieldPanel.setMinimumSize(new Dimension(100, 10));
+				fieldPanel.setMinimumSize(new Dimension(100, 100));
+				fieldPanel.setMaximumSize(new Dimension(100,100));
 
 				JPanel columnFlowPanel = new JPanel(new FlowLayout());
 				columnFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
@@ -145,6 +146,7 @@ public class SearchPanel extends JPanel {
 				columnField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
 				columnField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				columnField.setColumns(10);
+				columnField.setMinimumSize(new Dimension(100, 100));
 
 				JPanel valueFlowPanel = new JPanel(new FlowLayout());
 				valueFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
@@ -154,6 +156,7 @@ public class SearchPanel extends JPanel {
 				valueField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
 				valueField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				valueField.setColumns(10);
+				valueField.setMinimumSize(new Dimension(100, 100));
 
 				columnFlowPanel.add(columnField);
 				valueFlowPanel.add(valueField);

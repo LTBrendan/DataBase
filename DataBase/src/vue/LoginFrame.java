@@ -109,7 +109,7 @@ public class LoginFrame extends JFrame {
 		closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
 		closeLabel.addMouseListener(new LabelCloseListener());
 
-		loginField = new JTextField("");
+		loginField = new JTextField();
 		loginField.setBorder(null);
 		loginField.setBackground(new Color(54, 57, 62));
 		loginField.setForeground(new Color(255, 255, 255));
