@@ -62,6 +62,7 @@ public class LoginFrame extends JFrame {
 	 */
 	public static void main(String[] args) {
 		Log.open();
+		Log.clean();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

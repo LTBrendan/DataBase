@@ -48,7 +48,7 @@ public class MenuButtonListener implements MouseListener {
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
-			String query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText();
+			String query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText().split(";")[0];
 			String result = query + ": \n";
 			if (query.toLowerCase().contains("create")) {
 				try {
@@ -56,6 +56,8 @@ public class MenuButtonListener implements MouseListener {
 					result +="table created \n";
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
+				} catch (NullPointerException ex) {
+					result += "You must be connected to a database to execute query";
 				}
 			}
 			if (query.toLowerCase().contains("insert")) {
@@ -64,6 +66,8 @@ public class MenuButtonListener implements MouseListener {
 					result +="line inserted \n";
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
+				} catch (NullPointerException ex) {
+					result += "You must be connected to a database to execute query";
 				}
 			}
 			if (query.toLowerCase().contains("drop")) {
@@ -72,6 +76,8 @@ public class MenuButtonListener implements MouseListener {
 					result +="table dropped \n";
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
+				} catch (NullPointerException ex) {
+					result += "You must be connected to a database to execute query";
 				}
 			}
 			if (query.toLowerCase().contains("delete")) {
@@ -80,6 +86,8 @@ public class MenuButtonListener implements MouseListener {
 					result +="line deleted \n";
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
+				} catch (NullPointerException ex) {
+					result += "You must be connected to a database to execute query";
 				}
 			}
 			if (query.toLowerCase().contains("select")) {
@@ -99,6 +107,8 @@ public class MenuButtonListener implements MouseListener {
 					}
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
+				} catch (NullPointerException ex) {
+					result += "You must be connected to a database to execute query";
 				}
 			}
 			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</HTML>");
@@ -167,6 +177,8 @@ public class MenuButtonListener implements MouseListener {
 			MainPanel.getMainPanel().getDetailPanel().revalidate();
 			MainPanel.getMainPanel().getDetailPanel().repaint();
 			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getClearLabel())) {
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().setText(null);
 		}
 	}
 }

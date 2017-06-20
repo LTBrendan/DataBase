@@ -216,19 +216,19 @@ public class WorkPanel extends JSplitPane {
 		return executeLabel;
 	}
 
-	public static JLabel getClearLabel() {
+	public JLabel getClearLabel() {
 		return clearLabel;
 	}
 
-	public static JLabel getSaveLabel() {
+	public JLabel getSaveLabel() {
 		return saveLabel;
 	}
 
-	public static JLabel getExportLabel() {
+	public JLabel getExportLabel() {
 		return exportLabel;
 	}
 
-	public static JLabel getExecuteAllLabel() {
+	public JLabel getExecuteAllLabel() {
 		return executeAllLabel;
 	}
 
