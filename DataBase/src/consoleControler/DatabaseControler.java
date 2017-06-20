@@ -56,17 +56,12 @@ public class DatabaseControler extends MainControler {
 		// Connection to the data base Using JDBC. Need the database address,
 		// the user name and the password
 		try {
-			System.out.println("\nConnection to database...");
 			conn = DriverManager.getConnection(address, login, password);
-			System.out.println("Successful connection !");// Creation of a
-															// statement that
-															// allows to execute
-															// query after
 			try {
-				System.out.println("\nCreating statement...");
+			// Creation of a statement that allows to execute query after
 				statement = conn.createStatement();
+				exec = new QueryExecutor(conn, statement);
 				Log.database("statement created");
-				System.out.println("Statement created");
 			} catch (SQLException e2) {
 				System.out.println("Statement creation error !");
 				Log.database("error creating statement");
@@ -77,7 +72,6 @@ public class DatabaseControler extends MainControler {
 			Log.out("unable to connect to database" + address);
 			// e1.printStackTrace();
 		}
-		exec = new QueryExecutor(conn, statement);
 	}
 
 	/**

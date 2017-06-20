@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 
+import exception.ExceptionHandler;
 import vue.DetailPanel;
 import vue.Launcher;
 import vue.MainPanel;
@@ -47,16 +49,36 @@ public class MenuButtonListener implements MouseListener {
 			String query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText();
 			String result = query + ": \n";
 			if (query.toLowerCase().contains("create")) {
-				result +="table created \n";
+				try {
+					Launcher.getDataBaseController().executeQuery(query);
+					result +="table created \n";
+				} catch (SQLException ex) {
+					result +=ExceptionHandler.analyse (ex.getMessage());
+				}
 			}
 			if (query.toLowerCase().contains("insert")) {
-				result +="line inserted \n";
+				try {
+					Launcher.getDataBaseController().executeQuery(query);
+					result +="line inserted \n";
+				} catch (SQLException ex) {
+					result +=ExceptionHandler.analyse (ex.getMessage());
+				}
 			}
 			if (query.toLowerCase().contains("drop")) {
-				result +="table dropped \n";
+				try {
+					Launcher.getDataBaseController().executeQuery(query);
+					result +="table dropped \n";
+				} catch (SQLException ex) {
+					result +=ExceptionHandler.analyse (ex.getMessage());
+				}
 			}
 			if (query.toLowerCase().contains("delete")) {
-				result +="line deleted \n";
+				try {
+					Launcher.getDataBaseController().executeQuery(query);
+					result +="line deleted \n";
+				} catch (SQLException ex) {
+					result +=ExceptionHandler.analyse (ex.getMessage());
+				}
 			}
 			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>")+"</HTML>");
 			if (Launcher.color == 54)

@@ -22,7 +22,6 @@ public class QueryExecutor {
 	}
 	
 	public ResultSet executeQuery(String query) throws SQLException {
-		System.out.println(query);
 		resultat = statement.executeQuery(query);
 		return resultat;
 	}
