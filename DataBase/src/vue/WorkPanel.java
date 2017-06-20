@@ -232,7 +232,7 @@ public class WorkPanel extends JSplitPane {
 		return executeAllLabel;
 	}
 
-	public static JLabel getImportLabel() {
+	public JLabel getImportLabel() {
 		return importLabel;
 	}
 

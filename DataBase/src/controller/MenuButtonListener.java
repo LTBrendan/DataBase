@@ -187,6 +187,8 @@ public class MenuButtonListener implements MouseListener {
 			JFrame frame = new JFrame ();
 			saveJFC.addActionListener(new SaveChooserListener (saveJFC, Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText()));
 			saveJFC.showSaveDialog(frame);
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getImportLabel())) {
+			
 		}
 	}
 }
