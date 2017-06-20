@@ -2,6 +2,8 @@ package consoleView;
 
 import static utils.Scan.sc;
 
+import java.sql.SQLException;
+
 import consoleControler.DatabaseControler;
 import logs.Log;
 
@@ -30,8 +32,12 @@ public class Connect {
 	 *            user attempting to connect the database
 	 */
 	public Connect(String address, String login, String password) {
-
-		dc = new DatabaseControler(address, login, password);
+		try {
+			dc = new DatabaseControler(address, login, password);
+		} catch (SQLException e) {
+			System.out.println("Connection error");
+			Log.database("conection error");
+		}
 
 	}
 

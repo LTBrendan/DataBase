@@ -25,28 +25,34 @@ import query.QueryExecutor;
  */
 public class DatabaseControler extends MainControler {
 
-	//the DatabaseControler query executor
+	// the DatabaseControler query executor
 	QueryExecutor exec;
 	// the database connection
 	private Connection conn = null;
 	// the statement that allows to execute query from java
 	private static Statement statement = null;
-	//the database address
+	// the database address
 	private String address;
-	//the user's database login
+	// the user's database login
 	private String login;
-	//the user's database password
+	// the user's database password
 	private String password;
 
 	private static DatabaseControler databaseControler;
 
 	/**
 	 * DatabaseControler constructor
-	 * @param address the database address
-	 * @param login the user's login to log into the database
-	 * @param password the user's password to log into the database
+	 * 
+	 * @param address
+	 *            the database address
+	 * @param login
+	 *            the user's login to log into the database
+	 * @param password
+	 *            the user's password to log into the database
+	 * @throws SQLException
+	 *             if can not establish connection
 	 */
-	public DatabaseControler(String address, String login, String password) {
+	public DatabaseControler(String address, String login, String password) throws SQLException {
 		super();
 		this.setAddress(address);
 		this.setLogin(login);
@@ -55,27 +61,22 @@ public class DatabaseControler extends MainControler {
 		databaseControler = this;
 		// Connection to the data base Using JDBC. Need the database address,
 		// the user name and the password
+		conn = DriverManager.getConnection(address, login, password);
 		try {
-			conn = DriverManager.getConnection(address, login, password);
-			try {
 			// Creation of a statement that allows to execute query after
-				statement = conn.createStatement();
-				exec = new QueryExecutor(conn, statement);
-				Log.database("statement created");
-			} catch (SQLException e2) {
-				System.out.println("Statement creation error !");
-				Log.database("error creating statement");
-				e2.printStackTrace();
-			}
-		} catch (SQLException e1) {
-			System.out.println("Connection error");
-			Log.out("unable to connect to database" + address);
-			// e1.printStackTrace();
+			statement = conn.createStatement();
+			exec = new QueryExecutor(conn, statement);
+			Log.database("statement created");
+		} catch (SQLException e) {
+			System.out.println("Statement creation error !");
+			Log.database("error creating statement");
+			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * Getter for address attribute
+	 * 
 	 * @return the address
 	 */
 	public String getAddress() {
@@ -84,7 +85,9 @@ public class DatabaseControler extends MainControler {
 
 	/**
 	 * Setter for address attribute
-	 * @param address the new address
+	 * 
+	 * @param address
+	 *            the new address
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -92,22 +95,26 @@ public class DatabaseControler extends MainControler {
 
 	/**
 	 * Getter for login attribute
+	 * 
 	 * @return the login
 	 */
 	public String getLogin() {
 		return login;
 	}
-	
+
 	/**
 	 * Setter for login attribute
-	 * @param login the new login
+	 * 
+	 * @param login
+	 *            the new login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	
+
 	/**
 	 * Getter for password attribute
+	 * 
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -116,7 +123,9 @@ public class DatabaseControler extends MainControler {
 
 	/**
 	 * Setter for password attribute
-	 * @param password the new password
+	 * 
+	 * @param password
+	 *            the new password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -124,7 +133,9 @@ public class DatabaseControler extends MainControler {
 
 	/**
 	 * This method get the query wanted by the user
-	 * @param want what the user want to do
+	 * 
+	 * @param want
+	 *            what the user want to do
 	 */
 	public void getQuery(String want) {
 		if (want.equalsIgnoreCase("create") || want.equals("1")) {
@@ -220,10 +231,12 @@ public class DatabaseControler extends MainControler {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method return the name of all the table's column
-	 * @param tableName the table from where to get the column names
+	 * 
+	 * @param tableName
+	 *            the table from where to get the column names
 	 * @return a String table with all the tables names
 	 */
 	public static String[] getColumnName(String tableName) {
@@ -242,10 +255,12 @@ public class DatabaseControler extends MainControler {
 		}
 		return ret;
 	}
-	
+
 	/**
 	 * This method return the type of all the table's column
-	 * @param tableName the table from where to get the column types
+	 * 
+	 * @param tableName
+	 *            the table from where to get the column types
 	 * @return a String table with all the tables types
 	 */
 	public static String[] getColumnType(String tableName) {
@@ -264,12 +279,15 @@ public class DatabaseControler extends MainControler {
 		}
 		return ret;
 	}
-	
+
 	/**
 	 * This method call the QueryExecutor to execute the query in parameter
-	 * @param query the query to execute
+	 * 
+	 * @param query
+	 *            the query to execute
 	 * @return the query's ResultSet
-	 * @throws SQLException only if an SQLException is detected
+	 * @throws SQLException
+	 *             only if an SQLException is detected
 	 */
 	public ResultSet executeQuery(String query) throws SQLException {
 		return exec.executeQuery(query);
@@ -277,7 +295,9 @@ public class DatabaseControler extends MainControler {
 
 	/**
 	 * This method display a ResultSet obtained through a select
-	 * @param rs the ResultSet to display
+	 * 
+	 * @param rs
+	 *            the ResultSet to display
 	 */
 	public void display(ResultSet rs) {
 
@@ -310,7 +330,8 @@ public class DatabaseControler extends MainControler {
 	}
 
 	/**
-	 * This method is called when leaving a database to close the statement and the connection
+	 * This method is called when leaving a database to close the statement and
+	 * the connection
 	 */
 	public void quit() {
 		if (statement != null) {
@@ -331,10 +352,10 @@ public class DatabaseControler extends MainControler {
 			}
 		}
 	}
-	
-	
+
 	/**
 	 * This method return this database controller
+	 * 
 	 * @return this database controller
 	 */
 	public static DatabaseControler getDataBaseControler() {

@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 import consoleControler.DatabaseControler;
 import vue.Launcher;
@@ -44,7 +45,11 @@ public class ConnectDataBaseListener implements MouseListener {
 		}catch (NullPointerException e) {
 			
 		}
+		try {
 		Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
+		} catch (SQLException ex) {
+			
+		}
 	}
 
 }
