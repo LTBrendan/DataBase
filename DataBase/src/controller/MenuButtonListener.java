@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
 import exception.ExceptionHandler;
@@ -180,8 +181,9 @@ public class MenuButtonListener implements MouseListener {
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getClearLabel())) {
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().setText(null);
 			
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExportLabel())) {
-			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getSaveLabel())) {
+			JFileChooser saveJFC = new JFileChooser ();
+			saveJFC.showSaveDialog(null);
 		}
 	}
 }
