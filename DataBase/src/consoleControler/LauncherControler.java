@@ -6,17 +6,32 @@ import connexion.UserManager;
 import consoleView.Connect;
 import logs.Log;
 
+
+/**
+ * This class allow to manipulate the users through different methods
+ */
+/**
+ * @author Patate1er
+ *
+ */
 public class LauncherControler extends MainControler {
 	
 	private static LauncherControler launcherControler;
 
+	/**
+	 * The LauncherControler constructor
+	 */
 	public LauncherControler() {
 
 		super();
 		
 		launcherControler = this;
 	}
-
+	
+	/**
+	 * This method allow a user to connect to one of his database through the name he gave to it
+	 * @param connectionName the name given by the user to his connection
+	 */
 	public void connectDatabase(String connectionName) {
 		Connect connect = null;
 		for (UserConnexion uc : currentUser.getConnexionList()) {
@@ -33,13 +48,26 @@ public class LauncherControler extends MainControler {
 		}
 
 	}
-
+	
+	/**
+	 * This method allow a user to add a new database to his list
+	 * @param connectionName the name the user want to give to his connection
+	 * @param address the database address
+	 * @param login the user's login for the database 
+	 * @param password the user's password for the database
+	 */
 	public void addDatabase(String connectionName, String address, String login, String password) {
 		currentUser.addNewConnexion(new UserConnexion(address, connectionName, login, password));
 		save();
 		load();
 	}
 
+	/**
+	 * This method add a new user to the UserManager's list only if the login is available
+	 * @param login the user's login
+	 * @param password the user's password
+	 * @return true only if the user was added
+	 */
 	public boolean addUser(String login, String password) {
 		boolean ret = false;
 		if (!this.checkLogin(login)) {
@@ -49,11 +77,22 @@ public class LauncherControler extends MainControler {
 		this.save();
 		return ret;
 	}
-
+	
+	/**
+	 * This method remove a user
+	 * @param login the user's login
+	 * @param password the user's password
+	 */
 	public void removeUser(String login, String password) {
 		UserManager.removeUser(login, password);
 	}
 
+	/**
+	 * This method allow a user to change his password only if the new one is available
+	 * @param currentLogin the current user's login
+	 * @param password the current user's password
+	 * @param newLogin the new user's login
+	 */
 	public void changeLogin(String currentLogin, String password, String newLogin) {
 		if (this.checkUser(currentLogin, password)) {
 			
@@ -73,6 +112,12 @@ public class LauncherControler extends MainControler {
 		this.save();
 	}
 	
+	/**
+	 * This method set the currentUser if the login and the password are correct
+	 * @param login the user's login
+	 * @param password the user's password
+	 * @return true only if the couple of login/password is correct
+	 */
 	public boolean connect (String login, String password) {
 		boolean ret = UserManager.checkUser(login, password);
 		if (ret) {
@@ -81,10 +126,18 @@ public class LauncherControler extends MainControler {
 		return ret;
 	}
 	
+	/**
+	 * This method return this LauncherControler
+	 * @return this LauncherControler
+	 */
 	public static LauncherControler getLauncherControler() {
 		return launcherControler;
 	}
 	
+	/**
+	 * This method return the currentUser
+	 * @return the currentUser
+	 */
 	public User getCurrentUser() {
 		return launcherControler.currentUser;
 	}

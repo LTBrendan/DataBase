@@ -20,19 +20,32 @@ import game.GameManager;
 import logs.Log;
 import query.QueryExecutor;
 
+/**
+ * This class allow to manipulate database through different method
+ */
 public class DatabaseControler extends MainControler {
 
+	//the DatabaseControler query executor
 	QueryExecutor exec;
 	// the database connection
 	private Connection conn = null;
 	// the statement that allows to execute query from java
 	private static Statement statement = null;
+	//the database address
 	private String address;
+	//the user's database login
 	private String login;
+	//the user's database password
 	private String password;
 
 	private static DatabaseControler databaseControler;
 
+	/**
+	 * DatabaseControler constructor
+	 * @param address the database address
+	 * @param login the user's login to log into the database
+	 * @param password the user's password to log into the database
+	 */
 	public DatabaseControler(String address, String login, String password) {
 		super();
 		this.setAddress(address);
@@ -67,30 +80,58 @@ public class DatabaseControler extends MainControler {
 		exec = new QueryExecutor(conn, statement);
 	}
 
+	/**
+	 * Getter for address attribute
+	 * @return the address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * Setter for address attribute
+	 * @param address the new address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	/**
+	 * Getter for login attribute
+	 * @return the login
+	 */
 	public String getLogin() {
 		return login;
 	}
-
+	
+	/**
+	 * Setter for login attribute
+	 * @param login the new login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
+	
+	/**
+	 * Getter for password attribute
+	 * @return the password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * Setter for password attribute
+	 * @param password the new password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * This method get the query wanted by the user
+	 * @param want what the user want to do
+	 */
 	public void getQuery(String want) {
 		if (want.equalsIgnoreCase("create") || want.equals("1")) {
 			try {
@@ -185,7 +226,12 @@ public class DatabaseControler extends MainControler {
 			}
 		}
 	}
-
+	
+	/**
+	 * This method return the name of all the table's column
+	 * @param tableName the table from where to get the column names
+	 * @return a String table with all the tables names
+	 */
 	public static String[] getColumnName(String tableName) {
 		// Get the number of columns
 		String[] ret = null;
@@ -202,7 +248,12 @@ public class DatabaseControler extends MainControler {
 		}
 		return ret;
 	}
-
+	
+	/**
+	 * This method return the type of all the table's column
+	 * @param tableName the table from where to get the column types
+	 * @return a String table with all the tables types
+	 */
 	public static String[] getColumnType(String tableName) {
 		// Get the number of columns
 		String[] ret = null;
@@ -219,52 +270,21 @@ public class DatabaseControler extends MainControler {
 		}
 		return ret;
 	}
-
-	// public String[] getTableName() {
-
-	// String[] ret = null;
-	// try {
-	//
-	// ResultSet rs = exec.executeQuery("Select table_name from all_tables");
-	// //Select * from (Select table_name from dba_tables)
-	// ResultSetMetaData rsmd = rs.getMetaData();
-	//
-	// int count = rsmd.getColumnCount();
-	// ret = new String[250];
-	// while (rs.next())
-	// for (int i = 1; i <= 250; i++) {
-	// ret[i - 1] = rs.getString(i);
-	// }
-	// } catch (SQLException e) {
-	//
-	// }
-
-	//
-	// try {
-	// ResultSet rs = exec.executeQuery("Select table_name from all_tables");
-	// ResultSetMetaData rsmd = rs.getMetaData();
-	// int columnCount = rsmd.getColumnCount();
-	// int i =0;
-	// // For each line of the table
-	// while (rs.next()) {
-	// ret[i] = (rs.getString(columnCount));
-	// i++;
-	// }
-	// } catch (SQLException e) {
-	// System.out.println("Query error !");
-	// System.out.println (ExceptionHandler.analyse (e.getMessage()));
-	// } catch (NullPointerException ex) {
-	//
-	// }
-	//
-	//
-	// return ret;
-	// }
-
+	
+	/**
+	 * This method call the QueryExecutor to execute the query in parameter
+	 * @param query the query to execute
+	 * @return the query's ResultSet
+	 * @throws SQLException only if an SQLException is detected
+	 */
 	public ResultSet executeQuery(String query) throws SQLException {
 		return exec.executeQuery(query);
 	}
 
+	/**
+	 * This method display a ResultSet obtained through a select
+	 * @param rs the ResultSet to display
+	 */
 	public void display(ResultSet rs) {
 
 		try {
@@ -295,6 +315,9 @@ public class DatabaseControler extends MainControler {
 		}
 	}
 
+	/**
+	 * This method is called when leaving a database to close the statement and the connection
+	 */
 	public void quit() {
 		if (statement != null) {
 			try {
@@ -314,7 +337,12 @@ public class DatabaseControler extends MainControler {
 			}
 		}
 	}
-
+	
+	
+	/**
+	 * This method return this database controller
+	 * @return this database controller
+	 */
 	public static DatabaseControler getDataBaseControler() {
 		return databaseControler;
 	}
