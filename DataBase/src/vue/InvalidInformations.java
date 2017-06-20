@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.InvalidInfoButtonListener;
+import controller.KeyboardListener;
 
 public class InvalidInformations extends JDialog {
 
@@ -78,6 +79,7 @@ public class InvalidInformations extends JDialog {
 		okButton.setBackground(new Color(30, 33, 38));
 		okButton.setForeground(new Color(255, 255, 255));
 		okButton.addMouseListener(new InvalidInfoButtonListener());
+		okButton.addKeyListener(new KeyboardListener());
 
 		createNewButton = new JButton("Create new user");
 		createNewButton.setBackground(new Color(30, 33, 38));

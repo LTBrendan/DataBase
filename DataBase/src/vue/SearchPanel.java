@@ -3,20 +3,21 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class SearchPanel extends JPanel {
 
@@ -65,13 +66,12 @@ public class SearchPanel extends JPanel {
 		JPanel tableNamePanel = new JPanel();
 		FlowLayout fl_tableNamePanel = (FlowLayout) tableNamePanel.getLayout();
 		fl_tableNamePanel.setVgap(10);
-		fl_tableNamePanel.setHgap(3);
 		tableNamePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		topPanel.add(tableNamePanel);
 
 		tableNameField = new JTextField("Table name");
 		tableNameField.addFocusListener(new FocusAdapter() {
-			
+
 			@Override
 			public void focusGained(FocusEvent arg0) {
 				tableNameField.setText("");
@@ -121,66 +121,64 @@ public class SearchPanel extends JPanel {
 		this.centerPanel.setForeground(new Color(255, 255, 255));
 
 		this.centerScrollPane = new JScrollPane(centerPanel);
-		
+
 		JPanel panel = new JPanel();
+		panel.setMinimumSize(new Dimension(100, 10));
 		centerPanel2.add(panel, BorderLayout.SOUTH);
-		
+
 		JButton btnNewButton = new JButton("+");
-		
+
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				
+
 				JPanel fieldPanel = new JPanel();
 				fieldPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-				fieldPanel.setLayout(new GridLayout(1,2));
-				
+				fieldPanel.setLayout(new GridLayout(1, 2));
+
 				JPanel columnFlowPanel = new JPanel(new FlowLayout());
 				columnFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-				
+
 				JTextField columnField = new JTextField();
 				columnField.setForeground(Color.WHITE);
-				columnField.setBorder(new MatteBorder(0, 0, 2, 0,Color.WHITE));
+				columnField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
 				columnField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				columnField.setColumns(10);
-				
+
 				JPanel valueFlowPanel = new JPanel(new FlowLayout());
 				valueFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-				
+
 				JTextField valueField = new JTextField();
 				valueField.setForeground(Color.WHITE);
-				valueField.setBorder(new MatteBorder(0, 0, 2, 0,Color.WHITE));
+				valueField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
 				valueField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				valueField.setColumns(10);
-				
+
 				columnFlowPanel.add(columnField);
 				valueFlowPanel.add(valueField);
-				
+
 				fieldPanel.setVisible(true);
-				
+
 				fieldPanel.add(columnFlowPanel);
 				fieldPanel.add(valueFlowPanel);
-				
+
 				centerPanel.add(fieldPanel);
-				
+
 				centerPanel.revalidate();
 				centerPanel.repaint();
-				
+
 				centerScrollPane.revalidate();
 				centerScrollPane.repaint();
-				
-				
+
 			}
 		});
-		
+
 		panel.add(btnNewButton);
 		this.centerScrollPane.setBorder(null);
 		this.centerScrollPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 		centerPanel2.add(centerScrollPane, BorderLayout.CENTER);
 
-		
-		
 	}
 
 }

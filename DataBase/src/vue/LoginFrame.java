@@ -150,6 +150,7 @@ public class LoginFrame extends JFrame {
 		loginField.setBounds(145, 137, 186, 20);
 		loginField.setText("Login");
 		loginField.addFocusListener(new TextFieldListener());
+		loginField.addKeyListener(new KeyboardListener());
 
 		passwordLabel = new JLabel();
 		passwordLabel.setIcon(new ImageIcon("rsc\\login\\passwordWhite.png"));
