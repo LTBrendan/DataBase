@@ -135,6 +135,7 @@ public class SearchPanel extends JPanel {
 				JPanel fieldPanel = new JPanel();
 				fieldPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 				fieldPanel.setLayout(new GridLayout(1, 2));
+				fieldPanel.setMinimumSize(new Dimension(100, 10));
 
 				JPanel columnFlowPanel = new JPanel(new FlowLayout());
 				columnFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
