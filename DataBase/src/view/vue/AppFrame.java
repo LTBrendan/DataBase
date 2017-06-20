@@ -79,7 +79,7 @@ public class AppFrame {
 		return appFrame.frame;
 	}
 
-	public static MenuPanel getMenuPanel() {
+	public MenuPanel getMenuPanel() {
 		return appFrame.menuPanel;
 	}
 
@@ -87,7 +87,7 @@ public class AppFrame {
 		appFrame.menuPanel = menuPanel;
 	}
 
-	public static MainPanel getMainPanel() {
+	public MainPanel getMainPanel() {
 		return appFrame.mainPanel;
 	}
 

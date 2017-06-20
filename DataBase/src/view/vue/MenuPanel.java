@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import control.controller.MenuButtonListener;
+import control.controller.MenuPanelMouseListener;
 
 public class MenuPanel extends JPanel {
 
@@ -62,7 +62,7 @@ public class MenuPanel extends JPanel {
 		home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		home.setToolTipText("Home");
 		home.setHorizontalAlignment(downPanel.getWidth() / 2);
-		home.addMouseListener(new MenuButtonListener());
+		home.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
 		else
@@ -72,7 +72,7 @@ public class MenuPanel extends JPanel {
 		editor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		editor.setToolTipText("editor");
 		editor.setHorizontalAlignment(downPanel.getWidth() / 2);
-		editor.addMouseListener(new MenuButtonListener());
+		editor.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorWhite.PNG"));
 		else
@@ -82,7 +82,7 @@ public class MenuPanel extends JPanel {
 		search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		search.setToolTipText("search");
 		search.setHorizontalAlignment(downPanel.getWidth() / 2);
-		search.addMouseListener(new MenuButtonListener());
+		search.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchWhite.PNG"));
 		else
@@ -92,6 +92,7 @@ public class MenuPanel extends JPanel {
 		visual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		visual.setToolTipText("visual");
 		visual.setHorizontalAlignment(downPanel.getWidth() / 2);
+		visual.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualWhite.PNG"));
 		else
@@ -101,6 +102,7 @@ public class MenuPanel extends JPanel {
 		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		stats.setToolTipText("Stats");
 		stats.setHorizontalAlignment(downPanel.getWidth() / 2);
+		stats.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsWhite.PNG"));
 		else
@@ -110,6 +112,7 @@ public class MenuPanel extends JPanel {
 		game.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		game.setToolTipText("game");
 		game.setHorizontalAlignment(downPanel.getWidth() / 2);
+		game.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameWhite.PNG"));
 		else
@@ -119,6 +122,7 @@ public class MenuPanel extends JPanel {
 		export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		export.setToolTipText("export");
 		export.setHorizontalAlignment(downPanel.getWidth() / 2);
+		export.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportWhite.PNG"));
 		else
@@ -128,7 +132,7 @@ public class MenuPanel extends JPanel {
 		admin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		admin.setToolTipText("admin");
 		admin.setHorizontalAlignment(downPanel.getWidth() / 2);
-		admin.addMouseListener(new MenuButtonListener());
+		admin.addMouseListener(new MenuPanelMouseListener());
 		if (AppFrame.color == 54)
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminWhite.PNG"));
 		else
@@ -166,7 +170,7 @@ public class MenuPanel extends JPanel {
 		this.avatarLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		this.avatarLabel.setIcon(new ImageIcon("rsc\\user-16.png"));
 		this.avatarLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.avatarLabel.addMouseListener(new MenuButtonListener());
+		this.avatarLabel.addMouseListener(new MenuPanelMouseListener());
 
 		return this.avatarLabel;
 	}

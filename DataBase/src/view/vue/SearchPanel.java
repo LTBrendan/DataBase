@@ -6,10 +6,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+
+import control.controller.SearchPanelFocusListener;
+import control.controller.SearchPanelMouseListener;
 
 public class SearchPanel extends JPanel {
 
@@ -28,6 +27,7 @@ public class SearchPanel extends JPanel {
 	private JTextField tableNameField;
 	private JPanel centerPanel;
 	private JScrollPane centerScrollPane;
+	private JButton addNewButton;
 
 	/**
 	 * Create the panel.
@@ -70,18 +70,7 @@ public class SearchPanel extends JPanel {
 		topPanel.add(tableNamePanel);
 
 		tableNameField = new JTextField("Table name");
-		tableNameField.addFocusListener(new FocusAdapter() {
-
-			@Override
-			public void focusGained(FocusEvent arg0) {
-				tableNameField.setText("");
-			}
-
-			@Override
-			public void focusLost(FocusEvent e) {
-				tableNameField.setText("Table name");
-			}
-		});
+		tableNameField.addFocusListener(new SearchPanelFocusListener());
 		tableNameField.setForeground(Color.WHITE);
 		tableNamePanel.add(tableNameField);
 		tableNameField.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.WHITE));
@@ -119,104 +108,38 @@ public class SearchPanel extends JPanel {
 
 		this.centerPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		this.centerPanel.setForeground(new Color(255, 255, 255));
-
 		this.centerScrollPane = new JScrollPane(centerPanel);
 
-		JPanel panel = new JPanel();
-		panel.setMinimumSize(new Dimension(100, 10));
-		centerPanel2.add(panel, BorderLayout.SOUTH);
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setMinimumSize(new Dimension(100, 10));
+		bottomPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		centerPanel2.add(bottomPanel, BorderLayout.SOUTH);
 
-		JButton btnNewButton = new JButton("+");
+		addNewButton = new JButton("+");
+		addNewButton.setForeground(Color.WHITE);
+		addNewButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		addNewButton.addMouseListener(new SearchPanelMouseListener());
 
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-
-				JPanel fieldPanel = new JPanel();
-				fieldPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-				fieldPanel.setLayout(new GridLayout(1, 2));
-				fieldPanel.setMinimumSize(new Dimension(100, 100));
-				fieldPanel.setMaximumSize(new Dimension(100,100));
-
-				JPanel columnFlowPanel = new JPanel(new FlowLayout());
-				columnFlowPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-
-				JTextField columnField = new JTextField();
-				columnField.setForeground(Color.WHITE);
-				columnField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
-				columnField.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-				columnField.setColumns(10);
-				columnField.setMinimumSize(new Dimension(100, 100));
-
-				JPanel valueFlowPanel = new JPanel(new FlowLayout());
-				valueFlowPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-
-				JTextField valueField = new JTextField();
-				valueField.setForeground(Color.WHITE);
-				valueField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
-				valueField.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-				valueField.setColumns(10);
-				valueField.setMinimumSize(new Dimension(100, 100));
-
-				columnFlowPanel.add(columnField);
-				valueFlowPanel.add(valueField);
-
-				fieldPanel.setVisible(true);
-
-				fieldPanel.add(columnFlowPanel);
-				fieldPanel.add(valueFlowPanel);
-
-				centerPanel.add(fieldPanel);
-
-				centerPanel.revalidate();
-				centerPanel.repaint();
-
-				centerScrollPane.revalidate();
-				centerScrollPane.repaint();
-
-			}
-		});
-
-		panel.add(btnNewButton);
+		bottomPanel.add(addNewButton);
 		this.centerScrollPane.setBorder(null);
 		this.centerScrollPane.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		centerPanel2.add(centerScrollPane, BorderLayout.CENTER);
-
 	}
 
-}
+	public JTextField getTableNameField() {
+		return tableNameField;
+	}
 
-/*
- * this.centerPanel = new JPanel(new GridLayout(15, 1)){
- * 
- * private static final long serialVersionUID = 1L;
- * 
- * @Override public Component add(Component comp) { if(this.getComponentCount()
- * == 15) this.setLayout(new GridLayout(0, 1)); return super.add(comp); }
- * 
- * };
- * 
- * this.centerPanel.setBackground(new Color(Launcher.color - 8, Launcher.color -
- * 5, Launcher.color)); this.centerPanel.setForeground(new Color(255,255,255));
- * 
- * for (UserConnexion uc :
- * Launcher.getLauncher().getLauncherControler().getCurrentUser().
- * getConnexionList()) {
- * 
- * JLabel connection = new JLabel(" - " + uc.getConnexionName()); if
- * (Launcher.color == 54) connection.setForeground(new Color(255,255,255)); else
- * connection.setForeground(new Color(0,0,0));
- * connection.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
- * connection.addMouseListener(new ConnectDataBaseListener(uc.getAdresse(),
- * uc.getLogin(), uc.getPassword()));
- * 
- * //connection.setVerticalAlignment(HEIGHT); this.centerPanel.add(connection);
- * }
- * 
- * this.centerScrollPane = new JScrollPane(centerPanel);
- * this.centerScrollPane.setBorder(null);
- * this.centerScrollPane.setBackground(new Color(Launcher.color - 8,
- * Launcher.color - 5, Launcher.color));
- * 
- */
+	public JButton getAddNewButton() {
+		return addNewButton;
+	}
+
+	public JPanel getCenterPanel() {
+		return centerPanel;
+	}
+
+	public JScrollPane getCenterScrollPane() {
+		return centerScrollPane;
+	}
+}

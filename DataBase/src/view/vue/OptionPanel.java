@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import control.controller.LabelCloseListener;
+import control.controller.CloseListener;
 import control.controller.MenuButtonListener;
 
 public class OptionPanel extends JPanel {
@@ -79,7 +79,7 @@ public class OptionPanel extends JPanel {
 		else
 			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitBlack.PNG"));
 		quitLabel.setVerticalAlignment(SwingConstants.CENTER);
-		quitLabel.addMouseListener(new LabelCloseListener());
+		quitLabel.addMouseListener(new CloseListener());
 		quitLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		settingLabel = new JLabel();

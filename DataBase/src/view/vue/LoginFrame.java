@@ -20,11 +20,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import control.consoleControler.LauncherControler;
-import control.controller.CreateUserTextFieldListener;
-import control.controller.KeyboardListener;
-import control.controller.LabelCloseListener;
-import control.controller.LoginButtonListener;
-import control.controller.TextFieldListener;
+import control.controller.CloseListener;
+import control.controller.LoginFrameFocusListener;
+import control.controller.LoginFrameKeyListener;
+import control.controller.LoginFrameMouseListener;
 import logs.Log;
 
 public class LoginFrame extends JFrame {
@@ -107,7 +106,7 @@ public class LoginFrame extends JFrame {
 		closeLabel = new JLabel();
 		closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
-		closeLabel.addMouseListener(new LabelCloseListener());
+		closeLabel.addMouseListener(new CloseListener());
 
 		loginField = new JTextField();
 		loginField.setBorder(null);
@@ -149,8 +148,8 @@ public class LoginFrame extends JFrame {
 
 		loginField.setBounds(145, 137, 186, 20);
 		loginField.setText("Login");
-		loginField.addFocusListener(new TextFieldListener());
-		loginField.addKeyListener(new KeyboardListener());
+		loginField.addFocusListener(new LoginFrameFocusListener());
+		loginField.addKeyListener(new LoginFrameKeyListener());
 
 		passwordLabel = new JLabel();
 		passwordLabel.setIcon(new ImageIcon("rsc\\login\\passwordWhite.png"));
@@ -162,8 +161,8 @@ public class LoginFrame extends JFrame {
 		passwordField.setBackground(new Color(54, 57, 62));
 		passwordField.setForeground(new Color(255, 255, 255));
 		passwordField.setBounds(145, 192, 186, 20);
-		passwordField.addFocusListener(new TextFieldListener());
-		passwordField.addKeyListener(new KeyboardListener());
+		passwordField.addFocusListener(new LoginFrameFocusListener());
+		passwordField.addKeyListener(new LoginFrameKeyListener());
 
 		loginButton = new JButton("Login");
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -171,7 +170,7 @@ public class LoginFrame extends JFrame {
 		loginButton.setBorder(null);
 		loginButton.setBounds(199, 236, 89, 23);
 		loginButton.setBackground(new Color(30, 33, 38));
-		loginButton.addMouseListener(new LoginButtonListener());
+		loginButton.addMouseListener(new LoginFrameMouseListener());
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(145, 159, 186, 2);
@@ -183,7 +182,7 @@ public class LoginFrame extends JFrame {
 		createNewUserLoginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createNewUserLoginLabel.setIcon(new ImageIcon("rsc\\login\\addUserWhite.png"));
 		createNewUserLoginLabel.setBounds(417, 267, 48, 47);
-		createNewUserLoginLabel.addMouseListener(new LoginButtonListener());
+		createNewUserLoginLabel.addMouseListener(new LoginFrameMouseListener());
 
 		loginPane.add(focusedTextField);
 		loginPane.add(closeLabel);
@@ -219,7 +218,7 @@ public class LoginFrame extends JFrame {
 
 		loginField.setBounds(133, 69, 186, 20);
 		loginField.setText("");
-		loginField.addFocusListener(new TextFieldListener());
+		loginField.addFocusListener(new LoginFrameFocusListener());
 
 		JSeparator loginSeparator = new JSeparator();
 		loginSeparator.setBounds(133, 91, 186, 2);
@@ -250,7 +249,7 @@ public class LoginFrame extends JFrame {
 		confirmPasswordField.setBorder(null);
 		confirmPasswordField.setBackground(new Color(54, 57, 62));
 		confirmPasswordField.setBounds(133, 199, 186, 20);
-		confirmPasswordField.addKeyListener(new CreateUserTextFieldListener());
+		confirmPasswordField.addKeyListener(new LoginFrameKeyListener());
 
 		createUserButton = new JButton("Create user");
 		createUserButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -258,7 +257,7 @@ public class LoginFrame extends JFrame {
 		createUserButton.setBorder(null);
 		createUserButton.setBounds(132, 260, 89, 23);
 		createUserButton.setBackground(new Color(30, 33, 38));
-		createUserButton.addMouseListener(new LoginButtonListener());
+		createUserButton.addMouseListener(new LoginFrameMouseListener());
 
 		JSeparator confirmPasswordSeparator = new JSeparator();
 		confirmPasswordSeparator.setBounds(133, 221, 186, 2);

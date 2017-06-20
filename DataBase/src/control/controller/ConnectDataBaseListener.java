@@ -42,19 +42,19 @@ public class ConnectDataBaseListener implements MouseListener {
 	public void mouseReleased(MouseEvent arg0) {
 		try {
 			AppFrame.getDataBaseController().quit();
-			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Disconnected from the database");
+			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Disconnected from the database");
 
 		} catch (NullPointerException e) {
 
 		}
 		try {
-			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
+			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
 			AppFrame.setDatabaseControler(new DatabaseControler(adress, login, password));
 			Log.database("connection established");
 			Log.database("statement created");
-			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
+			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
 		} catch (SQLException ex) {
-			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
+			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
 			Log.database("connection error");
 		}
 	}

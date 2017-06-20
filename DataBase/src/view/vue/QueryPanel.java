@@ -18,7 +18,7 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-import control.controller.MenuButtonListener;
+import control.controller.QueryPanelMouseListener;
 import model.utils.WordBasedStyledDocument;
 
 public class QueryPanel extends JSplitPane {
@@ -104,7 +104,7 @@ public class QueryPanel extends JSplitPane {
 
 		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeLabel.addMouseListener(new MenuButtonListener());
+		executeLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			executeLabel.setForeground(new Color(255, 255, 255));
 		else
@@ -112,7 +112,7 @@ public class QueryPanel extends JSplitPane {
 
 		clearLabel = new JLabel("Clear");
 		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		clearLabel.addMouseListener(new MenuButtonListener());
+		clearLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			clearLabel.setForeground(new Color(255, 255, 255));
 		else
@@ -120,7 +120,7 @@ public class QueryPanel extends JSplitPane {
 
 		saveLabel = new JLabel("Save");
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		saveLabel.addMouseListener(new MenuButtonListener());
+		saveLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			saveLabel.setForeground(new Color(255, 255, 255));
 		else
@@ -128,7 +128,7 @@ public class QueryPanel extends JSplitPane {
 
 		executeAllLabel = new JLabel("Execute All");
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeAllLabel.addMouseListener(new MenuButtonListener());
+		executeAllLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			executeAllLabel.setForeground(new Color(255, 255, 255));
 		else
@@ -136,7 +136,7 @@ public class QueryPanel extends JSplitPane {
 
 		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		importLabel.addMouseListener(new MenuButtonListener());
+		importLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			importLabel.setForeground(new Color(255, 255, 255));
 		else

@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import control.controller.DeleteButtonListener;
+import control.controller.DeleteUserMouseListener;
 import model.connexion.User;
 import model.connexion.UserManager;
 
@@ -79,7 +79,7 @@ public class AdminPanel extends JPanel {
 			deleteUser.setIcon(new ImageIcon("rsc\\login\\error.png"));
 			deleteUser.setVisible(true);
 			deleteUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			deleteUser.addMouseListener(new DeleteButtonListener(uc.getLogin(), uc.getPass()));
+			deleteUser.addMouseListener(new DeleteUserMouseListener(uc.getLogin(), uc.getPass()));
 
 			userPanel.add(tiretLabel, BorderLayout.WEST);
 			userPanel.add(deleteUser, BorderLayout.EAST);

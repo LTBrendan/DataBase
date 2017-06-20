@@ -11,7 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import control.controller.InvalidInfoButtonListener;
+import control.controller.InvalidInfoMouseListener;
 
 public class InvalidInfoDialog extends JDialog {
 
@@ -77,12 +77,12 @@ public class InvalidInfoDialog extends JDialog {
 		okButton = new JButton("OK");
 		okButton.setBackground(new Color(30, 33, 38));
 		okButton.setForeground(new Color(255, 255, 255));
-		okButton.addMouseListener(new InvalidInfoButtonListener());
+		okButton.addMouseListener(new InvalidInfoMouseListener());
 
 		createNewButton = new JButton("Create new user");
 		createNewButton.setBackground(new Color(30, 33, 38));
 		createNewButton.setForeground(new Color(255, 255, 255));
-		createNewButton.addMouseListener(new InvalidInfoButtonListener());
+		createNewButton.addMouseListener(new InvalidInfoMouseListener());
 
 		contentPanel.add(titleLabel);
 		contentPanel.add(infoLabel);

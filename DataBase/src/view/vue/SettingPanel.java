@@ -3,8 +3,6 @@ package view.vue;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -16,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import control.controller.MenuButtonListener;
+import control.controller.SettingPanelFocusListener;
+import control.controller.SettingPanelMouseListener;
 import control.controller.TextFieldListener;
 
 public class SettingPanel extends JPanel {
@@ -34,7 +34,7 @@ public class SettingPanel extends JPanel {
 	private JPanel changeUserPanel;
 	private JLabel changeUserLabel;
 	private JButton validateChange;
-	private JPasswordField newPassword;
+	private JPasswordField password;
 	private JTextField newLogin;
 
 	private static SettingPanel settingPanel;
@@ -66,19 +66,7 @@ public class SettingPanel extends JPanel {
 		themeButton = new ButtonGroup();
 
 		darkThemeButton = new JRadioButton("Dark");
-		darkThemeButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				System.out.println(AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
-				if (darkThemeButton.isSelected()) {
-					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(54);
-					AppFrame.getAppFrame().getLauncherControler().save();
-				} else {
-					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(247);
-					AppFrame.getAppFrame().getLauncherControler().save();
-				}
-			}
-		});
+		darkThemeButton.addMouseListener(new SettingPanelMouseListener());
 		darkThemeButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		if (AppFrame.color == 54)
 			darkThemeButton.setForeground(new Color(255, 255, 255));
@@ -86,19 +74,7 @@ public class SettingPanel extends JPanel {
 			darkThemeButton.setForeground(new Color(0, 0, 0));
 
 		whiteThemeButton = new JRadioButton("White");
-		whiteThemeButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				if (whiteThemeButton.isSelected()) {
-					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(247);
-					AppFrame.getAppFrame().getLauncherControler().save();
-				} else {
-					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(54);
-					AppFrame.getAppFrame().getLauncherControler().save();
-				}
-
-			}
-		});
+		whiteThemeButton.addMouseListener(new SettingPanelMouseListener());
 		whiteThemeButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		if (AppFrame.color == 54)
 			whiteThemeButton.setForeground(new Color(255, 255, 255));
@@ -134,7 +110,7 @@ public class SettingPanel extends JPanel {
 			changeUserLabel.setForeground(new Color(0, 0, 0));
 
 		newLogin = new JTextField("New login...");
-		newLogin.addFocusListener(new TextFieldListener());
+		newLogin.addFocusListener(new SettingPanelFocusListener());
 		if (AppFrame.color == 54) {
 			newLogin.setBackground(new Color(54, 57, 62));
 			newLogin.setForeground(new Color(255, 255, 255));
@@ -143,21 +119,21 @@ public class SettingPanel extends JPanel {
 			newLogin.setForeground(new Color(0, 0, 0));
 		}
 
-		newPassword = new JPasswordField("Password");
-		newPassword.addFocusListener(new TextFieldListener());
+		password = new JPasswordField("Password");
+		password.addFocusListener(new SettingPanelFocusListener());
 		if (AppFrame.color == 54) {
-			newPassword.setBackground(new Color(54, 57, 62));
-			newPassword.setForeground(new Color(255, 255, 255));
+			password.setBackground(new Color(54, 57, 62));
+			password.setForeground(new Color(255, 255, 255));
 		} else {
-			newPassword.setBackground(new Color(255, 255, 255));
-			newPassword.setForeground(new Color(0, 0, 0));
+			password.setBackground(new Color(255, 255, 255));
+			password.setForeground(new Color(0, 0, 0));
 		}
 
 		validateChange = new JButton("Validate");
 		validateChange.setBorder(null);
 		validateChange.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		validateChange.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		validateChange.addMouseListener(new MenuButtonListener());
+		validateChange.addMouseListener(new SettingPanelMouseListener());
 		if (AppFrame.color == 54)
 			validateChange.setForeground(new Color(255, 255, 255));
 		else
@@ -165,7 +141,7 @@ public class SettingPanel extends JPanel {
 
 		changeUserPanel.add(changeUserLabel);
 		changeUserPanel.add(newLogin);
-		changeUserPanel.add(newPassword);
+		changeUserPanel.add(password);
 		changeUserPanel.add(validateChange);
 
 		return changeUserPanel;
@@ -179,11 +155,19 @@ public class SettingPanel extends JPanel {
 		return settingPanel.newLogin;
 	}
 
-	public JPasswordField getNewPassword() {
-		return settingPanel.newPassword;
+	public JPasswordField getPassword() {
+		return settingPanel.password;
 	}
 
 	public JButton getValidateButton() {
 		return settingPanel.validateChange;
+	}
+
+	public JRadioButton getDarkThemeButton() {
+		return darkThemeButton;
+	}
+
+	public JRadioButton getWhiteThemeButton() {
+		return whiteThemeButton;
 	}
 }

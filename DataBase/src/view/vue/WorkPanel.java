@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import control.controller.LabelCloseListener;
+import control.controller.CloseListener;
 import control.controller.MenuButtonListener;
 
 public class WorkPanel extends JPanel {
@@ -149,7 +149,7 @@ public class WorkPanel extends JPanel {
 		this.closePanel.setLayout(new BorderLayout(0, 0));
 
 		this.closeLabel = new JLabel("");
-		this.closeLabel.addMouseListener(new LabelCloseListener());
+		this.closeLabel.addMouseListener(new CloseListener());
 		this.closeLabel.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
 		if (AppFrame.color == 54)
 			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
@@ -200,7 +200,7 @@ public class WorkPanel extends JPanel {
 		return workPanel.settingPanel;
 	}
 
-	public OptionPanel getPreSettingPanel() {
+	public OptionPanel getOptionPanel() {
 		return workPanel.optionPanel;
 	}
 
@@ -250,10 +250,10 @@ public class WorkPanel extends JPanel {
 		workPanel.add(workPanel.getSettingPanel());
 	}
 
-	public static void setPreSettingPanel() {
+	public static void setOptionPanel() {
 		workPanel.remove(workPanel.getActualPanel());
-		workPanel.actualPanel = workPanel.getPreSettingPanel();
-		workPanel.add(workPanel.getPreSettingPanel());
+		workPanel.actualPanel = workPanel.getOptionPanel();
+		workPanel.add(workPanel.getOptionPanel());
 	}
 
 	public static void setAdminPanel() {

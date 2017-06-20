@@ -20,7 +20,7 @@ public class OpenChooserListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(javax.swing.JFileChooser.APPROVE_SELECTION)) {
 			
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(read (jfc.getSelectedFile()));
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(read (jfc.getSelectedFile()));
 			
 		} else if (e.getActionCommand().equals(javax.swing.JFileChooser.CANCEL_SELECTION)) {
 			

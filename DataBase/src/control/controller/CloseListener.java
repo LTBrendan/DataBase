@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import logs.Log;
 import view.vue.AppFrame;
 
-public class LabelCloseListener implements MouseListener {
+public class CloseListener implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {

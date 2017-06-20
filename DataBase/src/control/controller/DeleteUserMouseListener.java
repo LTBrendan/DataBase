@@ -5,12 +5,12 @@ import java.awt.event.MouseListener;
 
 import view.vue.ConfirmUserDeleteDialog;
 
-public class DeleteButtonListener implements MouseListener {
+public class DeleteUserMouseListener implements MouseListener {
 
 	String login;
 	String password;
 
-	public DeleteButtonListener(String login, String password) {
+	public DeleteUserMouseListener(String login, String password) {
 		this.login = login;
 		this.password = password;
 	}

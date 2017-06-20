@@ -44,106 +44,10 @@ public class MenuButtonListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
-		if (e.getComponent().equals(AppFrame.getMenuPanel().getAvatarLabel())) {
-
-			WorkPanel.setPreSettingPanel();
-			MainPanel.getMainPanel().getWorkPanel().revalidate();
-			MainPanel.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getExecuteLabel())) {
-			String query = AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()
-					.split(";")[0];
-			String result = query + ": \n";
-			if (query.toLowerCase().contains("create")) {
-				try {
-					AppFrame.getDataBaseController().executeQuery(query);
-					result += "table created \n";
-				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
-				} catch (NullPointerException ex) {
-					result += "You must be connected to a database to execute query";
-				}
-			}
-			if (query.toLowerCase().contains("insert")) {
-				try {
-					AppFrame.getDataBaseController().executeQuery(query);
-					result += "line inserted \n";
-				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
-				} catch (NullPointerException ex) {
-					result += "You must be connected to a database to execute query";
-				}
-			}
-			if (query.toLowerCase().contains("drop")) {
-				try {
-					AppFrame.getDataBaseController().executeQuery(query);
-					result += "table dropped \n";
-				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
-				} catch (NullPointerException ex) {
-					result += "You must be connected to a database to execute query";
-				}
-			}
-			if (query.toLowerCase().contains("delete")) {
-				try {
-					AppFrame.getDataBaseController().executeQuery(query);
-					result += "line deleted \n";
-				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
-				} catch (NullPointerException ex) {
-					result += "You must be connected to a database to execute query";
-				}
-			}
-			if (query.toLowerCase().contains("select")) {
-				try {
-					ResultSet rs = AppFrame.getDataBaseController().executeQuery(query);
-					ResultSetMetaData rsmd = rs.getMetaData();
-					int columnCount = rsmd.getColumnCount();
-					for (int i = 1; i < columnCount; i++) {
-						result += rsmd.getColumnName(i) + " \t|\t ";
-					}
-					result += rsmd.getColumnName(columnCount) + "\n";
-					while (rs.next()) {
-						for (int j = 1; j < columnCount; j++) {
-							result += rs.getString(j) + " \t\t\t\t ";
-						}
-						result += rs.getString(columnCount) + "\n";
-					}
-				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
-				} catch (NullPointerException ex) {
-					result += "You must be connected to a database to execute query";
-				}
-			}
-			JLabel label = new JLabel(
-					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
-							+ "</HTML>");
-			label.setHorizontalAlignment(SwingConstants.LEFT);
-			if (AppFrame.color == 54)
-				label.setForeground(new Color(255, 255, 255));
-			else
-				label.setForeground(new Color(0, 0, 0));
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().removeAll();
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().add(label, BorderLayout.NORTH);
-			AppFrame.getMainPanel().getWorkPanel().revalidate();
-			AppFrame.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent()
+		 if (e.getComponent()
 				.equals(AppFrame.getMainPanel().getWorkPanel().getPreSettingPanel().getSettingLabel())) {
 
 			WorkPanel.setSettingPanel();
-			MainPanel.getMainPanel().getWorkPanel().revalidate();
-			MainPanel.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getEditor())) {
-
-			WorkPanel.setQueryPanel();
-			MainPanel.getMainPanel().getWorkPanel().revalidate();
-			MainPanel.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getHome())) {
-
-			WorkPanel.setHomePanel();
 			MainPanel.getMainPanel().getWorkPanel().revalidate();
 			MainPanel.getMainPanel().getWorkPanel().repaint();
 
@@ -154,27 +58,6 @@ public class MenuButtonListener implements MouseListener {
 		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getMinimizeLabel())) {
 
 			AppFrame.getFrame().setState(Frame.ICONIFIED);
-
-		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getSearch())) {
-
-			WorkPanel.setSearchPanel();
-			MainPanel.getMainPanel().getWorkPanel().revalidate();
-			MainPanel.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent()
-				.equals(AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getValidateButton())) {
-
-			AppFrame.getAppFrame().getLauncherControler().changeLogin(
-					AppFrame.getAppFrame().getLauncherControler().getCurrentUserName(),
-					new String(
-							AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getNewPassword().getPassword()),
-					AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getNewLogin().getText());
-
-		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getAdmin())) {
-
-			WorkPanel.setAdminPanel();
-			MainPanel.getMainPanel().getWorkPanel().revalidate();
-			MainPanel.getMainPanel().getWorkPanel().repaint();
 
 		} else if (e.getComponent().equals(AppFrame.getMainPanel().getDirectoryPanel().getAddLabel())) {
 
@@ -194,98 +77,6 @@ public class MenuButtonListener implements MouseListener {
 			WorkPanel.setQueryPanel();
 			MainPanel.getMainPanel().getWorkPanel().revalidate();
 			MainPanel.getMainPanel().getWorkPanel().repaint();
-
-		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getClearLabel())) {
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(null);
-
-		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getSaveLabel())) {
-			JFileChooser saveJFC = new JFileChooser();
-			JFrame frame = new JFrame();
-			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
-					AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
-			saveJFC.showSaveDialog(frame);
-		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getImportLabel())) {
-			JFileChooser openJFC = new JFileChooser();
-			JFrame frame = new JFrame();
-			openJFC.addActionListener(new OpenChooserListener(openJFC));
-			openJFC.showOpenDialog(frame);
-
-		} else if (e.getComponent()
-				.equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllLabel())) {
-			String[] query = AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText().split(";");
-			String result = "";
-			for (String s : query) {
-				result += s + ": \n";
-				if (s.toLowerCase().contains("create")) {
-					try {
-						AppFrame.getDataBaseController().executeQuery(s);
-						result += "table created \n";
-					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
-					} catch (NullPointerException ex) {
-						result += "You must be connected to a database to execute query";
-					}
-				} else if (s.toLowerCase().contains("insert")) {
-					try {
-						AppFrame.getDataBaseController().executeQuery(s);
-						result += "line inserted \n";
-					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
-					} catch (NullPointerException ex) {
-						result += "You must be connected to a database to execute query";
-					}
-				} else if (s.toLowerCase().contains("drop")) {
-					try {
-						AppFrame.getDataBaseController().executeQuery(s);
-						result += "table dropped \n";
-					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
-					} catch (NullPointerException ex) {
-						result += "You must be connected to a database to execute query";
-					}
-				} else if (s.toLowerCase().contains("delete")) {
-					try {
-						AppFrame.getDataBaseController().executeQuery(s);
-						result += "line deleted \n";
-					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
-					} catch (NullPointerException ex) {
-						result += "You must be connected to a database to execute query";
-					}
-				} else if (s.toLowerCase().contains("select")) {
-					try {
-						ResultSet rs = AppFrame.getDataBaseController().executeQuery(s);
-						ResultSetMetaData rsmd = rs.getMetaData();
-						int columnCount = rsmd.getColumnCount();
-						for (int i = 1; i < columnCount; i++) {
-							result += rsmd.getColumnName(i) + " \t|\t ";
-						}
-						result += rsmd.getColumnName(columnCount) + "\n";
-						while (rs.next()) {
-							for (int j = 1; j < columnCount; j++) {
-								result += rs.getString(j) + " \t\t\t\t ";
-							}
-							result += rs.getString(columnCount) + "\n";
-						}
-					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
-					} catch (NullPointerException ex) {
-						result += "You must be connected to a database to execute query";
-					}
-				}
-			}
-			JLabel label = new JLabel(
-					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
-							+ "</HTML>");
-			label.setHorizontalAlignment(SwingConstants.LEFT);
-			if (AppFrame.color == 54)
-				label.setForeground(new Color(255, 255, 255));
-			else
-				label.setForeground(new Color(0, 0, 0));
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().removeAll();
-			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().add(label, BorderLayout.NORTH);
-			AppFrame.getMainPanel().getWorkPanel().revalidate();
-			AppFrame.getMainPanel().getWorkPanel().repaint();
 
 		}
 	}

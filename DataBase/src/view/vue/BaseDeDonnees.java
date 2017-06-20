@@ -31,7 +31,7 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-import control.controller.LabelCloseListener;
+import control.controller.CloseListener;
 import control.controller.MenuButtonListener;
 import control.controller.MouseMovementAdapter;
 import control.controller.TextFieldListener;
@@ -219,7 +219,7 @@ public class BaseDeDonnees {
 		closePanel.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.addMouseListener(new LabelCloseListener());
+		lblNewLabel_2.addMouseListener(new CloseListener());
 		closePanel.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(40, 43, 48));
 		lblNewLabel_2.setIcon(new ImageIcon("rsc\\close.PNG"));
