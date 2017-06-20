@@ -6,9 +6,11 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import controller.LabelCloseListener;
 import controller.MenuButtonListener;
@@ -37,7 +39,7 @@ public class PreSettingPanel extends JPanel {
 
 		JPanel westPanel = new JPanel();
 		westPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		westPanel.setPreferredSize(new Dimension(200, 10));
+		westPanel.setPreferredSize(new Dimension(50, 10));
 		add(westPanel, BorderLayout.WEST);
 
 		JPanel southPanel = new JPanel();
@@ -58,33 +60,40 @@ public class PreSettingPanel extends JPanel {
 		logoutLabel = new JLabel();
 		logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(logoutLabel);
+		logoutLabel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.WHITE));
 		logoutLabel.setToolTipText("Disconnect and change user");
 		if (Launcher.color == 54)
 			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutWhite.PNG"));
 		else
 			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutBlack.PNG"));
+		logoutLabel.setVerticalAlignment(SwingConstants.CENTER);
+		logoutLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-
 		quitLabel = new JLabel();
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(quitLabel);
 		quitLabel.setToolTipText("Disconnect user and quit the app");
+		quitLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.WHITE));
 		if (Launcher.color == 54)
 			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitWhite.PNG"));
 		else
 			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitBlack.PNG"));	
-		
+		quitLabel.setVerticalAlignment(SwingConstants.CENTER);
 		quitLabel.addMouseListener(new LabelCloseListener());
+		quitLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		settingLabel = new JLabel();
 		settingLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(settingLabel);
 		settingLabel.setToolTipText("Go to user's and app's settings");
+		settingLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.WHITE));
 		if (Launcher.color == 54)
 			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingWhite.PNG"));
 		else
-			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingBlack.PNG"));	
+			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingBlack.PNG"));
+		settingLabel.setVerticalAlignment(SwingConstants.CENTER);
 		settingLabel.addMouseListener(new MenuButtonListener());
+		settingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		preSettingPanel = this;
 	}
