@@ -90,13 +90,18 @@ public class MenuButtonListener implements MouseListener {
 					for (int i = 1; i < columnCount; i++) {
 						result += rsmd.getColumnName(i) + " \t|\t ";
 					}
-					result += rsmd.getColumnName(columnCount);
-					
+					result += rsmd.getColumnName(columnCount)+"\n";
+					while (rs.next()) {
+						for (int j = 1; j < columnCount; j++) {
+							result += rs.getString(j) + " \t\t\t\t ";
+						}
+						result +=rs.getString(columnCount)+"\n";
+					}
 				} catch (SQLException ex) {
 					result +=ExceptionHandler.analyse (ex.getMessage());
 				}
 			}
-			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</HTML>");
+			JLabel label = new JLabel("<HTML>"+result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</HTML>");
 			if (Launcher.color == 54)
 				label.setForeground(new Color(255, 255, 255));
 			else 
