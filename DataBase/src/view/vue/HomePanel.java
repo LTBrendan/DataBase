@@ -17,11 +17,11 @@ public class HomePanel extends JPanel {
 
 	public HomePanel() {
 
-		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
-		JLabel bonjour = new JLabel("Welcome " + Launcher.getLauncher().getLauncherControler().getCurrentUserName());
+		JLabel bonjour = new JLabel("Welcome " + AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
 		Font f = new Font("Calibri", Font.PLAIN, 50);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			bonjour.setForeground(new Color(255,255,255));
 		else
 			bonjour.setForeground(new Color(0,0,0));

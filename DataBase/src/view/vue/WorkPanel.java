@@ -4,229 +4,278 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
+import javax.swing.JSeparator;
 
+import control.controller.LabelCloseListener;
 import control.controller.MenuButtonListener;
-import model.utils.WordBasedStyledDocument;
 
-public class WorkPanel extends JSplitPane {
+public class WorkPanel extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel upPanel;
-	private JScrollPane upScrollPane;
-	private JPanel downPanel;
-	private JPanel menuBarPanel;
-	private JTextPane textPane;
-	private JScrollPane downScrollPane;
+	private JPanel menuPanel;
+	private JSeparator separator;
+	private JPanel controlPanel;
+	private JPanel minimizePanel;
+	private JLabel minimizeLabel;
+	private JPanel maximizePanel;
+	private JLabel maximizeLabel;
+	private JPanel closePanel;
+	private JLabel closeLabel;
+	private JPanel centerPanel;
 
-	private static JLabel executeLabel;
-	private static JLabel clearLabel;
-	private static JLabel saveLabel;
-	private static JLabel executeAllLabel;
-	private static JLabel importLabel;
+	private QueryPanel queryPanel = new QueryPanel();
+	private SettingPanel settingPanel = new SettingPanel();
+	private OptionPanel optionPanel = new OptionPanel();
+	private HomePanel homePanel = new HomePanel();
+	private SearchPanel searchPanel = new SearchPanel();
+	private AdminPanel adminPanel = new AdminPanel();
+	private NewDataBasePanel newDataBase = new NewDataBasePanel();
+	private JComponent actualPanel;
 
 	private static WorkPanel workPanel;
 
-	public WorkPanel() {
+	protected WorkPanel() {
 
-		this.setDoubleBuffered(true);
-		this.setOneTouchExpandable(true);
-		this.setBorder(null);
-		this.setOrientation(JSplitPane.VERTICAL_SPLIT);
-
-		this.setLeftComponent(createUpScrollPane(createUpPanel()));
-		this.setRightComponent(createDownPanel());
-
-		this.setDividerLocation(0.8);
-
-		this.repaint();
+		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.setPreferredSize(new Dimension(468, 452));
+		this.setLayout(new BorderLayout(0, 0));
 
 		workPanel = this;
+
+		this.add(createMenuPanel(), BorderLayout.NORTH);
+		this.add(homePanel, BorderLayout.CENTER);
+		this.actualPanel = this.getHomePanel();
 	}
 
-	private JPanel createUpPanel() {
+	public WorkPanel(JPanel panel) {
+		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.setPreferredSize(new Dimension(468, 452));
+		this.setLayout(new BorderLayout(0, 0));
 
-		this.upPanel = new JPanel();
-		this.upPanel.setBorder(null);
-		this.upPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
-			this.upPanel.setForeground(new Color(255, 255, 255));
+		this.add(createMenuPanel(), BorderLayout.NORTH);
+		this.add(panel, BorderLayout.CENTER);
+	}
+
+	public JPanel createMenuPanel() {
+
+		this.menuPanel = new JPanel();
+		this.menuPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.menuPanel.setPreferredSize(new Dimension(225, 60));
+		this.menuPanel.setLayout(new BorderLayout(0, 0));
+
+		this.menuPanel.add(createSeparator(), BorderLayout.SOUTH);
+		this.menuPanel.add(createControlPanel(), BorderLayout.EAST);
+		this.menuPanel.add(createCenterPanel(), BorderLayout.CENTER);
+
+		return this.menuPanel;
+	}
+
+	private JSeparator createSeparator() {
+
+		this.separator = new JSeparator();
+		this.separator.setForeground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
+		this.separator.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
+
+		return this.separator;
+	}
+
+	private JPanel createControlPanel() {
+
+		this.controlPanel = new JPanel();
+		this.controlPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.controlPanel.setLayout(new GridLayout(0, 3, 0, 0));
+		this.controlPanel.add(createMinimizePanel());
+		this.controlPanel.add(createMaximizePanel());
+		this.controlPanel.add(createClosePanel());
+
+		return this.controlPanel;
+	}
+
+	private JPanel createMinimizePanel() {
+
+		this.minimizePanel = new JPanel();
+		this.minimizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.minimizePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.minimizePanel.setLayout(new BorderLayout(0, 0));
+
+		this.minimizeLabel = new JLabel();
+		this.minimizeLabel.addMouseListener(new MenuButtonListener());
+		if (AppFrame.color == 54)
+			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusWhite.PNG"));
 		else
-			this.upPanel.setForeground(new Color(0, 0, 0));
-		this.upPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusBlack.PNG"));
 
-		return this.upPanel;
+		this.minimizePanel.add(this.minimizeLabel);
+
+		return this.minimizePanel;
 	}
 
-	private JScrollPane createUpScrollPane(JPanel panel) {
+	private JPanel createMaximizePanel() {
 
-		this.upScrollPane = new JScrollPane(panel);
-		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
-		this.upScrollPane.setBorder(null);
+		this.maximizePanel = new JPanel();
+		this.maximizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.maximizePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 
-		return this.upScrollPane;
-	}
-
-	private JPanel createDownPanel() {
-
-		this.downPanel = new JPanel();
-		this.downPanel.setLayout(new BorderLayout());
-		this.downPanel.add(createMenuBarPanel(), BorderLayout.NORTH);
-		this.downPanel.add(createDownScrollPane(createTextPane()), BorderLayout.CENTER);
-
-		return this.downPanel;
-	}
-
-	private JPanel createMenuBarPanel() {
-
-		this.menuBarPanel = new JPanel();
-		this.menuBarPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
-			this.menuBarPanel.setForeground(new Color(255, 255, 255));
+		this.maximizeLabel = new JLabel();
+		this.maximizeLabel.addMouseListener(new MenuButtonListener());
+		if (AppFrame.color == 54)
+			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandWhite.PNG"));
 		else
-			this.menuBarPanel.setForeground(new Color(0, 0, 0));
-		this.menuBarPanel.setLayout(new GridLayout(0, 5, 0, 0));
+			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandBlack.PNG"));
 
-		executeLabel = new JLabel("Execute");
-		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			executeLabel.setForeground(new Color(255, 255, 255));
+		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
+		this.maximizePanel.add(new JLabel("   "), BorderLayout.EAST);
+		return this.maximizePanel;
+	}
+
+	private JPanel createClosePanel() {
+
+		this.closePanel = new JPanel();
+		this.closePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.closePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		this.closePanel.setLayout(new BorderLayout(0, 0));
+
+		this.closeLabel = new JLabel("");
+		this.closeLabel.addMouseListener(new LabelCloseListener());
+		this.closeLabel.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
+		if (AppFrame.color == 54)
+			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
 		else
-			executeLabel.setForeground(new Color(0, 0, 0));
+			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeBlack.PNG"));
 
-		clearLabel = new JLabel("Clear");
-		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		clearLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			clearLabel.setForeground(new Color(255, 255, 255));
-		else
-			clearLabel.setForeground(new Color(0, 0, 0));
+		this.closePanel.add(this.closeLabel);
 
-		saveLabel = new JLabel("Save");
-		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		saveLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			saveLabel.setForeground(new Color(255, 255, 255));
-		else
-			saveLabel.setForeground(new Color(0, 0, 0));
-
-		executeAllLabel = new JLabel("Execute All");
-		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeAllLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			executeAllLabel.setForeground(new Color(255, 255, 255));
-		else
-			executeAllLabel.setForeground(new Color(0, 0, 0));
-
-		importLabel = new JLabel("Import");
-		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		importLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			importLabel.setForeground(new Color(255, 255, 255));
-		else
-			importLabel.setForeground(new Color(0, 0, 0));
-
-		this.menuBarPanel.add(executeLabel);
-		this.menuBarPanel.add(executeAllLabel);
-		this.menuBarPanel.add(clearLabel);
-		this.menuBarPanel.add(saveLabel);
-		this.menuBarPanel.add(importLabel);
-
-		return this.menuBarPanel;
+		return this.closePanel;
 	}
 
-	private JTextPane createTextPane() {
+	private JPanel createCenterPanel() {
 
-		this.textPane = new JTextPane();
-		this.textPane.setBorder(null);
-		this.textPane.setDragEnabled(true);
-		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
-		this.textPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
-			textPane.setForeground(new Color(255, 255, 255));
-		else
-			textPane.setForeground(new Color(0, 0, 0));
+		this.centerPanel = new JPanel();
+		this.centerPanel.addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent evt) {
+				frameMouseDragged(evt);
+			}
+		});
+		this.centerPanel.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent evt) {
+				frameMousePressed(evt);
+			}
+		});
+		this.centerPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
-		StyleContext cont = StyleContext.getDefaultStyleContext();
-		AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
-		attr = cont.addAttribute(attr.copyAttributes(), StyleConstants.Bold, true);
-		Style c = cont.getStyle("default");
-		c.addAttributes(attr);
-
-		this.textPane.setStyledDocument(new WordBasedStyledDocument(this.textPane.getLogicalStyle(), c));
-
-		return this.textPane;
+		return this.centerPanel;
 	}
 
-	private JScrollPane createDownScrollPane(JTextPane jTextPane) {
+	int xy, xx;
 
-		this.downScrollPane = new JScrollPane(jTextPane);
-		this.downScrollPane.setBorder(null);
-
-		return this.downScrollPane;
+	private void frameMouseDragged(MouseEvent evt) {
+		int depX = evt.getX() - xx;
+		int depY = evt.getY() - xy;
+		AppFrame.getFrame().setLocation(AppFrame.getFrame().getX() + depX, AppFrame.getFrame().getY() + depY);
 	}
 
-	public JLabel getExecuteLabel() {
-		return executeLabel;
+	private void frameMousePressed(MouseEvent evt) {
+		xx = evt.getX();
+		xy = evt.getY();
 	}
 
-	public JLabel getClearLabel() {
-		return clearLabel;
+	public QueryPanel getQueryPanel() {
+		return workPanel.queryPanel;
 	}
 
-	public JLabel getSaveLabel() {
-		return saveLabel;
+	public SettingPanel getSettingPanel() {
+		return workPanel.settingPanel;
 	}
 
-	public JLabel getExecuteAllLabel() {
-		return executeAllLabel;
+	public OptionPanel getPreSettingPanel() {
+		return workPanel.optionPanel;
 	}
 
-	public JLabel getImportLabel() {
-		return importLabel;
+	public HomePanel getHomePanel() {
+		return workPanel.homePanel;
 	}
 
-	public JPanel getUpPanel() {
-		return workPanel.upPanel;
+	public SearchPanel getSearchPanel() {
+		return workPanel.searchPanel;
 	}
 
-	public void setUpPanel(JPanel upPanel) {
-		workPanel.upPanel = upPanel;
+	public AdminPanel getAdminPanel() {
+		return workPanel.adminPanel;
 	}
 
-	public static JScrollPane getUpScrollPane() {
-		return workPanel.upScrollPane;
+	public NewDataBasePanel getNewConnection() {
+		return workPanel.newDataBase;
 	}
 
-	public void setUpScrollPane(JScrollPane upScrollPane) {
-		workPanel.upScrollPane = upScrollPane;
+	public static void setNewConnection() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getNewConnection();
+		workPanel.add(workPanel.getNewConnection());
 	}
 
-	public JTextPane getTextPane() {
-		return workPanel.textPane;
+	public static void setSearchPanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getSearchPanel();
+		workPanel.add(workPanel.getSearchPanel());
 	}
 
-	public static JScrollPane getDownScrollPane() {
-		return workPanel.downScrollPane;
+	public static void setHomePanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getHomePanel();
+		workPanel.add(workPanel.getHomePanel());
 	}
 
-	public static WorkPanel getWorkPanel() {
-		return workPanel;
+	public static void setQueryPanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getQueryPanel();
+		workPanel.add(workPanel.getQueryPanel());
+	}
+
+	public static void setSettingPanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getSettingPanel();
+		workPanel.add(workPanel.getSettingPanel());
+	}
+
+	public static void setPreSettingPanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getPreSettingPanel();
+		workPanel.add(workPanel.getPreSettingPanel());
+	}
+
+	public static void setAdminPanel() {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.adminPanel = new AdminPanel();
+		workPanel.actualPanel = workPanel.getAdminPanel();
+		workPanel.add(workPanel.getAdminPanel());
+	}
+
+	public JComponent getActualPanel() {
+		return workPanel.actualPanel;
+	}
+
+	public JLabel getMinimizeLabel() {
+		return workPanel.minimizeLabel;
+	}
+
+	public JLabel getMaximizeLabel() {
+		return workPanel.maximizeLabel;
+	}
+
+	public JLabel getCloseLabel() {
+		return workPanel.closeLabel;
 	}
 }

@@ -36,37 +36,37 @@ public class SearchPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 
 		JPanel sizePanel = new JPanel();
-		sizePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		sizePanel.setForeground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		sizePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		sizePanel.setForeground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		add(sizePanel, BorderLayout.WEST);
 
 		JLabel sizeLabel = new JLabel("________");
-		sizeLabel.setForeground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		sizeLabel.setForeground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		sizePanel.add(sizeLabel);
 
 		JPanel secondSizePanel = new JPanel();
-		secondSizePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		secondSizePanel.setForeground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		secondSizePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		secondSizePanel.setForeground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		add(secondSizePanel, BorderLayout.EAST);
 
 		JLabel secondSizeLabel = new JLabel("________");
-		secondSizeLabel.setForeground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		secondSizeLabel.setForeground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		secondSizePanel.add(secondSizeLabel);
 
 		JPanel centerPanel2 = new JPanel();
-		centerPanel2.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		centerPanel2.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		add(centerPanel2, BorderLayout.CENTER);
 		centerPanel2.setLayout(new BorderLayout(0, 0));
 
 		JPanel topPanel = new JPanel();
-		topPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		topPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		centerPanel2.add(topPanel, BorderLayout.NORTH);
 		topPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		JPanel tableNamePanel = new JPanel();
 		FlowLayout fl_tableNamePanel = (FlowLayout) tableNamePanel.getLayout();
 		fl_tableNamePanel.setVgap(10);
-		tableNamePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		tableNamePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		topPanel.add(tableNamePanel);
 
 		tableNameField = new JTextField("Table name");
@@ -85,17 +85,17 @@ public class SearchPanel extends JPanel {
 		tableNameField.setForeground(Color.WHITE);
 		tableNamePanel.add(tableNameField);
 		tableNameField.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.WHITE));
-		tableNameField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		tableNameField.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		tableNameField.setColumns(10);
 
 		JPanel columnsPanel = new JPanel();
-		columnsPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		columnsPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		topPanel.add(columnsPanel);
 		columnsPanel.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel columnLabel = new JLabel("Column");
 		columnsPanel.add(columnLabel);
-		columnLabel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		columnLabel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		columnLabel.setForeground(Color.WHITE);
 		columnLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -117,7 +117,7 @@ public class SearchPanel extends JPanel {
 
 		};
 
-		this.centerPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		this.centerPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		this.centerPanel.setForeground(new Color(255, 255, 255));
 
 		this.centerScrollPane = new JScrollPane(centerPanel);
@@ -133,28 +133,28 @@ public class SearchPanel extends JPanel {
 			public void mouseReleased(MouseEvent arg0) {
 
 				JPanel fieldPanel = new JPanel();
-				fieldPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+				fieldPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 				fieldPanel.setLayout(new GridLayout(1, 2));
 				fieldPanel.setMinimumSize(new Dimension(100, 100));
 				fieldPanel.setMaximumSize(new Dimension(100,100));
 
 				JPanel columnFlowPanel = new JPanel(new FlowLayout());
-				columnFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+				columnFlowPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 				JTextField columnField = new JTextField();
 				columnField.setForeground(Color.WHITE);
 				columnField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
-				columnField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+				columnField.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 				columnField.setColumns(10);
 				columnField.setMinimumSize(new Dimension(100, 100));
 
 				JPanel valueFlowPanel = new JPanel(new FlowLayout());
-				valueFlowPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+				valueFlowPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 				JTextField valueField = new JTextField();
 				valueField.setForeground(Color.WHITE);
 				valueField.setBorder(new MatteBorder(0, 0, 2, 0, Color.WHITE));
-				valueField.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+				valueField.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 				valueField.setColumns(10);
 				valueField.setMinimumSize(new Dimension(100, 100));
 
@@ -179,7 +179,7 @@ public class SearchPanel extends JPanel {
 
 		panel.add(btnNewButton);
 		this.centerScrollPane.setBorder(null);
-		this.centerScrollPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		this.centerScrollPane.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		centerPanel2.add(centerScrollPane, BorderLayout.CENTER);
 

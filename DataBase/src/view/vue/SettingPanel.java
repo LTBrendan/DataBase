@@ -41,7 +41,7 @@ public class SettingPanel extends JPanel {
 
 	public SettingPanel() {
 
-		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		setLayout(new GridLayout(5, 5, 0, 0));
 
 		this.add(createChangeThemePanel());
@@ -53,11 +53,11 @@ public class SettingPanel extends JPanel {
 	public JPanel createChangeThemePanel() {
 
 		themePanel = new JPanel();
-		themePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		themePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		themeLabel = new JLabel(" Th\u00E8me : ");
 		themeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			themeLabel.setForeground(new Color(255, 255, 255));
 		else
 			themeLabel.setForeground(new Color(0, 0, 0));
@@ -69,18 +69,18 @@ public class SettingPanel extends JPanel {
 		darkThemeButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				System.out.println(Launcher.getLauncher().getLauncherControler().getCurrentUserName());
+				System.out.println(AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
 				if (darkThemeButton.isSelected()) {
-					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
-					Launcher.getLauncher().getLauncherControler().save();
+					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(54);
+					AppFrame.getAppFrame().getLauncherControler().save();
 				} else {
-					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(247);
-					Launcher.getLauncher().getLauncherControler().save();
+					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(247);
+					AppFrame.getAppFrame().getLauncherControler().save();
 				}
 			}
 		});
-		darkThemeButton.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
+		darkThemeButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		if (AppFrame.color == 54)
 			darkThemeButton.setForeground(new Color(255, 255, 255));
 		else
 			darkThemeButton.setForeground(new Color(0, 0, 0));
@@ -90,22 +90,22 @@ public class SettingPanel extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				if (whiteThemeButton.isSelected()) {
-					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(247);
-					Launcher.getLauncher().getLauncherControler().save();
+					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(247);
+					AppFrame.getAppFrame().getLauncherControler().save();
 				} else {
-					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
-					Launcher.getLauncher().getLauncherControler().save();
+					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setColor(54);
+					AppFrame.getAppFrame().getLauncherControler().save();
 				}
 
 			}
 		});
-		whiteThemeButton.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
+		whiteThemeButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		if (AppFrame.color == 54)
 			whiteThemeButton.setForeground(new Color(255, 255, 255));
 		else
 			whiteThemeButton.setForeground(new Color(0, 0, 0));
 
-		if (Launcher.color == 54) {
+		if (AppFrame.color == 54) {
 			whiteThemeButton.setSelected(false);
 			darkThemeButton.setSelected(true);
 		} else {
@@ -124,18 +124,18 @@ public class SettingPanel extends JPanel {
 	public JPanel createChangeLoginPanel() {
 
 		changeUserPanel = new JPanel();
-		changeUserPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		changeUserPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		changeUserLabel = new JLabel("Change your login : ");
-		changeUserLabel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		if (Launcher.color == 54)
+		changeUserLabel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		if (AppFrame.color == 54)
 			changeUserLabel.setForeground(new Color(255, 255, 255));
 		else
 			changeUserLabel.setForeground(new Color(0, 0, 0));
 
 		newLogin = new JTextField("New login...");
 		newLogin.addFocusListener(new TextFieldListener());
-		if (Launcher.color == 54) {
+		if (AppFrame.color == 54) {
 			newLogin.setBackground(new Color(54, 57, 62));
 			newLogin.setForeground(new Color(255, 255, 255));
 		} else {
@@ -145,7 +145,7 @@ public class SettingPanel extends JPanel {
 
 		newPassword = new JPasswordField("Password");
 		newPassword.addFocusListener(new TextFieldListener());
-		if (Launcher.color == 54) {
+		if (AppFrame.color == 54) {
 			newPassword.setBackground(new Color(54, 57, 62));
 			newPassword.setForeground(new Color(255, 255, 255));
 		} else {
@@ -155,10 +155,10 @@ public class SettingPanel extends JPanel {
 
 		validateChange = new JButton("Validate");
 		validateChange.setBorder(null);
-		validateChange.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		validateChange.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		validateChange.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		validateChange.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			validateChange.setForeground(new Color(255, 255, 255));
 		else
 			validateChange.setForeground(new Color(0, 0, 0));

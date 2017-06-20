@@ -3,8 +3,8 @@ package control.controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import view.vue.InvalidInformations;
-import view.vue.Launcher;
+import view.vue.InvalidInfoDialog;
+import view.vue.AppFrame;
 import view.vue.LoginFrame;
 
 public class KeyboardListener implements KeyListener {
@@ -30,7 +30,7 @@ public class KeyboardListener implements KeyListener {
 				if (LoginFrame.getLoginFrame().getLauncherControler().connect(
 						LoginFrame.getLoginFrame().getLoginField().getText(),
 						new String(LoginFrame.getLoginFrame().getPasswordField().getPassword()))) {
-					Launcher.main(LoginFrame.getLoginFrame().getLauncherControler());
+					AppFrame.main(LoginFrame.getLoginFrame().getLauncherControler());
 					connected = true;
 				}
 
@@ -39,7 +39,7 @@ public class KeyboardListener implements KeyListener {
 			} finally {
 
 				if (connected == false)
-					InvalidInformations.main(null);
+					InvalidInfoDialog.main(null);
 				else
 					LoginFrame.getLoginFrame().setVisible(false);
 

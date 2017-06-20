@@ -10,14 +10,14 @@ import javax.swing.JFrame;
 import control.consoleControler.DatabaseControler;
 import control.consoleControler.LauncherControler;
 
-public class Launcher {
+public class AppFrame {
 
 	private JFrame frame;
-	private StatePanel statePanel;
+	private MenuPanel menuPanel;
 	private MainPanel mainPanel;
 
 	private DatabaseControler databaseControler;
-	private static Launcher launcher;
+	private static AppFrame appFrame;
 	private static LauncherControler launcherControler;
 
 	public static int color;
@@ -27,7 +27,7 @@ public class Launcher {
 	 */
 	public static void main(LauncherControler launcherControler) {
 
-		Launcher.launcherControler = launcherControler;
+		AppFrame.launcherControler = launcherControler;
 
 		if (!(launcherControler.getCurrentUser().getColor() > 247)
 				|| !(launcherControler.getCurrentUser().getColor() < 54))
@@ -38,7 +38,7 @@ public class Launcher {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Launcher().frame.setVisible(true);
+					new AppFrame().frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,7 +46,7 @@ public class Launcher {
 		});
 	}
 
-	public Launcher() {
+	public AppFrame() {
 
 		frame = new JFrame("DataBase app");
 		frame.setUndecorated(true);
@@ -56,7 +56,7 @@ public class Launcher {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		launcher = this;
+		appFrame = this;
 
 		// MouseMovementAdapter.setMAIN_FRAME(frame);
 		// try {
@@ -65,10 +65,10 @@ public class Launcher {
 		// e1.printStackTrace();
 		// }
 
-		statePanel = new StatePanel();
+		menuPanel = new MenuPanel();
 		mainPanel = new MainPanel();
 
-		frame.getContentPane().add(statePanel, BorderLayout.WEST);
+		frame.getContentPane().add(menuPanel, BorderLayout.WEST);
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 
 		frame.pack();
@@ -76,38 +76,38 @@ public class Launcher {
 	}
 
 	public static JFrame getFrame() {
-		return launcher.frame;
+		return appFrame.frame;
 	}
 
-	public static StatePanel getStatePanel() {
-		return launcher.statePanel;
+	public static MenuPanel getMenuPanel() {
+		return appFrame.menuPanel;
 	}
 
-	public static void setStatePanel(StatePanel statePanel) {
-		launcher.statePanel = statePanel;
+	public static void setMenuPanel(MenuPanel menuPanel) {
+		appFrame.menuPanel = menuPanel;
 	}
 
 	public static MainPanel getMainPanel() {
-		return launcher.mainPanel;
+		return appFrame.mainPanel;
 	}
 
 	public static void setMainPanel(MainPanel mainPanel) {
-		launcher.mainPanel = mainPanel;
+		appFrame.mainPanel = mainPanel;
 	}
 
 	public static DatabaseControler getDataBaseController() {
-		return launcher.databaseControler;
+		return appFrame.databaseControler;
 	}
 
 	public LauncherControler getLauncherControler() {
-		return Launcher.launcherControler;
+		return AppFrame.launcherControler;
 	}
 
-	public static Launcher getLauncher() {
-		return launcher;
+	public static AppFrame getAppFrame() {
+		return appFrame;
 	}
 
 	public static void setDatabaseControler(DatabaseControler dc) {
-		launcher.databaseControler = dc;
+		appFrame.databaseControler = dc;
 	}
 }

@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import control.controller.MenuButtonListener;
 
-public class StatePanel extends JPanel {
+public class MenuPanel extends JPanel {
 
 	/**
 	 * 
@@ -39,31 +39,31 @@ public class StatePanel extends JPanel {
 	private JLabel export;
 	private JLabel admin;
 
-	private static StatePanel statePanel;
+	private static MenuPanel menuPanel;
 
-	public StatePanel() {
+	public MenuPanel() {
 
 		this.setPreferredSize(new Dimension(80, 456));
-		this.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		this.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		this.setLayout(new BorderLayout());
 
 		this.add(createUpPanel(), BorderLayout.NORTH);
 		this.add(createDownPanel(), BorderLayout.CENTER);
 
-		statePanel = this;
+		menuPanel = this;
 	}
 
 	private JPanel createDownPanel() {
 
 		downPanel = new JPanel(new GridLayout(8, 0));
-		downPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		downPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 
 		home = new JLabel();
 		home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		home.setToolTipText("Home");
 		home.setHorizontalAlignment(downPanel.getWidth() / 2);
 		home.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
 		else
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeBlack.PNG"));
@@ -73,7 +73,7 @@ public class StatePanel extends JPanel {
 		editor.setToolTipText("editor");
 		editor.setHorizontalAlignment(downPanel.getWidth() / 2);
 		editor.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorWhite.PNG"));
 		else
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorBlack.PNG"));
@@ -83,7 +83,7 @@ public class StatePanel extends JPanel {
 		search.setToolTipText("search");
 		search.setHorizontalAlignment(downPanel.getWidth() / 2);
 		search.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchWhite.PNG"));
 		else
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchBlack.PNG"));
@@ -92,7 +92,7 @@ public class StatePanel extends JPanel {
 		visual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		visual.setToolTipText("visual");
 		visual.setHorizontalAlignment(downPanel.getWidth() / 2);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualWhite.PNG"));
 		else
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualBlack.PNG"));
@@ -101,7 +101,7 @@ public class StatePanel extends JPanel {
 		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		stats.setToolTipText("Stats");
 		stats.setHorizontalAlignment(downPanel.getWidth() / 2);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsWhite.PNG"));
 		else
 			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsBlack.PNG"));
@@ -110,7 +110,7 @@ public class StatePanel extends JPanel {
 		game.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		game.setToolTipText("game");
 		game.setHorizontalAlignment(downPanel.getWidth() / 2);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameWhite.PNG"));
 		else
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameBlack.PNG"));
@@ -119,7 +119,7 @@ public class StatePanel extends JPanel {
 		export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		export.setToolTipText("export");
 		export.setHorizontalAlignment(downPanel.getWidth() / 2);
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportWhite.PNG"));
 		else
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportBlack.PNG"));
@@ -129,7 +129,7 @@ public class StatePanel extends JPanel {
 		admin.setToolTipText("admin");
 		admin.setHorizontalAlignment(downPanel.getWidth() / 2);
 		admin.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
+		if (AppFrame.color == 54)
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminWhite.PNG"));
 		else
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminBlack.PNG"));
@@ -142,7 +142,7 @@ public class StatePanel extends JPanel {
 		downPanel.add(game);
 		downPanel.add(export);
 
-		if (Launcher.getLauncher().getLauncherControler().getCurrentUserName().equals("admin"))
+		if (AppFrame.getAppFrame().getLauncherControler().getCurrentUserName().equals("admin"))
 			downPanel.add(admin);
 
 		return downPanel;
@@ -151,7 +151,7 @@ public class StatePanel extends JPanel {
 	private JPanel createUpPanel() {
 
 		upPanel = new JPanel(new BorderLayout());
-		upPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		upPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		upPanel.add(createAvatarLanel(), BorderLayout.NORTH);
 		upPanel.add(createUserNameLabel(), BorderLayout.CENTER);
 		upPanel.add(createSeparator(), BorderLayout.SOUTH);
@@ -173,8 +173,8 @@ public class StatePanel extends JPanel {
 
 	private JLabel createUserNameLabel() {
 
-		this.userNameLabel = new JLabel(Launcher.getLauncher().getLauncherControler().getCurrentUserName());
-		if (Launcher.color == 54)
+		this.userNameLabel = new JLabel(AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
+		if (AppFrame.color == 54)
 			this.userNameLabel.setForeground(Color.WHITE);
 		else
 			this.userNameLabel.setForeground(Color.BLACK);
@@ -191,47 +191,47 @@ public class StatePanel extends JPanel {
 		return this.separator;
 	}
 
-	public static StatePanel getStatePanel() {
-		return statePanel;
+	public static MenuPanel getMenuPanel() {
+		return menuPanel;
 	}
 
 	public JComponent getAvatarLabel() {
-		return statePanel.avatarLabel;
+		return menuPanel.avatarLabel;
 	}
 
 	public JComponent getUserNameLabel() {
-		return statePanel.userNameLabel;
+		return menuPanel.userNameLabel;
 	}
 
 	public JLabel getHome() {
-		return statePanel.home;
+		return menuPanel.home;
 	}
 
 	public JLabel getEditor() {
-		return statePanel.editor;
+		return menuPanel.editor;
 	}
 
 	public JLabel getSearch() {
-		return statePanel.search;
+		return menuPanel.search;
 	}
 
 	public JLabel getVisual() {
-		return statePanel.visual;
+		return menuPanel.visual;
 	}
 
 	public JLabel getStats() {
-		return statePanel.stats;
+		return menuPanel.stats;
 	}
 
 	public JLabel getGame() {
-		return statePanel.game;
+		return menuPanel.game;
 	}
 
 	public JLabel getExport() {
-		return statePanel.export;
+		return menuPanel.export;
 	}
 
 	public JLabel getAdmin() {
-		return statePanel.admin;
+		return menuPanel.admin;
 	}
 }

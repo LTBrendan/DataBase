@@ -3,8 +3,8 @@ package control.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.vue.InvalidInformations;
-import view.vue.Launcher;
+import view.vue.InvalidInfoDialog;
+import view.vue.AppFrame;
 import view.vue.LoginFrame;
 
 public class LoginButtonListener implements MouseListener {
@@ -39,7 +39,7 @@ public class LoginButtonListener implements MouseListener {
 				if (LoginFrame.getLoginFrame().getLauncherControler().connect(
 						LoginFrame.getLoginFrame().getLoginField().getText(),
 						new String(LoginFrame.getLoginFrame().getPasswordField().getPassword()))) {
-					Launcher.main(LoginFrame.getLoginFrame().getLauncherControler());
+					AppFrame.main(LoginFrame.getLoginFrame().getLauncherControler());
 					connected = true;
 				}
 
@@ -48,7 +48,7 @@ public class LoginButtonListener implements MouseListener {
 			} finally {
 
 				if (connected == false)
-					InvalidInformations.main(null);
+					InvalidInfoDialog.main(null);
 				else
 					LoginFrame.getLoginFrame().setVisible(false);
 

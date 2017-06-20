@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import control.controller.InvalidInfoButtonListener;
 
-public class InvalidInformations extends JDialog {
+public class InvalidInfoDialog extends JDialog {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class InvalidInformations extends JDialog {
 	JButton okButton;
 	JButton createNewButton;
 
-	static InvalidInformations invalidInformations;
+	static InvalidInfoDialog invalidInfoDialog;
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -35,7 +35,7 @@ public class InvalidInformations extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			InvalidInformations dialog = new InvalidInformations();
+			InvalidInfoDialog dialog = new InvalidInfoDialog();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -46,7 +46,7 @@ public class InvalidInformations extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public InvalidInformations() {
+	public InvalidInfoDialog() {
 
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -55,7 +55,7 @@ public class InvalidInformations extends JDialog {
 		this.setUndecorated(true);
 		this.setBackground(new Color(54, 57, 62));
 
-		invalidInformations = this;
+		invalidInfoDialog = this;
 
 		contentPanel.setBackground(new Color(54, 57, 62));
 		contentPanel.setLayout(null);
@@ -97,15 +97,15 @@ public class InvalidInformations extends JDialog {
 	}
 
 	public JButton getOkButton() {
-		return invalidInformations.okButton;
+		return invalidInfoDialog.okButton;
 	}
 
 	public JButton getCreateNewButton() {
-		return invalidInformations.createNewButton;
+		return invalidInfoDialog.createNewButton;
 	}
 
-	public static InvalidInformations getInvalidInformations() {
-		return invalidInformations;
+	public static InvalidInfoDialog getInvalidInfoDialog() {
+		return invalidInfoDialog;
 	}
 
 }

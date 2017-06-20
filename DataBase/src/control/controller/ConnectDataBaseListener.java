@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import control.consoleControler.DatabaseControler;
 import logs.Log;
-import view.vue.Launcher;
+import view.vue.AppFrame;
 
 public class ConnectDataBaseListener implements MouseListener {
 
@@ -41,20 +41,20 @@ public class ConnectDataBaseListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		try {
-			Launcher.getDataBaseController().quit();
-			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Disconnected from the database");
+			AppFrame.getDataBaseController().quit();
+			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Disconnected from the database");
 
 		} catch (NullPointerException e) {
 
 		}
 		try {
-			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
-			Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
+			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
+			AppFrame.setDatabaseControler(new DatabaseControler(adress, login, password));
 			Log.database("connection established");
 			Log.database("statement created");
-			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
+			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
 		} catch (SQLException ex) {
-			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
+			AppFrame.getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
 			Log.database("connection error");
 		}
 	}

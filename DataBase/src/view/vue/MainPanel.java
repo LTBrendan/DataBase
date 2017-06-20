@@ -12,7 +12,7 @@ public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private DirectoryPanel directoryPanel = new DirectoryPanel();
-	private DetailPanel detailPanel = new DetailPanel();
+	private WorkPanel workPanel = new WorkPanel();
 	
 	private static MainPanel mainPanel;
 	
@@ -20,7 +20,7 @@ public class MainPanel extends JPanel {
 		
 		this.setLayout(new BorderLayout(0, 0));
 		this.add(directoryPanel, BorderLayout.WEST);
-		this.add(detailPanel, BorderLayout.CENTER);
+		this.add(workPanel, BorderLayout.CENTER);
 		
 		mainPanel = this;
 	}
@@ -33,13 +33,13 @@ public class MainPanel extends JPanel {
 		mainPanel.directoryPanel = directoryPanel;
 	}
 
-	public DetailPanel getDetailPanel() {
-		return mainPanel.detailPanel;
+	public WorkPanel getWorkPanel() {
+		return mainPanel.workPanel;
 	}
 
-	public static void setDetailPanel(DetailPanel detailPanel) {
-		mainPanel.remove(mainPanel.getDetailPanel());
-		mainPanel.add(detailPanel);
+	public static void setDetailPanel(WorkPanel workPanel) {
+		mainPanel.remove(mainPanel.getWorkPanel());
+		mainPanel.add(workPanel);
 	}
 	
 	public static MainPanel getMainPanel(){

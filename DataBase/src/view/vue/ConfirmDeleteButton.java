@@ -38,12 +38,12 @@ public class ConfirmDeleteButton implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		
-		if (e.getComponent().equals(ConfirmDelete.getConfirmDelete().getOkButton())) {
+		if (e.getComponent().equals(ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().getOkButton())) {
 			
-			ConfirmDelete.getConfirmDelete().setVisible(false);
+			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().setVisible(false);
 			
 			try {
-				 Launcher.getLauncher().getLauncherControler().removeUser(login,
+				 AppFrame.getAppFrame().getLauncherControler().removeUser(login,
 				 UserManager.decrypt(password));
 				 
 			} catch (Exception u){
@@ -52,7 +52,7 @@ public class ConfirmDeleteButton implements MouseListener {
 			
 		} else {
 			
-			ConfirmDelete.getConfirmDelete().setVisible(false);
+			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().setVisible(false);
 			
 		}
 	}

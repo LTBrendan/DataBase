@@ -11,7 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ConfirmDelete extends JDialog {
+public class ConfirmUserDeleteDialog extends JDialog {
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class ConfirmDelete extends JDialog {
 	JButton okButton;
 	JButton cancel;
 
-	static ConfirmDelete confirmDelete;
+	static ConfirmUserDeleteDialog confirmUserDeleteDialog;
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -38,7 +38,7 @@ public class ConfirmDelete extends JDialog {
 		login = args[0];
 		password = args[1];
 		try {
-			ConfirmDelete dialog = new ConfirmDelete();
+			ConfirmUserDeleteDialog dialog = new ConfirmUserDeleteDialog();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class ConfirmDelete extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ConfirmDelete() {
+	public ConfirmUserDeleteDialog() {
 
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -58,7 +58,7 @@ public class ConfirmDelete extends JDialog {
 		this.setUndecorated(true);
 		this.setBackground(new Color(54, 57, 62));
 
-		confirmDelete = this;
+		confirmUserDeleteDialog = this;
 
 		contentPanel.setBackground(new Color(54, 57, 62));
 		contentPanel.setLayout(null);
@@ -100,15 +100,15 @@ public class ConfirmDelete extends JDialog {
 	}
 
 	public JButton getOkButton() {
-		return confirmDelete.okButton;
+		return confirmUserDeleteDialog.okButton;
 	}
 
 	public JButton getcancel() {
-		return confirmDelete.cancel;
+		return confirmUserDeleteDialog.cancel;
 	}
 
-	public static ConfirmDelete getConfirmDelete() {
-		return confirmDelete;
+	public static ConfirmUserDeleteDialog getConfirmUserDeleteDialog() {
+		return confirmUserDeleteDialog;
 	}
 
 }

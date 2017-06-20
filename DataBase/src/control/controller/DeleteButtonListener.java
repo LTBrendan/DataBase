@@ -3,7 +3,7 @@ package control.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.vue.ConfirmDelete;
+import view.vue.ConfirmUserDeleteDialog;
 
 public class DeleteButtonListener implements MouseListener {
 
@@ -38,7 +38,7 @@ public class DeleteButtonListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 
-		ConfirmDelete.main(new String[]{login, password});
+		ConfirmUserDeleteDialog.main(new String[]{login, password});
 
 	}
 

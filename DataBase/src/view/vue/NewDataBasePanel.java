@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import control.controller.MenuButtonListener;
 
-public class NewConnectionPanel extends JPanel {
+public class NewDataBasePanel extends JPanel {
 
 	/**
 	 * 
@@ -37,12 +37,12 @@ public class NewConnectionPanel extends JPanel {
 
 	private JButton addDatabaseButton;
 
-	private static NewConnectionPanel newConnection;
+	private static NewDataBasePanel newConnection;
 
 	/**
 	 * Create the panel.
 	 */
-	public NewConnectionPanel() {
+	public NewDataBasePanel() {
 
 		this.setBounds(100, 100, 946, 712);
 		this.setLayout(new BorderLayout(0, 0));
@@ -143,7 +143,7 @@ public class NewConnectionPanel extends JPanel {
 		newConnection = this;
 	}
 
-	public static NewConnectionPanel getNewConnectionPanel() {
+	public static NewDataBasePanel getNewDataBasePanel() {
 		return newConnection;
 	}
 

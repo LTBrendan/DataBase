@@ -3,7 +3,7 @@ package control.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.vue.InvalidInformations;
+import view.vue.InvalidInfoDialog;
 import view.vue.LoginFrame;
 
 public class InvalidInfoButtonListener implements MouseListener {
@@ -31,14 +31,14 @@ public class InvalidInfoButtonListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		
-		if (arg0.getComponent().equals(InvalidInformations.getInvalidInformations().getOkButton())){
+		if (arg0.getComponent().equals(InvalidInfoDialog.getInvalidInfoDialog().getOkButton())){
 			
-			InvalidInformations.getInvalidInformations().setVisible(false);
+			InvalidInfoDialog.getInvalidInfoDialog().setVisible(false);
 			
-		} else if (arg0.getComponent().equals(InvalidInformations.getInvalidInformations().getCreateNewButton())){
+		} else if (arg0.getComponent().equals(InvalidInfoDialog.getInvalidInfoDialog().getCreateNewButton())){
 			
 			LoginFrame.getLoginFrame().createUserContentPanel();
-			InvalidInformations.getInvalidInformations().setVisible(false);
+			InvalidInfoDialog.getInvalidInfoDialog().setVisible(false);
 			
 		} else if (arg0.getComponent().equals(LoginFrame.getLoginFrame().getCreateNewUserLoginLabel())) {
 			

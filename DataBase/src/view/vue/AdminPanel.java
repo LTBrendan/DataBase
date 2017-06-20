@@ -34,13 +34,13 @@ public class AdminPanel extends JPanel {
 	 */
 	public AdminPanel() {
 
-		setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		setBackground(new Color(54, 57, 62));
 		setLayout(new BorderLayout(0, 0));
 
 		centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(0, 4, 0, 0));
-		centerPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		centerPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		userListPanel = new JPanel(new GridLayout(15, 1)) {
 
@@ -55,22 +55,22 @@ public class AdminPanel extends JPanel {
 
 		};
 
-		userListPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		userListPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		userListPanel.setForeground(new Color(255, 255, 255));
 
 		for (User uc : UserManager.getUserList()) {
 
 			JPanel userPanel = new JPanel(new BorderLayout());
-			userPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+			userPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 			JLabel tiretLabel = new JLabel(" - ");
-			if (Launcher.color == 54)
+			if (AppFrame.color == 54)
 				tiretLabel.setForeground(new Color(255, 255, 255));
 			else
 				tiretLabel.setForeground(new Color(0, 0, 0));
 
 			JLabel userLabel = new JLabel(uc.getLogin());
-			if (Launcher.color == 54)
+			if (AppFrame.color == 54)
 				userLabel.setForeground(new Color(255, 255, 255));
 			else
 				userLabel.setForeground(new Color(0, 0, 0));
@@ -90,10 +90,10 @@ public class AdminPanel extends JPanel {
 
 		scrollPane = new JScrollPane(userListPanel);
 		scrollPane.setBorder(null);
-		scrollPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		scrollPane.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 		titlePanel = new JPanel();
-		titlePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		titlePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		titlePanel.setForeground(new Color(255, 255, 255));
 
 		JLabel lblAdminSettings = new JLabel("Admin Settings");
@@ -106,7 +106,7 @@ public class AdminPanel extends JPanel {
 		add(titlePanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
 
-		setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
 	}
 

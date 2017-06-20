@@ -17,7 +17,7 @@ public class StatsPanel extends JPanel {
 	 */
 	public StatsPanel() {
 		
-		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
+		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		
 		statsPanel = this;
 	}

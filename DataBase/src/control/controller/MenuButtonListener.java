@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import model.exception.ExceptionHandler;
-import view.vue.DetailPanel;
-import view.vue.Launcher;
+import view.vue.WorkPanel;
+import view.vue.AppFrame;
 import view.vue.MainPanel;
 
 public class MenuButtonListener implements MouseListener {
@@ -44,19 +44,19 @@ public class MenuButtonListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
-		if (e.getComponent().equals(Launcher.getStatePanel().getAvatarLabel())) {
+		if (e.getComponent().equals(AppFrame.getMenuPanel().getAvatarLabel())) {
 
-			DetailPanel.setPreSettingPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setPreSettingPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteLabel())) {
-			String query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText()
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getExecuteLabel())) {
+			String query = AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()
 					.split(";")[0];
 			String result = query + ": \n";
 			if (query.toLowerCase().contains("create")) {
 				try {
-					Launcher.getDataBaseController().executeQuery(query);
+					AppFrame.getDataBaseController().executeQuery(query);
 					result += "table created \n";
 				} catch (SQLException ex) {
 					result += ExceptionHandler.analyse(ex.getMessage());
@@ -66,7 +66,7 @@ public class MenuButtonListener implements MouseListener {
 			}
 			if (query.toLowerCase().contains("insert")) {
 				try {
-					Launcher.getDataBaseController().executeQuery(query);
+					AppFrame.getDataBaseController().executeQuery(query);
 					result += "line inserted \n";
 				} catch (SQLException ex) {
 					result += ExceptionHandler.analyse(ex.getMessage());
@@ -76,7 +76,7 @@ public class MenuButtonListener implements MouseListener {
 			}
 			if (query.toLowerCase().contains("drop")) {
 				try {
-					Launcher.getDataBaseController().executeQuery(query);
+					AppFrame.getDataBaseController().executeQuery(query);
 					result += "table dropped \n";
 				} catch (SQLException ex) {
 					result += ExceptionHandler.analyse(ex.getMessage());
@@ -86,7 +86,7 @@ public class MenuButtonListener implements MouseListener {
 			}
 			if (query.toLowerCase().contains("delete")) {
 				try {
-					Launcher.getDataBaseController().executeQuery(query);
+					AppFrame.getDataBaseController().executeQuery(query);
 					result += "line deleted \n";
 				} catch (SQLException ex) {
 					result += ExceptionHandler.analyse(ex.getMessage());
@@ -96,7 +96,7 @@ public class MenuButtonListener implements MouseListener {
 			}
 			if (query.toLowerCase().contains("select")) {
 				try {
-					ResultSet rs = Launcher.getDataBaseController().executeQuery(query);
+					ResultSet rs = AppFrame.getDataBaseController().executeQuery(query);
 					ResultSetMetaData rsmd = rs.getMetaData();
 					int columnCount = rsmd.getColumnCount();
 					for (int i = 1; i < columnCount; i++) {
@@ -119,106 +119,106 @@ public class MenuButtonListener implements MouseListener {
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
 			label.setHorizontalAlignment(SwingConstants.LEFT);
-			if (Launcher.color == 54)
+			if (AppFrame.color == 54)
 				label.setForeground(new Color(255, 255, 255));
 			else
 				label.setForeground(new Color(0, 0, 0));
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().removeAll();
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
-			Launcher.getMainPanel().getDetailPanel().revalidate();
-			Launcher.getMainPanel().getDetailPanel().repaint();
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().removeAll();
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().add(label, BorderLayout.NORTH);
+			AppFrame.getMainPanel().getWorkPanel().revalidate();
+			AppFrame.getMainPanel().getWorkPanel().repaint();
 
 		} else if (e.getComponent()
-				.equals(Launcher.getMainPanel().getDetailPanel().getPreSettingPanel().getSettingLabel())) {
+				.equals(AppFrame.getMainPanel().getWorkPanel().getPreSettingPanel().getSettingLabel())) {
 
-			DetailPanel.setSettingPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setSettingPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getStatePanel().getEditor())) {
+		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getEditor())) {
 
-			DetailPanel.setWorkPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setQueryPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getStatePanel().getHome())) {
+		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getHome())) {
 
-			DetailPanel.setHomePanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setHomePanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getMaximizeLabel())) {
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getMaximizeLabel())) {
 
-			Launcher.getFrame().setLocationRelativeTo(null);
+			AppFrame.getFrame().setLocationRelativeTo(null);
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getMinimizeLabel())) {
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getMinimizeLabel())) {
 
-			Launcher.getFrame().setState(Frame.ICONIFIED);
+			AppFrame.getFrame().setState(Frame.ICONIFIED);
 
-		} else if (e.getComponent().equals(Launcher.getStatePanel().getSearch())) {
+		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getSearch())) {
 
-			DetailPanel.setSearchPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setSearchPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
 		} else if (e.getComponent()
-				.equals(Launcher.getMainPanel().getDetailPanel().getSettingPanel().getValidateButton())) {
+				.equals(AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getValidateButton())) {
 
-			Launcher.getLauncher().getLauncherControler().changeLogin(
-					Launcher.getLauncher().getLauncherControler().getCurrentUserName(),
+			AppFrame.getAppFrame().getLauncherControler().changeLogin(
+					AppFrame.getAppFrame().getLauncherControler().getCurrentUserName(),
 					new String(
-							Launcher.getMainPanel().getDetailPanel().getSettingPanel().getNewPassword().getPassword()),
-					Launcher.getMainPanel().getDetailPanel().getSettingPanel().getNewLogin().getText());
+							AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getNewPassword().getPassword()),
+					AppFrame.getMainPanel().getWorkPanel().getSettingPanel().getNewLogin().getText());
 
-		} else if (e.getComponent().equals(Launcher.getStatePanel().getAdmin())) {
+		} else if (e.getComponent().equals(AppFrame.getMenuPanel().getAdmin())) {
 
-			DetailPanel.setAdminPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setAdminPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDirectoryPanel().getAddLabel())) {
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getDirectoryPanel().getAddLabel())) {
 
-			DetailPanel.setNewConnection();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			WorkPanel.setNewConnection();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
 		} else if (e.getComponent()
-				.equals(Launcher.getMainPanel().getDetailPanel().getNewConnection().getAddDatabaseButton())) {
+				.equals(AppFrame.getMainPanel().getWorkPanel().getNewConnection().getAddDatabaseButton())) {
 
-			Launcher.getLauncher().getLauncherControler().addDatabase(
-					Launcher.getMainPanel().getDetailPanel().getNewConnection().getNameField().getText(),
-					Launcher.getMainPanel().getDetailPanel().getNewConnection().getAdressField().getText(),
-					Launcher.getMainPanel().getDetailPanel().getNewConnection().getLoginField().getText(),
-					Launcher.getMainPanel().getDetailPanel().getNewConnection().getPasswordField().getText());
-			Launcher.getMainPanel().getDirectoryPanel().setDirectoryPanel();
-			DetailPanel.setWorkPanel();
-			MainPanel.getMainPanel().getDetailPanel().revalidate();
-			MainPanel.getMainPanel().getDetailPanel().repaint();
+			AppFrame.getAppFrame().getLauncherControler().addDatabase(
+					AppFrame.getMainPanel().getWorkPanel().getNewConnection().getNameField().getText(),
+					AppFrame.getMainPanel().getWorkPanel().getNewConnection().getAdressField().getText(),
+					AppFrame.getMainPanel().getWorkPanel().getNewConnection().getLoginField().getText(),
+					AppFrame.getMainPanel().getWorkPanel().getNewConnection().getPasswordField().getText());
+			AppFrame.getMainPanel().getDirectoryPanel().setDirectoryPanel();
+			WorkPanel.setQueryPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getClearLabel())) {
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().setText(null);
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getClearLabel())) {
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(null);
 
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getSaveLabel())) {
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getSaveLabel())) {
 			JFileChooser saveJFC = new JFileChooser();
 			JFrame frame = new JFrame();
 			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
-					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText()));
+					AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
 			saveJFC.showSaveDialog(frame);
-		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getImportLabel())) {
+		} else if (e.getComponent().equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getImportLabel())) {
 			JFileChooser openJFC = new JFileChooser();
 			JFrame frame = new JFrame();
 			openJFC.addActionListener(new OpenChooserListener(openJFC));
 			openJFC.showOpenDialog(frame);
 
 		} else if (e.getComponent()
-				.equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteAllLabel())) {
-			String[] query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText().split(";");
+				.equals(AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllLabel())) {
+			String[] query = AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText().split(";");
 			String result = "";
 			for (String s : query) {
 				result += s + ": \n";
 				if (s.toLowerCase().contains("create")) {
 					try {
-						Launcher.getDataBaseController().executeQuery(s);
+						AppFrame.getDataBaseController().executeQuery(s);
 						result += "table created \n";
 					} catch (SQLException ex) {
 						result += ExceptionHandler.analyse(ex.getMessage());
@@ -227,7 +227,7 @@ public class MenuButtonListener implements MouseListener {
 					}
 				} else if (s.toLowerCase().contains("insert")) {
 					try {
-						Launcher.getDataBaseController().executeQuery(s);
+						AppFrame.getDataBaseController().executeQuery(s);
 						result += "line inserted \n";
 					} catch (SQLException ex) {
 						result += ExceptionHandler.analyse(ex.getMessage());
@@ -236,7 +236,7 @@ public class MenuButtonListener implements MouseListener {
 					}
 				} else if (s.toLowerCase().contains("drop")) {
 					try {
-						Launcher.getDataBaseController().executeQuery(s);
+						AppFrame.getDataBaseController().executeQuery(s);
 						result += "table dropped \n";
 					} catch (SQLException ex) {
 						result += ExceptionHandler.analyse(ex.getMessage());
@@ -245,7 +245,7 @@ public class MenuButtonListener implements MouseListener {
 					}
 				} else if (s.toLowerCase().contains("delete")) {
 					try {
-						Launcher.getDataBaseController().executeQuery(s);
+						AppFrame.getDataBaseController().executeQuery(s);
 						result += "line deleted \n";
 					} catch (SQLException ex) {
 						result += ExceptionHandler.analyse(ex.getMessage());
@@ -254,7 +254,7 @@ public class MenuButtonListener implements MouseListener {
 					}
 				} else if (s.toLowerCase().contains("select")) {
 					try {
-						ResultSet rs = Launcher.getDataBaseController().executeQuery(s);
+						ResultSet rs = AppFrame.getDataBaseController().executeQuery(s);
 						ResultSetMetaData rsmd = rs.getMetaData();
 						int columnCount = rsmd.getColumnCount();
 						for (int i = 1; i < columnCount; i++) {
@@ -278,14 +278,14 @@ public class MenuButtonListener implements MouseListener {
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
 			label.setHorizontalAlignment(SwingConstants.LEFT);
-			if (Launcher.color == 54)
+			if (AppFrame.color == 54)
 				label.setForeground(new Color(255, 255, 255));
 			else
 				label.setForeground(new Color(0, 0, 0));
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().removeAll();
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
-			Launcher.getMainPanel().getDetailPanel().revalidate();
-			Launcher.getMainPanel().getDetailPanel().repaint();
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().removeAll();
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getUpPanel().add(label, BorderLayout.NORTH);
+			AppFrame.getMainPanel().getWorkPanel().revalidate();
+			AppFrame.getMainPanel().getWorkPanel().repaint();
 
 		}
 	}

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
 
-import view.vue.Launcher;
+import view.vue.AppFrame;
 
 public class OpenChooserListener implements ActionListener {
 
@@ -20,7 +20,7 @@ public class OpenChooserListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(javax.swing.JFileChooser.APPROVE_SELECTION)) {
 			
-			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().setText(read (jfc.getSelectedFile()));
+			AppFrame.getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(read (jfc.getSelectedFile()));
 			
 		} else if (e.getActionCommand().equals(javax.swing.JFileChooser.CANCEL_SELECTION)) {
 			

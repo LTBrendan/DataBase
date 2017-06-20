@@ -42,7 +42,7 @@ public class DirectoryPanel extends JPanel {
 
 	public DirectoryPanel() {
 
-		this.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 		this.setPreferredSize(new Dimension(225, 456));
 		this.setLayout(new BorderLayout(0, 0));
 
@@ -56,7 +56,7 @@ public class DirectoryPanel extends JPanel {
 	private JPanel createSearchPanel() {
 
 		this.searchPanel = new JPanel();
-		this.searchPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.searchPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 		this.searchPanel.setPreferredSize(new Dimension(225, 60));
 		this.searchPanel.setLayout(null);
 
@@ -70,8 +70,8 @@ public class DirectoryPanel extends JPanel {
 
 		this.separator = new JSeparator();
 		this.separator.setBounds(0, 58, 225, 2);
-		this.separator.setForeground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
-		this.separator.setBackground(new Color(Launcher.color - 14, Launcher.color - 11, Launcher.color - 6));
+		this.separator.setForeground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
+		this.separator.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
 
 		return this.separator;
 	}
@@ -82,10 +82,10 @@ public class DirectoryPanel extends JPanel {
 		this.infoLabel.setBounds(20, 11, 184, 25);
 		this.infoLabel.setMinimumSize(new Dimension(3, 20));
 		this.infoLabel.setToolTipText("Dans les bases de donn\u00E9es");
-		this.infoLabel.setText("Logged as " + Launcher.getLauncher().getLauncherControler().getCurrentUserName());
+		this.infoLabel.setText("Logged as " + AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
 		this.infoLabel.setForeground(Color.WHITE);
 		this.infoLabel.setBorder(null);
-		this.infoLabel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		this.infoLabel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		this.infoLabel.addFocusListener(new TextFieldListener());
 		this.searchPanel.add(infoLabel);
 
@@ -107,16 +107,16 @@ public class DirectoryPanel extends JPanel {
 
 		};
 
-		this.centerPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.centerPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 		this.centerPanel.setForeground(new Color(255, 255, 255));
 
-		for (UserConnexion uc : Launcher.getLauncher().getLauncherControler().getCurrentUser().getConnexionList()) {
+		for (UserConnexion uc : AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getConnexionList()) {
 
 			JPanel connPanel = new JPanel(new BorderLayout());
-			connPanel.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+			connPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 
 			JLabel connection = new JLabel(" - " + uc.getConnexionName());
-			if (Launcher.color == 54)
+			if (AppFrame.color == 54)
 				connection.setForeground(new Color(255, 255, 255));
 			else
 				connection.setForeground(new Color(0, 0, 0));
@@ -128,18 +128,18 @@ public class DirectoryPanel extends JPanel {
 			JLabel inLine = new JLabel();
 			inLine.setIcon(new ImageIcon("rsc\\dataBase\\ok.png"));
 			try {
-				Launcher.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
+				AppFrame.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 				Log.database("connection established");
 				Log.database("statement created");
 			} catch (SQLException e) {
 				inLine.setIcon(new ImageIcon("rsc\\dataBase\\error.png"));
 			} finally {
 				try {
-					Launcher.getDataBaseController().quit();
+					AppFrame.getDataBaseController().quit();
 				} catch (NullPointerException ex) {
 
 				}
-				Launcher.setDatabaseControler(null);
+				AppFrame.setDatabaseControler(null);
 			}
 			connPanel.add(connection, BorderLayout.CENTER);
 			connPanel.add(inLine, BorderLayout.EAST);
@@ -148,7 +148,7 @@ public class DirectoryPanel extends JPanel {
 
 		this.centerScrollPane = new JScrollPane(centerPanel);
 		this.centerScrollPane.setBorder(null);
-		this.centerScrollPane.setBackground(new Color(Launcher.color - 8, Launcher.color - 5, Launcher.color));
+		this.centerScrollPane.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 
 		return this.centerScrollPane;
 	}
@@ -156,7 +156,7 @@ public class DirectoryPanel extends JPanel {
 	public JPanel createBottomPanel() {
 
 		this.bottomPanel = new JPanel();
-		this.bottomPanel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		this.bottomPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
 
 		addLabel = new JLabel(" + Add new Connection");

@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import logs.Log;
-import view.vue.Launcher;
+import view.vue.AppFrame;
 
 public class LabelCloseListener implements MouseListener {
 
@@ -33,7 +33,7 @@ public class LabelCloseListener implements MouseListener {
 
 		try {
 
-			Launcher.getDataBaseController().quit();
+			AppFrame.getDataBaseController().quit();
 
 		} catch (NullPointerException p) {
 
