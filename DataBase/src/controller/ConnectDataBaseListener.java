@@ -49,6 +49,7 @@ public class ConnectDataBaseListener implements MouseListener {
 		try {
 			Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
 			Log.database("connection established");
+			Log.database("statement created");
 		} catch (SQLException ex) {
 			Log.database("connection error");
 		}

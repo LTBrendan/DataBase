@@ -34,6 +34,8 @@ public class Connect {
 	public Connect(String address, String login, String password) {
 		try {
 			dc = new DatabaseControler(address, login, password);
+			Log.database("connection established");
+			Log.database("statement created");
 		} catch (SQLException e) {
 			System.out.println("Connection error");
 			Log.database("conection error");

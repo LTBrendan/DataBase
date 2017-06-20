@@ -66,7 +66,6 @@ public class DatabaseControler extends MainControler {
 			// Creation of a statement that allows to execute query after
 			statement = conn.createStatement();
 			exec = new QueryExecutor(conn, statement);
-			Log.database("statement created");
 		} catch (SQLException e) {
 			System.out.println("Statement creation error !");
 			Log.database("error creating statement");

@@ -132,6 +132,7 @@ public class DirectoryPanel extends JPanel {
 			try {
 				Launcher.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 				Log.database ("connection established");
+				Log.database("statement created");
 			} catch (SQLException e) {
 				inLine.setIcon(new ImageIcon("rsc\\dataBase\\error.png"));
 			} finally {
