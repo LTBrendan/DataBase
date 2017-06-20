@@ -179,6 +179,9 @@ public class MenuButtonListener implements MouseListener {
 			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getClearLabel())) {
 			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().setText(null);
+			
+		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExportLabel())) {
+			
 		}
 	}
 }
