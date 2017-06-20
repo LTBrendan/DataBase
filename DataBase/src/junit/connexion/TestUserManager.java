@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import connexion.AES;
-import connexion.User;
-import connexion.UserManager;
+import model.connexion.AES;
+import model.connexion.User;
+import model.connexion.UserManager;
 
 public class TestUserManager {
 	private UserManager testUM;

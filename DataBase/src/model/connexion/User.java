@@ -1,4 +1,4 @@
-package connexion;
+package model.connexion;
 
 import java.io.Serializable;
 import java.util.ArrayList;

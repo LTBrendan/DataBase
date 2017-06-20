@@ -7,8 +7,8 @@ import java.awt.Frame;
 
 import javax.swing.JFrame;
 
-import consoleControler.DatabaseControler;
-import consoleControler.LauncherControler;
+import control.consoleControler.DatabaseControler;
+import control.consoleControler.LauncherControler;
 
 public class Launcher {
 

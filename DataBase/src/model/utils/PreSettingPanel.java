@@ -1,4 +1,4 @@
-package utils;
+package model.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -19,12 +19,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import consoleControler.LauncherControler;
-import controller.CreateUserTextFieldListener;
-import controller.KeyboardListener;
-import controller.LabelCloseListener;
-import controller.LoginButtonListener;
-import controller.TextFieldListener;
+import control.consoleControler.LauncherControler;
+import control.controller.CreateUserTextFieldListener;
+import control.controller.KeyboardListener;
+import control.controller.LabelCloseListener;
+import control.controller.LoginButtonListener;
+import control.controller.TextFieldListener;
 import logs.Log;
 
 public class LoginFrame extends JFrame {
@@ -91,7 +91,7 @@ public class LoginFrame extends JFrame {
 
 		loginPane = new JPanel();
 		createUserPane = new JPanel();
-		
+
 		focusedTextField = new JTextField();
 		focusedTextField.setEditable(false);
 		focusedTextField.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

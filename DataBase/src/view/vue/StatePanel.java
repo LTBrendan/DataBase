@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import controller.MenuButtonListener;
+import control.controller.MenuButtonListener;
 
 public class StatePanel extends JPanel {
 
@@ -23,12 +23,12 @@ public class StatePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel upPanel;
 	private JLabel avatarLabel;
 	private JLabel userNameLabel;
 	private JSeparator separator;
-	
+
 	private JPanel downPanel;
 	private JLabel home;
 	private JLabel editor;
@@ -67,7 +67,7 @@ public class StatePanel extends JPanel {
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
 		else
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeBlack.PNG"));
-		
+
 		editor = new JLabel();
 		editor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		editor.setToolTipText("editor");
@@ -77,7 +77,7 @@ public class StatePanel extends JPanel {
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorWhite.PNG"));
 		else
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorBlack.PNG"));
-		
+
 		search = new JLabel();
 		search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		search.setToolTipText("search");
@@ -87,7 +87,7 @@ public class StatePanel extends JPanel {
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchWhite.PNG"));
 		else
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchBlack.PNG"));
-		
+
 		visual = new JLabel();
 		visual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		visual.setToolTipText("visual");
@@ -96,7 +96,7 @@ public class StatePanel extends JPanel {
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualWhite.PNG"));
 		else
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualBlack.PNG"));
-		
+
 		stats = new JLabel();
 		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		stats.setToolTipText("Stats");
@@ -114,7 +114,7 @@ public class StatePanel extends JPanel {
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameWhite.PNG"));
 		else
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameBlack.PNG"));
-		
+
 		export = new JLabel();
 		export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		export.setToolTipText("export");
@@ -123,7 +123,7 @@ public class StatePanel extends JPanel {
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportWhite.PNG"));
 		else
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportBlack.PNG"));
-		
+
 		admin = new JLabel();
 		admin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		admin.setToolTipText("admin");
@@ -133,7 +133,7 @@ public class StatePanel extends JPanel {
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminWhite.PNG"));
 		else
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminBlack.PNG"));
-		
+
 		downPanel.add(home);
 		downPanel.add(editor);
 		downPanel.add(search);
@@ -141,10 +141,10 @@ public class StatePanel extends JPanel {
 		downPanel.add(stats);
 		downPanel.add(game);
 		downPanel.add(export);
-		
+
 		if (Launcher.getLauncher().getLauncherControler().getCurrentUserName().equals("admin"))
 			downPanel.add(admin);
-		
+
 		return downPanel;
 	}
 

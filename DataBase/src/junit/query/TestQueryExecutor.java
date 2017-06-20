@@ -11,8 +11,8 @@ import java.sql.Statement;
 
 import org.junit.Test;
 
-import exception.ExceptionHandler;
-import query.QueryExecutor;
+import model.exception.ExceptionHandler;
+import model.query.QueryExecutor;
 
 
 public class TestQueryExecutor {

@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import controller.LabelCloseListener;
-import controller.MenuButtonListener;
+import control.controller.LabelCloseListener;
+import control.controller.MenuButtonListener;
 
 public class PreSettingPanel extends JPanel {
 
@@ -22,11 +22,11 @@ public class PreSettingPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static PreSettingPanel preSettingPanel;
-	
+
 	private JLabel logoutLabel;
 	private JLabel quitLabel;
 	private JLabel settingLabel;
-	
+
 	public PreSettingPanel() {
 
 		this.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
@@ -68,7 +68,7 @@ public class PreSettingPanel extends JPanel {
 			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutBlack.PNG"));
 		logoutLabel.setVerticalAlignment(SwingConstants.CENTER);
 		logoutLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		quitLabel = new JLabel();
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(quitLabel);
@@ -77,7 +77,7 @@ public class PreSettingPanel extends JPanel {
 		if (Launcher.color == 54)
 			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitWhite.PNG"));
 		else
-			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitBlack.PNG"));	
+			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitBlack.PNG"));
 		quitLabel.setVerticalAlignment(SwingConstants.CENTER);
 		quitLabel.addMouseListener(new LabelCloseListener());
 		quitLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -113,6 +113,5 @@ public class PreSettingPanel extends JPanel {
 	public JLabel getSettingLabel() {
 		return preSettingPanel.settingLabel;
 	}
-	
-	
+
 }

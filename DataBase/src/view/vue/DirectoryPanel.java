@@ -14,12 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 
-import connexion.UserConnexion;
-import consoleControler.DatabaseControler;
-import controller.ConnectDataBaseListener;
-import controller.MenuButtonListener;
-import controller.TextFieldListener;
+import control.consoleControler.DatabaseControler;
+import control.controller.ConnectDataBaseListener;
+import control.controller.MenuButtonListener;
+import control.controller.TextFieldListener;
 import logs.Log;
+import model.connexion.UserConnexion;
 
 public class DirectoryPanel extends JPanel {
 
@@ -82,7 +82,7 @@ public class DirectoryPanel extends JPanel {
 		this.infoLabel.setBounds(20, 11, 184, 25);
 		this.infoLabel.setMinimumSize(new Dimension(3, 20));
 		this.infoLabel.setToolTipText("Dans les bases de donn\u00E9es");
-		this.infoLabel.setText("Logged as "+Launcher.getLauncher().getLauncherControler().getCurrentUserName());
+		this.infoLabel.setText("Logged as " + Launcher.getLauncher().getLauncherControler().getCurrentUserName());
 		this.infoLabel.setForeground(Color.WHITE);
 		this.infoLabel.setBorder(null);
 		this.infoLabel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
@@ -129,7 +129,7 @@ public class DirectoryPanel extends JPanel {
 			inLine.setIcon(new ImageIcon("rsc\\dataBase\\ok.png"));
 			try {
 				Launcher.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
-				Log.database ("connection established");
+				Log.database("connection established");
 				Log.database("statement created");
 			} catch (SQLException e) {
 				inLine.setIcon(new ImageIcon("rsc\\dataBase\\error.png"));
@@ -183,8 +183,8 @@ public class DirectoryPanel extends JPanel {
 		this.remove(centerScrollPane);
 		this.add(createCenterPanel(), BorderLayout.CENTER);
 	}
-	
-	public void setInfoLabelText (String message) {
+
+	public void setInfoLabelText(String message) {
 		this.infoLabel.setText(message);
 	}
 

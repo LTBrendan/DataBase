@@ -3,7 +3,7 @@ package view.vue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import connexion.UserManager;
+import model.connexion.UserManager;
 
 public class ConfirmDeleteButton implements MouseListener {
 

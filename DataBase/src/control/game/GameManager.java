@@ -1,12 +1,12 @@
-package game;
+package control.game;
 
-import static utils.Scan.sc;
+import static model.utils.Scan.sc;
 
 import java.sql.SQLException;
 
-import consoleControler.DatabaseControler;
-import exception.ExceptionHandler;
+import control.consoleControler.DatabaseControler;
 import logs.Log;
+import model.exception.ExceptionHandler;
 
 public class GameManager {
 	DatabaseControler dc;
@@ -14,9 +14,9 @@ public class GameManager {
 	String tableName = "Game";
 
 	public GameManager(DatabaseControler dc) {
-		this.setDc (dc);
+		this.setDc(dc);
 	}
-	
+
 	public DatabaseControler getDc() {
 		return dc;
 	}
@@ -38,7 +38,8 @@ public class GameManager {
 			}
 			System.out.print("Execute the query\n>");
 			String query;
-			while((query = sc.nextLine()).length() == 0);
+			while ((query = sc.nextLine()).length() == 0)
+				;
 			try {
 				if (query.toLowerCase().contains("select")) {
 					dc.display(dc.executeQuery(query));
@@ -88,16 +89,16 @@ public class GameManager {
 	private void insertValues() {
 
 		try {
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (0, 'Kent', 'Clark', 40)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (1, 'Wayne', 'Bruce', 45)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (2, 'Prince', 'Diana', 25)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (3, 'Parker', 'Peter', 27)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (4, 'Stark', 'Tony', 50)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (5, 'Rogers', 'Steven', 25)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (6, 'Cage', 'Luke', 21)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (7, 'Banner', 'Bruce', 48)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (8, 'Odinson', 'Thor', 34)");
-			dc.executeQuery("INSERT INTO "+this.tableName+" VALUES (9, 'Howlett', 'James', 48)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (0, 'Kent', 'Clark', 40)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (1, 'Wayne', 'Bruce', 45)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (2, 'Prince', 'Diana', 25)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (3, 'Parker', 'Peter', 27)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (4, 'Stark', 'Tony', 50)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (5, 'Rogers', 'Steven', 25)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (6, 'Cage', 'Luke', 21)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (7, 'Banner', 'Bruce', 48)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (8, 'Odinson', 'Thor', 34)");
+			dc.executeQuery("INSERT INTO " + this.tableName + " VALUES (9, 'Howlett', 'James', 48)");
 
 		} catch (SQLException e) {
 			System.out.println("Query error !");

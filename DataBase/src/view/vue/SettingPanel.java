@@ -15,8 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controller.MenuButtonListener;
-import controller.TextFieldListener;
+import control.controller.MenuButtonListener;
+import control.controller.TextFieldListener;
 
 public class SettingPanel extends JPanel {
 
@@ -30,13 +30,13 @@ public class SettingPanel extends JPanel {
 	private ButtonGroup themeButton;
 	private JRadioButton darkThemeButton;
 	private JRadioButton whiteThemeButton;
-	
+
 	private JPanel changeUserPanel;
 	private JLabel changeUserLabel;
 	private JButton validateChange;
 	private JPasswordField newPassword;
 	private JTextField newLogin;
-	
+
 	private static SettingPanel settingPanel;
 
 	public SettingPanel() {
@@ -51,7 +51,7 @@ public class SettingPanel extends JPanel {
 	}
 
 	public JPanel createChangeThemePanel() {
-		
+
 		themePanel = new JPanel();
 		themePanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
@@ -96,7 +96,7 @@ public class SettingPanel extends JPanel {
 					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
 					Launcher.getLauncher().getLauncherControler().save();
 				}
-				
+
 			}
 		});
 		whiteThemeButton.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
@@ -112,77 +112,77 @@ public class SettingPanel extends JPanel {
 			darkThemeButton.setSelected(false);
 			whiteThemeButton.setSelected(true);
 		}
-		
+
 		themeButton.add(darkThemeButton);
 		themePanel.add(darkThemeButton);
 		themeButton.add(whiteThemeButton);
 		themePanel.add(whiteThemeButton);
-		
+
 		return themePanel;
 	}
-	
+
 	public JPanel createChangeLoginPanel() {
-		
+
 		changeUserPanel = new JPanel();
 		changeUserPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 		changeUserLabel = new JLabel("Change your login : ");
 		changeUserLabel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		if (Launcher.color == 54)
-			changeUserLabel.setForeground(new Color(255,255,255));
+			changeUserLabel.setForeground(new Color(255, 255, 255));
 		else
-			changeUserLabel.setForeground(new Color(0,0,0));
-		
+			changeUserLabel.setForeground(new Color(0, 0, 0));
+
 		newLogin = new JTextField("New login...");
 		newLogin.addFocusListener(new TextFieldListener());
 		if (Launcher.color == 54) {
-			newLogin.setBackground(new Color(54,57,62));
-			newLogin.setForeground(new Color(255,255,255));
+			newLogin.setBackground(new Color(54, 57, 62));
+			newLogin.setForeground(new Color(255, 255, 255));
 		} else {
-			newLogin.setBackground(new Color(255,255,255));
-			newLogin.setForeground(new Color(0,0,0));
+			newLogin.setBackground(new Color(255, 255, 255));
+			newLogin.setForeground(new Color(0, 0, 0));
 		}
-		
+
 		newPassword = new JPasswordField("Password");
 		newPassword.addFocusListener(new TextFieldListener());
 		if (Launcher.color == 54) {
-			newPassword.setBackground(new Color(54,57,62));
-			newPassword.setForeground(new Color(255,255,255));
+			newPassword.setBackground(new Color(54, 57, 62));
+			newPassword.setForeground(new Color(255, 255, 255));
 		} else {
-			newPassword.setBackground(new Color(255,255,255));
-			newPassword.setForeground(new Color(0,0,0));
+			newPassword.setBackground(new Color(255, 255, 255));
+			newPassword.setForeground(new Color(0, 0, 0));
 		}
-		
+
 		validateChange = new JButton("Validate");
 		validateChange.setBorder(null);
 		validateChange.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		validateChange.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		validateChange.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			validateChange.setForeground(new Color(255,255,255));
+			validateChange.setForeground(new Color(255, 255, 255));
 		else
-			validateChange.setForeground(new Color(0,0,0));
-		
+			validateChange.setForeground(new Color(0, 0, 0));
+
 		changeUserPanel.add(changeUserLabel);
 		changeUserPanel.add(newLogin);
 		changeUserPanel.add(newPassword);
 		changeUserPanel.add(validateChange);
-		
+
 		return changeUserPanel;
 	}
-	
+
 	public static SettingPanel getSettingPanel() {
 		return settingPanel;
 	}
-	
+
 	public JTextField getNewLogin() {
 		return settingPanel.newLogin;
 	}
-	
+
 	public JPasswordField getNewPassword() {
 		return settingPanel.newPassword;
 	}
-	
+
 	public JButton getValidateButton() {
 		return settingPanel.validateChange;
 	}

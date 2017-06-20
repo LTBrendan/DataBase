@@ -31,12 +31,12 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-import controller.LabelCloseListener;
-import controller.MenuButtonListener;
-import controller.MouseMovementAdapter;
-import controller.TextFieldListener;
-import controller.WindowResizer;
-import utils.WordBasedStyledDocument;
+import control.controller.LabelCloseListener;
+import control.controller.MenuButtonListener;
+import control.controller.MouseMovementAdapter;
+import control.controller.TextFieldListener;
+import control.controller.WindowResizer;
+import model.utils.WordBasedStyledDocument;
 
 /**
  * @author mroge
@@ -92,7 +92,7 @@ public class BaseDeDonnees {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 		JPanel statePanel = new JPanel();
 		statePanel.setPreferredSize(new Dimension(80, 456));
 		statePanel.setBackground(new Color(30, 33, 36));
@@ -266,7 +266,7 @@ public class BaseDeDonnees {
 		UIManager.put("ScrollBar.highlight", new ColorUIResource(new Color(57, 57, 62)));
 
 		scrollPane = new JScrollPane(panel_1);
-		scrollPane.setPreferredSize(new Dimension(20,250));
+		scrollPane.setPreferredSize(new Dimension(20, 250));
 		scrollPane.setBorder(null);
 		// scrollPane.setBackground(new Color(54,57,62));
 		splitPane.setLeftComponent(scrollPane);

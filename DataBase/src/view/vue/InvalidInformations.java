@@ -11,7 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.InvalidInfoButtonListener;
+import control.controller.InvalidInfoButtonListener;
 
 public class InvalidInformations extends JDialog {
 

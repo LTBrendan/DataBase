@@ -7,7 +7,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.junit.Test;
 
-import connexion.AES;
+import model.connexion.AES;
 
 public class TestAES {
 	@Test

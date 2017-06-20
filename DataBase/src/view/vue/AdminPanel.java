@@ -11,9 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import connexion.User;
-import connexion.UserManager;
-import controller.DeleteButtonListener;
+import control.controller.DeleteButtonListener;
+import model.connexion.User;
+import model.connexion.UserManager;
 
 public class AdminPanel extends JPanel {
 
@@ -41,7 +41,7 @@ public class AdminPanel extends JPanel {
 		centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(0, 4, 0, 0));
 		centerPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
-		
+
 		userListPanel = new JPanel(new GridLayout(15, 1)) {
 
 			private static final long serialVersionUID = 1L;
@@ -98,14 +98,14 @@ public class AdminPanel extends JPanel {
 
 		JLabel lblAdminSettings = new JLabel("Admin Settings");
 		lblAdminSettings.setForeground(new Color(255, 255, 255));
-		
+
 		titlePanel.add(lblAdminSettings);
 
 		centerPanel.add(scrollPane);
 
 		add(titlePanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
-		
+
 		setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 
 	}

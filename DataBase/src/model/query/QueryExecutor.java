@@ -1,4 +1,4 @@
-package query;
+package model.query;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

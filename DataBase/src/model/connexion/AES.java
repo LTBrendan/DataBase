@@ -1,4 +1,4 @@
-package connexion;
+package model.connexion;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;

@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import controller.LabelCloseListener;
-import controller.MenuButtonListener;
+import control.controller.LabelCloseListener;
+import control.controller.MenuButtonListener;
 
 public class DetailPanel extends JPanel {
 
@@ -207,11 +207,11 @@ public class DetailPanel extends JPanel {
 	public HomePanel getHomePanel() {
 		return detailPanel.homePanel;
 	}
-	
+
 	public SearchPanel getSearchPanel() {
 		return detailPanel.searchPanel;
 	}
-	
+
 	public AdminPanel getAdminPanel() {
 		return detailPanel.adminPanel;
 	}
@@ -219,19 +219,19 @@ public class DetailPanel extends JPanel {
 	public NewConnectionPanel getNewConnection() {
 		return detailPanel.newConnection;
 	}
-	
+
 	public static void setNewConnection() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getNewConnection();
 		detailPanel.add(detailPanel.getNewConnection());
 	}
-	
+
 	public static void setSearchPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getSearchPanel();
 		detailPanel.add(detailPanel.getSearchPanel());
 	}
-	
+
 	public static void setHomePanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.actualPanel = detailPanel.getHomePanel();
@@ -255,7 +255,7 @@ public class DetailPanel extends JPanel {
 		detailPanel.actualPanel = detailPanel.getPreSettingPanel();
 		detailPanel.add(detailPanel.getPreSettingPanel());
 	}
-	
+
 	public static void setAdminPanel() {
 		detailPanel.remove(detailPanel.getActualPanel());
 		detailPanel.adminPanel = new AdminPanel();

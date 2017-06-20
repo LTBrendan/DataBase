@@ -12,7 +12,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.MenuButtonListener;
+import control.controller.MenuButtonListener;
 
 public class NewConnectionPanel extends JPanel {
 

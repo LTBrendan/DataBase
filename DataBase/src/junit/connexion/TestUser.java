@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import connexion.User;
+import model.connexion.User;
 
 public class TestUser {
 	@Test ()

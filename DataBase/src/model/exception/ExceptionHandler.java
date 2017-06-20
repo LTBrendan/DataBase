@@ -1,4 +1,4 @@
-package exception;
+package model.exception;
 
 /**
  * This class get error messages to simplify it

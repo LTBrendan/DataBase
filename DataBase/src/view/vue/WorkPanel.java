@@ -18,8 +18,8 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-import controller.MenuButtonListener;
-import utils.WordBasedStyledDocument;
+import control.controller.MenuButtonListener;
+import model.utils.WordBasedStyledDocument;
 
 public class WorkPanel extends JSplitPane {
 
