@@ -10,7 +10,7 @@ public class ConnectDataBaseListener implements MouseListener {
 
 	String adress, login, password;
 	
-	public ConnectDataBaseListener(String connectionAdress, String connectionLogin, String connectionPassword) { 
+	public ConnectDataBaseListener(String connectionAdress, String connectionLogin, String connectionPassword) {
 		adress = connectionAdress;
 		login = connectionLogin;
 		password = connectionPassword;
@@ -38,6 +38,12 @@ public class ConnectDataBaseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
+		try {
+			Launcher.getDataBaseController().quit();
+			
+		}catch (NullPointerException e) {
+			
+		}
 		Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
 	}
 
