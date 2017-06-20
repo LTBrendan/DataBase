@@ -5,12 +5,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class RWFile {
 
 	public static void write(String file, String script) {
-
+		
+		PrintWriter pw;
 		BufferedWriter bw;
 		FileWriter fw;
 
@@ -18,12 +20,11 @@ public class RWFile {
 
 			fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
-			bw.write(script);
-			bw.close();
+			pw = new PrintWriter (bw);
+			pw.write(script);
+			pw.close();
 
 		} catch (IOException e) {
-
-			e.printStackTrace();
 
 		}
 

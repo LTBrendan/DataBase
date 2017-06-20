@@ -10,6 +10,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import exception.ExceptionHandler;
@@ -183,7 +184,9 @@ public class MenuButtonListener implements MouseListener {
 			
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getSaveLabel())) {
 			JFileChooser saveJFC = new JFileChooser ();
-			saveJFC.showSaveDialog(null);
+			JFrame frame = new JFrame ();
+			saveJFC.addActionListener(new SaveChooserListener (saveJFC, Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText()));
+			saveJFC.showSaveDialog(frame);
 		}
 	}
 }
