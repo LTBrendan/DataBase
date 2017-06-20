@@ -41,7 +41,12 @@ public class AES {
 		return null;
 	}
 	
-	 public String decrypt(String str) {
+	 /**
+	  * This static method encrypt the string in parameter
+	  * @param str the string to decrypt
+	  * @return the decrypted string
+	  */
+	public String decrypt(String str) {
          try {
              byte[] dec = new sun.misc.BASE64Decoder().decodeBuffer(str);
              byte[] utf8 = dcipher.doFinal(dec);

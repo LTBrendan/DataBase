@@ -183,6 +183,11 @@ public class UserManager {
 		save();
 	}
 
+	/**
+	 * This method check if the login is already used by a user
+	 * @param login the login to check
+	 * @return true only if the login is used
+	 */
 	public static boolean checkLogin(String login) {
 		boolean ret = false;
 		ArrayList<String> logins = new ArrayList<String>();
@@ -196,11 +201,20 @@ public class UserManager {
 		}
 		return ret;
 	}
-
+	
+	/**
+	 * Getter for the userList attribute
+	 * @return the userList
+	 */
 	public static ArrayList<User> getUserList() {
 		return UserManager.userList;
 	}
 
+	/**
+	 * This method decrypt the string in parameter
+	 * @param toDecrypt the string to decrypt
+	 * @return the decrypted string
+	 */
 	public static String decrypt(String toDecrypt) {
 		return encrypter.decrypt(toDecrypt);
 	}

@@ -113,6 +113,11 @@ public class User implements Serializable {
 		return "Login : " + this.getLogin() + "\nPassword : " + this.getPass();
 	}
 
+	/**
+	 * This method check if 2 users are equals
+	 * @param anotherUs the us to check
+	 * @return true only if the 2 users have the same password and the same login
+	 */
 	public boolean equals(User anotherUs) {
 		boolean ret = false;
 		if (anotherUs != null) {
