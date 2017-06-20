@@ -205,11 +205,88 @@ public class MenuButtonListener implements MouseListener {
 					Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText()));
 			saveJFC.showSaveDialog(frame);
 		} else if (e.getComponent().equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getImportLabel())) {
-			JFileChooser openJFC = new JFileChooser ();
-			JFrame frame = new JFrame ();
-			openJFC.addActionListener(new OpenChooserListener (openJFC));
+			JFileChooser openJFC = new JFileChooser();
+			JFrame frame = new JFrame();
+			openJFC.addActionListener(new OpenChooserListener(openJFC));
 			openJFC.showOpenDialog(frame);
-		
+
+		} else if (e.getComponent()
+				.equals(Launcher.getMainPanel().getDetailPanel().getWorkPanel().getExecuteAllLabel())) {
+			String[] query = Launcher.getMainPanel().getDetailPanel().getWorkPanel().getTextPane().getText().split(";");
+			String result = "";
+			for (String s : query) {
+				result += s + ": \n";
+				if (s.toLowerCase().contains("create")) {
+					try {
+						Launcher.getDataBaseController().executeQuery(s);
+						result += "table created \n";
+					} catch (SQLException ex) {
+						result += ExceptionHandler.analyse(ex.getMessage());
+					} catch (NullPointerException ex) {
+						result += "You must be connected to a database to execute query";
+					}
+				} else if (s.toLowerCase().contains("insert")) {
+					try {
+						Launcher.getDataBaseController().executeQuery(s);
+						result += "line inserted \n";
+					} catch (SQLException ex) {
+						result += ExceptionHandler.analyse(ex.getMessage());
+					} catch (NullPointerException ex) {
+						result += "You must be connected to a database to execute query";
+					}
+				} else if (s.toLowerCase().contains("drop")) {
+					try {
+						Launcher.getDataBaseController().executeQuery(s);
+						result += "table dropped \n";
+					} catch (SQLException ex) {
+						result += ExceptionHandler.analyse(ex.getMessage());
+					} catch (NullPointerException ex) {
+						result += "You must be connected to a database to execute query";
+					}
+				} else if (s.toLowerCase().contains("delete")) {
+					try {
+						Launcher.getDataBaseController().executeQuery(s);
+						result += "line deleted \n";
+					} catch (SQLException ex) {
+						result += ExceptionHandler.analyse(ex.getMessage());
+					} catch (NullPointerException ex) {
+						result += "You must be connected to a database to execute query";
+					}
+				} else if (s.toLowerCase().contains("select")) {
+					try {
+						ResultSet rs = Launcher.getDataBaseController().executeQuery(s);
+						ResultSetMetaData rsmd = rs.getMetaData();
+						int columnCount = rsmd.getColumnCount();
+						for (int i = 1; i < columnCount; i++) {
+							result += rsmd.getColumnName(i) + " \t|\t ";
+						}
+						result += rsmd.getColumnName(columnCount) + "\n";
+						while (rs.next()) {
+							for (int j = 1; j < columnCount; j++) {
+								result += rs.getString(j) + " \t\t\t\t ";
+							}
+							result += rs.getString(columnCount) + "\n";
+						}
+					} catch (SQLException ex) {
+						result += ExceptionHandler.analyse(ex.getMessage());
+					} catch (NullPointerException ex) {
+						result += "You must be connected to a database to execute query";
+					}
+				}
+			}
+			JLabel label = new JLabel(
+					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+							+ "</HTML>");
+			label.setHorizontalAlignment(SwingConstants.LEFT);
+			if (Launcher.color == 54)
+				label.setForeground(new Color(255, 255, 255));
+			else
+				label.setForeground(new Color(0, 0, 0));
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().removeAll();
+			Launcher.getMainPanel().getDetailPanel().getWorkPanel().getUpPanel().add(label, BorderLayout.NORTH);
+			Launcher.getMainPanel().getDetailPanel().revalidate();
+			Launcher.getMainPanel().getDetailPanel().repaint();
+
 		}
 	}
 }

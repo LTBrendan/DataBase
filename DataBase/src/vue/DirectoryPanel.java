@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
 
 import connexion.UserConnexion;
 import consoleControler.DatabaseControler;
@@ -31,7 +30,7 @@ public class DirectoryPanel extends JPanel {
 
 	private JPanel searchPanel;
 	private JSeparator separator;
-	private JTextField searchTexte;
+	private JLabel infoLabel;
 
 	private JPanel bottomPanel;
 	private JLabel addLabel;
@@ -61,7 +60,7 @@ public class DirectoryPanel extends JPanel {
 		this.searchPanel.setPreferredSize(new Dimension(225, 60));
 		this.searchPanel.setLayout(null);
 
-		this.searchPanel.add(createSearchTextField());
+		this.searchPanel.add(createInfoLabel());
 		this.searchPanel.add(createSeparator());
 
 		return this.searchPanel;
@@ -77,21 +76,20 @@ public class DirectoryPanel extends JPanel {
 		return this.separator;
 	}
 
-	private JTextField createSearchTextField() {
+	private JLabel createInfoLabel() {
 
-		this.searchTexte = new JTextField();
-		this.searchTexte.setBounds(20, 11, 184, 25);
-		this.searchTexte.setMinimumSize(new Dimension(3, 20));
-		this.searchTexte.setToolTipText("Dans les bases de donn\u00E9es");
-		this.searchTexte.setText("Rechercher...");
-		this.searchTexte.setForeground(Color.WHITE);
-		this.searchTexte.setBorder(null);
-		this.searchTexte.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
-		this.searchTexte.addFocusListener(new TextFieldListener());
-		this.searchPanel.add(searchTexte);
-		this.searchTexte.setColumns(10);
+		this.infoLabel = new JLabel();
+		this.infoLabel.setBounds(20, 11, 184, 25);
+		this.infoLabel.setMinimumSize(new Dimension(3, 20));
+		this.infoLabel.setToolTipText("Dans les bases de donn\u00E9es");
+		this.infoLabel.setText("Logged as "+Launcher.getLauncher().getLauncherControler().getCurrentUserName());
+		this.infoLabel.setForeground(Color.WHITE);
+		this.infoLabel.setBorder(null);
+		this.infoLabel.setBackground(new Color(Launcher.color - 24, Launcher.color - 21, Launcher.color - 18));
+		this.infoLabel.addFocusListener(new TextFieldListener());
+		this.searchPanel.add(infoLabel);
 
-		return this.searchTexte;
+		return this.infoLabel;
 	}
 
 	private JScrollPane createCenterPanel() {
@@ -184,6 +182,10 @@ public class DirectoryPanel extends JPanel {
 	public void setDirectoryPanel() {
 		this.remove(centerScrollPane);
 		this.add(createCenterPanel(), BorderLayout.CENTER);
+	}
+	
+	public void setInfoLabelText (String message) {
+		this.infoLabel.setText(message);
 	}
 
 }

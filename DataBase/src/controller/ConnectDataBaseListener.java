@@ -42,15 +42,19 @@ public class ConnectDataBaseListener implements MouseListener {
 	public void mouseReleased(MouseEvent arg0) {
 		try {
 			Launcher.getDataBaseController().quit();
+			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Disconnected from the database");
 
 		} catch (NullPointerException e) {
 
 		}
 		try {
+			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
 			Launcher.setDatabaseControler(new DatabaseControler(adress, login, password));
 			Log.database("connection established");
 			Log.database("statement created");
+			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
 		} catch (SQLException ex) {
+			Launcher.getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
 			Log.database("connection error");
 		}
 	}

@@ -1,19 +1,17 @@
 package utils;
 
 import java.awt.Color;
-
-import javax.swing.JPanel;
 import java.awt.GridLayout;
-import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import vue.Launcher;
-
-import javax.swing.JRadioButtonMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class SettingPanel extends JPanel {
 
