@@ -69,6 +69,7 @@ public class SettingPanel extends JPanel {
 		darkThemeButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
+				System.out.println(Launcher.getLauncher().getLauncherControler().getCurrentUserName());
 				if (darkThemeButton.isSelected()) {
 					Launcher.getLauncher().getLauncherControler().getCurrentUser().setColor(54);
 					Launcher.getLauncher().getLauncherControler().save();

@@ -52,7 +52,6 @@ public class UserManager {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class UserManager {
 				User us = (User) read;
 				if (us.getColor() != 54 && us.getColor() != 247)
 					us.setColor(54);
-				userList.add((User) read);
+				userList.add(us);
 			}
 			ois.close();
 		} catch (EOFException ex) {
