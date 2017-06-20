@@ -2,7 +2,6 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -38,7 +37,6 @@ public class WorkPanel extends JSplitPane {
 	private static JLabel executeLabel;
 	private static JLabel clearLabel;
 	private static JLabel saveLabel;
-	private static JLabel exportLabel;
 	private static JLabel executeAllLabel;
 	private static JLabel importLabel;
 
@@ -52,24 +50,7 @@ public class WorkPanel extends JSplitPane {
 		this.setOrientation(JSplitPane.VERTICAL_SPLIT);
 
 		this.setLeftComponent(createUpScrollPane(createUpPanel()));
-		this.setRightComponent(createDownScrollPane(createDownPanel()));
-
-		this.setDividerLocation(0.8);
-
-		this.repaint();
-
-		workPanel = this;
-	}
-
-	public WorkPanel(Component comp, Component comp2) {
-
-		this.setDoubleBuffered(true);
-		this.setOneTouchExpandable(true);
-		this.setBorder(null);
-		this.setOrientation(JSplitPane.VERTICAL_SPLIT);
-
-		this.setLeftComponent(comp);
-		this.setRightComponent(comp2);
+		this.setRightComponent(createDownPanel());
 
 		this.setDividerLocation(0.8);
 
@@ -84,16 +65,16 @@ public class WorkPanel extends JSplitPane {
 		this.upPanel.setBorder(null);
 		this.upPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		if (Launcher.color == 54)
-			this.upPanel.setForeground(new Color(255,255,255));
+			this.upPanel.setForeground(new Color(255, 255, 255));
 		else
-			this.upPanel.setForeground(new Color(0,0,0));
+			this.upPanel.setForeground(new Color(0, 0, 0));
 		this.upPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		return this.upPanel;
 	}
 
 	private JScrollPane createUpScrollPane(JPanel panel) {
-		
+
 		this.upScrollPane = new JScrollPane(panel);
 		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
 		this.upScrollPane.setBorder(null);
@@ -106,7 +87,7 @@ public class WorkPanel extends JSplitPane {
 		this.downPanel = new JPanel();
 		this.downPanel.setLayout(new BorderLayout());
 		this.downPanel.add(createMenuBarPanel(), BorderLayout.NORTH);
-		this.downPanel.add(createTextPane(), BorderLayout.CENTER);
+		this.downPanel.add(createDownScrollPane(createTextPane()), BorderLayout.CENTER);
 
 		return this.downPanel;
 	}
@@ -116,64 +97,55 @@ public class WorkPanel extends JSplitPane {
 		this.menuBarPanel = new JPanel();
 		this.menuBarPanel.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		if (Launcher.color == 54)
-			this.menuBarPanel.setForeground(new Color(255,255,255));
+			this.menuBarPanel.setForeground(new Color(255, 255, 255));
 		else
-			this.menuBarPanel.setForeground(new Color(0,0,0));
-		this.menuBarPanel.setLayout(new GridLayout(0, 6, 0, 0));
+			this.menuBarPanel.setForeground(new Color(0, 0, 0));
+		this.menuBarPanel.setLayout(new GridLayout(0, 5, 0, 0));
 
 		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			executeLabel.setForeground(new Color(255,255,255));
+			executeLabel.setForeground(new Color(255, 255, 255));
 		else
-			executeLabel.setForeground(new Color(0,0,0));
+			executeLabel.setForeground(new Color(0, 0, 0));
 
 		clearLabel = new JLabel("Clear");
 		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		clearLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			clearLabel.setForeground(new Color(255,255,255));
+			clearLabel.setForeground(new Color(255, 255, 255));
 		else
-			clearLabel.setForeground(new Color(0,0,0));
+			clearLabel.setForeground(new Color(0, 0, 0));
 
 		saveLabel = new JLabel("Save");
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		saveLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			saveLabel.setForeground(new Color(255,255,255));
+			saveLabel.setForeground(new Color(255, 255, 255));
 		else
-			saveLabel.setForeground(new Color(0,0,0));
-
-		exportLabel = new JLabel("Export");
-		exportLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		exportLabel.addMouseListener(new MenuButtonListener());
-		if (Launcher.color == 54)
-			exportLabel.setForeground(new Color(255,255,255));
-		else
-			exportLabel.setForeground(new Color(0,0,0));
+			saveLabel.setForeground(new Color(0, 0, 0));
 
 		executeAllLabel = new JLabel("Execute All");
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		executeAllLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			executeAllLabel.setForeground(new Color(255,255,255));
+			executeAllLabel.setForeground(new Color(255, 255, 255));
 		else
-			executeAllLabel.setForeground(new Color(0,0,0));
+			executeAllLabel.setForeground(new Color(0, 0, 0));
 
 		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		importLabel.addMouseListener(new MenuButtonListener());
 		if (Launcher.color == 54)
-			importLabel.setForeground(new Color(255,255,255));
+			importLabel.setForeground(new Color(255, 255, 255));
 		else
-			importLabel.setForeground(new Color(0,0,0));
+			importLabel.setForeground(new Color(0, 0, 0));
 
 		this.menuBarPanel.add(executeLabel);
 		this.menuBarPanel.add(executeAllLabel);
 		this.menuBarPanel.add(clearLabel);
 		this.menuBarPanel.add(saveLabel);
-		this.menuBarPanel.add(exportLabel);
 		this.menuBarPanel.add(importLabel);
 
 		return this.menuBarPanel;
@@ -187,9 +159,9 @@ public class WorkPanel extends JSplitPane {
 		this.textPane.setFont(new Font("Calibri", Font.PLAIN, 20));
 		this.textPane.setBackground(new Color(Launcher.color, Launcher.color + 3, Launcher.color + 8));
 		if (Launcher.color == 54)
-			textPane.setForeground(new Color(255,255,255));
+			textPane.setForeground(new Color(255, 255, 255));
 		else
-			textPane.setForeground(new Color(0,0,0));
+			textPane.setForeground(new Color(0, 0, 0));
 
 		StyleContext cont = StyleContext.getDefaultStyleContext();
 		AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLUE);
@@ -202,9 +174,9 @@ public class WorkPanel extends JSplitPane {
 		return this.textPane;
 	}
 
-	private JScrollPane createDownScrollPane(JPanel panel) {
+	private JScrollPane createDownScrollPane(JTextPane jTextPane) {
 
-		this.downScrollPane = new JScrollPane(panel);
+		this.downScrollPane = new JScrollPane(jTextPane);
 		this.downScrollPane.setBorder(null);
 
 		return this.downScrollPane;
@@ -220,10 +192,6 @@ public class WorkPanel extends JSplitPane {
 
 	public JLabel getSaveLabel() {
 		return saveLabel;
-	}
-
-	public JLabel getExportLabel() {
-		return exportLabel;
 	}
 
 	public JLabel getExecuteAllLabel() {
