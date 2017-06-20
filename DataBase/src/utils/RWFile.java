@@ -44,7 +44,7 @@ public class RWFile {
 		try {
 			
 			while (sc.hasNext()) {
-				ret += sc.next();
+				ret += sc.next()+" ";
 			}
 			
 		} catch (NullPointerException ex) {

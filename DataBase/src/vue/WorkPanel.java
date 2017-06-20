@@ -14,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -89,7 +87,7 @@ public class WorkPanel extends JSplitPane {
 			this.upPanel.setForeground(new Color(255,255,255));
 		else
 			this.upPanel.setForeground(new Color(0,0,0));
-		this.upPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		this.upPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		return this.upPanel;
 	}
