@@ -13,7 +13,11 @@ public class ExceptionHandler {
 	public static String analyse (String message) {
 		String ret = message;
 		String[] tab = ret.split(":\\s");
+		try {
 		tab = tab[1].split("\\s\\(");
+		}catch (ArrayIndexOutOfBoundsException ex) {
+			
+		}
 		ret = tab[0];
 		return ret;		
 	}

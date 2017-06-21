@@ -219,7 +219,7 @@ public class WorkPanel extends JPanel {
 	public NewDataBasePanel getNewConnection() {
 		return workPanel.newDataBase;
 	}
-
+	
 	public static void setNewConnection() {
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getNewConnection();

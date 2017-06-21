@@ -69,7 +69,7 @@ public class GameManager {
 			Log.database("error dropping table for game");
 		}
 	}
-
+	
 	private void createTable() {
 		try {
 			dc.executeQuery("CREATE TABLE " + this.tableName

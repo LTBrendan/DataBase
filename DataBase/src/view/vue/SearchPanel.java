@@ -28,6 +28,7 @@ public class SearchPanel extends JPanel {
 	private JPanel centerPanel;
 	private JScrollPane centerScrollPane;
 	private JButton addNewButton;
+	private JButton researchButton;
 
 	/**
 	 * Create the panel.
@@ -120,7 +121,13 @@ public class SearchPanel extends JPanel {
 		addNewButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		addNewButton.addMouseListener(new SearchPanelMouseListener());
 
+		researchButton = new JButton ("Research");
+		researchButton.setForeground(Color.WHITE);
+		researchButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		addNewButton.addMouseListener(new SearchPanelMouseListener());
+		
 		bottomPanel.add(addNewButton);
+		bottomPanel.add(researchButton);
 		this.centerScrollPane.setBorder(null);
 		this.centerScrollPane.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 
@@ -133,6 +140,10 @@ public class SearchPanel extends JPanel {
 
 	public JButton getAddNewButton() {
 		return addNewButton;
+	}
+	
+	public JButton getResearchButton () {
+		return researchButton;
 	}
 
 	public JPanel getCenterPanel() {
