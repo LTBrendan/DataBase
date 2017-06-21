@@ -34,11 +34,7 @@ public class NewDataBaseMouseListener implements MouseListener {
 		
 		if (arg0.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getAddDatabaseButton())) {
 
-			AppFrame.getAppFrame().getLauncherControler().addDatabase(
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getNameField().getText(),
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getAdressField().getText(),
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getLoginField().getText(),
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getPasswordField().getText());
+			AppFrame.getAppFrame().getLauncherControler().addDatabase(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getNameField().getText(),AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getAdressField().getText(),AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getLoginField().getText(),AppFrame.getAppFrame().getMainPanel().getWorkPanel().getNewConnection().getPasswordField().getText());
 			
 			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setDirectoryPanel();
 			

@@ -100,7 +100,6 @@ public class NewDataBasePanel extends JPanel {
 		addDatabaseButton.setBorder(null);
 		addDatabaseButton.setBounds(472, 462, 89, 23);
 		addDatabaseButton.setBackground(new Color(30, 33, 38));
-		addDatabaseButton.addMouseListener(new NewDataBaseMouseListener());
 
 		JSeparator loginSeparator = new JSeparator();
 		loginSeparator.setBounds(427, 376, 186, 2);
@@ -140,6 +139,8 @@ public class NewDataBasePanel extends JPanel {
 
 		this.add(newConnPane);
 
+		addDatabaseButton.addMouseListener(new NewDataBaseMouseListener());
+		
 		newConnection = this;
 	}
 
