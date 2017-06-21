@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -46,23 +47,27 @@ public class WorkPanel extends JPanel {
 
 	private static WorkPanel workPanel;
 
+	public static int width = MenuPanel.width - DirectoryPanel.width;
+	public static int height = MenuPanel.height;
+
 	protected WorkPanel() {
 
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//this.setPreferredSize(new Dimension(468, 452));
-		this.setLayout(new BorderLayout(0, 0));
+		this.setPreferredSize(new Dimension(width, height));
+		this.setLayout(new BorderLayout());
 
 		workPanel = this;
 
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(homePanel, BorderLayout.CENTER);
+
 		this.actualPanel = this.getHomePanel();
 	}
 
 	public WorkPanel(JPanel panel) {
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//this.setPreferredSize(new Dimension(468, 452));
-		this.setLayout(new BorderLayout(0, 0));
+		this.setPreferredSize(new Dimension(width, height));
+		this.setLayout(new BorderLayout());
 
 		this.add(createMenuPanel(), BorderLayout.NORTH);
 		this.add(panel, BorderLayout.CENTER);
@@ -70,32 +75,26 @@ public class WorkPanel extends JPanel {
 
 	public JPanel createMenuPanel() {
 
-		this.menuPanel = new JPanel();
+		this.menuPanel = new JPanel(new BorderLayout());
 		this.menuPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//this.menuPanel.setPreferredSize(new Dimension(225, 60));
-		this.menuPanel.setLayout(new BorderLayout(0, 0));
+		this.menuPanel.setPreferredSize(new Dimension(width, height / 15));
+		this.menuPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0,
+				new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6)));
 
-		this.menuPanel.add(createSeparator(), BorderLayout.SOUTH);
 		this.menuPanel.add(createControlPanel(), BorderLayout.EAST);
 		this.menuPanel.add(createCenterPanel(), BorderLayout.CENTER);
 
 		return this.menuPanel;
 	}
 
-	private JSeparator createSeparator() {
-
-		this.separator = new JSeparator();
-		this.separator.setForeground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
-		this.separator.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
-
-		return this.separator;
-	}
-
 	private JPanel createControlPanel() {
 
-		this.controlPanel = new JPanel();
+		this.controlPanel = new JPanel(new GridLayout(0, 3, 0, 0));
 		this.controlPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		this.controlPanel.setLayout(new GridLayout(0, 3, 0, 0));
+		// this.controlPanel.setPreferredSize(new Dimension(width / 10, height /
+		// 16));
+		this.controlPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+
 		this.controlPanel.add(createMinimizePanel());
 		this.controlPanel.add(createMaximizePanel());
 		this.controlPanel.add(createClosePanel());
@@ -105,10 +104,9 @@ public class WorkPanel extends JPanel {
 
 	private JPanel createMinimizePanel() {
 
-		this.minimizePanel = new JPanel();
+		this.minimizePanel = new JPanel(new BorderLayout());
 		this.minimizePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.minimizePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		this.minimizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.minimizeLabel = new JLabel();
 		this.minimizeLabel.addMouseListener(new WorkPanelMouseListener());
@@ -219,7 +217,7 @@ public class WorkPanel extends JPanel {
 	public NewDataBasePanel getNewConnection() {
 		return workPanel.newDataBase;
 	}
-	
+
 	public static void setNewConnection() {
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getNewConnection();

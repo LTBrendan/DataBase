@@ -7,10 +7,11 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 import control.controller.DirectoryPanelFocusListener;
 import control.controller.DirectoryPanelMouseListener;
@@ -24,7 +25,6 @@ public class DirectoryPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel searchPanel;
-	private JSeparator separator;
 	private JLabel infoLabel;
 
 	private JPanel bottomPanel;
@@ -34,12 +34,15 @@ public class DirectoryPanel extends JPanel {
 	private JScrollPane centerScrollPane;
 
 	private static DirectoryPanel directoryPanel;
+	
+	public static int width = MainPanel.width / 6;
+	public static int height = MainPanel.height;
 
 	public DirectoryPanel() {
 
 		this.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
-		//this.setPreferredSize(new Dimension(225, 456));
-		this.setLayout(new BorderLayout(0, 0));
+		this.setPreferredSize(new Dimension(width, height));
+		this.setLayout(new BorderLayout());
 
 		this.add(createSearchPanel(), BorderLayout.NORTH);
 		this.add(createCenterPanel(), BorderLayout.CENTER);
@@ -52,37 +55,24 @@ public class DirectoryPanel extends JPanel {
 
 		this.searchPanel = new JPanel();
 		this.searchPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
-		//this.searchPanel.setPreferredSize(new Dimension(225, 60));
-		this.searchPanel.setLayout(null);
+		this.searchPanel.setPreferredSize(new Dimension(width, height / 15));
+		this.searchPanel.setLayout(new BorderLayout());
 
+		this.searchPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6)));
+		
 		this.searchPanel.add(createInfoLabel());
-		this.searchPanel.add(createSeparator());
 
 		return this.searchPanel;
-	}
-
-	private JSeparator createSeparator() {
-
-		this.separator = new JSeparator();
-		this.separator.setBounds(0, 58, 225, 2);
-		this.separator.setForeground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
-		this.separator.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
-
-		return this.separator;
 	}
 
 	private JLabel createInfoLabel() {
 
 		this.infoLabel = new JLabel();
-		this.infoLabel.setBounds(20, 11, 184, 25);
-		//this.infoLabel.setMinimumSize(new Dimension(3, 20));
-		this.infoLabel.setToolTipText("Dans les bases de donn\u00E9es");
 		this.infoLabel.setText("Logged as " + AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
+		this.infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.infoLabel.setForeground(Color.WHITE);
-		this.infoLabel.setBorder(null);
 		this.infoLabel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		this.infoLabel.addFocusListener(new DirectoryPanelFocusListener());
-		this.searchPanel.add(infoLabel);
 
 		return this.infoLabel;
 	}
@@ -133,18 +123,17 @@ public class DirectoryPanel extends JPanel {
 
 	public JPanel createBottomPanel() {
 
-		this.bottomPanel = new JPanel();
+		this.bottomPanel = new JPanel(new BorderLayout());
 		this.bottomPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
-		//this.bottomPanel.setPreferredSize(new Dimension(225, 60));
+		this.bottomPanel.setPreferredSize(new Dimension(width, height / 15));
 
-		addLabel = new JLabel(" + Add new Connection");
-		addLabel.setForeground(Color.WHITE);
-		addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null, null));
-		addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.bottomPanel.add(addLabel);
-
-		addLabel.setHorizontalAlignment(JLabel.CENTER);
-		addLabel.setVerticalAlignment(bottomPanel.getHeight() / 2);
+		this.addLabel = new JLabel("Add new Connection");
+		this.addLabel.setForeground(Color.WHITE);
+		this.addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null, null));
+		this.addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.addLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		this.bottomPanel.add(this.addLabel, BorderLayout.CENTER);
 
 		return this.bottomPanel;
 	}

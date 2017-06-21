@@ -1,7 +1,6 @@
 package view.vue;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -49,7 +48,7 @@ public class AppFrame {
 
 		frame = new JFrame("DataBase app");
 		frame.setUndecorated(true);
-		//frame.setPreferredSize(new Dimension(1080, 720));
+		// frame.setPreferredSize(new Dimension(1080, 720));
 		// frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setSize(LoginFrame.width, LoginFrame.height);
 		// frame.setBounds(100, 100, 1080, 720);
