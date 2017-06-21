@@ -211,42 +211,42 @@ public class LoginFrame extends JFrame {
 
 		focusedTextField.setBounds(10, 11, 86, 20);
 
-		avatarLabel.setBounds(20, 36, 90, 70);
+		avatarLabel.setBounds(this.getWidth() / 7, this.getHeight() / 12 * 2, 90, 70);
 
-		closeLabel.setBounds(445, 11, 20, 20);
+		closeLabel.setBounds(this.getWidth() - this.getWidth() / 13, this.getWidth() / 20, this.getWidth() / 20, this.getHeight() / 20);
 
 		loginTextLabel = new JLabel("Login :");
 		loginTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		loginTextLabel.setForeground(Color.WHITE);
-		loginTextLabel.setBounds(133, 54, 46, 14);
+		loginTextLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 10 * 2, this.getWidth() / 4, this.getHeight() / 20);
 
-		loginField.setBounds(133, 69, 186, 20);
+		loginField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 8 * 2, this.getWidth() / 4, this.getHeight() / 20);
 		loginField.setText("");
 		loginField.addFocusListener(new LoginFrameFocusListener());
 
 		passwordTextLabel = new JLabel("Password :");
 		passwordTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		passwordTextLabel.setForeground(Color.WHITE);
-		passwordTextLabel.setBounds(132, 118, 71, 14);
+		passwordTextLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 9 * 4, this.getWidth() / 4, this.getHeight() / 20);
 
 		createUserPasswordField = new JPasswordField();
 		createUserPasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		createUserPasswordField.setColumns(10);
 		createUserPasswordField.setBackground(new Color(54, 57, 62));
 		createUserPasswordField.setForeground(new Color(255, 255, 255));
-		createUserPasswordField.setBounds(133, 137, 186, 20);
+		createUserPasswordField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 8 * 4, this.getWidth() / 4, this.getHeight() / 20);
 
 		confirmPasswordTextLabel = new JLabel("Confirm password");
 		confirmPasswordTextLabel.setForeground(Color.WHITE);
 		confirmPasswordTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
-		confirmPasswordTextLabel.setBounds(133, 182, 120, 14);
+		confirmPasswordTextLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 10 * 7, this.getWidth() / 4, this.getHeight() / 20);
 
 		confirmPasswordField = new JPasswordField("");
 		confirmPasswordField.setForeground(Color.WHITE);
 		confirmPasswordField.setColumns(10);
 		confirmPasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		confirmPasswordField.setBackground(new Color(54, 57, 62));
-		confirmPasswordField.setBounds(133, 199, 186, 20);
+		confirmPasswordField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 8 * 6, this.getWidth() / 4, this.getHeight() / 20);
 		confirmPasswordField.addKeyListener(new LoginFrameKeyListener());
 
 		createUserButton = new JButton("Create user");
