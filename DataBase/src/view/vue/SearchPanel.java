@@ -112,7 +112,7 @@ public class SearchPanel extends JPanel {
 		this.centerScrollPane = new JScrollPane(centerPanel);
 
 		JPanel bottomPanel = new JPanel();
-		bottomPanel.setMinimumSize(new Dimension(100, 10));
+		//bottomPanel.setMinimumSize(new Dimension(100, 10));
 		bottomPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		centerPanel2.add(bottomPanel, BorderLayout.SOUTH);
 

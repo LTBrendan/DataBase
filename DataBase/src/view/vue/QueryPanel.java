@@ -76,7 +76,7 @@ public class QueryPanel extends JSplitPane {
 	private JScrollPane createUpScrollPane(JPanel panel) {
 
 		this.upScrollPane = new JScrollPane(panel);
-		this.upScrollPane.setPreferredSize(new Dimension(20, 250));
+		//this.upScrollPane.setPreferredSize(new Dimension(20, 250));
 		this.upScrollPane.setBorder(null);
 
 		return this.upScrollPane;
