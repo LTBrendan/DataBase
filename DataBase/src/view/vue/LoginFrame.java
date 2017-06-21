@@ -156,7 +156,7 @@ public class LoginFrame extends JFrame {
 
 		userLabel = new JLabel();
 		userLabel.setIcon(new ImageIcon("rsc\\login\\userWhite.png"));
-		userLabel.setBounds(115, 145, 20, 16);
+		userLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 6, this.getHeight() / 8 * 3, 20, 16);
 
 		loginField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 8 * 3, this.getWidth() / 4, this.getHeight() / 20);
 		loginField.setText("Login");
@@ -165,7 +165,7 @@ public class LoginFrame extends JFrame {
 
 		passwordLabel = new JLabel();
 		passwordLabel.setIcon(new ImageIcon("rsc\\login\\passwordWhite.png"));
-		passwordLabel.setBounds(115, 196, 20, 16);
+		passwordLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 6, this.getHeight() / 9 * 5, 20, 16);
 
 		passwordField = new JPasswordField("Password");
 		passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
