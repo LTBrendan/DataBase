@@ -3,7 +3,6 @@ package view.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -40,6 +39,13 @@ public class QueryPanel extends JSplitPane {
 	private static JLabel executeAllLabel;
 	private static JLabel importLabel;
 
+	private static JPanel executePanel;
+	private static JPanel clearPanel;
+	private static JPanel savePanel;
+	private static JPanel executeAllPanel;
+	private static JPanel importPanel;
+
+	
 	private static QueryPanel queryPanel;
 
 	public QueryPanel() {
@@ -102,51 +108,97 @@ public class QueryPanel extends JSplitPane {
 			this.menuBarPanel.setForeground(new Color(0, 0, 0));
 		this.menuBarPanel.setLayout(new GridLayout(0, 5, 0, 0));
 
+		executePanel = new JPanel ();
+		executePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		executePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		executePanel.addMouseListener(new QueryPanelMouseListener());
+		if (AppFrame.color == 54)
+			executePanel.setForeground(new Color(255, 255, 255));
+		else
+			executePanel.setForeground(new Color(0, 0, 0));
+		
 		executeLabel = new JLabel("Execute");
 		executeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			executeLabel.setForeground(new Color(255, 255, 255));
 		else
 			executeLabel.setForeground(new Color(0, 0, 0));
-
+		
+		clearPanel = new JPanel ();
+		clearPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		clearPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		clearPanel.addMouseListener(new QueryPanelMouseListener());
+		if (AppFrame.color == 54)
+			clearPanel.setForeground(new Color(255, 255, 255));
+		else
+			clearPanel.setForeground(new Color(0, 0, 0));
+		
 		clearLabel = new JLabel("Clear");
 		clearLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		clearLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			clearLabel.setForeground(new Color(255, 255, 255));
 		else
 			clearLabel.setForeground(new Color(0, 0, 0));
 
+		savePanel = new JPanel ();
+		savePanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		savePanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		savePanel.addMouseListener(new QueryPanelMouseListener());
+		if (AppFrame.color == 54)
+			savePanel.setForeground(new Color(255, 255, 255));
+		else
+			savePanel.setForeground(new Color(0, 0, 0));
+		
 		saveLabel = new JLabel("Save");
 		saveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		saveLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			saveLabel.setForeground(new Color(255, 255, 255));
 		else
 			saveLabel.setForeground(new Color(0, 0, 0));
 
+		executeAllPanel = new JPanel ();
+		executeAllPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		executeAllPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		executeAllPanel.addMouseListener(new QueryPanelMouseListener());
+		if (AppFrame.color == 54)
+			executeAllPanel.setForeground(new Color(255, 255, 255));
+		else
+			executeAllPanel.setForeground(new Color(0, 0, 0));
+		
 		executeAllLabel = new JLabel("Execute All");
 		executeAllLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		executeAllLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			executeAllLabel.setForeground(new Color(255, 255, 255));
 		else
 			executeAllLabel.setForeground(new Color(0, 0, 0));
 
+		importPanel = new JPanel ();
+		importPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		importPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		importPanel.addMouseListener(new QueryPanelMouseListener());
+		if (AppFrame.color == 54)
+			importPanel.setForeground(new Color(255, 255, 255));
+		else
+			importPanel.setForeground(new Color(0, 0, 0));
+		
 		importLabel = new JLabel("Import");
 		importLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		importLabel.addMouseListener(new QueryPanelMouseListener());
 		if (AppFrame.color == 54)
 			importLabel.setForeground(new Color(255, 255, 255));
 		else
 			importLabel.setForeground(new Color(0, 0, 0));
 
-		this.menuBarPanel.add(executeLabel);
-		this.menuBarPanel.add(executeAllLabel);
-		this.menuBarPanel.add(clearLabel);
-		this.menuBarPanel.add(saveLabel);
-		this.menuBarPanel.add(importLabel);
+		QueryPanel.executePanel.add(executeLabel);
+		QueryPanel.executeAllPanel.add(executeAllLabel);
+		QueryPanel.clearPanel.add(clearLabel);
+		QueryPanel.savePanel.add(saveLabel);
+		QueryPanel.importPanel.add(importLabel);
+		
+		this.menuBarPanel.add(executePanel);
+		this.menuBarPanel.add(executeAllPanel);
+		this.menuBarPanel.add(clearPanel);
+		this.menuBarPanel.add(savePanel);
+		this.menuBarPanel.add(importPanel);
 
 		return this.menuBarPanel;
 	}
@@ -200,6 +252,26 @@ public class QueryPanel extends JSplitPane {
 
 	public JLabel getImportLabel() {
 		return importLabel;
+	}
+	
+	public JPanel getExecutePanel() {
+		return executePanel;
+	}
+
+	public JPanel getClearPanel() {
+		return clearPanel;
+	}
+
+	public JPanel getSavePanel() {
+		return savePanel;
+	}
+
+	public JPanel getExecuteAllPanel() {
+		return executeAllPanel;
+	}
+
+	public JPanel getImportPanel() {
+		return importPanel;
 	}
 
 	public JPanel getUpPanel() {

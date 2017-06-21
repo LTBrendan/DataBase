@@ -26,11 +26,48 @@ public class QueryPanelMouseListener implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecutePanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getClearPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSavePanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecutePanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		}
 		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getClearPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSavePanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		}
+		
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportPanel())) {
+			e.getComponent().setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		}
 	}
 
 	@Override
