@@ -4,6 +4,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import control.consoleControler.DatabaseControler;
 import logs.Log;
 import view.vue.AppFrame;
@@ -12,12 +15,14 @@ import view.vue.WorkPanel;
 
 public class DirectoryPanelMouseListener implements MouseListener {
 
-	String adress, login, password;
+	private String adress, login, password;
+	private JLabel inLine;
 
-	public DirectoryPanelMouseListener(String connectionAdress, String connectionLogin, String connectionPassword) {
+	public DirectoryPanelMouseListener(String connectionAdress, String connectionLogin, String connectionPassword, JLabel inLine) {
 		adress = connectionAdress;
 		login = connectionLogin;
 		password = connectionPassword;
+		this.inLine = inLine;
 	}
 
 	@Override
@@ -64,8 +69,10 @@ public class DirectoryPanelMouseListener implements MouseListener {
 				Log.database("connection established");
 				Log.database("statement created");
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
+				this.inLine.setIcon(new ImageIcon ("rsc\\dataBase\\ok.png"));
 			} catch (SQLException ex) {
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connection error");
+				this.inLine.setIcon(new ImageIcon ("rsc\\dataBase\\error.png"));
 				Log.database("connection error");
 			}
 		}

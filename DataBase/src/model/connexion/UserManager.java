@@ -47,10 +47,6 @@ public class UserManager {
 			ObjectOutputStream oos = new ObjectOutputStream(bos);
 			
 			for (User us : UserManager.userList) {
-				System.out.println(us.getLogin());
-				for (UserConnexion uc : us.getConnexionList()) {
-					System.out.println(uc.getConnexionName());
-				}
 				oos.writeObject(us);
 			}
 			oos.close();

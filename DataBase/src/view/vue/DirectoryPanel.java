@@ -111,15 +111,16 @@ public class DirectoryPanel extends JPanel {
 			connPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 
 			JLabel connection = new JLabel(" - " + uc.getConnexionName());
+			JLabel inLine = new JLabel ();
 			if (AppFrame.color == 54)
 				connection.setForeground(new Color(255, 255, 255));
 			else
 				connection.setForeground(new Color(0, 0, 0));
 			connection.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			connection.addMouseListener(
-					new DirectoryPanelMouseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
-
+					new DirectoryPanelMouseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword(), inLine));
 			connPanel.add(connection, BorderLayout.CENTER);
+			connPanel.add(inLine, BorderLayout.EAST);
 			this.centerPanel.add(connPanel);
 		}
 
@@ -138,7 +139,7 @@ public class DirectoryPanel extends JPanel {
 
 		addLabel = new JLabel(" + Add new Connection");
 		addLabel.setForeground(Color.WHITE);
-		addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null));
+		addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null, null));
 		addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.bottomPanel.add(addLabel);
 
@@ -164,5 +165,8 @@ public class DirectoryPanel extends JPanel {
 	public void setInfoLabelText(String message) {
 		this.infoLabel.setText(message);
 	}
-
+	
+	public void setInLineLabel (String fileName) {
+		
+	}
 }
