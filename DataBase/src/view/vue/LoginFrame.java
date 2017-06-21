@@ -8,13 +8,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -109,7 +109,7 @@ public class LoginFrame extends JFrame {
 		closeLabel.addMouseListener(new CloseListener());
 
 		loginField = new JTextField();
-		loginField.setBorder(null);
+		loginField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		loginField.setBackground(new Color(54, 57, 62));
 		loginField.setForeground(new Color(255, 255, 255));
 		loginField.setColumns(10);
@@ -156,7 +156,7 @@ public class LoginFrame extends JFrame {
 		passwordLabel.setBounds(115, 196, 20, 16);
 
 		passwordField = new JPasswordField("Password");
-		passwordField.setBorder(null);
+		passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		passwordField.setColumns(10);
 		passwordField.setBackground(new Color(54, 57, 62));
 		passwordField.setForeground(new Color(255, 255, 255));
@@ -172,12 +172,6 @@ public class LoginFrame extends JFrame {
 		loginButton.setBackground(new Color(30, 33, 38));
 		loginButton.addMouseListener(new LoginFrameMouseListener());
 
-		JSeparator separator = new JSeparator();
-		separator.setBounds(145, 159, 186, 2);
-
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(145, 214, 186, 2);
-
 		createNewUserLoginLabel = new JLabel();
 		createNewUserLoginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createNewUserLoginLabel.setIcon(new ImageIcon("rsc\\login\\addUserWhite.png"));
@@ -188,9 +182,7 @@ public class LoginFrame extends JFrame {
 		loginPane.add(closeLabel);
 		loginPane.add(avatarLabel);
 		loginPane.add(loginField);
-		loginPane.add(separator);
 		loginPane.add(passwordField);
-		loginPane.add(separator_1);
 		loginPane.add(loginButton);
 		loginPane.add(userLabel);
 		loginPane.add(passwordLabel);
@@ -220,23 +212,17 @@ public class LoginFrame extends JFrame {
 		loginField.setText("");
 		loginField.addFocusListener(new LoginFrameFocusListener());
 
-		JSeparator loginSeparator = new JSeparator();
-		loginSeparator.setBounds(133, 91, 186, 2);
-
 		passwordTextLabel = new JLabel("Password :");
 		passwordTextLabel.setFont(new Font("Calibri", Font.PLAIN, 15));
 		passwordTextLabel.setForeground(Color.WHITE);
 		passwordTextLabel.setBounds(132, 118, 71, 14);
 
 		createUserPasswordField = new JPasswordField();
-		createUserPasswordField.setBorder(null);
+		createUserPasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		createUserPasswordField.setColumns(10);
 		createUserPasswordField.setBackground(new Color(54, 57, 62));
 		createUserPasswordField.setForeground(new Color(255, 255, 255));
 		createUserPasswordField.setBounds(133, 137, 186, 20);
-
-		JSeparator passwordSeparator = new JSeparator();
-		passwordSeparator.setBounds(133, 159, 186, 2);
 
 		confirmPasswordTextLabel = new JLabel("Confirm password");
 		confirmPasswordTextLabel.setForeground(Color.WHITE);
@@ -246,7 +232,7 @@ public class LoginFrame extends JFrame {
 		confirmPasswordField = new JPasswordField("");
 		confirmPasswordField.setForeground(Color.WHITE);
 		confirmPasswordField.setColumns(10);
-		confirmPasswordField.setBorder(null);
+		confirmPasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		confirmPasswordField.setBackground(new Color(54, 57, 62));
 		confirmPasswordField.setBounds(133, 199, 186, 20);
 		confirmPasswordField.addKeyListener(new LoginFrameKeyListener());
@@ -259,9 +245,6 @@ public class LoginFrame extends JFrame {
 		createUserButton.setBackground(new Color(30, 33, 38));
 		createUserButton.addMouseListener(new LoginFrameMouseListener());
 
-		JSeparator confirmPasswordSeparator = new JSeparator();
-		confirmPasswordSeparator.setBounds(133, 221, 186, 2);
-
 		wrongPasswordLabel = new JLabel();
 		wrongPasswordLabel.setIcon(new ImageIcon("rsc\\login\\error.png"));
 		wrongPasswordLabel.setBounds(329, 199, 16, 17);
@@ -273,15 +256,12 @@ public class LoginFrame extends JFrame {
 
 		createUserPane.add(loginTextLabel);
 		createUserPane.add(loginField);
-		createUserPane.add(loginSeparator);
 
 		createUserPane.add(passwordTextLabel);
 		createUserPane.add(createUserPasswordField);
-		createUserPane.add(passwordSeparator);
 
 		createUserPane.add(confirmPasswordTextLabel);
 		createUserPane.add(confirmPasswordField);
-		createUserPane.add(confirmPasswordSeparator);
 
 		createUserPane.add(createUserButton);
 		createUserPane.add(wrongPasswordLabel);
