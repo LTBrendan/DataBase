@@ -3,6 +3,7 @@ package view.vue;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class MainPanel extends JPanel {
@@ -14,20 +15,20 @@ public class MainPanel extends JPanel {
 
 	private DirectoryPanel directoryPanel = new DirectoryPanel();
 	private WorkPanel workPanel = new WorkPanel();
-	
+
 	private static MainPanel mainPanel;
-	
+
 	public static int height = LoginFrame.height;
 	public static int width = LoginFrame.width - (LoginFrame.width / 100 * 6);
-	
+
 	public MainPanel() {
-		
+
 		this.setLayout(new BorderLayout(0, 0));
 		this.setPreferredSize(new Dimension(width, height));
-		
+
 		this.add(directoryPanel, BorderLayout.WEST);
 		this.add(workPanel, BorderLayout.CENTER);
-		
+
 		mainPanel = this;
 	}
 
@@ -47,8 +48,8 @@ public class MainPanel extends JPanel {
 		mainPanel.remove(mainPanel.getWorkPanel());
 		mainPanel.add(workPanel);
 	}
-	
-	public static MainPanel getMainPanel(){
+
+	public static MainPanel getMainPanel() {
 		return mainPanel;
 	}
 }

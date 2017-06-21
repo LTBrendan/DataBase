@@ -29,6 +29,15 @@ public class MenuPanel extends JPanel {
 	private JLabel userNameLabel;
 	private JSeparator separator;
 
+	private JPanel homePanel = new JPanel(new BorderLayout());;
+	private JPanel editorPanel;
+	private JPanel searchPanel;
+	private JPanel visualPanel;
+	private JPanel statsPanel;
+	private JPanel gamePanel;
+	private JPanel exportPanel;
+	private JPanel adminPanel;
+	
 	private JPanel downPanel;
 	private JLabel home;
 	private JLabel editor;
@@ -38,6 +47,8 @@ public class MenuPanel extends JPanel {
 	private JLabel game;
 	private JLabel export;
 	private JLabel admin;
+	
+	private JComponent actualComponent;
 	
 	public static int height = LoginFrame.height;
 	public static int width = LoginFrame.width / 100 * 6;
@@ -53,6 +64,9 @@ public class MenuPanel extends JPanel {
 		this.add(createUpPanel(), BorderLayout.NORTH);
 		this.add(createDownPanel(), BorderLayout.CENTER);
 
+		actualComponent = this.homePanel;
+		this.homePanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
+		
 		menuPanel = this;
 	}
 
@@ -61,6 +75,8 @@ public class MenuPanel extends JPanel {
 		downPanel = new JPanel(new GridLayout(8, 0));
 		downPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 
+		homePanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		home = new JLabel();
 		home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		home.setToolTipText("Home");
@@ -70,7 +86,12 @@ public class MenuPanel extends JPanel {
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeWhite.PNG"));
 		else
 			home.setIcon(new ImageIcon("rsc\\stateBar\\homeBlack.PNG"));
+		
+		homePanel.add(home);
 
+		editorPanel = new JPanel(new BorderLayout());
+		editorPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		editor = new JLabel();
 		editor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		editor.setToolTipText("editor");
@@ -81,6 +102,11 @@ public class MenuPanel extends JPanel {
 		else
 			editor.setIcon(new ImageIcon("rsc\\stateBar\\editorBlack.PNG"));
 
+		editorPanel.add(editor);
+		
+		searchPanel = new JPanel(new BorderLayout());
+		searchPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		search = new JLabel();
 		search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		search.setToolTipText("search");
@@ -91,6 +117,11 @@ public class MenuPanel extends JPanel {
 		else
 			search.setIcon(new ImageIcon("rsc\\stateBar\\searchBlack.PNG"));
 
+		searchPanel.add(search);
+		
+		visualPanel = new JPanel(new BorderLayout());
+		visualPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		visual = new JLabel();
 		visual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		visual.setToolTipText("visual");
@@ -101,6 +132,11 @@ public class MenuPanel extends JPanel {
 		else
 			visual.setIcon(new ImageIcon("rsc\\stateBar\\visualBlack.PNG"));
 
+		visualPanel.add(visual);
+		
+		statsPanel = new JPanel(new BorderLayout());
+		statsPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		stats = new JLabel();
 		stats.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		stats.setToolTipText("Stats");
@@ -111,6 +147,11 @@ public class MenuPanel extends JPanel {
 		else
 			stats.setIcon(new ImageIcon("rsc\\stateBar\\statsBlack.PNG"));
 
+		statsPanel.add(stats);
+		
+		gamePanel = new JPanel(new BorderLayout());
+		gamePanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		game = new JLabel();
 		game.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		game.setToolTipText("game");
@@ -121,6 +162,11 @@ public class MenuPanel extends JPanel {
 		else
 			game.setIcon(new ImageIcon("rsc\\stateBar\\gameBlack.PNG"));
 
+		gamePanel.add(game);
+		
+		exportPanel = new JPanel(new BorderLayout());
+		exportPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		export = new JLabel();
 		export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		export.setToolTipText("export");
@@ -131,6 +177,11 @@ public class MenuPanel extends JPanel {
 		else
 			export.setIcon(new ImageIcon("rsc\\stateBar\\exportBlack.PNG"));
 
+		exportPanel.add(export);
+		
+		adminPanel = new JPanel(new BorderLayout());
+		adminPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
+		
 		admin = new JLabel();
 		admin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		admin.setToolTipText("admin");
@@ -141,16 +192,18 @@ public class MenuPanel extends JPanel {
 		else
 			admin.setIcon(new ImageIcon("rsc\\stateBar\\adminBlack.PNG"));
 
-		downPanel.add(home);
-		downPanel.add(editor);
-		downPanel.add(search);
-		downPanel.add(visual);
-		downPanel.add(stats);
-		downPanel.add(game);
-		downPanel.add(export);
+		adminPanel.add(admin);
+		
+		downPanel.add(homePanel);
+		downPanel.add(editorPanel);
+		downPanel.add(searchPanel);
+		downPanel.add(visualPanel);
+		downPanel.add(statsPanel);
+		downPanel.add(gamePanel);
+		downPanel.add(exportPanel);
 
 		if (AppFrame.getAppFrame().getLauncherControler().getCurrentUserName().equals("admin"))
-			downPanel.add(admin);
+			downPanel.add(adminPanel);
 
 		return downPanel;
 	}
@@ -241,4 +294,45 @@ public class MenuPanel extends JPanel {
 	public JLabel getAdmin() {
 		return menuPanel.admin;
 	}
+
+	public JPanel getHomePanel() {
+		return menuPanel.homePanel;
+	}
+
+	public JPanel getEditorPanel() {
+		return menuPanel.editorPanel;
+	}
+
+	public JPanel getSearchPanel() {
+		return menuPanel.searchPanel;
+	}
+
+	public JPanel getVisualPanel() {
+		return menuPanel.visualPanel;
+	}
+
+	public JPanel getStatsPanel() {
+		return menuPanel.statsPanel;
+	}
+
+	public JPanel getGamePanel() {
+		return menuPanel.gamePanel;
+	}
+
+	public JPanel getExportPanel() {
+		return menuPanel.exportPanel;
+	}
+
+	public JPanel getAdminPanel() {
+		return menuPanel.adminPanel;
+	}
+	
+	public JComponent getActualPanel() {
+		return menuPanel.actualComponent;
+	}
+	
+	public void setActualPanel(JComponent panel) {
+		menuPanel.actualComponent = panel;
+	}
+	
 }
