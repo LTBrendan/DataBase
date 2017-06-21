@@ -66,7 +66,6 @@ public class LauncherControler extends MainControler {
 	public void addDatabase(String connectionName, String address, String login, String password) {
 		currentUser.addNewConnexion(new UserConnexion(address, connectionName, login, password));
 		save();
-		load();
 	}
 
 	/**

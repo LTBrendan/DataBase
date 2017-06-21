@@ -33,7 +33,7 @@ public class UserManager {
 	 * Constructor for the user manager
 	 */
 	public UserManager() {
-		UserManager.userList = new ArrayList<User>();
+		
 	}
 
 	/**
@@ -42,10 +42,15 @@ public class UserManager {
 	public static void save() {
 
 		try {
-			FileOutputStream fos = new FileOutputStream("source/user");
+			FileOutputStream fos = new FileOutputStream("source\\user");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			ObjectOutputStream oos = new ObjectOutputStream(bos);
+			
 			for (User us : UserManager.userList) {
+				System.out.println(us.getLogin());
+				for (UserConnexion uc : us.getConnexionList()) {
+					System.out.println(uc.getConnexionName());
+				}
 				oos.writeObject(us);
 			}
 			oos.close();

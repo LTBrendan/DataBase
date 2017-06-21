@@ -53,7 +53,7 @@ public class DatabaseControler extends MainControler {
 	 *             if can not establish connection
 	 */
 	public DatabaseControler(String address, String login, String password) throws SQLException {
-		super();
+		//super();
 		this.setAddress(address);
 		this.setLogin(login);
 		this.setPassword(password);

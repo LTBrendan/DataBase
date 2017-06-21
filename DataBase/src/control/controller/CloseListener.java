@@ -38,7 +38,7 @@ public class CloseListener implements MouseListener {
 		} catch (NullPointerException p) {
 
 		} finally {
-
+			
 			Log.close();
 			System.exit(0);
 

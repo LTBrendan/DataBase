@@ -1,14 +1,4 @@
-/connexion/
-/consoleControler/
-/consoleMode/
-/consoleView/
-/controller/
-/exception/
-/game/
-/junit/
-/query/
-/vue/
-/utils/
 /control/
-/view/
+/junit/
 /model/
+/view/

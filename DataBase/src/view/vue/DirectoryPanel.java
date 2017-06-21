@@ -6,18 +6,14 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.sql.SQLException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 
-import control.consoleControler.DatabaseControler;
 import control.controller.DirectoryPanelFocusListener;
 import control.controller.DirectoryPanelMouseListener;
-import logs.Log;
 import model.connexion.UserConnexion;
 
 public class DirectoryPanel extends JPanel {
@@ -123,26 +119,7 @@ public class DirectoryPanel extends JPanel {
 			connection.addMouseListener(
 					new DirectoryPanelMouseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 
-			// connection.setVerticalAlignment(HEIGHT);
-
-			JLabel inLine = new JLabel();
-			inLine.setIcon(new ImageIcon("rsc\\dataBase\\ok.png"));
-			try {
-				AppFrame.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
-				Log.database("connection established");
-				Log.database("statement created");
-			} catch (SQLException e) {
-				inLine.setIcon(new ImageIcon("rsc\\dataBase\\error.png"));
-			} finally {
-				try {
-					AppFrame.getDataBaseController().quit();
-				} catch (NullPointerException ex) {
-
-				}
-				AppFrame.setDatabaseControler(null);
-			}
 			connPanel.add(connection, BorderLayout.CENTER);
-			connPanel.add(inLine, BorderLayout.EAST);
 			this.centerPanel.add(connPanel);
 		}
 

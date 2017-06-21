@@ -83,6 +83,9 @@ public class User implements Serializable {
 	 */
 	public void addNewConnexion(UserConnexion connexion) {
 		this.connexionList.add(connexion);
+		for (UserConnexion uc : this.getConnexionList()) {
+			System.out.println(uc.getConnexionName());
+		}
 	}
 
 	/**
