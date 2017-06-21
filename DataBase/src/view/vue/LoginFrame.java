@@ -2,6 +2,7 @@ package view.vue;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -55,6 +56,9 @@ public class LoginFrame extends JFrame {
 
 	private static LoginFrame loginFrame;
 	private LauncherControler launcherControler = new LauncherControler();
+	
+	public int height;
+	public int width;
 
 	/**
 	 * Launch the application.
@@ -79,11 +83,20 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 
+		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		height = (int)dimension.getHeight();
+		width  = (int)dimension.getWidth();
+		
+		
+		System.out.println(height);
+		System.out.println(width);
+		
+		this.setSize(width / 2, height / 2);
 		this.setLocationRelativeTo(null);
 
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 475, 325);
+		//this.setBounds(100, 100, 475, 325);
 		this.setResizable(false);
 
 		loginFrame = this;
