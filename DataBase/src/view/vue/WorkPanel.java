@@ -93,7 +93,7 @@ public class WorkPanel extends JPanel {
 		this.controlPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
 		// this.controlPanel.setPreferredSize(new Dimension(width / 10, height /
 		// 16));
-		this.controlPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		//this.controlPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 
 		this.controlPanel.add(createMinimizePanel());
 		this.controlPanel.add(createMaximizePanel());

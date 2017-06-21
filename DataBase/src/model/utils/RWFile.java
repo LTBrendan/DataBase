@@ -32,7 +32,6 @@ public class RWFile {
 
 	public static String read(File file) {
 		Scanner sc = null;
-		
 		try {
 			sc = new Scanner(file);
 			
@@ -43,14 +42,14 @@ public class RWFile {
 		
 		try {
 			
-			while (sc.hasNext()) {
-				ret += sc.next()+" ";
+			while (sc.hasNextLine()) {
+				ret += sc.nextLine()+"\n";
 			}
 			
 		} catch (NullPointerException ex) {
 
 		}
-
+		sc.close();
 		return ret;
 	}
 }
