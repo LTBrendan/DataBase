@@ -208,7 +208,9 @@ public class DatabaseControler extends MainControler {
 				System.out.println("Choose the number of question (max : 50)");
 				questionNumber = Integer.parseInt(sc.next());
 			}
-			game.launchGame(questionNumber);
+			game.setUpGame(questionNumber);
+			game.launchGame();
+			game.endGame();
 			Log.database("SQL game ended");
 		}
 

@@ -1,0 +1,31 @@
+15:55:00	out       Logfile opened
+15:55:00	out       Logfiles cleaned
+15:55:08	out       connection attempt : guest
+15:55:08	out       successful connection
+15:55:08	out       Database connection attempt : Brendan
+15:55:08	out       successful connection : Brendan
+15:55:08	database  connection established
+15:55:08	database  statement created
+15:55:12	database  SQL game started
+15:55:12	database  table for SQL game created
+15:55:21	database  table for SQL game dropped
+15:55:21	database  SQL game ended
+16:11:58	out       Logfile opened
+16:11:58	out       Logfiles cleaned
+16:12:06	out       connection attempt : guest
+16:12:06	out       successful connection
+16:12:06	out       Database connection attempt : Brendan
+16:12:06	out       successful connection : Brendan
+16:12:06	database  connection established
+16:12:06	database  statement created
+16:12:09	database  SQL game started
+16:12:09	database  table for SQL game created
+16:12:14	database  table for SQL game dropped
+16:12:14	database  SQL game ended
+16:12:24	err       query error (select) : Table ou vue inexistante
+
+16:12:34	database  statement closed
+16:12:34	database  connexion closed
+16:12:34	database  disconnected from data base
+16:12:34	out       logged out
+16:12:34	out       Logfile closed

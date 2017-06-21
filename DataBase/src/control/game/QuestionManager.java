@@ -14,7 +14,7 @@ public class QuestionManager {
 
 	public QuestionManager(int questionNumber) {
 		this.generateQuestions();
-		this.setQuestionNumber (questionNumber);
+		this.setQuestionNumber(questionNumber);
 		this.fillQuestionList();
 	}
 
@@ -30,18 +30,15 @@ public class QuestionManager {
 		this.questionList = new HashMap<String, ArrayList<String>>();
 		Object[] question = this.allQuestion.keySet().toArray();
 		for (int i = 1; i <= this.questionNumber; i++) {
-			int index = (int)Math.random()*50;
-			String s = (String)question[index];
-			if (!questionList.containsKey(s)) {
-				questionList.put(s, this.allQuestion.get(s));
-			}
+			String s = (String) question[i - 1];
+			questionList.put(s, this.allQuestion.get(s));
 		}
 	}
 
 	public HashMap<String, ArrayList<String>> getQuestionList() {
 		return this.questionList;
 	}
-	
+
 	public HashMap<String, ArrayList<String>> getAllQuestion() {
 		return this.allQuestion;
 	}

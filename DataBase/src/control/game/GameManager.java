@@ -3,15 +3,18 @@ package control.game;
 import static model.utils.Scan.sc;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import control.consoleControler.DatabaseControler;
 import logs.Log;
 import model.exception.ExceptionHandler;
 
 public class GameManager {
-	DatabaseControler dc;
-	QuestionManager qm;
-	String tableName = "Game";
+	private DatabaseControler dc;
+	private QuestionManager qm;
+	private String tableName = "Game";
+	private HashMap<String, ArrayList<String>> questionList;
 
 	public GameManager(DatabaseControler dc) {
 		this.setDc(dc);
@@ -25,29 +28,12 @@ public class GameManager {
 		this.dc = dc;
 	}
 
-	public void launchGame(int questionNumber) {
-		Log.database("SQL game started");
-		this.createTable();
-		this.insertValues();
-		qm = new QuestionManager(questionNumber);
-		for (String s : qm.getQuestionList().keySet()) {
+	public void launchGame() {
+		for (String s : this.questionList.keySet()) {
 			System.out.println(s);
 			System.out.println("Answer : ");
 			for (String st : qm.getQuestionList().get(s)) {
 				System.out.println(st.substring(0, st.length() - 1));
-			}
-			System.out.print("Execute the query\n>");
-			String query;
-			while ((query = sc.nextLine()).length() == 0)
-				;
-			try {
-				if (query.toLowerCase().contains("select")) {
-					dc.display(dc.executeQuery(query));
-				}
-			} catch (SQLException e) {
-				System.out.println("Query error !");
-				System.out.println("You didn't execute the query correctly !");
-				System.out.println(ExceptionHandler.analyse((e.getMessage())));
 			}
 			System.out.print("Write your answer\n>");
 			String answer = sc.next();
@@ -62,12 +48,24 @@ public class GameManager {
 			}
 		}
 
+		
+	}
+	
+	public void endGame () {
 		try {
 			dc.executeQuery("DROP TABLE " + this.tableName);
 			Log.database("table for SQL game dropped");
 		} catch (SQLException ex) {
 			Log.database("error dropping table for game");
 		}
+	}
+	
+	public void setUpGame (int questionNumber) {
+		Log.database("SQL game started");
+		this.createTable();
+		this.insertValues();
+		qm = new QuestionManager(questionNumber);
+		this.questionList = qm.getQuestionList();
 	}
 	
 	private void createTable() {
@@ -105,5 +103,9 @@ public class GameManager {
 			System.out.println(ExceptionHandler.analyse((e.getMessage())));
 		}
 
+	}
+	
+	public HashMap<String, ArrayList<String>> getQuestionList () {
+		return this.questionList;
 	}
 }
