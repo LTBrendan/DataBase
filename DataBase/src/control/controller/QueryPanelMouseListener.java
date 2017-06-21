@@ -78,7 +78,7 @@ public class QueryPanelMouseListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		
-		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecuteLabel())) {
+		if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecutePanel())) {
 			
 			String query = AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()
 					.split(";")[0];
@@ -164,11 +164,11 @@ public class QueryPanelMouseListener implements MouseListener {
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().revalidate();
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().repaint();
 
-	}  else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getClearLabel())) {
+	}  else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getClearPanel())) {
 			
 		AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().setText(null);
 
-	} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSaveLabel())) {
+	} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSavePanel())) {
 		
 		JFileChooser saveJFC = new JFileChooser();
 		JFrame frame = new JFrame();
@@ -176,7 +176,7 @@ public class QueryPanelMouseListener implements MouseListener {
 				AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
 		saveJFC.showSaveDialog(frame);
 		
-	} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportLabel())) {
+	} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportPanel())) {
 		
 		JFileChooser openJFC = new JFileChooser();
 		JFrame frame = new JFrame();
@@ -184,7 +184,7 @@ public class QueryPanelMouseListener implements MouseListener {
 		openJFC.showOpenDialog(frame);
 
 	} else if (e.getComponent()
-			.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllLabel())) {
+			.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getExecuteAllPanel())) {
 		
 		String[] query = AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText().split(";");
 		String result = "";
