@@ -60,7 +60,7 @@ public class UserManager {
 	 */
 	public static void load() {
 		UserManager.userList = new ArrayList <User> ();
-		File file = new File("source/user");
+		File file = new File("source\\user");
 		if (!file.exists()) {
 			file.getParentFile().mkdirs();
 			try {

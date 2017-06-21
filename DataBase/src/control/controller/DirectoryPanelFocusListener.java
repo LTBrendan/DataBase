@@ -5,7 +5,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.text.JTextComponent;
 
-public class SettingPanelFocusListener implements FocusListener {
+public class DirectoryPanelFocusListener implements FocusListener {
 
 	@Override
 	public void focusGained(FocusEvent arg0) {

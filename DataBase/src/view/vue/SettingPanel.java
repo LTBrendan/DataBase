@@ -13,10 +13,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import control.controller.MenuButtonListener;
 import control.controller.SettingPanelFocusListener;
 import control.controller.SettingPanelMouseListener;
-import control.controller.TextFieldListener;
 
 public class SettingPanel extends JPanel {
 

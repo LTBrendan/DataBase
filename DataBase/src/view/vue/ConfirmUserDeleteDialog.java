@@ -11,6 +11,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import control.controller.ConfirmUserDeleteMouseListener;
+
 public class ConfirmUserDeleteDialog extends JDialog {
 
 	/**
@@ -80,12 +82,12 @@ public class ConfirmUserDeleteDialog extends JDialog {
 		okButton = new JButton("OK");
 		okButton.setBackground(new Color(30, 33, 38));
 		okButton.setForeground(new Color(255, 255, 255));
-		okButton.addMouseListener(new ConfirmDeleteButton(login, password));
+		okButton.addMouseListener(new ConfirmUserDeleteMouseListener(login, password));
 
 		cancel = new JButton("Cancel");
 		cancel.setBackground(new Color(30, 33, 38));
 		cancel.setForeground(new Color(255, 255, 255));
-		cancel.addMouseListener(new ConfirmDeleteButton(login, password));
+		cancel.addMouseListener(new ConfirmUserDeleteMouseListener(login, password));
 
 		contentPanel.add(titleLabel);
 		contentPanel.add(infoLabel);

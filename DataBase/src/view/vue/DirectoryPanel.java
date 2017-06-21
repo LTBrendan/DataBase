@@ -15,9 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 
 import control.consoleControler.DatabaseControler;
-import control.controller.ConnectDataBaseListener;
-import control.controller.MenuButtonListener;
-import control.controller.TextFieldListener;
+import control.controller.DirectoryPanelFocusListener;
+import control.controller.DirectoryPanelMouseListener;
 import logs.Log;
 import model.connexion.UserConnexion;
 
@@ -86,7 +85,7 @@ public class DirectoryPanel extends JPanel {
 		this.infoLabel.setForeground(Color.WHITE);
 		this.infoLabel.setBorder(null);
 		this.infoLabel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
-		this.infoLabel.addFocusListener(new TextFieldListener());
+		this.infoLabel.addFocusListener(new DirectoryPanelFocusListener());
 		this.searchPanel.add(infoLabel);
 
 		return this.infoLabel;
@@ -121,7 +120,8 @@ public class DirectoryPanel extends JPanel {
 			else
 				connection.setForeground(new Color(0, 0, 0));
 			connection.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			connection.addMouseListener(new ConnectDataBaseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
+			connection.addMouseListener(
+					new DirectoryPanelMouseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 
 			// connection.setVerticalAlignment(HEIGHT);
 
@@ -161,7 +161,7 @@ public class DirectoryPanel extends JPanel {
 
 		addLabel = new JLabel(" + Add new Connection");
 		addLabel.setForeground(Color.WHITE);
-		addLabel.addMouseListener(new MenuButtonListener());
+		addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null));
 		addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.bottomPanel.add(addLabel);
 

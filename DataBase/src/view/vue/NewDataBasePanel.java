@@ -12,7 +12,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import control.controller.MenuButtonListener;
+import control.controller.NewDataBaseMouseListener;
 
 public class NewDataBasePanel extends JPanel {
 
@@ -100,7 +100,7 @@ public class NewDataBasePanel extends JPanel {
 		addDatabaseButton.setBorder(null);
 		addDatabaseButton.setBounds(472, 462, 89, 23);
 		addDatabaseButton.setBackground(new Color(30, 33, 38));
-		addDatabaseButton.addMouseListener(new MenuButtonListener());
+		addDatabaseButton.addMouseListener(new NewDataBaseMouseListener());
 
 		JSeparator loginSeparator = new JSeparator();
 		loginSeparator.setBounds(427, 376, 186, 2);

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import control.controller.CloseListener;
-import control.controller.MenuButtonListener;
+import control.controller.OptionPanelMouseListener;
 
 public class OptionPanel extends JPanel {
 
@@ -92,7 +92,7 @@ public class OptionPanel extends JPanel {
 		else
 			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingBlack.PNG"));
 		settingLabel.setVerticalAlignment(SwingConstants.CENTER);
-		settingLabel.addMouseListener(new MenuButtonListener());
+		settingLabel.addMouseListener(new OptionPanelMouseListener());
 		settingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		optionPanel = this;

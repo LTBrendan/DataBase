@@ -16,9 +16,7 @@ public class SearchPanelFocusListener implements FocusListener {
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		
-		((JTextComponent) e.getComponent()).setText("Table name");
-		
+
 	}
 
 }

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 import control.controller.CloseListener;
-import control.controller.MenuButtonListener;
+import control.controller.WorkPanelMouseListener;
 
 public class WorkPanel extends JPanel {
 
@@ -111,7 +111,7 @@ public class WorkPanel extends JPanel {
 		this.minimizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.minimizeLabel = new JLabel();
-		this.minimizeLabel.addMouseListener(new MenuButtonListener());
+		this.minimizeLabel.addMouseListener(new WorkPanelMouseListener());
 		if (AppFrame.color == 54)
 			this.minimizeLabel.setIcon(new ImageIcon("rsc\\control\\minusWhite.PNG"));
 		else
@@ -130,7 +130,7 @@ public class WorkPanel extends JPanel {
 		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 
 		this.maximizeLabel = new JLabel();
-		this.maximizeLabel.addMouseListener(new MenuButtonListener());
+		this.maximizeLabel.addMouseListener(new WorkPanelMouseListener());
 		if (AppFrame.color == 54)
 			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandWhite.PNG"));
 		else
