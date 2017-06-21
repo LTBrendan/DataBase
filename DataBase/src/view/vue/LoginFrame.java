@@ -96,7 +96,6 @@ public class LoginFrame extends JFrame {
 
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//this.setBounds(100, 100, 475, 325);
 		this.setResizable(false);
 
 		loginFrame = this;
@@ -151,15 +150,15 @@ public class LoginFrame extends JFrame {
 
 		focusedTextField.setBounds(10, 11, 86, 20);
 
-		avatarLabel.setBounds(199, 43, 90, 70);
+		avatarLabel.setBounds(this.getWidth() / 2 - this.getWidth() / 12, this.getHeight() / 9, this.getWidth() / 6, this.getHeight() / 6);
 
-		closeLabel.setBounds(445, 11, 20, 20);
+		closeLabel.setBounds(this.getWidth() - this.getWidth() / 13, this.getWidth() / 20, this.getWidth() / 20, this.getHeight() / 20);
 
 		userLabel = new JLabel();
 		userLabel.setIcon(new ImageIcon("rsc\\login\\userWhite.png"));
 		userLabel.setBounds(115, 145, 20, 16);
 
-		loginField.setBounds(145, 137, 186, 20);
+		loginField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 8 * 3, this.getWidth() / 4, this.getHeight() / 20);
 		loginField.setText("Login");
 		loginField.addFocusListener(new LoginFrameFocusListener());
 		loginField.addKeyListener(new LoginFrameKeyListener());
@@ -173,7 +172,7 @@ public class LoginFrame extends JFrame {
 		passwordField.setColumns(10);
 		passwordField.setBackground(new Color(54, 57, 62));
 		passwordField.setForeground(new Color(255, 255, 255));
-		passwordField.setBounds(145, 192, 186, 20);
+		passwordField.setBounds(this.getWidth() / 2 - this.getWidth() / 8, this.getHeight() / 9 * 5, this.getWidth() / 4, this.getHeight() / 20);
 		passwordField.addFocusListener(new LoginFrameFocusListener());
 		passwordField.addKeyListener(new LoginFrameKeyListener());
 
@@ -181,14 +180,14 @@ public class LoginFrame extends JFrame {
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setBorder(null);
-		loginButton.setBounds(199, 236, 89, 23);
+		loginButton.setBounds(this.getWidth() / 2 - this.getWidth() / 10, this.getHeight() / 9 * 7, this.getWidth() / 5, this.getHeight() / 20);
 		loginButton.setBackground(new Color(30, 33, 38));
 		loginButton.addMouseListener(new LoginFrameMouseListener());
-
+		
 		createNewUserLoginLabel = new JLabel();
 		createNewUserLoginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createNewUserLoginLabel.setIcon(new ImageIcon("rsc\\login\\addUserWhite.png"));
-		createNewUserLoginLabel.setBounds(417, 267, 48, 47);
+		createNewUserLoginLabel.setBounds(this.getWidth() - this.getWidth() / 9, this.getHeight() - this.getWidth() / 9, this.getWidth() / 10, this.getHeight() / 10);
 		createNewUserLoginLabel.addMouseListener(new LoginFrameMouseListener());
 
 		loginPane.add(focusedTextField);
