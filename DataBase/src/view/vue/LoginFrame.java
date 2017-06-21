@@ -57,8 +57,8 @@ public class LoginFrame extends JFrame {
 	private static LoginFrame loginFrame;
 	private LauncherControler launcherControler = new LauncherControler();
 	
-	public int height;
-	public int width;
+	public static int height;
+	public static int width;
 
 	/**
 	 * Launch the application.
@@ -86,10 +86,6 @@ public class LoginFrame extends JFrame {
 		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		height = (int)dimension.getHeight();
 		width  = (int)dimension.getWidth();
-		
-		
-		System.out.println(height);
-		System.out.println(width);
 		
 		this.setSize(width / 2, height / 2);
 		this.setLocationRelativeTo(null);

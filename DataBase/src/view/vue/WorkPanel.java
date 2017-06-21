@@ -49,7 +49,7 @@ public class WorkPanel extends JPanel {
 	protected WorkPanel() {
 
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		this.setPreferredSize(new Dimension(468, 452));
+		//this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
 		workPanel = this;
@@ -61,7 +61,7 @@ public class WorkPanel extends JPanel {
 
 	public WorkPanel(JPanel panel) {
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		this.setPreferredSize(new Dimension(468, 452));
+		//this.setPreferredSize(new Dimension(468, 452));
 		this.setLayout(new BorderLayout(0, 0));
 
 		this.add(createMenuPanel(), BorderLayout.NORTH);
@@ -72,7 +72,7 @@ public class WorkPanel extends JPanel {
 
 		this.menuPanel = new JPanel();
 		this.menuPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		this.menuPanel.setPreferredSize(new Dimension(225, 60));
+		//this.menuPanel.setPreferredSize(new Dimension(225, 60));
 		this.menuPanel.setLayout(new BorderLayout(0, 0));
 
 		this.menuPanel.add(createSeparator(), BorderLayout.SOUTH);

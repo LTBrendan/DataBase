@@ -38,7 +38,7 @@ public class DirectoryPanel extends JPanel {
 	public DirectoryPanel() {
 
 		this.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
-		this.setPreferredSize(new Dimension(225, 456));
+		//this.setPreferredSize(new Dimension(225, 456));
 		this.setLayout(new BorderLayout(0, 0));
 
 		this.add(createSearchPanel(), BorderLayout.NORTH);
@@ -52,7 +52,7 @@ public class DirectoryPanel extends JPanel {
 
 		this.searchPanel = new JPanel();
 		this.searchPanel.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
-		this.searchPanel.setPreferredSize(new Dimension(225, 60));
+		//this.searchPanel.setPreferredSize(new Dimension(225, 60));
 		this.searchPanel.setLayout(null);
 
 		this.searchPanel.add(createInfoLabel());
@@ -75,7 +75,7 @@ public class DirectoryPanel extends JPanel {
 
 		this.infoLabel = new JLabel();
 		this.infoLabel.setBounds(20, 11, 184, 25);
-		this.infoLabel.setMinimumSize(new Dimension(3, 20));
+		//this.infoLabel.setMinimumSize(new Dimension(3, 20));
 		this.infoLabel.setToolTipText("Dans les bases de donn\u00E9es");
 		this.infoLabel.setText("Logged as " + AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
 		this.infoLabel.setForeground(Color.WHITE);
@@ -135,7 +135,7 @@ public class DirectoryPanel extends JPanel {
 
 		this.bottomPanel = new JPanel();
 		this.bottomPanel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
-		this.bottomPanel.setPreferredSize(new Dimension(225, 60));
+		//this.bottomPanel.setPreferredSize(new Dimension(225, 60));
 
 		addLabel = new JLabel(" + Add new Connection");
 		addLabel.setForeground(Color.WHITE);

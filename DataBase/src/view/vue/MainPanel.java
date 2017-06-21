@@ -1,6 +1,7 @@
 package view.vue;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -16,9 +17,13 @@ public class MainPanel extends JPanel {
 	
 	private static MainPanel mainPanel;
 	
+	public static int mainPanelHeight = LoginFrame.height;
+	public static int mainPanelWidth = LoginFrame.width - (LoginFrame.width / 100 * 6);
+	
 	public MainPanel() {
 		
 		this.setLayout(new BorderLayout(0, 0));
+		this.setPreferredSize(new Dimension(mainPanelWidth, mainPanelHeight));
 		this.add(directoryPanel, BorderLayout.WEST);
 		this.add(workPanel, BorderLayout.CENTER);
 		

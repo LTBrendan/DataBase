@@ -38,12 +38,15 @@ public class MenuPanel extends JPanel {
 	private JLabel game;
 	private JLabel export;
 	private JLabel admin;
+	
+	public static int menuPanelHeight = LoginFrame.height;
+	public static int menuPanelWidth = LoginFrame.width / 100 * 6;
 
 	private static MenuPanel menuPanel;
 
 	public MenuPanel() {
 
-		this.setPreferredSize(new Dimension(80, 456));
+		this.setPreferredSize(new Dimension(menuPanelWidth, menuPanelHeight));
 		this.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 		this.setLayout(new BorderLayout());
 

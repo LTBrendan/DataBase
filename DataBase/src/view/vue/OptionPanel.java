@@ -34,22 +34,22 @@ public class OptionPanel extends JPanel {
 
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		northPanel.setPreferredSize(new Dimension(10, 250));
+		//northPanel.setPreferredSize(new Dimension(10, 250));
 		add(northPanel, BorderLayout.NORTH);
 
 		JPanel westPanel = new JPanel();
 		westPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		westPanel.setPreferredSize(new Dimension(50, 10));
+		//westPanel.setPreferredSize(new Dimension(50, 10));
 		add(westPanel, BorderLayout.WEST);
 
 		JPanel southPanel = new JPanel();
 		southPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		southPanel.setPreferredSize(new Dimension(10, 250));
+		//southPanel.setPreferredSize(new Dimension(10, 250));
 		add(southPanel, BorderLayout.SOUTH);
 
 		JPanel eastPanel = new JPanel();
 		eastPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		eastPanel.setPreferredSize(new Dimension(50, 10));
+		//eastPanel.setPreferredSize(new Dimension(50, 10));
 		add(eastPanel, BorderLayout.EAST);
 
 		JPanel centerPanel = new JPanel();
