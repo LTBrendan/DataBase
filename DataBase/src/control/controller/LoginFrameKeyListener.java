@@ -30,7 +30,7 @@ public class LoginFrameKeyListener implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		
-		if ((arg0.getComponent().equals(LoginFrame.getLoginFrame().getLoginField())) || (arg0.getComponent().equals(LoginFrame.getLoginFrame().getPasswordField()))) {
+		if ((arg0.getComponent().equals(LoginFrame.getLoginFrame().getLoginField())) || (arg0.getComponent().equals(LoginFrame.getLoginFrame().getPasswordField())) || (arg0.getComponent().equals(LoginFrame.getLoginFrame().getFocusedTextField()))) {
 		
 			if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
 	

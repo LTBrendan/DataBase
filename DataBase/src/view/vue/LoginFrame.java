@@ -109,6 +109,7 @@ public class LoginFrame extends JFrame {
 		focusedTextField.setBorder(null);
 		focusedTextField.setColumns(10);
 		focusedTextField.setBackground(new Color(54, 57, 62));
+		focusedTextField.addKeyListener(new LoginFrameKeyListener());
 
 		avatarLabel = new JLabel();
 		avatarLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -253,7 +254,7 @@ public class LoginFrame extends JFrame {
 		createUserButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		createUserButton.setForeground(Color.WHITE);
 		createUserButton.setBorder(null);
-		createUserButton.setBounds(132, 260, 89, 23);
+		createUserButton.setBounds(this.getWidth() - this.getWidth() / 4, this.getHeight() / 8 * 6, 89, 23);
 		createUserButton.setBackground(new Color(30, 33, 38));
 		createUserButton.addMouseListener(new LoginFrameMouseListener());
 
@@ -350,4 +351,7 @@ public class LoginFrame extends JFrame {
 		loginFrame.repaint();
 	}
 
+	public JTextField getFocusedTextField() {
+		return loginFrame.focusedTextField;
+	}
 }
