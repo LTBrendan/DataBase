@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import view.vue.AppFrame;
+import view.vue.LoginFrame;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
@@ -39,6 +40,11 @@ public class OptionPanelMouseListener implements MouseListener {
 			MainPanel.getMainPanel().getWorkPanel().revalidate();
 			MainPanel.getMainPanel().getWorkPanel().repaint();
 
+		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getOptionPanel().getLogoutLabel())) {
+			
+			LoginFrame.getLoginFrame().setVisible(true);
+			AppFrame.getAppFrame().dispose();
+			
 		}
 
 	}

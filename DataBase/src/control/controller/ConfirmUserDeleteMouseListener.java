@@ -42,7 +42,7 @@ public class ConfirmUserDeleteMouseListener implements MouseListener {
 
 		if (e.getComponent().equals(ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().getOkButton())) {
 
-			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().setVisible(false);
+			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().dispose();
 
 			try {
 				AppFrame.getAppFrame().getLauncherControler().removeUser(login, UserManager.decrypt(password));
@@ -51,7 +51,7 @@ public class ConfirmUserDeleteMouseListener implements MouseListener {
 			}
 
 		} else {
-			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().setVisible(false);
+			ConfirmUserDeleteDialog.getConfirmUserDeleteDialog().dispose();
 		}
 
 	}

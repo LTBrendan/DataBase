@@ -32,13 +32,13 @@ public class InvalidInfoMouseListener implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		
 		if (e.getComponent().equals(InvalidInfoDialog.getInvalidInfoDialog().getOkButton())){
-			
-			InvalidInfoDialog.getInvalidInfoDialog().setVisible(false);
+
+			InvalidInfoDialog.getInvalidInfoDialog().dispose();
 			
 		} else if (e.getComponent().equals(InvalidInfoDialog.getInvalidInfoDialog().getCreateNewButton())){
 			
 			LoginFrame.getLoginFrame().createUserContentPanel();
-			InvalidInfoDialog.getInvalidInfoDialog().setVisible(false);
+			InvalidInfoDialog.getInvalidInfoDialog().dispose();
 			
 		} else if (e.getComponent().equals(LoginFrame.getLoginFrame().getCreateNewUserLoginLabel())) {
 			

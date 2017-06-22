@@ -146,6 +146,8 @@ public class User implements Serializable {
 	 */
 	public void setXp(int xp) {
 		this.xp = xp;
+		if (this.xp > 6) 
+			this.level++;
 	}
 
 	/**
@@ -163,5 +165,4 @@ public class User implements Serializable {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
 }

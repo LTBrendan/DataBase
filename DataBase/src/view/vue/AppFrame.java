@@ -12,7 +12,7 @@ import control.consoleControler.LauncherControler;
  * @author Patate1er
  *
  */
-public class AppFrame {
+public class AppFrame{
 
 	private JFrame frame;
 	private MenuPanel menuPanel;
@@ -141,5 +141,9 @@ public class AppFrame {
 	 */
 	public static void setDatabaseControler(DatabaseControler dc) {
 		appFrame.databaseControler = dc;
+	}
+
+	public void dispose() {
+		frame.dispose();
 	}
 }

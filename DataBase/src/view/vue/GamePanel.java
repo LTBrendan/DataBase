@@ -45,6 +45,8 @@ public class GamePanel extends JPanel {
 
 	private JPanel selectedPanel;
 
+	private int questionXP = 5;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -228,5 +230,13 @@ public class GamePanel extends JPanel {
 
 	public void setSelectedPanel(JPanel selectedLabel) {
 		this.selectedPanel = selectedLabel;
+	}
+
+	public int getQuestionXP() {
+		return questionXP;
+	}
+
+	public void setQuestionXP(int questionXP) {
+		this.questionXP = questionXP;
 	}
 }

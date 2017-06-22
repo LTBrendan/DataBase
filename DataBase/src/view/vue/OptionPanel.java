@@ -63,6 +63,7 @@ public class OptionPanel extends JPanel {
 			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutBlack.PNG"));
 		logoutLabel.setVerticalAlignment(SwingConstants.CENTER);
 		logoutLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		logoutLabel.addMouseListener(new OptionPanelMouseListener());
 
 		quitLabel = new JLabel();
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
