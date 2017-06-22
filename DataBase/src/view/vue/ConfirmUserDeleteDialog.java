@@ -14,10 +14,7 @@ import javax.swing.JPanel;
 import control.controller.ConfirmUserDeleteMouseListener;
 
 public class ConfirmUserDeleteDialog extends JDialog {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	JLabel titleLabel;
@@ -34,7 +31,7 @@ public class ConfirmUserDeleteDialog extends JDialog {
 	private static String password;
 
 	/**
-	 * Launch the application.
+	 * Launch the dialog
 	 */
 	public static void main(String[] args) {
 		login = args[0];
@@ -101,14 +98,26 @@ public class ConfirmUserDeleteDialog extends JDialog {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Getter for okButton
+	 * @return the okButton
+	 */
 	public JButton getOkButton() {
 		return confirmUserDeleteDialog.okButton;
 	}
 
+	/**
+	 * Getter for cancelButton
+	 * @return the cancelButton
+	 */
 	public JButton getcancel() {
 		return confirmUserDeleteDialog.cancel;
 	}
 
+	/**
+	 * Getter for this ConfirmUserDeleteDialog
+	 * @return this ConfirmUserDeleteDialog
+	 */
 	public static ConfirmUserDeleteDialog getConfirmUserDeleteDialog() {
 		return confirmUserDeleteDialog;
 	}

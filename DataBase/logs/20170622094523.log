@@ -1,0 +1,20 @@
+09:44:08	out       Logfile opened
+09:44:08	out       Logfiles cleaned
+09:44:17	out       connection attempt : guest
+09:44:17	out       successful connection
+09:44:20	out       Database connection attempt : Brendan
+09:44:20	out       successful connection : Brendan
+09:44:20	database  connection established
+09:44:20	database  statement created
+09:44:25	err       query error (select) : Table ou vue inexistante
+
+09:44:58	database  query executed : CREATE TABLE game(PRIMARY NUMBER CONSTRAINT PKPRIMARY  PRIMARY KEY , NAME VARCHAR2(20))
+09:45:07	database  SQL game started
+09:45:07	database  table for SQL game created
+09:45:12	database  table for SQL game dropped
+09:45:12	database  SQL game ended
+09:45:22	database  statement closed
+09:45:22	database  connexion closed
+09:45:22	database  disconnected from data base
+09:45:23	out       logged out
+09:45:23	out       Logfile closed

@@ -28,10 +28,7 @@ import control.controller.LoginFrameMouseListener;
 import logs.Log;
 
 public class LoginFrame extends JFrame {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel loginPane;
@@ -72,7 +69,7 @@ public class LoginFrame extends JFrame {
 					LoginFrame frame = new LoginFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+
 				}
 			}
 		});
@@ -139,6 +136,10 @@ public class LoginFrame extends JFrame {
 
 	}
 
+	/**
+	 * Initialize the loginPanel and return it
+	 * @return the initialized loginPanel
+	 */
 	private JPanel loginPanel() {
 
 		loginPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -200,6 +201,10 @@ public class LoginFrame extends JFrame {
 		return loginPane;
 	}
 
+	/**
+	 * Initialize the createUserPanel and return it
+	 * @return the initialized createUserPanel
+	 */
 	private JPanel createUserPanel() {
 
 		createUserPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -279,58 +284,109 @@ public class LoginFrame extends JFrame {
 	}
 
 	int xy, xx;
-
+	
+	/**
+	 * Set the new location of the AppFrame by dragging it
+	 * @param evt the thrown event
+	 */
 	private void frameMouseDragged(MouseEvent evt) {
 		int depX = evt.getX() - xx;
 		int depY = evt.getY() - xy;
 		this.setLocation(this.getX() + depX, this.getY() + depY);
 	}
 
+	/**
+	 * Get the mouse location when pressed event is thrown
+	 * @param evt the thrown event
+	 */
 	private void frameMousePressed(MouseEvent evt) {
 		xx = evt.getX();
 		xy = evt.getY();
 	}
 
+	/**
+	 * Getter for this LoginFrame
+	 * @return this LoginFrame
+	 */
 	public static LoginFrame getLoginFrame() {
 		return loginFrame;
 	}
 
+	/**
+	 * Getter for loginField
+	 * @return the loginField
+	 */
 	public JTextField getLoginField() {
 		return loginFrame.loginField;
 	}
 
+	/**
+	 * Getter for passwordField
+	 * @return the passwordField
+	 */
 	public JPasswordField getPasswordField() {
 		return loginFrame.passwordField;
 	}
 
+	/**
+	 * Getter for LauncherControler
+	 * @return the laucherControler
+	 */
 	public LauncherControler getLauncherControler() {
 		return loginFrame.launcherControler;
 	}
 
+	/**
+	 * Getter for confirmPasswordField
+	 * @return the confirmPasswordField
+	 */
 	public JPasswordField getConfirmPasswordField() {
 		return confirmPasswordField;
 	}
 
+	/**
+	 * Getter for createUserPasswordField
+	 * @return the createUserPasswordField
+	 */
 	public JPasswordField getCreateUserPasswordField() {
 		return createUserPasswordField;
 	}
 
+	/**
+	 * Getter for wrongPasswordLabel
+	 * @return the wrongPasswordLabel
+	 */
 	public JLabel getWrongPasswordLabel() {
 		return loginFrame.wrongPasswordLabel;
 	}
 
+	/**
+	 * Getter for createNewUserLoginLabel
+	 * @return the createNewUserLoginLabel
+	 */
 	public JLabel getCreateNewUserLoginLabel() {
 		return loginFrame.createNewUserLoginLabel;
 	}
 
+	/**
+	 * getter for loginButton
+	 * @return the loginButton
+	 */
 	public JButton getLoginButton() {
 		return loginFrame.loginButton;
 	}
 
+	/**
+	 * Getter for createUserButton
+	 * @return the createUserButton
+	 */
 	public JButton getCreateUserButton() {
 		return loginFrame.createUserButton;
 	}
 
+	/**
+	 * Set the loginFrame content to login
+	 */
 	public void loginContentPanel() {
 
 		loginPane = new JPanel();
@@ -339,6 +395,9 @@ public class LoginFrame extends JFrame {
 		loginFrame.repaint();
 	}
 
+	/**
+	 * Set the loginFrame content to createUser
+	 */
 	public void createUserContentPanel() {
 
 		createUserPane = new JPanel();
@@ -347,6 +406,10 @@ public class LoginFrame extends JFrame {
 		loginFrame.repaint();
 	}
 
+	/**
+	 * A focused, invisible and uneditable text field
+	 * @return the focused textField
+	 */
 	public JTextField getFocusedTextField() {
 		return loginFrame.focusedTextField;
 	}

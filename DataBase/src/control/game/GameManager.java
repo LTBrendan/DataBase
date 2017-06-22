@@ -34,6 +34,7 @@ public class GameManager {
 			System.out.println("Answer : ");
 			for (String st : qm.getQuestionList().get(s)) {
 				System.out.println(st.substring(0, st.length() - 1));
+				System.out.println(st.substring(st.length()-1));
 			}
 			System.out.print("Write your answer\n>");
 			String answer = sc.next();
@@ -73,8 +74,10 @@ public class GameManager {
 			dc.executeQuery("CREATE TABLE " + this.tableName
 					+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
 		} catch (SQLException e) {
+			ExceptionHandler.analyse(e.getMessage());
 			try {
 				this.tableName += (int) (Math.random() * Math.pow(10, 9));
+				System.out.println (tableName);
 				dc.executeQuery("CREATE TABLE " + this.tableName
 						+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
 			} catch (SQLException ex) {

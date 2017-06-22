@@ -15,9 +15,6 @@ import control.controller.InvalidInfoMouseListener;
 
 public class InvalidInfoDialog extends JDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	JLabel titleLabel;
@@ -31,7 +28,7 @@ public class InvalidInfoDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
+	 * Launch the dialog
 	 */
 	public static void main(String[] args) {
 		try {
@@ -96,14 +93,26 @@ public class InvalidInfoDialog extends JDialog {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Getter for okButton
+	 * @return the okButton
+	 */
 	public JButton getOkButton() {
 		return invalidInfoDialog.okButton;
 	}
 
+	/**
+	 * Getter for createNewButton
+	 * @return the createNewButton
+	 */
 	public JButton getCreateNewButton() {
 		return invalidInfoDialog.createNewButton;
 	}
 
+	/**
+	 * Getter for this InvalidInfoDialog
+	 * @return this InvalidInfoDialog
+	 */
 	public static InvalidInfoDialog getInvalidInfoDialog() {
 		return invalidInfoDialog;
 	}

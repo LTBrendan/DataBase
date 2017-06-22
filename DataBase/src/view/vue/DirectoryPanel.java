@@ -18,10 +18,7 @@ import control.controller.DirectoryPanelMouseListener;
 import model.connexion.UserConnexion;
 
 public class DirectoryPanel extends JPanel {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel searchPanel;
@@ -38,6 +35,9 @@ public class DirectoryPanel extends JPanel {
 	public static int width = MainPanel.width / 6;
 	public static int height = MainPanel.height;
 
+	/**
+	 * Construct a new DirectoryPanel
+	 */
 	public DirectoryPanel() {
 
 		this.setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
@@ -51,6 +51,10 @@ public class DirectoryPanel extends JPanel {
 		directoryPanel = this;
 	}
 
+	/**
+	 * Create the searchPanel and return it
+	 * @return the created searchPanel
+	 */
 	private JPanel createSearchPanel() {
 
 		this.searchPanel = new JPanel();
@@ -65,6 +69,10 @@ public class DirectoryPanel extends JPanel {
 		return this.searchPanel;
 	}
 
+	/**
+	 * Create the infoLabel and return it
+	 * @return the created infoLabel
+	 */
 	private JLabel createInfoLabel() {
 
 		this.infoLabel = new JLabel();
@@ -77,6 +85,10 @@ public class DirectoryPanel extends JPanel {
 		return this.infoLabel;
 	}
 
+	/**
+	 * Create the centerPanel and return it
+	 * @return the created centerPanel
+	 */
 	private JScrollPane createCenterPanel() {
 
 		this.centerPanel = new JPanel(new GridLayout(15, 1)) {
@@ -121,6 +133,10 @@ public class DirectoryPanel extends JPanel {
 		return this.centerScrollPane;
 	}
 
+	/**
+	 * Create the bottomPanel and return it
+	 * @return the created bottomPanel
+	 */
 	public JPanel createBottomPanel() {
 
 		this.bottomPanel = new JPanel(new BorderLayout());
@@ -138,24 +154,36 @@ public class DirectoryPanel extends JPanel {
 		return this.bottomPanel;
 	}
 
+	/**
+	 * Getter for this directoryPanel
+	 * @return this directoryPanel
+	 */
 	public static DirectoryPanel getDirectoryPanel() {
 		return directoryPanel;
 	}
 
+	/**
+	 * Getter for the addLabel
+	 * @return the addLabel
+	 */
 	public JLabel getAddLabel() {
 		return addLabel;
 	}
 
+	/**
+	 * Reset the centerScrollPanel
+	 */
 	public void setDirectoryPanel() {
 		this.remove(centerScrollPane);
 		this.add(createCenterPanel(), BorderLayout.CENTER);
 	}
 
+	/**
+	 * Set the message in parameter in the infoLabel
+	 * @param message the message to display
+	 */
 	public void setInfoLabelText(String message) {
 		this.infoLabel.setText(message);
 	}
 	
-	public void setInLineLabel (String fileName) {
-		
-	}
 }

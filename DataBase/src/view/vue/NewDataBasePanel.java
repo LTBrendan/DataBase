@@ -16,9 +16,6 @@ import control.controller.NewDataBaseMouseListener;
 
 public class NewDataBasePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel newConnPane;
@@ -144,26 +141,50 @@ public class NewDataBasePanel extends JPanel {
 		newConnection = this;
 	}
 
+	/**
+	 * Getter for this NewDatabasePanel
+	 * @return this NewDatabasePanel
+	 */
 	public static NewDataBasePanel getNewDataBasePanel() {
 		return newConnection;
 	}
 
+	/**
+	 * Getter for the nameField
+	 * @return the nameField
+	 */
 	public JTextField getNameField() {
 		return newConnection.nameField;
 	}
 
+	/**
+	 * Getter for the addressField
+	 * @return the addressField
+	 */
 	public JTextField getAdressField() {
 		return newConnection.adressField;
 	}
 
+	/**
+	 * Getter for the loginField
+	 * @return the loginField
+	 */
 	public JTextField getLoginField() {
 		return newConnection.loginField;
 	}
 
+	/**
+	 * Getter for the passwordField
+	 * @return the passwordField
+	 */
 	public JTextField getPasswordField() {
 		return newConnection.passwordField;
 	}
 
+	/**
+	 * Getter for the addDatabaseButton
+	 * @return the addDatabaseButton
+	 */
 	public JButton getAddDatabaseButton() {
 		return newConnection.addDatabaseButton;
 	}

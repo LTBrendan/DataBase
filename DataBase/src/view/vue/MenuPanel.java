@@ -17,11 +17,12 @@ import javax.swing.SwingConstants;
 
 import control.controller.MenuPanelMouseListener;
 
+/**
+ * @author Patate1er
+ *
+ */
 public class MenuPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel upPanel;
@@ -55,6 +56,9 @@ public class MenuPanel extends JPanel {
 
 	private static MenuPanel menuPanel;
 
+	/**
+	 * Construct a new menuPanel
+	 */
 	public MenuPanel() {
 
 		this.setPreferredSize(new Dimension(width, height));
@@ -70,6 +74,10 @@ public class MenuPanel extends JPanel {
 		menuPanel = this;
 	}
 
+	/**
+	 * Create the downPanel and return it
+	 * @return the initialized downPanel
+	 */
 	private JPanel createDownPanel() {
 
 		downPanel = new JPanel(new GridLayout(8, 0));
@@ -208,6 +216,10 @@ public class MenuPanel extends JPanel {
 		return downPanel;
 	}
 
+	/**
+	 * Create the upPanel and return it
+	 * @return the initialized upPanel
+	 */
 	private JPanel createUpPanel() {
 
 		upPanel = new JPanel(new BorderLayout());
@@ -219,6 +231,10 @@ public class MenuPanel extends JPanel {
 		return upPanel;
 	}
 
+	/**
+	 * Create the avatarLabel and return it
+	 * @return the initialized avatarLabel
+	 */
 	private JLabel createAvatarLanel() {
 
 		this.avatarLabel = new JLabel();
@@ -231,6 +247,10 @@ public class MenuPanel extends JPanel {
 		return this.avatarLabel;
 	}
 
+	/**
+	 * Create the userNameLabel and return it
+	 * @return the initialized userNameLabel
+	 */
 	private JLabel createUserNameLabel() {
 
 		this.userNameLabel = new JLabel(AppFrame.getAppFrame().getLauncherControler().getCurrentUserName());
@@ -244,6 +264,10 @@ public class MenuPanel extends JPanel {
 		return this.userNameLabel;
 	}
 
+	/**
+	 * Create the separator and return it
+	 * @return the separator userNameLabel
+	 */
 	public JSeparator createSeparator() {
 
 		this.separator = new JSeparator();
@@ -251,86 +275,170 @@ public class MenuPanel extends JPanel {
 		return this.separator;
 	}
 
+	/**
+	 * Getter for this menuPanel
+	 * @return this menuPanel
+	 */
 	public static MenuPanel getMenuPanel() {
 		return menuPanel;
 	}
 
+	/**
+	 * Getter for avatarLabel
+	 * @return the avatarLabel
+	 */
 	public JComponent getAvatarLabel() {
 		return menuPanel.avatarLabel;
 	}
 
+	/**
+	 * Getter for userNameLabel
+	 * @return the userNameLabel
+	 */
 	public JComponent getUserNameLabel() {
 		return menuPanel.userNameLabel;
 	}
 
+	/**
+	 * Getter for homeLabel
+	 * @return the homeLabel
+	 */
 	public JLabel getHome() {
 		return menuPanel.home;
 	}
 
+	/**
+	 * Getter for editorLabel
+	 * @return the editorLabel
+	 */
 	public JLabel getEditor() {
 		return menuPanel.editor;
 	}
 
+	/**
+	 * Getter for searchLabel
+	 * @return the searchLabel
+	 */
 	public JLabel getSearch() {
 		return menuPanel.search;
 	}
 
+	/**
+	 * Getter for visualLabel
+	 * @return the visualLabel
+	 */
 	public JLabel getVisual() {
 		return menuPanel.visual;
 	}
 
+	/**
+	 * Getter for statLabel
+	 * @return the statLabel
+	 */
 	public JLabel getStats() {
 		return menuPanel.stats;
 	}
-
+	
+	/**
+	 * Getter for gameLabel
+	 * @return the gameLabel
+	 */
 	public JLabel getGame() {
 		return menuPanel.game;
 	}
-
+	
+	/**
+	 * Getter for exportLabel
+	 * @return the exportLabel
+	 */
 	public JLabel getExport() {
 		return menuPanel.export;
 	}
 
+	/**
+	 * Getter for adminLabel
+	 * @return the adminLabel
+	 */
 	public JLabel getAdmin() {
 		return menuPanel.admin;
 	}
 
+	/**
+	 * Getter for homePanel
+	 * @return the homePanel
+	 */
 	public JPanel getHomePanel() {
 		return menuPanel.homePanel;
 	}
 
+	/**
+	 * Getter for editorPanel
+	 * @return the editorPanel
+	 */
 	public JPanel getEditorPanel() {
 		return menuPanel.editorPanel;
 	}
 
+	/**
+	 * Getter for searchPanel
+	 * @return the searchPanel
+	 */
 	public JPanel getSearchPanel() {
 		return menuPanel.searchPanel;
 	}
 
+	/**
+	 * Getter for visualPanel
+	 * @return the visualPanel
+	 */
 	public JPanel getVisualPanel() {
 		return menuPanel.visualPanel;
 	}
 
+	/**
+	 * Getter for statsPanel
+	 * @return the statsPanel
+	 */
 	public JPanel getStatsPanel() {
 		return menuPanel.statsPanel;
 	}
-
+	
+	/**
+	 * Getter for gamePanel
+	 * @return the gamePanel
+	 */
 	public JPanel getGamePanel() {
 		return menuPanel.gamePanel;
 	}
 
+	/**
+	 * Getter for exportPanel
+	 * @return the exportPanel
+	 */
 	public JPanel getExportPanel() {
 		return menuPanel.exportPanel;
 	}
 
+	/**
+	 * Getter for adminPanel
+	 * @return the adminPanel
+	 */
 	public JPanel getAdminPanel() {
 		return menuPanel.adminPanel;
 	}
 	
+	/**
+	 * Getter for actualComponent
+	 * @return the actualComponent
+	 */
 	public JComponent getActualPanel() {
 		return menuPanel.actualComponent;
 	}
 	
+	/**
+	 * Setter for the actualPanel
+	 * @param panel the new actualPanel
+	 */
 	public void setActualPanel(JComponent panel) {
 		menuPanel.actualComponent = panel;
 	}

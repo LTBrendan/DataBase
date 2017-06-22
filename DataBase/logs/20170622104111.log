@@ -1,0 +1,18 @@
+10:40:54	out       Logfile opened
+10:40:54	out       Logfiles cleaned
+10:41:03	out       connection attempt : guest
+10:41:03	out       successful connection
+10:41:03	out       Database connection attempt : Brendan
+10:41:03	out       successful connection : Brendan
+10:41:03	database  connection established
+10:41:03	database  statement created
+10:41:03	database  SQL game started
+10:41:03	database  error creating table for SQL game
+10:41:03	database  table for SQL game created
+10:41:08	database  error dropping table for game
+10:41:08	database  SQL game ended
+10:41:11	database  statement closed
+10:41:11	database  connexion closed
+10:41:11	database  disconnected from data base
+10:41:11	out       logged out
+10:41:11	out       Logfile closed

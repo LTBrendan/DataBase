@@ -16,10 +16,7 @@ import model.connexion.User;
 import model.connexion.UserManager;
 
 public class AdminPanel extends JPanel {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel titlePanel;
@@ -110,10 +107,18 @@ public class AdminPanel extends JPanel {
 
 	}
 
+	/**
+	 * Getter for the userListPanel
+	 * @return the userListPanel
+	 */
 	public JPanel getUserListPanel() {
 		return adminPanel.userListPanel;
 	}
 
+	/**
+	 * Getter for this adminPanel
+	 * @return this adminPanel
+	 */
 	public static JPanel getAdminPanel() {
 		return adminPanel;
 	}

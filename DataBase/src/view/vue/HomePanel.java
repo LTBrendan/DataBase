@@ -7,14 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HomePanel extends JPanel {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private static HomePanel homePanel;
 
+	/**
+	 * Construct new homePanel
+	 */
 	public HomePanel() {
 
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
@@ -32,6 +32,10 @@ public class HomePanel extends JPanel {
 		homePanel = this;
 	}
 
+	/**
+	 * Getter for this homePanel
+	 * @return this homePanel
+	 */
 	public static HomePanel getHomePanel() {
 		return homePanel;
 	}

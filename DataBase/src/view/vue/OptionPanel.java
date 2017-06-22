@@ -3,7 +3,6 @@ package view.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -17,9 +16,6 @@ import control.controller.OptionPanelMouseListener;
 
 public class OptionPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static OptionPanel optionPanel;
 
@@ -27,6 +23,9 @@ public class OptionPanel extends JPanel {
 	private JLabel quitLabel;
 	private JLabel settingLabel;
 
+	/**
+	 * Construct a new OptionPanel
+	 */
 	public OptionPanel() {
 
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
@@ -34,22 +33,18 @@ public class OptionPanel extends JPanel {
 
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//northPanel.setPreferredSize(new Dimension(10, 250));
 		add(northPanel, BorderLayout.NORTH);
 
 		JPanel westPanel = new JPanel();
 		westPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//westPanel.setPreferredSize(new Dimension(50, 10));
 		add(westPanel, BorderLayout.WEST);
 
 		JPanel southPanel = new JPanel();
 		southPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//southPanel.setPreferredSize(new Dimension(10, 250));
 		add(southPanel, BorderLayout.SOUTH);
 
 		JPanel eastPanel = new JPanel();
 		eastPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		//eastPanel.setPreferredSize(new Dimension(50, 10));
 		add(eastPanel, BorderLayout.EAST);
 
 		JPanel centerPanel = new JPanel();
@@ -98,18 +93,34 @@ public class OptionPanel extends JPanel {
 		optionPanel = this;
 	}
 
+	/**
+	 * Getter for this OptionPanel
+	 * @return this OptionPanel
+	 */
 	public static OptionPanel getOptionPanel() {
 		return optionPanel;
 	}
 
+	/**
+	 * Getter for logoutLabel
+	 * @return the logoutLabel
+	 */
 	public JLabel getLogoutLabel() {
 		return optionPanel.logoutLabel;
 	}
 
+	/**
+	 * Getter for quitLabel
+	 * @return the quitLabel
+	 */
 	public JLabel getQuitLabel() {
 		return optionPanel.quitLabel;
 	}
 
+	/**
+	 * Getter for logoutLabel
+	 * @return the logoutLabel
+	 */
 	public JLabel getSettingLabel() {
 		return optionPanel.settingLabel;
 	}
