@@ -1,7 +1,10 @@
 package control.controller;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.BorderFactory;
 
 import view.vue.AppFrame;
 
@@ -30,8 +33,17 @@ public class InitializeGamePanelMouseListener implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		
-		AppFrame.getAppFrame().getMainPanel().getWorkPanel().initialiseGame(Integer.parseInt(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getTextField().getText()));
-		AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
+		try {
+			
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().initialiseGame(Integer.parseInt(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getTextField().getText()));
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
+			
+		} catch (NullPointerException e) {
+			
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setText("You need to be connected to a database !");
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.RED));
+			
+		}
 		
 	}
 

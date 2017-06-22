@@ -1,0 +1,21 @@
+12:59:44	out       Logfile opened
+12:59:44	out       Logfiles cleaned
+12:59:50	database  connection established
+12:59:50	database  statement created
+12:59:54	database  SQL game started
+12:59:54	database  error creating table for SQL game
+12:59:54	database  table for SQL game created
+13:01:30	out       Logfile opened
+13:01:30	out       Logfiles cleaned
+13:01:32	database  statement closed
+13:01:32	database  connexion closed
+13:01:32	out       Logfile closed
+13:01:32	out       Log file opened in another window
+13:01:38	database  connection established
+13:01:38	database  statement created
+13:01:42	database  SQL game started
+13:01:42	database  error creating table for SQL game
+13:01:42	database  table for SQL game created
+13:03:22	database  statement closed
+13:03:22	database  connexion closed
+13:03:22	out       Logfile closed

@@ -289,8 +289,12 @@ public class WorkPanel extends JPanel {
 		return workPanel.newDataBase;
 	}
 
-	public InitializeGamePanel getGamePanel() {
+	public InitializeGamePanel getInitializeGamePanel() {
 		return workPanel.initializeGamePanel;
+	}
+	
+	public GamePanel getGamePanel() {
+		return workPanel.gamePanel;
 	}
 
 	public static void setGamePanel() {
@@ -298,8 +302,8 @@ public class WorkPanel extends JPanel {
 		if (workPanel.firstTime) {
 			
 			workPanel.remove(workPanel.getActualPanel());
-			workPanel.actualPanel = workPanel.getGamePanel();
-			workPanel.add(workPanel.getGamePanel());
+			workPanel.actualPanel = workPanel.getInitializeGamePanel();
+			workPanel.add(workPanel.getInitializeGamePanel());
 			workPanel.firstTime = false;
 			
 		} else {
