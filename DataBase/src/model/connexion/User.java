@@ -21,6 +21,10 @@ public class User implements Serializable {
 	private ImageIcon avatar;
 	// user's color identifier
 	private int color;
+	// user's xp
+	private int xp;
+	//user's level, based on user's xp
+	private int level;
 
 	public int getColor() {
 		return color;
@@ -126,6 +130,38 @@ public class User implements Serializable {
 			}
 		}
 		return ret;
+	}
+	
+	/**
+	 * Getter for xp user
+	 * @return user's xp
+	 */
+	public int getXp() {
+		return xp;
+	}
+
+	/**
+	 * Setter for the xp user
+	 * @param xp the xp
+	 */
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+
+	/**
+	 * Getter for level user
+	 * @return user's level
+	 */
+	public int getLevel() {
+		return level;
+	}
+
+	/**
+	 * Setter for the lever user
+	 * @param level the level
+	 */
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	
 }

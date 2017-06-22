@@ -47,7 +47,6 @@ public class WorkPanel extends JPanel {
 	private GamePanel gamePanel;
 	private ArrayList<GamePanel> game = new ArrayList<GamePanel>();
 	private int y = -1;
-	private int questionNumber;
 
 	private JComponent actualPanel;
 
@@ -445,7 +444,6 @@ public class WorkPanel extends JPanel {
 
 	public void initialiseGame(int questionNumber) {
 		gameManager = new GameManager(AppFrame.getDataBaseController());
-		workPanel.questionNumber = questionNumber;
 		gameManager.setUpGame(questionNumber);
 
 		String question = null;
