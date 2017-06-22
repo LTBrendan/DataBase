@@ -71,15 +71,16 @@ public class GameManager {
 	private void createTable() {
 		try {
 			dc.executeQuery("CREATE TABLE " + this.tableName
-					+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
+					+ " (primaryKey number(2) constraint pk"+this.tableName+"PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName"+this.tableName+" NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname"+this.tableName+" NOT NULL, age NUMBER(2) CONSTRAINT nnAge"+this.tableName+" NOT NULL, CONSTRAINT uqNameSurname"+this.tableName+" UNIQUE (name, surname))");
 		} catch (SQLException e) {
 			
 			try {
 				this.tableName += (int) (Math.random() * Math.pow(10, 9));
 				System.out.println (tableName);
 				dc.executeQuery("CREATE TABLE " + this.tableName
-						+ " (primaryKey number(2) constraint pkGame PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname NOT NULL, age NUMBER(2) CONSTRAINT nnAge NOT NULL, CONSTRAINT nnNameSurname UNIQUE (name, surname))");
+						+ " (primaryKey number(2) constraint pk"+this.tableName+" PRIMARY KEY, name VARCHAR2 (10) CONSTRAINT nnName"+this.tableName+" NOT NULL, surname VARCHAR2(20) CONSTRAINT nnSurname"+this.tableName+" NOT NULL, age NUMBER(2) CONSTRAINT nnAge"+this.tableName+" NOT NULL, CONSTRAINT uqNameSurname"+this.tableName+" UNIQUE (name, surname))");
 			} catch (SQLException ex) {
+				System.out.println(ExceptionHandler.analyse (ex.getMessage()));
 				Log.database("error creating table for SQL game");
 			}
 		}
