@@ -1,0 +1,9 @@
+13:25:57	out       Logfile opened
+13:25:57	out       Logfiles cleaned
+13:26:02	database  connection established
+13:26:02	database  statement created
+13:26:05	database  SQL game started
+13:26:05	database  table for SQL game created
+13:26:42	database  statement closed
+13:26:42	database  connexion closed
+13:26:42	out       Logfile closed

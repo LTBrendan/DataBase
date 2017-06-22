@@ -47,6 +47,7 @@ public class WorkPanel extends JPanel {
 	private GamePanel gamePanel;
 	private ArrayList<GamePanel> game = new ArrayList<GamePanel>();
 	private int y = -1;
+	private int questionNumber;
 
 	private JComponent actualPanel;
 
@@ -71,10 +72,12 @@ public class WorkPanel extends JPanel {
 
 		this.actualPanel = this.getHomePanel();
 	}
-	
+
 	/**
 	 * Construct a new workPanel and set the panel in parameter
-	 * @param panel the panel to set
+	 * 
+	 * @param panel
+	 *            the panel to set
 	 */
 	public WorkPanel(JPanel panel) {
 		this.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
@@ -87,6 +90,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Initialize the menuPanel
+	 * 
 	 * @return the initialized menuPanel
 	 */
 	public JPanel createMenuPanel() {
@@ -105,6 +109,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Initialize the controlePanel
+	 * 
 	 * @return the initialized controlPanel
 	 */
 	private JPanel createControlPanel() {
@@ -120,6 +125,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Initialize the minimizePanel
+	 * 
 	 * @return the initialized initialized minimizePanel
 	 */
 	private JPanel createMinimizePanel() {
@@ -142,6 +148,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Initialize the maximizePanel
+	 * 
 	 * @return the initialized maximizePanel
 	 */
 	private JPanel createMaximizePanel() {
@@ -152,21 +159,22 @@ public class WorkPanel extends JPanel {
 		this.maximizePanel.setLayout(new BorderLayout(0, 0));
 		this.maximizeLabel = new JLabel();
 		this.maximizeLabel.addMouseListener(new WorkPanelMouseListener());
-		
+
 		if (AppFrame.color == 54)
 			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandWhite.PNG"));
-		
+
 		else
 			this.maximizeLabel.setIcon(new ImageIcon("rsc\\control\\expandBlack.PNG"));
 
 		this.maximizePanel.add(this.maximizeLabel, BorderLayout.CENTER);
 		this.maximizePanel.add(new JLabel("   "), BorderLayout.EAST);
-		
+
 		return this.maximizePanel;
 	}
 
 	/**
 	 * Initialize the closePanel
+	 * 
 	 * @return the initialized closePanel
 	 */
 	private JPanel createClosePanel() {
@@ -178,10 +186,10 @@ public class WorkPanel extends JPanel {
 		this.closeLabel = new JLabel("");
 		this.closeLabel.addMouseListener(new CloseListener());
 		this.closeLabel.setBackground(new Color(AppFrame.color - 14, AppFrame.color - 11, AppFrame.color - 6));
-		
+
 		if (AppFrame.color == 54)
 			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeWhite.PNG"));
-		
+
 		else
 			this.closeLabel.setIcon(new ImageIcon("rsc\\control\\closeBlack.PNG"));
 
@@ -192,6 +200,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Initialize the centerPanel
+	 * 
 	 * @return the initialized centerPanel
 	 */
 	private JPanel createCenterPanel() {
@@ -216,7 +225,9 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Set the new location of the AppFrame by dragging it
-	 * @param evt the thrown event
+	 * 
+	 * @param evt
+	 *            the thrown event
 	 */
 	private void frameMouseDragged(MouseEvent evt) {
 		int depX = evt.getX() - xx;
@@ -226,7 +237,9 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Get the mouse location when pressed event is thrown
-	 * @param evt the thrown event
+	 * 
+	 * @param evt
+	 *            the thrown event
 	 */
 	private void frameMousePressed(MouseEvent evt) {
 		xx = evt.getX();
@@ -235,6 +248,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the queryPanel
+	 * 
 	 * @return the queryPanel
 	 */
 	public QueryPanel getQueryPanel() {
@@ -243,6 +257,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the settingPanel
+	 * 
 	 * @return the settingPanel
 	 */
 	public SettingPanel getSettingPanel() {
@@ -251,6 +266,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the optionPanel
+	 * 
 	 * @return the optionPanel
 	 */
 	public OptionPanel getOptionPanel() {
@@ -259,6 +275,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the homePanel
+	 * 
 	 * @return the homePanel
 	 */
 	public HomePanel getHomePanel() {
@@ -267,6 +284,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the searchPanel
+	 * 
 	 * @return the searchPanel
 	 */
 	public SearchPanel getSearchPanel() {
@@ -275,6 +293,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the adminPanel
+	 * 
 	 * @return the adminPanel
 	 */
 	public AdminPanel getAdminPanel() {
@@ -283,6 +302,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for the newConnectionPanel
+	 * 
 	 * @return the newConnectionPanel
 	 */
 	public NewDataBasePanel getNewConnection() {
@@ -292,7 +312,7 @@ public class WorkPanel extends JPanel {
 	public InitializeGamePanel getInitializeGamePanel() {
 		return workPanel.initializeGamePanel;
 	}
-	
+
 	public GamePanel getGamePanel() {
 		return workPanel.gamePanel;
 	}
@@ -300,21 +320,21 @@ public class WorkPanel extends JPanel {
 	public static void setGamePanel() {
 
 		if (workPanel.firstTime) {
-			
+
 			workPanel.remove(workPanel.getActualPanel());
 			workPanel.actualPanel = workPanel.getInitializeGamePanel();
 			workPanel.add(workPanel.getInitializeGamePanel());
 			workPanel.firstTime = false;
-			
+
 		} else {
-			
+
 			WorkPanel.setGamePanel(workPanel.getQuestionGamePanel(workPanel.y));
-			
+
 			workPanel.revalidate();
 			workPanel.repaint();
-			
+
 		}
-		
+
 	}
 
 	public static void setGamePanel(GamePanel panel) {
@@ -387,9 +407,9 @@ public class WorkPanel extends JPanel {
 		workPanel.add(workPanel.getAdminPanel());
 	}
 
-	
 	/**
 	 * Getter for the actual panel
+	 * 
 	 * @return the workPanel's actual panel
 	 */
 	public JComponent getActualPanel() {
@@ -398,6 +418,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for minimizeLabel
+	 * 
 	 * @return the minimizeLabel
 	 */
 	public JLabel getMinimizeLabel() {
@@ -406,6 +427,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for maximizeLabel
+	 * 
 	 * @return the maximizeLabel
 	 */
 	public JLabel getMaximizeLabel() {
@@ -414,6 +436,7 @@ public class WorkPanel extends JPanel {
 
 	/**
 	 * Getter for closeLabel
+	 * 
 	 * @return the closeLabel
 	 */
 	public JLabel getCloseLabel() {
@@ -422,32 +445,36 @@ public class WorkPanel extends JPanel {
 
 	public void initialiseGame(int questionNumber) {
 		gameManager = new GameManager(AppFrame.getDataBaseController());
+		workPanel.questionNumber = questionNumber;
 		gameManager.setUpGame(questionNumber);
 
 		String question = null;
 		String[] answers = new String[4];
-		for (int i = 0; i < questionNumber; i++) {
-			for (String s : gameManager.getQuestionList().keySet()) {
-				question = s;
-				int j = 0;
-				for (String st : gameManager.getQuestionList().get(s)) {
-					answers[j] = st;
-					j++;
-				}
+		for (String s : gameManager.getQuestionList().keySet()) {
+			question = s;
+			int j = 0;
+			for (String st : gameManager.getQuestionList().get(s)) {
+				answers[j] = st;
+				j++;
 			}
 			game.add(new GamePanel(question, answers[0], answers[1], answers[2], answers[3]));
 		}
+
 	}
 
 	public GamePanel getQuestionGamePanel(int t) {
-		
+
 		workPanel.gamePanel = workPanel.game.get(t);
-		
+
 		return workPanel.gamePanel;
 	}
 
 	public void addQuestionInt() {
-		workPanel.y++;
-		setGamePanel();
+		try {
+			workPanel.y++;
+			setGamePanel();
+		} catch (IndexOutOfBoundsException a) {
+			gameManager.endGame();
+		}
 	}
 }

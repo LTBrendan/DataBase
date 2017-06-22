@@ -90,55 +90,66 @@ public class GamePanelMouseListener implements MouseListener {
 		}else if (arg0.getComponent()
 				.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getValidatePanel())) {
 			
-			System.out.println("DEBUG");
-			
 			if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
 					.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer1Panel())) {
 
 				if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer1CheckLabel()
 						.getText().equals("1")) {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer1Label()
 						.setForeground(Color.GREEN);
+					
+					AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
 				} else {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer1Label()
 					.setForeground(Color.RED);
 				}
 
-			}
-			if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
+			} else if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
 					.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer2Panel())) {
 
 				if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer2CheckLabel()
 						.getText().equals("1")) {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer2Label()
 						.setForeground(Color.GREEN);
+					
+					AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
 				} else {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer2Label()
 					.setForeground(Color.RED);
 				}
 
-			}
-			if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
+			} else if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
 					.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer3Panel())) {
 
 				if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer3CheckLabel()
 						.getText().equals("1")) {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer3Label()
 						.setForeground(Color.GREEN);
+					
+					AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
 				} else {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer3Label()
 					.setForeground(Color.RED);
 				}
 
-			}
-			if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
+			} else if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getSelectedPanel()
 					.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer4Panel())) {
 
 				if (AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer4CheckLabel()
 						.getText().equals("1")) {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer4Label()
 						.setForeground(Color.GREEN);
+					
+					AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
 				} else {
+					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer4Label()
 					.setForeground(Color.RED);
 				}
