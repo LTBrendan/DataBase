@@ -8,22 +8,22 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 import control.controller.CloseListener;
 import control.controller.WorkPanelMouseListener;
+import control.game.GameManager;
 
 public class WorkPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel menuPanel;
-	private JSeparator separator;
 	private JPanel controlPanel;
 	private JPanel minimizePanel;
 	private JLabel minimizeLabel;
@@ -40,6 +40,14 @@ public class WorkPanel extends JPanel {
 	private SearchPanel searchPanel = new SearchPanel();
 	private AdminPanel adminPanel = new AdminPanel();
 	private NewDataBasePanel newDataBase = new NewDataBasePanel();
+
+	private boolean firstTime = true;
+	private GameManager gameManager;
+	private InitializeGamePanel initializeGamePanel = new InitializeGamePanel();
+	private GamePanel gamePanel;
+	private ArrayList<GamePanel> game = new ArrayList<GamePanel>();
+	private int y = -1;
+
 	private JComponent actualPanel;
 
 	private static WorkPanel workPanel;
@@ -281,6 +289,36 @@ public class WorkPanel extends JPanel {
 		return workPanel.newDataBase;
 	}
 
+	public InitializeGamePanel getGamePanel() {
+		return workPanel.initializeGamePanel;
+	}
+
+	public static void setGamePanel() {
+
+		if (workPanel.firstTime) {
+			
+			workPanel.remove(workPanel.getActualPanel());
+			workPanel.actualPanel = workPanel.getGamePanel();
+			workPanel.add(workPanel.getGamePanel());
+			workPanel.firstTime = false;
+			
+		} else {
+			
+			WorkPanel.setGamePanel(workPanel.getQuestionGamePanel(workPanel.y));
+			
+			workPanel.revalidate();
+			workPanel.repaint();
+			
+		}
+		
+	}
+
+	public static void setGamePanel(GamePanel panel) {
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = panel;
+		workPanel.add(panel);
+	}
+
 	/**
 	 * Set workPanel's actualPanel to newConnectionPanel
 	 */
@@ -376,5 +414,36 @@ public class WorkPanel extends JPanel {
 	 */
 	public JLabel getCloseLabel() {
 		return workPanel.closeLabel;
+	}
+
+	public void initialiseGame(int questionNumber) {
+		gameManager = new GameManager(AppFrame.getDataBaseController());
+		gameManager.setUpGame(questionNumber);
+
+		String question = null;
+		String[] answers = new String[4];
+		for (int i = 0; i < questionNumber; i++) {
+			for (String s : gameManager.getQuestionList().keySet()) {
+				question = s;
+				int j = 0;
+				for (String st : gameManager.getQuestionList().get(s)) {
+					answers[j] = st;
+					j++;
+				}
+			}
+			game.add(new GamePanel(question, answers[0], answers[1], answers[2], answers[3]));
+		}
+	}
+
+	public GamePanel getQuestionGamePanel(int t) {
+		
+		workPanel.gamePanel = workPanel.game.get(t);
+		
+		return workPanel.gamePanel;
+	}
+
+	public void addQuestionInt() {
+		workPanel.y++;
+		setGamePanel();
 	}
 }
