@@ -40,8 +40,8 @@ public class WorkPanel extends JPanel {
 	private SearchPanel searchPanel = new SearchPanel();
 	private AdminPanel adminPanel = new AdminPanel();
 	private NewDataBasePanel newDataBase = new NewDataBasePanel();
-	private StatsPanel statsPanel = new StatsPanel ();
 	private VisualPanel visualPanel;
+	private StatsPanel statsPanel = new StatsPanel ();
 
 	private boolean firstTime = true;
 	private GameManager gameManager;
