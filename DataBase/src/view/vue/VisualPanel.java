@@ -8,11 +8,21 @@ import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 import model.exception.ExceptionHandler;
 
 public class VisualPanel extends JPanel {
 
+	/*
+	 *  public TablePanel( TableModel model )
+  		{
+    	table = new JTable( model );
+	 * 
+	 * 
+	 * 
+	 */
+	
 	/**
 	 * 
 	 */
@@ -23,35 +33,37 @@ public class VisualPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VisualPanel() {
+	public VisualPanel(TableModel model) {
 		
 		setLayout(new BorderLayout(0, 0));
-		Object objects[][] = null;
+//		Object objects[][] = null;
+//		
+//		try {
+//			
+//			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM agent");
+//			ResultSetMetaData rsmd = rs.getMetaData();
+//			int columnCount = rsmd.getColumnCount();
+//			
+//			objects = new Object[AppFrame.getDataBaseController().getColumnName("agent").length][columnCount];
+//			
+//			int i = 0;
+//			while (rs.next()) {
+//				for (int j = 1; j < columnCount; j++) {
+//					objects[i++][j-1] = rs.getString(j);
+//				}
+////				System.out.print(rs.getString(columnCount));
+////				System.out.print("\n");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (NullPointerException e1) {
+//			e1.printStackTrace();
+//		}
 		
-		try {
-			
-			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM game");
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int columnCount = rsmd.getColumnCount();
-			
-			objects = new Object[AppFrame.getDataBaseController().getColumnName("game").length][columnCount];
-			
-			int i = 0;
-			while (rs.next()) {
-				for (int j = 1; j < columnCount; j++) {
-					objects[i++][j-1] = rs.getString(j);
-				}
-//				System.out.print(rs.getString(columnCount));
-//				System.out.print("\n");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e1) {
-			e1.printStackTrace();
-		}
+	//	table = new JTable(objects, AppFrame.getDataBaseController().getColumnName("agent"));
 		
-		table = new JTable(objects, AppFrame.getDataBaseController().getColumnName("game"));
+		table = new JTable(model);
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		

@@ -3,6 +3,7 @@ package control.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import logs.Log;
 import view.vue.AppFrame;
 import view.vue.LoginFrame;
 import view.vue.MainPanel;
@@ -42,8 +43,19 @@ public class OptionPanelMouseListener implements MouseListener {
 
 		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getOptionPanel().getLogoutLabel())) {
 			
-			LoginFrame.getLoginFrame().setVisible(true);
-			AppFrame.getAppFrame().dispose();
+			try {
+
+				AppFrame.getDataBaseController().quit();
+
+			} catch (NullPointerException p) {
+
+			} finally {
+				
+				Log.close();
+				LoginFrame.getLoginFrame().setVisible(true);
+				AppFrame.getAppFrame().dispose();
+
+			}
 			
 		}
 

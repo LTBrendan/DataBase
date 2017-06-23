@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -314,7 +316,7 @@ public class WorkPanel extends JPanel {
 	public VisualPanel getVisualPanel() {
 		return workPanel.visualPanel;
 	}
-	
+
 	public InitializeGamePanel getInitializeGamePanel() {
 		return workPanel.initializeGamePanel;
 	}
@@ -322,16 +324,16 @@ public class WorkPanel extends JPanel {
 	public GamePanel getGamePanel() {
 		return workPanel.gamePanel;
 	}
-	
+
 	public StatsPanel getStatsPanel() {
 		return workPanel.statsPanel;
 	}
-	
+
 	/**
 	 * Set workPanel's actualPanel to homePanel
 	 */
 	public static void setStatsPanel() {
-		workPanel.statsPanel = new StatsPanel ();
+		workPanel.statsPanel = new StatsPanel();
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getStatsPanel();
 		workPanel.add(workPanel.getStatsPanel());
@@ -427,13 +429,20 @@ public class WorkPanel extends JPanel {
 		workPanel.add(workPanel.getAdminPanel());
 	}
 
-	public static void  setVisualPanel() {
-		workPanel.visualPanel = new VisualPanel();
+	public static void setVisualPanel() {
+		ResultSet rs = null;
+		try {
+			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM agent");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ResultSetTableModel rtm = new ResultSetTableModel(rs);
+		workPanel.visualPanel = new VisualPanel(rtm);
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getVisualPanel();
 		workPanel.add(workPanel.getVisualPanel());
 	}
-	
+
 	/**
 	 * Getter for the actual panel
 	 * 
@@ -475,7 +484,7 @@ public class WorkPanel extends JPanel {
 		gameManager.setUpGame(questionNumber);
 
 		workPanel.questionNumber = questionNumber;
-		
+
 		String question = null;
 		String[] answers = new String[4];
 		for (String s : gameManager.getQuestionList().keySet()) {
@@ -495,23 +504,23 @@ public class WorkPanel extends JPanel {
 		try {
 			workPanel.gamePanel = workPanel.game.get(t);
 		} catch (IndexOutOfBoundsException a) {
-			
+
 		}
-		
+
 		return workPanel.gamePanel;
 	}
 
 	public void addQuestionInt() {
-		
+
 		if (workPanel.y < questionNumber) {
 			workPanel.y++;
 			setGamePanel();
 		} else {
 			gameManager.endGame();
-			
+
 			workPanel.firstTime = true;
 			WorkPanel.setGamePanel();
-			
+
 			workPanel.revalidate();
 			workPanel.repaint();
 		}
