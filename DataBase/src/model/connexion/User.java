@@ -25,6 +25,12 @@ public class User implements Serializable {
 	private int xp;
 	//user's level, based on user's xp
 	private int level;
+	//number of SQL Game the user played
+	private int nbGame;
+	//number of good answer the user gave
+	private int nbGoodAnswer;
+	//number of wrong answer the user gave
+	private int nbWrongAnwer;
 
 	public int getColor() {
 		return color;
