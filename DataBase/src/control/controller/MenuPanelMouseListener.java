@@ -69,6 +69,10 @@ public class MenuPanelMouseListener implements MouseListener {
 			AppFrame.getAppFrame().getMenuPanel().getVisualPanel().setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 			AppFrame.getAppFrame().getMenuPanel().setActualPanel(AppFrame.getAppFrame().getMenuPanel().getVisualPanel());
 			
+			WorkPanel.setVisualPanel();
+			MainPanel.getMainPanel().getWorkPanel().revalidate();
+			MainPanel.getMainPanel().getWorkPanel().repaint();
+			
 		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMenuPanel().getStats())) {
 			
 			AppFrame.getAppFrame().getMenuPanel().getActualPanel().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));

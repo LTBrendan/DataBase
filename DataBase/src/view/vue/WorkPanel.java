@@ -40,6 +40,7 @@ public class WorkPanel extends JPanel {
 	private SearchPanel searchPanel = new SearchPanel();
 	private AdminPanel adminPanel = new AdminPanel();
 	private NewDataBasePanel newDataBase = new NewDataBasePanel();
+	private VisualPanel visualPanel;
 
 	private boolean firstTime = true;
 	private GameManager gameManager;
@@ -47,6 +48,7 @@ public class WorkPanel extends JPanel {
 	private GamePanel gamePanel;
 	private ArrayList<GamePanel> game = new ArrayList<GamePanel>();
 	private int y = -1;
+	private int questionNumber;
 
 	private JComponent actualPanel;
 
@@ -308,6 +310,10 @@ public class WorkPanel extends JPanel {
 		return workPanel.newDataBase;
 	}
 
+	public VisualPanel getVisualPanel() {
+		return workPanel.visualPanel;
+	}
+	
 	public InitializeGamePanel getInitializeGamePanel() {
 		return workPanel.initializeGamePanel;
 	}
@@ -406,6 +412,13 @@ public class WorkPanel extends JPanel {
 		workPanel.add(workPanel.getAdminPanel());
 	}
 
+	public static void  setVisualPanel() {
+		workPanel.visualPanel = new VisualPanel();
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getVisualPanel();
+		workPanel.add(workPanel.getVisualPanel());
+	}
+	
 	/**
 	 * Getter for the actual panel
 	 * 
@@ -446,6 +459,8 @@ public class WorkPanel extends JPanel {
 		gameManager = new GameManager(AppFrame.getDataBaseController());
 		gameManager.setUpGame(questionNumber);
 
+		workPanel.questionNumber = questionNumber;
+		
 		String question = null;
 		String[] answers = new String[4];
 		for (String s : gameManager.getQuestionList().keySet()) {
@@ -462,17 +477,24 @@ public class WorkPanel extends JPanel {
 
 	public GamePanel getQuestionGamePanel(int t) {
 
-		workPanel.gamePanel = workPanel.game.get(t);
-
+		try {
+			workPanel.gamePanel = workPanel.game.get(t);
+		} catch (IndexOutOfBoundsException a) {
+			
+		}
+		
 		return workPanel.gamePanel;
 	}
 
 	public void addQuestionInt() {
-		try {
+		if (workPanel.y <= questionNumber) {
 			workPanel.y++;
 			setGamePanel();
-		} catch (IndexOutOfBoundsException a) {
+		} else {
 			gameManager.endGame();
+			workPanel.firstTime = false;
+			WorkPanel.setGamePanel();
+			System.out.println(AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getXp());
 		}
 	}
 }

@@ -2,6 +2,8 @@ package control.controller;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
@@ -180,11 +182,13 @@ public class QueryPanelMouseListener implements MouseListener {
 		} else if (e.getComponent()
 				.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSavePanel())) {
 
-			JFileChooser saveJFC = new JFileChooser();
-			JFrame frame = new JFrame();
-			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
-			saveJFC.showSaveDialog(frame);
+			FileDialog saveJFC = new FileDialog((Frame) null, "Fichier ?", FileDialog.SAVE);
+//			JFrame frame = new JFrame();
+//			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
+//					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
+//			saveJFC.showSaveDialog(frame);
+			saveJFC.setLocationRelativeTo(null);
+			saveJFC.setVisible(true);
 
 		} else if (e.getComponent()
 				.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportPanel())) {
