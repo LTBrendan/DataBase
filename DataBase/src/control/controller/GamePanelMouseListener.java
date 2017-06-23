@@ -98,9 +98,6 @@ public class GamePanelMouseListener implements MouseListener {
 					
 					AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setXp(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getQuestionXP());
 					
-					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getGamePanel().getAnswer1Label()
-						.setForeground(Color.GREEN);
-					
 					AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
 				} else {
 					

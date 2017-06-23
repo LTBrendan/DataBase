@@ -47,8 +47,8 @@ public class WorkPanel extends JPanel {
 	private InitializeGamePanel initializeGamePanel = new InitializeGamePanel();
 	private GamePanel gamePanel;
 	private ArrayList<GamePanel> game = new ArrayList<GamePanel>();
-	private int y = -1;
-	private int questionNumber;
+	public int y = -1;
+	public int questionNumber;
 
 	private JComponent actualPanel;
 
@@ -487,14 +487,18 @@ public class WorkPanel extends JPanel {
 	}
 
 	public void addQuestionInt() {
-		if (workPanel.y <= questionNumber) {
+		
+		if (workPanel.y < questionNumber) {
 			workPanel.y++;
 			setGamePanel();
 		} else {
 			gameManager.endGame();
-			workPanel.firstTime = false;
+			
+			workPanel.firstTime = true;
 			WorkPanel.setGamePanel();
-			System.out.println(AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getXp());
+			
+			workPanel.revalidate();
+			workPanel.repaint();
 		}
 	}
 }
