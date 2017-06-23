@@ -91,9 +91,19 @@ public class StatsPanel extends JPanel {
 			tableNumberLabel.setForeground(new Color(0, 0, 0));
 		tableNumberLabel.setFont(f);
 
+		int gameNumber = AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getNbGame();
+		int wrongAnswers = AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getNbGame();
+		int goodAnswers = AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getNbGame();
+		JLabel gameNumberLabel = new JLabel ("Number of game : "+gameNumber);
+		JLabel wrongAnswersLabel = new JLabel ("Number of game : "+wrongAnswers);
+		JLabel goodAnswersLabel = new JLabel ("Number of game : "+goodAnswers);
+			
 		centerPanel.add(connectionHourLabel);
 		centerPanel.add(databaseAddressLabel);
 		centerPanel.add(tableNumberLabel);
+		centerPanel.add(gameNumberLabel);
+		centerPanel.add(goodAnswersLabel);
+		centerPanel.add(wrongAnswersLabel);
 
 		this.add(stat, BorderLayout.NORTH);
 		this.add(centerPanel, BorderLayout.CENTER);

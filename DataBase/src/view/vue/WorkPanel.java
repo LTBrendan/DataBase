@@ -432,9 +432,11 @@ public class WorkPanel extends JPanel {
 	public static void setVisualPanel() {
 		ResultSet rs = null;
 		try {
-			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM agent");
+			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM game");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			
 		}
 		ResultSetTableModel rtm = new ResultSetTableModel(rs);
 		workPanel.visualPanel = new VisualPanel(rtm);

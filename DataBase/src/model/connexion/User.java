@@ -30,15 +30,7 @@ public class User implements Serializable {
 	//number of good answer the user gave
 	private int nbGoodAnswer;
 	//number of wrong answer the user gave
-	private int nbWrongAnwer;
-
-	public int getColor() {
-		return color;
-	}
-
-	public void setColor(int color) {
-		this.color = color;
-	}
+	private int nbWrongAnswer;
 
 	/**
 	 * Constructor for class User
@@ -170,5 +162,37 @@ public class User implements Serializable {
 	 */
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	
+	public int getNbGame() {
+		return nbGame;
+	}
+
+	public void setNbGame(int nbGame) {
+		this.nbGame = nbGame;
+	}
+
+	public int getNbGoodAnswer() {
+		return nbGoodAnswer;
+	}
+
+	public void setNbGoodAnswer(int nbGoodAnswer) {
+		this.nbGoodAnswer = nbGoodAnswer;
+	}
+
+	public int getNbWrongAnswer() {
+		return nbWrongAnswer;
+	}
+
+	public void setNbWrongAnswer(int nbWrongAnswer) {
+		this.nbWrongAnswer = nbWrongAnswer;
+	}
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
 	}
 }
