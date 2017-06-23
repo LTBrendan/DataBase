@@ -26,7 +26,7 @@ public class VisualPanel extends JPanel {
 	public VisualPanel() {
 		
 		setLayout(new BorderLayout(0, 0));
-		Object objects[][];
+		Object objects[][] = null;
 		
 		try {
 			
@@ -34,19 +34,24 @@ public class VisualPanel extends JPanel {
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int columnCount = rsmd.getColumnCount();
 			
+			objects = new Object[AppFrame.getDataBaseController().getColumnName("game").length][columnCount];
+			
+			int i = 0;
 			while (rs.next()) {
 				for (int j = 1; j < columnCount; j++) {
-					System.out.print(rs.getString(j) + " \t\t\t ");
+					objects[i++][j-1] = rs.getString(j);
 				}
-				System.out.print(rs.getString(columnCount));
-				System.out.print("\n");
+//				System.out.print(rs.getString(columnCount));
+//				System.out.print("\n");
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e1) {
+			e1.printStackTrace();
 		}
 		
-		table = new JTable(new Object[][] {}, AppFrame.getDataBaseController().getColumnName("game"));
+		table = new JTable(objects, AppFrame.getDataBaseController().getColumnName("game"));
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		
