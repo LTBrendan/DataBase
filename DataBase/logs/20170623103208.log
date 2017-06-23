@@ -1,0 +1,7 @@
+10:31:12	out       Logfile opened
+10:31:12	out       Logfiles cleaned
+10:31:17	database  connection established
+10:31:17	database  statement created
+10:32:08	database  statement closed
+10:32:08	database  connexion closed
+10:32:08	out       Logfile closed

@@ -430,6 +430,7 @@ public class WorkPanel extends JPanel {
 	}
 
 	public static void setVisualPanel() {
+		
 		ResultSet rs = null;
 		try {
 			rs = AppFrame.getDataBaseController().executeQuery("SELECT * FROM game");
@@ -438,6 +439,7 @@ public class WorkPanel extends JPanel {
 		} catch (NullPointerException e) {
 			
 		}
+		
 		ResultSetTableModel rtm = new ResultSetTableModel(rs);
 		workPanel.visualPanel = new VisualPanel(rtm);
 		workPanel.remove(workPanel.getActualPanel());
