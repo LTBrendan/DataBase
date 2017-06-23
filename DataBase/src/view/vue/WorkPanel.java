@@ -41,7 +41,7 @@ public class WorkPanel extends JPanel {
 	private AdminPanel adminPanel = new AdminPanel();
 	private NewDataBasePanel newDataBase = new NewDataBasePanel();
 	private VisualPanel visualPanel;
-	private StatsPanel statsPanel = new StatsPanel ();
+	private StatsPanel statsPanel;
 
 	private boolean firstTime = true;
 	private GameManager gameManager;
@@ -331,6 +331,7 @@ public class WorkPanel extends JPanel {
 	 * Set workPanel's actualPanel to homePanel
 	 */
 	public static void setStatsPanel() {
+		workPanel.statsPanel = new StatsPanel ();
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getStatsPanel();
 		workPanel.add(workPanel.getStatsPanel());
