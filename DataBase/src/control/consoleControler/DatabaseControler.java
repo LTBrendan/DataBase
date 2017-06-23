@@ -253,6 +253,8 @@ public class DatabaseControler extends MainControler {
 			}
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}
@@ -277,6 +279,8 @@ public class DatabaseControler extends MainControler {
 			}
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}
