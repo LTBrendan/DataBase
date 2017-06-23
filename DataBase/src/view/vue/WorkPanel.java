@@ -351,7 +351,6 @@ public class WorkPanel extends JPanel {
 		} else {
 
 			WorkPanel.setGamePanel(workPanel.getQuestionGamePanel(workPanel.y));
-
 			workPanel.revalidate();
 			workPanel.repaint();
 
