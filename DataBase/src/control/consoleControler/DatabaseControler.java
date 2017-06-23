@@ -64,7 +64,7 @@ public class DatabaseControler extends MainControler {
 		conn = DriverManager.getConnection(address, login, password);
 		try {
 			// Creation of a statement that allows to execute query after
-			statement = conn.createStatement();
+			statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			exec = new QueryExecutor(conn, statement);
 		} catch (SQLException e) {
 			System.out.println("Statement creation error !");
