@@ -28,6 +28,8 @@ public class ResultSetTableModel extends AbstractTableModel {
 			
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("You must be connected to a database");
 		}
 	}
 
@@ -40,6 +42,8 @@ public class ResultSetTableModel extends AbstractTableModel {
 			
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}
@@ -54,6 +58,8 @@ public class ResultSetTableModel extends AbstractTableModel {
 			
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}
@@ -68,6 +74,8 @@ public class ResultSetTableModel extends AbstractTableModel {
 			
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}
@@ -79,6 +87,8 @@ public class ResultSetTableModel extends AbstractTableModel {
 			ret = resultSetMetaData.getColumnName(column + 1);
 		} catch (SQLException e) {
 
+		} catch (NullPointerException e) {
+			
 		}
 		return ret;
 	}

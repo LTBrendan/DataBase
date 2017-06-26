@@ -45,6 +45,7 @@ public class WorkPanel extends JPanel {
 	private SearchPanel searchPanel = new SearchPanel();
 	private AdminPanel adminPanel = new AdminPanel();
 	private NewDataBasePanel newDataBase = new NewDataBasePanel();
+	private ExportPanel exportPanel = new ExportPanel ();
 	private VisualPanel visualPanel;
 	private StatsPanel statsPanel;
 
@@ -331,11 +332,24 @@ public class WorkPanel extends JPanel {
 	public StatsPanel getStatsPanel() {
 		return workPanel.statsPanel;
 	}
+	
+	public ExportPanel getExportPanel () {
+		return workPanel.exportPanel;
+	}
+	
+	public static void  setExportPanel () {
+		
+		workPanel.remove(workPanel.getActualPanel());
+		workPanel.actualPanel = workPanel.getExportPanel();
+		workPanel.add(workPanel.getExportPanel());
+		
+	}
 
 	/**
 	 * Set workPanel's actualPanel to homePanel
 	 */
 	public static void setStatsPanel() {
+		
 		workPanel.statsPanel = new StatsPanel();
 		workPanel.remove(workPanel.getActualPanel());
 		workPanel.actualPanel = workPanel.getStatsPanel();
