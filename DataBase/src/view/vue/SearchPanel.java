@@ -17,11 +17,11 @@ import javax.swing.border.MatteBorder;
 import control.controller.SearchPanelFocusListener;
 import control.controller.SearchPanelMouseListener;
 
+/**
+ * The panel where the user can search rows
+ */
 public class SearchPanel extends JPanel {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField tableNameField;
 	private JPanel centerPanel;
@@ -133,22 +133,42 @@ public class SearchPanel extends JPanel {
 		centerPanel2.add(centerScrollPane, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Getter for the tableNameField
+	 * @return the tableNameField
+	 */
 	public JTextField getTableNameField() {
 		return tableNameField;
 	}
 
+	/**
+	 * Getter for the addNewButton
+	 * @return the addNewButton
+	 */
 	public JButton getAddNewButton() {
 		return addNewButton;
 	}
 	
+	/**
+	 * Getter for the researchButton
+	 * @return the researchButton
+	 */
 	public JButton getResearchButton () {
 		return researchButton;
 	}
 
+	/**
+	 * Getter for the centerPanel
+	 * @return the centerPanel
+	 */
 	public JPanel getCenterPanel() {
 		return centerPanel;
 	}
 
+	/**
+	 * Getter for the centerScrollPane
+	 * @return the centerScrollPane
+	 */
 	public JScrollPane getCenterScrollPane() {
 		return centerScrollPane;
 	}

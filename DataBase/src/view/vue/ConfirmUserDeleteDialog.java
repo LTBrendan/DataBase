@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 
 import control.controller.ConfirmUserDeleteMouseListener;
 
+/**
+ *A dialog asking the administrator to confirm or not to delete a user
+ */
 public class ConfirmUserDeleteDialog extends JDialog {
 	
 	private static final long serialVersionUID = 1L;

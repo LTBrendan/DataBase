@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 import control.controller.InitializeGamePanelKeyListener;
 import control.controller.InitializeGamePanelMouseListener;
 
+/**
+ * The panel to initialize the game
+ */
 public class InitializeGamePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JButton startButton;
@@ -64,10 +64,18 @@ public class InitializeGamePanel extends JPanel {
 		add(startButton, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Getter for the textField
+	 * @return the textField
+	 */
 	public JTextField getTextField() {
 		return textField;
 	}
 
+	/**
+	 * The getter for startButton
+	 * @return the startButton
+	 */
 	public JButton getStartButton() {
 		return startButton;
 	}

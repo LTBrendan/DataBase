@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import view.vue.AppFrame;
+import view.vue.InsertValuesDialog;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
@@ -12,22 +13,22 @@ public class MenuPanelMouseListener implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+
 	}
 
 	@Override
@@ -94,6 +95,8 @@ public class MenuPanelMouseListener implements MouseListener {
 			MainPanel.getMainPanel().getWorkPanel().repaint();
 			
 		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMenuPanel().getExport())) {
+			
+			new InsertValuesDialog("game").setVisible(true);
 			
 			AppFrame.getAppFrame().getMenuPanel().getActualPanel().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
 			AppFrame.getAppFrame().getMenuPanel().getExportPanel().setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));

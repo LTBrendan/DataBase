@@ -9,8 +9,7 @@ import control.consoleControler.DatabaseControler;
 import control.consoleControler.LauncherControler;
 
 /**
- * @author Patate1er
- *
+ *The main frame of the application
  */
 public class AppFrame{
 

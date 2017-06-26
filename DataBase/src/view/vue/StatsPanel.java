@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * The panel where the user can see some statistics about his database and the application
+ */
 public class StatsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -124,6 +127,10 @@ public class StatsPanel extends JPanel {
 
 	}
 
+	/**
+	 * Getter for this statsPanel
+	 * @return this statsPanel
+	 */
 	public static StatsPanel getStatsPanel() {
 		return statsPanel;
 	}

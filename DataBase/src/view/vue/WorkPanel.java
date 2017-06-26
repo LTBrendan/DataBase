@@ -22,6 +22,9 @@ import control.controller.CloseListener;
 import control.controller.WorkPanelMouseListener;
 import control.game.GameManager;
 
+/**
+ * The panel containing all the others panel
+ */
 public class WorkPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

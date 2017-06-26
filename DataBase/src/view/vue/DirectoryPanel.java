@@ -17,6 +17,9 @@ import control.controller.DirectoryPanelFocusListener;
 import control.controller.DirectoryPanelMouseListener;
 import model.connexion.UserConnexion;
 
+/**
+ * The panel containing all the user's database
+ */
 public class DirectoryPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

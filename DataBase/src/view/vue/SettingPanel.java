@@ -16,11 +16,11 @@ import javax.swing.SwingConstants;
 import control.controller.SettingPanelFocusListener;
 import control.controller.SettingPanelMouseListener;
 
+/**
+ * The panel where the user can personalize is account and login
+ */
 public class SettingPanel extends JPanel {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel themePanel;
@@ -48,6 +48,10 @@ public class SettingPanel extends JPanel {
 		settingPanel = this;
 	}
 
+	/**
+	 * Initialize the changeThemePanel
+	 * @return the initialized changeThemePanel
+	 */
 	public JPanel createChangeThemePanel() {
 
 		themePanel = new JPanel();
@@ -95,6 +99,10 @@ public class SettingPanel extends JPanel {
 		return themePanel;
 	}
 
+	/**
+	 * Initialize the changeLoginPanel
+	 * @return the initialized changeLoginPanel
+	 */
 	public JPanel createChangeLoginPanel() {
 
 		changeUserPanel = new JPanel();
@@ -145,26 +153,50 @@ public class SettingPanel extends JPanel {
 		return changeUserPanel;
 	}
 
+	/**
+	 * Getter for the settingPanel
+	 * @return the settingPanel
+	 */
 	public static SettingPanel getSettingPanel() {
 		return settingPanel;
 	}
 
+	/**
+	 * Getter for the newLogin
+	 * @return the newLogin
+	 */
 	public JTextField getNewLogin() {
 		return settingPanel.newLogin;
 	}
 
+	/**
+	 * Getter for the passwordField
+	 * @return the passwordField
+	 */
 	public JPasswordField getPassword() {
 		return settingPanel.password;
 	}
 
+	/**
+	 * Getter for the validateButton
+	 * @return the validateButton
+	 */
 	public JButton getValidateButton() {
 		return settingPanel.validateChange;
 	}
 
+	/**
+	 * Getter for the darkThemeButton
+	 * @return the darkThemeButton
+	 */
 	public JRadioButton getDarkThemeButton() {
 		return darkThemeButton;
 	}
 
+	/**
+	 * Getter for the whiteThemeButton
+	 * @return the whiteThemeButton
+	 */
 	public JRadioButton getWhiteThemeButton() {
 		return whiteThemeButton;
 	}

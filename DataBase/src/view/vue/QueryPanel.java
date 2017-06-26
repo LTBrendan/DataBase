@@ -20,11 +20,11 @@ import javax.swing.text.StyleContext;
 import control.controller.QueryPanelMouseListener;
 import model.utils.WordBasedStyledDocument;
 
+/**
+ * The panel where the user can execute queries
+ */
 public class QueryPanel extends JSplitPane {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel upPanel;
 	private JScrollPane upScrollPane;
@@ -48,6 +48,9 @@ public class QueryPanel extends JSplitPane {
 	
 	private static QueryPanel queryPanel;
 
+	/**
+	 * The constructor of the panel
+	 */
 	public QueryPanel() {
 
 		this.setDoubleBuffered(true);
@@ -65,6 +68,10 @@ public class QueryPanel extends JSplitPane {
 		queryPanel = this;
 	}
 
+	/**
+	 * Initialize the upper panel
+	 * @return the initialized upperPanel
+	 */
 	private JPanel createUpPanel() {
 
 		this.upPanel = new JPanel();
@@ -79,6 +86,11 @@ public class QueryPanel extends JSplitPane {
 		return this.upPanel;
 	}
 
+	/**
+	 * Initialize the upper scroll pane
+	 * @param panel the panel to put in the scroll pane
+	 * @return the initialized scroll pane
+	 */
 	private JScrollPane createUpScrollPane(JPanel panel) {
 
 		this.upScrollPane = new JScrollPane(panel);
@@ -88,6 +100,10 @@ public class QueryPanel extends JSplitPane {
 		return this.upScrollPane;
 	}
 
+	/**
+	 * Initialize the lower panel
+	 * @return the initialized downPanel
+	 */
 	private JPanel createDownPanel() {
 
 		this.downPanel = new JPanel();
@@ -98,6 +114,10 @@ public class QueryPanel extends JSplitPane {
 		return this.downPanel;
 	}
 
+	/**
+	 * Initialize the menuBarPanel
+	 * @return the initialized menuBarPanel
+	 */
 	private JPanel createMenuBarPanel() {
 
 		this.menuBarPanel = new JPanel();
@@ -203,6 +223,10 @@ public class QueryPanel extends JSplitPane {
 		return this.menuBarPanel;
 	}
 
+	/**
+	 * Initialize the text panel
+	 * @return the initialized textPanel
+	 */
 	private JTextPane createTextPane() {
 
 		this.textPane = new JTextPane();
@@ -226,6 +250,11 @@ public class QueryPanel extends JSplitPane {
 		return this.textPane;
 	}
 
+	/**
+	 * Initialize the down scroll pane
+	 * @param jTextPane the jTextPane to put in the scroll pane
+	 * @return the initialized scroll pane
+	 */
 	private JScrollPane createDownScrollPane(JTextPane jTextPane) {
 
 		this.downScrollPane = new JScrollPane(jTextPane);
@@ -234,70 +263,138 @@ public class QueryPanel extends JSplitPane {
 		return this.downScrollPane;
 	}
 
+	/**
+	 * Getter for the executeLabel
+	 * @return the executeLabel
+	 */
 	public JLabel getExecuteLabel() {
 		return executeLabel;
 	}
 
+	/**
+	 * Getter for the clearLabel
+	 * @return the clearLabel
+	 */
 	public JLabel getClearLabel() {
 		return clearLabel;
 	}
 
+	/**
+	 * Getter for the saveLabel
+	 * @return the saveLabel
+	 */
 	public JLabel getSaveLabel() {
 		return saveLabel;
 	}
 
+	/**
+	 * Getter for the executeAllLabel
+	 * @return the executeAllLabel
+	 */
 	public JLabel getExecuteAllLabel() {
 		return executeAllLabel;
 	}
 
+	/**
+	 * Getter for the importLabel
+	 * @return the importLabel
+	 */
 	public JLabel getImportLabel() {
 		return importLabel;
 	}
 	
+	/**
+	 * Getter for the executePanel
+	 * @return the executePanel
+	 */
 	public JPanel getExecutePanel() {
 		return executePanel;
 	}
 
+	/**
+	 * Getter for the clearPanel
+	 * @return the clearPanel
+	 */
 	public JPanel getClearPanel() {
 		return clearPanel;
 	}
 
+	/**
+	 * Getter for the savePanel
+	 * @return the savePanel
+	 */
 	public JPanel getSavePanel() {
 		return savePanel;
 	}
 
+	/**
+	 * Getter for the executeAllLabel
+	 * @return the executeAllLabel
+	 */
 	public JPanel getExecuteAllPanel() {
 		return executeAllPanel;
 	}
 
+	/**
+	 * Getter for the importPanel
+	 * @return the importPanel
+	 */
 	public JPanel getImportPanel() {
 		return importPanel;
 	}
 
+	/**
+	 * Getter for the upPanel
+	 * @return the upPanel
+	 */
 	public JPanel getUpPanel() {
 		return queryPanel.upPanel;
 	}
 
+	/**
+	 * Setter for the upPanel
+	 * @param upPanel the new upPanel
+	 */
 	public void setUpPanel(JPanel upPanel) {
 		queryPanel.upPanel = upPanel;
 	}
 
+	/**
+	 * Getter for the upScrollPane
+	 * @return the upScrollPane
+	 */
 	public static JScrollPane getUpScrollPane() {
 		return queryPanel.upScrollPane;
 	}
 
+	/**
+	 * Setter for the upScrolPane
+	 * @param upScrollPane the new upScrollPane
+	 */
 	public void setUpScrollPane(JScrollPane upScrollPane) {
 		queryPanel.upScrollPane = upScrollPane;
 	}
 
+	/**
+	 * Getter for the textPane
+	 * @return the textPane
+	 */
 	public JTextPane getTextPane() {
 		return queryPanel.textPane;
 	}
 
+	/**
+	 * Getter for the downScrollPane
+	 * @return the downScrollPane
+	 */
 	public static JScrollPane getDownScrollPane() {
 		return queryPanel.downScrollPane;
 	}
 
+	/**
+	 * Getter for this queryPanel
+	 * @return this queryPanel
+	 */
 	public static QueryPanel getQueryPanel() {
 		return queryPanel;
 	}

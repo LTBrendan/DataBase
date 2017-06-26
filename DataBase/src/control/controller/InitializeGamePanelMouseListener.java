@@ -45,6 +45,11 @@ public class InitializeGamePanelMouseListener implements MouseListener {
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setText("You need to be connected to a database !");
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.RED));
 			
+		} catch (NumberFormatException e) {
+			
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setText("Please enter an integer between 0 and 50");
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getStartButton().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.RED));
+			
 		}
 		
 	}

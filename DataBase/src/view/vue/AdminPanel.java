@@ -15,6 +15,9 @@ import control.controller.DeleteUserMouseListener;
 import model.connexion.User;
 import model.connexion.UserManager;
 
+/**
+ *The panel where the administrator manage users
+ */
 public class AdminPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

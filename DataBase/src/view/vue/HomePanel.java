@@ -6,6 +6,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ *The arrival panel when a user login
+ */
 public class HomePanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

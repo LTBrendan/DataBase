@@ -12,11 +12,11 @@ import javax.swing.SwingConstants;
 
 import control.controller.GamePanelMouseListener;
 
+/**
+ * The panel where the player can execute the game
+ */
 public class GamePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel questionPanel;
