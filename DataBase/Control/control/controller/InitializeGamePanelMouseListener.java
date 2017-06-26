@@ -40,6 +40,7 @@ public class InitializeGamePanelMouseListener implements MouseListener {
 			
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().initialiseGame(Integer.parseInt(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getInitializeGamePanel().getTextField().getText()));
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().addQuestionInt();
+			AppFrame.getAppFrame().getMainPanel().getWorkPanel().setFirstTime(false);
 			AppFrame.getAppFrame().getLauncherControler().getCurrentUser().setNbGame(AppFrame.getAppFrame().getLauncherControler().getCurrentUser().getNbGame () + 1);
 			AppFrame.getAppFrame().getLauncherControler().save();
 			

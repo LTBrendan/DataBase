@@ -363,7 +363,6 @@ public class WorkPanel extends JPanel {
 			workPanel.remove(workPanel.getActualPanel());
 			workPanel.actualPanel = workPanel.getInitializeGamePanel();
 			workPanel.add(workPanel.getInitializeGamePanel());
-			workPanel.firstTime = false;
 
 		} else {
 
@@ -544,5 +543,9 @@ public class WorkPanel extends JPanel {
 			workPanel.revalidate();
 			workPanel.repaint();
 		}
+	}
+	
+	public void setFirstTime (boolean b) {
+		workPanel.firstTime = b;
 	}
 }
