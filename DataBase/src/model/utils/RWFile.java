@@ -8,8 +8,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * The class allowing to read and write in files
+ */
 public class RWFile {
 
+	/**
+	 * The method to write in a file
+	 * @param file the file where to write
+	 * @param script the script to write
+	 */
 	public static void write(String file, String script) {
 		
 		PrintWriter pw;
@@ -30,6 +38,11 @@ public class RWFile {
 
 	}
 
+	/**
+	 * The method to read from a file
+	 * @param file the file where to read
+	 * @return the read string
+	 */
 	public static String read(File file) {
 		Scanner sc = null;
 		try {

@@ -1,5 +1,8 @@
 package model.utils;
 
+/**
+ * The class to high light some specific words
+ */
 public class HiliteWord {
 
     int _position;  

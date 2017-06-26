@@ -8,28 +8,52 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Style;
 
+/**
+ * This class allow to replace specific words by the same ones but in an other font
+ */
 public class WordBasedStyledDocument extends DefaultStyledDocument {
 
 	private static final long serialVersionUID = 1L;
 	private Style _defaultStyle;
     private Style _cwStyle;
 
+    /**
+     * The constructor
+     * @param defaultStyle the default font
+     * @param cwStyle the new font
+     */
     public WordBasedStyledDocument(Style defaultStyle, Style cwStyle) {
         _defaultStyle =  defaultStyle;
         _cwStyle = cwStyle;
     }
 
-     public void insertString (int offset, String str, AttributeSet a) throws BadLocationException {
+     /**
+      * This method to replace the former word by the new one with the new font
+      * @param offset the index where to insert the string
+      * @param str the string to insert
+      * @param offset the index where to insert the string
+      * @param a the attribute of the inserted string
+      */
+    public void insertString (int offset, String str, AttributeSet a) throws BadLocationException {
          super.insertString(offset, str, a);
          refreshDocument();
      }
 
+    /**
+     * This method remove a word
+     * @param offs the index where the word begin
+     * @param len the word length
+     */
      public void remove (int offs, int len) throws BadLocationException {
          super.remove(offs, len);
          refreshDocument();
      }
 
-     private synchronized void refreshDocument() throws BadLocationException {
+     /**
+      * This method refresh the document
+      * @throws BadLocationException
+      */
+    private synchronized void refreshDocument() throws BadLocationException {
          String text = getText(0, getLength());
          final List<HiliteWord> list = processWords(text);
 
@@ -41,7 +65,12 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
      }       
 
 
-     private static  List<HiliteWord> processWords(String content) {
+     /**
+      * This method detect what and where are the reserved words
+      * @param content the content to analyze
+      * @return the high lighted words
+      */
+    private static  List<HiliteWord> processWords(String content) {
          content += " ";
          List<HiliteWord> hiliteWords = new ArrayList<HiliteWord>();
          int lastWhitespacePosition = 0;
@@ -66,7 +95,12 @@ public class WordBasedStyledDocument extends DefaultStyledDocument {
         return hiliteWords;
      }
 
-     private static final boolean isReservedWord(String word) {
+     /**
+      * This method contain all the reserved words
+      * @param word the word to check
+      * @return true only if word is contained in the list
+      */
+    private static final boolean isReservedWord(String word) {
          return(word.toUpperCase().trim().equals("AND") ||
                  word.toUpperCase().trim().equals("COUNT") ||
                  word.toUpperCase().trim().equals("CREATE") ||
