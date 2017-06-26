@@ -29,7 +29,9 @@ public class ResultSetTableModel extends AbstractTableModel {
 		} catch (SQLException e) {
 
 		} catch (NullPointerException e) {
+			
 			AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("You must be connected to a database");
+			
 		}
 	}
 

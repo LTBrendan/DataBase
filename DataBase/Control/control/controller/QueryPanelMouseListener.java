@@ -23,6 +23,8 @@ import view.vue.AppFrame;
 */
 public class QueryPanelMouseListener implements MouseListener {
 
+	private String message = ""	;
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -105,7 +107,8 @@ public class QueryPanelMouseListener implements MouseListener {
 					AppFrame.getDataBaseController().executeQuery(query);
 					result += "table created \n";
 				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
+					message = ex.getMessage();
+					result += ExceptionHandler.analyse(message);
 				} catch (NullPointerException ex) {
 					result += "You must be connected to a database to execute query";
 				}
@@ -114,7 +117,8 @@ public class QueryPanelMouseListener implements MouseListener {
 					AppFrame.getDataBaseController().executeQuery(query);
 					result += "line inserted \n";
 				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
+					message = ex.getMessage();
+					result += ExceptionHandler.analyse(message);
 				} catch (NullPointerException ex) {
 					result += "You must be connected to a database to execute query";
 				}
@@ -123,7 +127,8 @@ public class QueryPanelMouseListener implements MouseListener {
 					AppFrame.getDataBaseController().executeQuery(query);
 					result += "table dropped \n";
 				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
+					message = ex.getMessage();
+					result += ExceptionHandler.analyse(message);
 				} catch (NullPointerException ex) {
 					result += "You must be connected to a database to execute query";
 				}
@@ -132,7 +137,8 @@ public class QueryPanelMouseListener implements MouseListener {
 					AppFrame.getDataBaseController().executeQuery(query);
 					result += "line deleted \n";
 				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
+					message = ex.getMessage();
+					result += ExceptionHandler.analyse(message);
 				} catch (NullPointerException ex) {
 					result += "You must be connected to a database to execute query";
 				}
@@ -152,7 +158,8 @@ public class QueryPanelMouseListener implements MouseListener {
 						result += rs.getString(columnCount) + "\n";
 					}
 				} catch (SQLException ex) {
-					result += ExceptionHandler.analyse(ex.getMessage());
+					message = ex.getMessage();
+					result += ExceptionHandler.analyse(message);
 				} catch (NullPointerException ex) {
 					result += "You must be connected to a database to execute query";
 				}
@@ -165,6 +172,9 @@ public class QueryPanelMouseListener implements MouseListener {
 			JLabel label = new JLabel(
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
+			if (!message.equals("")) {
+				label.setToolTipText (message);
+			}
 			label.setHorizontalAlignment(SwingConstants.LEFT);
 			if (AppFrame.color == 54)
 				label.setForeground(new Color(255, 255, 255));
@@ -214,7 +224,8 @@ public class QueryPanelMouseListener implements MouseListener {
 						AppFrame.getDataBaseController().executeQuery(s);
 						result += "table created \n";
 					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
+						message = ex.getMessage();
+						result += ExceptionHandler.analyse(message);
 					} catch (NullPointerException ex) {
 						result += "You must be connected to a database to execute query";
 					}
@@ -224,7 +235,8 @@ public class QueryPanelMouseListener implements MouseListener {
 						AppFrame.getDataBaseController().executeQuery(s);
 						result += "line inserted \n";
 					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
+						message = ex.getMessage();
+						result += ExceptionHandler.analyse(message);
 					} catch (NullPointerException ex) {
 						result += "You must be connected to a database to execute query";
 					}
@@ -234,7 +246,8 @@ public class QueryPanelMouseListener implements MouseListener {
 						AppFrame.getDataBaseController().executeQuery(s);
 						result += "table dropped \n";
 					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
+						message = ex.getMessage();
+						result += ExceptionHandler.analyse(message);
 					} catch (NullPointerException ex) {
 						result += "You must be connected to a database to execute query";
 					}
@@ -244,7 +257,8 @@ public class QueryPanelMouseListener implements MouseListener {
 						AppFrame.getDataBaseController().executeQuery(s);
 						result += "line deleted \n";
 					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
+						message = ex.getMessage();
+						result += ExceptionHandler.analyse(message);
 					} catch (NullPointerException ex) {
 						result += "You must be connected to a database to execute query";
 					}
@@ -265,7 +279,8 @@ public class QueryPanelMouseListener implements MouseListener {
 							result += rs.getString(columnCount) + "\n";
 						}
 					} catch (SQLException ex) {
-						result += ExceptionHandler.analyse(ex.getMessage());
+						message = ex.getMessage();
+						result += ExceptionHandler.analyse(message);
 					} catch (NullPointerException ex) {
 						result += "You must be connected to a database to execute query";
 					}
@@ -278,6 +293,9 @@ public class QueryPanelMouseListener implements MouseListener {
 			JLabel label = new JLabel(
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
+			if (!message.equals("")) {
+				label.setToolTipText (message);
+			}
 			label.setHorizontalAlignment(SwingConstants.LEFT);
 			if (AppFrame.color == 54)
 				label.setForeground(new Color(255, 255, 255));
