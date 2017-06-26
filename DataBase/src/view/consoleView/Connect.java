@@ -22,14 +22,12 @@ public class Connect {
 	/**
 	 * Constructor of the class Connect
 	 * 
-	 * @param adress
+	 * @param address
 	 *            database address
 	 * @param login
 	 *            user's login for the database
 	 * @param password
 	 *            user's password for the database
-	 * @param currentUser
-	 *            user attempting to connect the database
 	 */
 	public Connect(String address, String login, String password) {
 		try {

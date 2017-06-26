@@ -168,7 +168,6 @@ public class UserManager {
 	 *            user's login
 	 * @param pass
 	 *            user's password
-	 * @return the removed user if found, null if no
 	 */
 	public static void removeUser(String login, String pass) {
 		User removed = null;
