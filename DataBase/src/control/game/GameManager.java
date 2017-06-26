@@ -10,24 +10,43 @@ import control.consoleControler.DatabaseControler;
 import logs.Log;
 import model.exception.ExceptionHandler;
 
+/**
+ * This class manage the SQLGame
+ */
 public class GameManager {
+	
 	private DatabaseControler dc;
 	private QuestionManager qm;
 	private String tableName = "Game";
 	private HashMap<String, ArrayList<String>> questionList;
 
+	/**
+	 * The constructor
+	 * @param dc the databaseControler of the user
+	 */
 	public GameManager(DatabaseControler dc) {
 		this.setDc(dc);
 	}
 
+	/**
+	 * Getter for the databaseControler
+	 * @return the databaseControler
+	 */
 	public DatabaseControler getDc() {
 		return dc;
 	}
 
+	/**
+	 * Setter for the databaseControler
+	 * @param dc the new databaseControler
+	 */
 	public void setDc(DatabaseControler dc) {
 		this.dc = dc;
 	}
 
+	/**
+	 * This method launch the game
+	 */
 	public void launchGame() {
 		for (String s : this.questionList.keySet()) {
 			System.out.println(s);
@@ -51,6 +70,9 @@ public class GameManager {
 		
 	}
 	
+	/**
+	 * This method end the game and drop the table
+	 */
 	public void endGame () {
 		try {
 			dc.executeQuery("DROP TABLE " + this.tableName);
@@ -60,6 +82,10 @@ public class GameManager {
 		}
 	}
 	
+	/**
+	 * This method setup the game and create the table
+	 * @param questionNumber the number of question the user want to answer
+	 */
 	public void setUpGame (int questionNumber) {
 		Log.database("SQL game started");
 		this.createTable();
@@ -68,6 +94,9 @@ public class GameManager {
 		this.questionList = qm.getQuestionList();
 	}
 	
+	/**
+	 * This method create the table
+	 */
 	private void createTable() {
 		try {
 			dc.executeQuery("CREATE TABLE " + this.tableName
@@ -87,6 +116,9 @@ public class GameManager {
 		Log.database("table for SQL game created");
 	}
 
+	/**
+	 * This method insert the values
+	 */
 	private void insertValues() {
 
 		try {
@@ -108,6 +140,10 @@ public class GameManager {
 
 	}
 	
+	/**
+	 * Getter for the questionList
+	 * @return the questionList
+	 */
 	public HashMap<String, ArrayList<String>> getQuestionList () {
 		return this.questionList;
 	}
