@@ -34,7 +34,8 @@ public class ConfirmUserDeleteDialog extends JDialog {
 	private static String password;
 
 	/**
-	 * Launch the dialog
+	 * Make the dialog pop
+	 * @param args some arguments
 	 */
 	public static void main(String[] args) {
 		login = args[0];

@@ -58,7 +58,8 @@ public class LoginFrame extends JFrame {
 	public static int width;
 
 	/**
-	 * Launch the application.
+	 * Launch the application
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		Log.open();

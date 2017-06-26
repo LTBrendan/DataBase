@@ -17,7 +17,8 @@ public class VisualPanel extends JPanel {
 	private JTable table;
 
 	/**
-	 * Create the panel.
+	 * Create the panel
+	 * @param model the table model
 	 */
 	public VisualPanel(TableModel model) {
 		

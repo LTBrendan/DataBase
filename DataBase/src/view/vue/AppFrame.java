@@ -24,7 +24,8 @@ public class AppFrame{
 	public static int color;
 
 	/**
-	 * Launch the application.
+	 * Launch the application main frame
+	 * @param launcherControler the launcher controller containing the currentUser
 	 */
 	public static void main(LauncherControler launcherControler) {
 
@@ -104,7 +105,7 @@ public class AppFrame{
 
 	/**
 	 * Set the mainPanel to the one in parameter
-	 * @param menuPanel the mainPanel to set in
+	 * @param mainPanel the mainPanel to set in
 	 */
 	public static void setMainPanel(MainPanel mainPanel) {
 		appFrame.mainPanel = mainPanel;

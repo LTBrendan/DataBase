@@ -28,7 +28,8 @@ public class InvalidInfoDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the dialog
+	 * Make the dialog pop
+	 * @param args some arguments
 	 */
 	public static void main(String[] args) {
 		try {

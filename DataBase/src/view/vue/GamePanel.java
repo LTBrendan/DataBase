@@ -46,9 +46,14 @@ public class GamePanel extends JPanel {
 	private JPanel selectedPanel;
 
 	private int questionXP = 5;
-	
+
 	/**
-	 * Create the panel.
+	 * Generate the gamePanel with the question and the answers
+	 * @param question the question
+	 * @param answer1 the first answer
+	 * @param answer2 the second answer
+	 * @param answer3 the third answer
+	 * @param answer4 the fourth answer
 	 */
 	public GamePanel(String question, String answer1, String answer2, String answer3, String answer4) {
 

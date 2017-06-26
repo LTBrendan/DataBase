@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import control.controller.DirectoryPanelFocusListener;
 import control.controller.DirectoryPanelMouseListener;
 import model.connexion.UserConnexion;
 
@@ -83,8 +82,6 @@ public class DirectoryPanel extends JPanel {
 		this.infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.infoLabel.setForeground(Color.WHITE);
 		this.infoLabel.setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
-		this.infoLabel.addFocusListener(new DirectoryPanelFocusListener());
-
 		return this.infoLabel;
 	}
 
