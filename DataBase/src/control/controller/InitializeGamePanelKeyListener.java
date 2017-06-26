@@ -8,6 +8,9 @@ import javax.swing.BorderFactory;
 
 import view.vue.AppFrame;
 
+/**
+ * This listener is assigned to the textField in the InitializeGame panel and give information of what number the user can enter
+ */
 public class InitializeGamePanelKeyListener implements KeyListener {
 
 	@Override

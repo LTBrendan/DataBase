@@ -6,6 +6,9 @@ import java.awt.event.MouseListener;
 import logs.Log;
 import view.vue.AppFrame;
 
+/**
+ * This listener is assigned to the close label in the AppFrame. It makes the application to shut down and close all it need to be closed.
+ */
 public class CloseListener implements MouseListener {
 
 	@Override

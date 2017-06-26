@@ -8,6 +8,9 @@ import javax.swing.BorderFactory;
 
 import view.vue.AppFrame;
 
+/**
+ * This listener is assigned to the button in the InitializeGame panel
+ */
 public class InitializeGamePanelMouseListener implements MouseListener {
 
 	@Override

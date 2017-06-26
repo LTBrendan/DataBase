@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import view.vue.AppFrame;
 import view.vue.InsertValuesDialog;
 
+/**
+ * This listener is assigned to the button of the InsertValues dialog
+ */
 public class InsertValuesDialogMouseListener implements MouseListener {
 
 	private String tableName;

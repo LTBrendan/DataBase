@@ -6,6 +6,9 @@ import java.awt.event.MouseListener;
 import view.vue.InvalidInfoDialog;
 import view.vue.LoginFrame;
 
+/**
+ * This listener is assigned to the button of the InvalidInformation dialog
+ */
 public class InvalidInfoButtonListener implements MouseListener {
 
 	@Override

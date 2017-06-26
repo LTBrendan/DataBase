@@ -9,6 +9,9 @@ import javax.swing.JFileChooser;
 
 import view.vue.AppFrame;
 
+/**
+* This method is assigned to a JFileChooser and allow to open a script
+*/
 public class OpenChooserListener implements ActionListener {
 
 	private JFileChooser jfc;

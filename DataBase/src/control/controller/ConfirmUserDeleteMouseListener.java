@@ -7,6 +7,9 @@ import model.connexion.UserManager;
 import view.vue.AppFrame;
 import view.vue.ConfirmUserDeleteDialog;
 
+/**
+ * This listener is assigned to the confirmDeleteUser dialog and ask the administrator to confirm his action to delete the user
+ */
 public class ConfirmUserDeleteMouseListener implements MouseListener {
 
 	String login;

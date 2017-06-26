@@ -7,6 +7,9 @@ import view.vue.AppFrame;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
+/**
+* This listener is assigned to the add database label and allow to add a new database
+*/
 public class NewDataBaseMouseListener implements MouseListener {
 
 	@Override

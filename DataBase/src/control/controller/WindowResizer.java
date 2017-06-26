@@ -101,7 +101,6 @@ public final class WindowResizer extends MouseMovementAdapter implements SwingCo
 	 * switching to full screen will remove the border to make the window
 	 * bigger
 	 * switching back to window state will re set the border
-	 * @see TitleBarAdapter
 	 */
 	public void toggleFullScreen() {
 		fullScreen = !fullScreen;

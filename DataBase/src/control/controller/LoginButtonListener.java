@@ -7,6 +7,9 @@ import view.vue.InvalidInfoDialog;
 import view.vue.AppFrame;
 import view.vue.LoginFrame;
 
+/**
+*This method is assigned to the loginFrame  loginButton and open a dialog if an information is wrong or login if it is true
+*/
 public class LoginButtonListener implements MouseListener {
 
 	@Override

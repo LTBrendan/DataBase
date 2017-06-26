@@ -9,6 +9,9 @@ import view.vue.LoginFrame;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
+/**
+* This listener is assigned to the presettingPanel and lead to a panel depending where the user clicked
+*/
 public class OptionPanelMouseListener implements MouseListener {
 
 	@Override

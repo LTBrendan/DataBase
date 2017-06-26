@@ -5,6 +5,9 @@ import java.awt.event.MouseListener;
 
 import view.vue.AppFrame;
 
+/**
+* This method is assigne to the button in settingPanel
+*/
 public class SettingPanelMouseListener implements MouseListener {
 
 	@Override

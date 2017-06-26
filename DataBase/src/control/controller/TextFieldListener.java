@@ -5,6 +5,9 @@ import java.awt.event.FocusListener;
 
 import javax.swing.text.JTextComponent;
 
+/**
+* This listener set the text to "" when a text field gain focus
+*/
 public class TextFieldListener implements FocusListener{
 
 	@Override

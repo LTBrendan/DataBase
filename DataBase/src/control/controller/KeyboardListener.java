@@ -7,6 +7,9 @@ import view.vue.InvalidInfoDialog;
 import view.vue.AppFrame;
 import view.vue.LoginFrame;
 
+/**
+ * This listener is assigned to the loginFrame textFields and allow to login by pressing enter
+ */
 public class KeyboardListener implements KeyListener {
 
 	@Override

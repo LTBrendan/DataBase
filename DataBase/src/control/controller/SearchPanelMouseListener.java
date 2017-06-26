@@ -13,6 +13,9 @@ import javax.swing.border.MatteBorder;
 
 import view.vue.AppFrame;
 
+/**
+* This listener is assigned to the searchPanel and add a new search or make the research
+*/
 public class SearchPanelMouseListener implements MouseListener {
 
 	@Override

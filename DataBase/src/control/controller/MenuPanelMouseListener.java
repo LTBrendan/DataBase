@@ -9,6 +9,9 @@ import view.vue.InsertValuesDialog;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
+/**
+*This listener is assigned to the label of the menuPanel and display the corresponding panel depending on where the user clicked
+*/
 public class MenuPanelMouseListener implements MouseListener {
 
 	@Override

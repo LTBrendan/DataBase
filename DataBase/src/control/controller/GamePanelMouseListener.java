@@ -6,6 +6,10 @@ import java.awt.event.MouseListener;
 
 import view.vue.AppFrame;
 
+/**
+ * This listener is assigned to the button of the game panels and check if the selected answer is true so it allows to go to the next question
+ *
+ */
 public class GamePanelMouseListener implements MouseListener {
 
 	@Override

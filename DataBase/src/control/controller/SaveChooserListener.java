@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 
 
+/**
+ * This listener is assigned to aJFileChooser and is used to save a script in a file
+ */
 public class SaveChooserListener implements ActionListener {
 	
 	private FileDialog jfc;

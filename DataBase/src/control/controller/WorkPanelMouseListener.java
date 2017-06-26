@@ -6,6 +6,9 @@ import java.awt.event.MouseListener;
 
 import view.vue.AppFrame;
 
+/**
+* This listener is assigned to the minimize and maximize labels of the appFrame
+*/
 public class WorkPanelMouseListener implements MouseListener {
 
 	@Override

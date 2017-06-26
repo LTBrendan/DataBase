@@ -6,6 +6,9 @@ import java.awt.event.MouseListener;
 import view.vue.InvalidInfoDialog;
 import view.vue.LoginFrame;
 
+/**
+ * This listener is assigned to the dialog advertising the user entered the wrong informations and allow to create a new user
+ */
 public class InvalidInfoMouseListener implements MouseListener {
 
 	@Override

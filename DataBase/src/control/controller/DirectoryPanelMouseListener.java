@@ -13,6 +13,9 @@ import view.vue.AppFrame;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
 
+/**
+ * This listener is assigned to the database labels and allow to connect to a database. If an exception occurs, set the icon to red, green if no exception
+ */
 public class DirectoryPanelMouseListener implements MouseListener {
 
 	private String adress, login, password;

@@ -5,6 +5,9 @@ import java.awt.event.KeyListener;
 
 import view.vue.LoginFrame;
 
+/**
+ * This listener is assigned to the createUser button on the loginFrame. It allows to create a new user.
+ */
 public class CreateUserTextFieldListener implements KeyListener {
 
 	@Override

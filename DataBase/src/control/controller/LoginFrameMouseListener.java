@@ -7,6 +7,9 @@ import view.vue.AppFrame;
 import view.vue.InvalidInfoDialog;
 import view.vue.LoginFrame;
 
+/**
+* This listener is assigned to the button of the loginFrame
+*/
 public class LoginFrameMouseListener implements MouseListener {
 
 	@Override

@@ -18,6 +18,9 @@ import javax.swing.SwingConstants;
 import model.exception.ExceptionHandler;
 import view.vue.AppFrame;
 
+/**
+* This method is assigned to the label of the queryPanel
+*/
 public class QueryPanelMouseListener implements MouseListener {
 
 	@Override

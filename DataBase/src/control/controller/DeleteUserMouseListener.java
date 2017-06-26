@@ -5,6 +5,9 @@ import java.awt.event.MouseListener;
 
 import view.vue.ConfirmUserDeleteDialog;
 
+/**
+ * This use ris assigned to the deleteUser label for the administrator. It makes the confirmDeleteUser dialog to pup.
+ */
 public class DeleteUserMouseListener implements MouseListener {
 
 	String login;

@@ -42,7 +42,7 @@ public abstract class MouseMovementAdapter extends MouseAdapter {
 	 * re-dispatch the events to the main frame or just use them as they should
 	 * be by default
 	 * 
-	 * @param reDispatch
+	 * @param redispatch
 	 *            true if events needs to be re-dispatched, false otherwise
 	 */
 	public MouseMovementAdapter(boolean redispatch) {
