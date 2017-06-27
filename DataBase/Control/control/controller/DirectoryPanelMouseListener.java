@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import control.consoleControler.DatabaseControler;
 import logs.Log;
+import model.connexion.UserConnexion;
 import view.vue.AppFrame;
 import view.vue.MainPanel;
 import view.vue.WorkPanel;
@@ -18,13 +19,11 @@ import view.vue.WorkPanel;
  */
 public class DirectoryPanelMouseListener implements MouseListener {
 
-	private String adress, login, password;
+	UserConnexion uc;
 	private JLabel inLine;
 
-	public DirectoryPanelMouseListener(String connectionAdress, String connectionLogin, String connectionPassword, JLabel inLine) {
-		adress = connectionAdress;
-		login = connectionLogin;
-		password = connectionPassword;
+	public DirectoryPanelMouseListener(UserConnexion uc, JLabel inLine) {
+		this.uc = uc;
 		this.inLine = inLine;
 	}
 
@@ -68,7 +67,7 @@ public class DirectoryPanelMouseListener implements MouseListener {
 			}
 			try {
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
-				AppFrame.setDatabaseControler(new DatabaseControler(adress, login, password));
+				AppFrame.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
 				Log.database("connection established");
 				Log.database("statement created");
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");

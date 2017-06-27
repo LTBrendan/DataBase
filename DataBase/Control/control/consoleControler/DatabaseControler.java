@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 import control.game.GameManager;
 import logs.Log;
+import model.connexion.UserConnexion;
 import model.exception.ExceptionHandler;
 import model.query.QueryExecutor;
 import view.consoleView.Connect;
@@ -37,7 +38,9 @@ public class DatabaseControler extends MainControler {
 	private String login;
 	// the user's database password
 	private String password;
-
+	//the current database connection
+	private UserConnexion currentConnexion;
+	
 	private static DatabaseControler databaseControler;
 
 	/**
@@ -130,6 +133,22 @@ public class DatabaseControler extends MainControler {
 		this.password = password;
 	}
 
+	/**
+	 * Getter for currentConnexion
+	 * @return the current connection
+	 */
+	public UserConnexion getCurrentConnexion () {
+		return this.currentConnexion;
+	}
+	
+	/**
+	 * Setter for currentConnexion
+	 * @param uc the new current connection
+	 */
+	public void setCurrentConnexion (UserConnexion uc) {
+		this.currentConnexion = uc;
+	}
+	
 	/**
 	 * This method get the query wanted by the user
 	 * 

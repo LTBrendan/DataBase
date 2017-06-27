@@ -120,7 +120,7 @@ public class DirectoryPanel extends JPanel {
 				connection.setForeground(new Color(0, 0, 0));
 			connection.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			connection.addMouseListener(
-					new DirectoryPanelMouseListener(uc.getAdresse(), uc.getLogin(), uc.getPassword(), inLine));
+					new DirectoryPanelMouseListener(uc, inLine));
 			connPanel.add(connection, BorderLayout.CENTER);
 			connPanel.add(inLine, BorderLayout.EAST);
 			this.centerPanel.add(connPanel);
@@ -145,7 +145,7 @@ public class DirectoryPanel extends JPanel {
 
 		this.addLabel = new JLabel("Add new Connection");
 		this.addLabel.setForeground(Color.WHITE);
-		this.addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null, null, null));
+		this.addLabel.addMouseListener(new DirectoryPanelMouseListener(null, null));
 		this.addLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.addLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
