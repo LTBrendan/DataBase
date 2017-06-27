@@ -2,8 +2,6 @@ package control.controller;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FileDialog;
-import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
@@ -19,12 +17,12 @@ import model.exception.ExceptionHandler;
 import view.vue.AppFrame;
 
 /**
-* This method is assigned to the label of the queryPanel
-*/
+ * This method is assigned to the label of the queryPanel
+ */
 public class QueryPanelMouseListener implements MouseListener {
 
-	private String message = ""	;
-	
+	private String message = "";
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -173,7 +171,7 @@ public class QueryPanelMouseListener implements MouseListener {
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
 			if (!message.equals("")) {
-				label.setToolTipText (message);
+				label.setToolTipText(message);
 			}
 			label.setHorizontalAlignment(SwingConstants.LEFT);
 			if (AppFrame.color == 54)
@@ -195,13 +193,12 @@ public class QueryPanelMouseListener implements MouseListener {
 		} else if (e.getComponent()
 				.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getSavePanel())) {
 
-			FileDialog saveJFC = new FileDialog((Frame) null, "Fichier ?", FileDialog.SAVE);
-//			JFrame frame = new JFrame();
-//			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
-//					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
-//			saveJFC.showSaveDialog(frame);
-			saveJFC.setLocationRelativeTo(null);
-			saveJFC.setVisible(true);
+			JFrame frame = new JFrame();
+			JFileChooser saveJFC = new JFileChooser();
+			saveJFC.addActionListener(new SaveChooserListener(saveJFC,
+					AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getTextPane().getText()));
+			saveJFC.showSaveDialog(frame);
+
 
 		} else if (e.getComponent()
 				.equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getQueryPanel().getImportPanel())) {
@@ -294,7 +291,7 @@ public class QueryPanelMouseListener implements MouseListener {
 					"<HTML>" + result.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 							+ "</HTML>");
 			if (!message.equals("")) {
-				label.setToolTipText (message);
+				label.setToolTipText(message);
 			}
 			label.setHorizontalAlignment(SwingConstants.LEFT);
 			if (AppFrame.color == 54)

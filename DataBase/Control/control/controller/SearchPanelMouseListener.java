@@ -82,8 +82,12 @@ public class SearchPanelMouseListener implements MouseListener {
 
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getSearchPanel().getCenterScrollPane().revalidate();
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getSearchPanel().getCenterScrollPane().repaint();
-		}
+			
+		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMainPanel().getWorkPanel().getSearchPanel().getResearchButton())) {
 
+			
+			
+		}
 	}
 
 }
