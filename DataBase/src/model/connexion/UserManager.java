@@ -42,7 +42,7 @@ public class UserManager {
 	public static void save() {
 
 		try {
-			FileOutputStream fos = new FileOutputStream("source\\user");
+			FileOutputStream fos = new FileOutputStream("rsc\\source\\user");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			ObjectOutputStream oos = new ObjectOutputStream(bos);
 			
@@ -61,7 +61,7 @@ public class UserManager {
 	 */
 	public static void load() {
 		UserManager.userList = new ArrayList <User> ();
-		File file = new File("source\\user");
+		File file = new File("rsc\\source\\user");
 		if (!file.exists()) {
 			file.getParentFile().mkdirs();
 			try {

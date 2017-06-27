@@ -76,7 +76,7 @@ public class QuestionManager {
 	private void generateQuestions() {
 		this.allQuestion = new HashMap<String, ArrayList<String>>();
 		try {
-			FileReader fr = new FileReader("source/questionAndAnswer.txt");
+			FileReader fr = new FileReader("rsc/source/questionAndAnswer.txt");
 			BufferedReader bf = new BufferedReader(fr);
 			Scanner sc = new Scanner(bf);
 			sc.useDelimiter("\\s*:\\s*");
