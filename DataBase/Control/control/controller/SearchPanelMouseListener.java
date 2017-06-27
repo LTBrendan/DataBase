@@ -75,8 +75,6 @@ public class SearchPanelMouseListener implements MouseListener {
 			fieldPanel.add(columnFlowPanel);
 			fieldPanel.add(valueFlowPanel);
 
-			fieldPanel.setVisible(true);
-
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getSearchPanel().getCenterPanel().add(fieldPanel);
 
 			AppFrame.getAppFrame().getMainPanel().getWorkPanel().getSearchPanel().getCenterPanel().revalidate();

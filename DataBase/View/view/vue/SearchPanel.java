@@ -123,7 +123,7 @@ public class SearchPanel extends JPanel {
 		researchButton = new JButton ("Research");
 		researchButton.setForeground(Color.WHITE);
 		researchButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		addNewButton.addMouseListener(new SearchPanelMouseListener());
+		researchButton.addMouseListener(new SearchPanelMouseListener());
 		
 		bottomPanel.add(addNewButton);
 		bottomPanel.add(researchButton);
