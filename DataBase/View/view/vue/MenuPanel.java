@@ -18,8 +18,7 @@ import javax.swing.SwingConstants;
 import control.controller.MenuPanelMouseListener;
 
 /**
- * @author Patate1er
- *
+ * The panel where the user can click to navigate in the apllication
  */
 public class MenuPanel extends JPanel {
 

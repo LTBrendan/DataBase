@@ -5,6 +5,9 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+/**
+ * The panel where all the panels and informations are displayed
+ */
 public class MainPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

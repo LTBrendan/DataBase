@@ -14,6 +14,9 @@ import javax.swing.border.EmptyBorder;
 
 import control.controller.NewDataBaseMouseListener;
 
+/**
+ * The panel where the user can add a new database connection to his list
+ */
 public class NewDataBasePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

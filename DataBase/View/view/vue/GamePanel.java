@@ -157,90 +157,178 @@ public class GamePanel extends JPanel {
 		add(validatePanel, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Getter for the validateLabel
+	 * @return the validataLabel
+	 */
 	public JLabel getValidateLabel() {
 		return validateLabel;
 	}
 
+	/**
+	 * Setter for the validateLabel
+	 * @param validateLabel the new validateLabel
+	 */
 	public void setValidateLabel(JLabel validateLabel) {
 		this.validateLabel = validateLabel;
 	}
 
+	/**
+	 * Getter for the questionPanel
+	 * @return the questionPanel
+	 */
 	public JPanel getQuestionPanel() {
 		return questionPanel;
 	}
 
+	/**
+	 * Getter for the questionLabel
+	 * @return the questionLabel
+	 */
 	public JLabel getQuestionLabel() {
 		return questionLabel;
 	}
 
+	/**
+	 * Getter for the answerPanel
+	 * @return the answerPanel
+	 */
 	public JPanel getAnswerPanel() {
 		return answerPanel;
 	}
 
+	/**
+	 * Getter for the answer1Panel
+	 * @return the answer1Panel
+	 */
 	public JPanel getAnswer1Panel() {
 		return answer1Panel;
 	}
 
+	/**
+	 * Getter for the answer1Label
+	 * @return the answer1Label
+	 */
 	public JLabel getAnswer1Label() {
 		return answer1Label;
 	}
 
+	/**
+	 * Getter for the answer1CheckLabel
+	 * @return the answer1CheckLabel
+	 */
 	public JLabel getAnswer1CheckLabel() {
 		return answer1CheckLabel;
 	}
 
+	/**
+	 * Getter for the answer2Panel
+	 * @return the answer2Panel
+	 */
 	public JPanel getAnswer2Panel() {
 		return answer2Panel;
 	}
 
+	/**
+	 * Getter for the answer2Label
+	 * @return the answer2Label
+	 */
 	public JLabel getAnswer2Label() {
 		return answer2Label;
 	}
 
+	/**
+	 * Getter for the answer2CheckLabel
+	 * @return the answer2CheckLabel
+	 */
 	public JLabel getAnswer2CheckLabel() {
 		return answer2CheckLabel;
 	}
 
+	/**
+	 * Getter for the answer3Panel
+	 * @return the answer3Panel
+	 */
 	public JPanel getAnswer3Panel() {
 		return answer3Panel;
 	}
 
+	/**
+	 * Getter for the answer3Label
+	 * @return the answer3Label
+	 */
 	public JLabel getAnswer3Label() {
 		return answer3Label;
 	}
 
+	/**
+	 * Getter for the answer3CheckLabel
+	 * @return the answer3CheckLabel
+	 */
 	public JLabel getAnswer3CheckLabel() {
 		return answer3CheckLabel;
 	}
 
+	/**
+	 * Getter for the answer4Panel
+	 * @return the answer4Panel
+	 */
 	public JPanel getAnswer4Panel() {
 		return answer4Panel;
 	}
 
+	/**
+	 * Getter for the answer4Label
+	 * @return the answer4Label
+	 */
 	public JLabel getAnswer4Label() {
 		return answer4Label;
 	}
 
+	/**
+	 * Getter for the answer4CheckLabel
+	 * @return the answer4CheckLabel
+	 */
 	public JLabel getAnswer4CheckLabel() {
 		return answer4CheckLabel;
 	}
 
+	/**
+	 * Getter for the validatePanel
+	 * @return the validatePanel
+	 */
 	public JPanel getValidatePanel() {
 		return validatePanel;
 	}
 
+	/**
+	 * Getter for the selectedPanel
+	 * @return the selectedPanel
+	 */
 	public JPanel getSelectedPanel() {
 		return selectedPanel;
 	}
 
-	public void setSelectedPanel(JPanel selectedLabel) {
-		this.selectedPanel = selectedLabel;
+	/**
+	 * Setter for the selectedPanel
+	 * @param selectedLabel the new selectedPanel
+	 */
+	public void setSelectedPanel(JPanel selectedPanel) {
+		this.selectedPanel = selectedPanel;
 	}
 
+	/**
+	 * Getter for the questionXP
+	 * @return he questionXP
+	 */
 	public int getQuestionXP() {
 		return questionXP;
 	}
 
+	/**
+	 * Setter for the questionXP
+	 * @param questionXP the new questionXP
+	 */
 	public void setQuestionXP(int questionXP) {
 		this.questionXP = questionXP;
 	}

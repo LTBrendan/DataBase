@@ -11,10 +11,6 @@ import logs.Log;
  * This class allows a user to connect to a database
  *
  */
-/**
- * @author Patate1er
- *
- */
 public class Connect {
 
 	private DatabaseControler dc;

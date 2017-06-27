@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * The panel where the user can export his database
+ */
 public class ExportPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
@@ -15,6 +18,9 @@ public class ExportPanel extends JPanel {
 	private JPanel titlePanel;
 	private JLabel titleLabel;
 	
+	/**
+	 * The constructor of export panel
+	 */
 	public ExportPanel () {
 		
 		setLayout(new BorderLayout());

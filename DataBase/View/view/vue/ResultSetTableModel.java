@@ -35,6 +35,7 @@ public class ResultSetTableModel extends AbstractTableModel {
 		}
 	}
 
+	@Override
 	public int getColumnCount() {
 		int ret = 0;
 		

@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 
 import control.controller.InvalidInfoMouseListener;
 
+/**
+ * This dialog pop when a user attempt to connect with wrong informations
+ */
 public class InvalidInfoDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;

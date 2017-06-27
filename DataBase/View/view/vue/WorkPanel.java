@@ -498,6 +498,10 @@ public class WorkPanel extends JPanel {
 		return workPanel.closeLabel;
 	}
 
+	/**
+	 * Initialize the game with the number of question the user choose
+	 * @param questionNumber the number of question the user want to answer
+	 */
 	public void initialiseGame(int questionNumber) {
 		gameManager = new GameManager(AppFrame.getDataBaseController());
 		gameManager.setUpGame(questionNumber);
@@ -518,6 +522,11 @@ public class WorkPanel extends JPanel {
 
 	}
 
+	/**
+	 * Getter for a questionGamePanel
+	 * @param t the index of the panel in the table
+	 * @return the corresponding questionGamePanel
+	 */
 	public GamePanel getQuestionGamePanel(int t) {
 
 		try {
@@ -529,14 +538,17 @@ public class WorkPanel extends JPanel {
 		return workPanel.gamePanel;
 	}
 
+	/**
+	 * Add the question to the questionGamePanel
+	 */
 	public void addQuestionInt() {
 
 		if (workPanel.y < questionNumber) {
 			workPanel.y++;
 			setGamePanel();
 		} else {
+			
 			gameManager.endGame();
-
 			workPanel.firstTime = true;
 			WorkPanel.setGamePanel();
 
@@ -545,6 +557,10 @@ public class WorkPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Set the firstTime attribute to a new state
+	 * @param b the new state of the attribute
+	 */
 	public void setFirstTime (boolean b) {
 		workPanel.firstTime = b;
 	}

@@ -164,34 +164,66 @@ public class User implements Serializable {
 		this.level = level;
 	}
 	
+	/**
+	 * Getter for nbGame
+	 * @return the number of game the user played
+	 */
 	public int getNbGame() {
 		return nbGame;
 	}
 
+	/**
+	 * Setter for nbGame
+	 * @param nbGame he new number of game
+	 */
 	public void setNbGame(int nbGame) {
 		this.nbGame = nbGame;
 	}
 
+	/**
+	 * Getter for nbGoodAnswer
+	 * @return the number of good answer
+	 */
 	public int getNbGoodAnswer() {
 		return nbGoodAnswer;
 	}
 
+	/**
+	 * Setter for nbGoodAnswer
+	 * @param nbGoodAnswer the new number of good answer
+	 */
 	public void setNbGoodAnswer(int nbGoodAnswer) {
 		this.nbGoodAnswer = nbGoodAnswer;
 	}
 
+	/**
+	 * Getter for nbWrongAnswer
+	 * @return the number of wrong answer
+	 */
 	public int getNbWrongAnswer() {
 		return nbWrongAnswer;
 	}
 
+	/**
+	 * Setter for nbWrongAnswer
+	 * @param nbWrongAnswer the new number of wrong answer
+	 */
 	public void setNbWrongAnswer(int nbWrongAnswer) {
 		this.nbWrongAnswer = nbWrongAnswer;
 	}
 
+	/**
+	 * Getter for the color
+	 * @return the color the user uses
+	 */
 	public int getColor() {
 		return color;
 	}
 
+	/**
+	 * Setter for color
+	 * @param color the new color the user uses
+	 */
 	public void setColor(int color) {
 		this.color = color;
 	}

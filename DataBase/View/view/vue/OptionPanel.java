@@ -14,6 +14,9 @@ import javax.swing.SwingConstants;
 import control.controller.CloseListener;
 import control.controller.OptionPanelMouseListener;
 
+/**
+ * The panel where the user can choose to logout, quit the application or go to the settings
+ */
 public class OptionPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

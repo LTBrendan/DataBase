@@ -27,6 +27,9 @@ import control.controller.LoginFrameKeyListener;
 import control.controller.LoginFrameMouseListener;
 import logs.Log;
 
+/**
+ * The first frame the user see when he connects to the application. It allows him to connect to the application
+ */
 public class LoginFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
