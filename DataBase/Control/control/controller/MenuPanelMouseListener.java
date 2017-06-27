@@ -99,7 +99,7 @@ public class MenuPanelMouseListener implements MouseListener {
 		} else if (e.getComponent().equals(AppFrame.getAppFrame().getMenuPanel().getExport())) {
 			
 			AppFrame.getAppFrame().getMenuPanel().getActualPanel().setBackground(new Color(AppFrame.color - 24, AppFrame.color - 21, AppFrame.color - 18));
-			AppFrame.getAppFrame().getMenuPanel().getAdminPanel().setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
+			AppFrame.getAppFrame().getMenuPanel().getExportPanel().setBackground(new Color(AppFrame.color - 8, AppFrame.color - 5, AppFrame.color));
 			AppFrame.getAppFrame().getMenuPanel().setActualPanel(AppFrame.getAppFrame().getMenuPanel().getExportPanel());
 			
 			WorkPanel.setExportPanel();

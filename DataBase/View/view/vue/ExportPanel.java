@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -17,6 +18,7 @@ public class ExportPanel extends JPanel {
 
 	private JPanel titlePanel;
 	private JLabel titleLabel;
+	private JButton exportButton;
 	
 	/**
 	 * The constructor of export panel
@@ -34,7 +36,13 @@ public class ExportPanel extends JPanel {
 		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		this.exportButton = new JButton ("Export database");
+		exportButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		exportButton.setForeground(Color.WHITE);
+		exportButton.setBorder (null);
+		
 		titlePanel.add(titleLabel);
 		this.add(titlePanel, BorderLayout.NORTH);
+		this.add(exportButton, BorderLayout.CENTER);
 	}
 }
