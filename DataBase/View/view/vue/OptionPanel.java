@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +14,8 @@ import control.controller.CloseListener;
 import control.controller.OptionPanelMouseListener;
 
 /**
- * The panel where the user can choose to logout, quit the application or go to the settings
+ * The panel where the user can choose to logout, quit the application or go to
+ * the settings
  */
 public class OptionPanel extends JPanel {
 
@@ -58,7 +58,8 @@ public class OptionPanel extends JPanel {
 		logoutLabel = new JLabel();
 		logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(logoutLabel);
-		logoutLabel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.WHITE));
+		// logoutLabel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1,
+		// Color.WHITE));
 		logoutLabel.setToolTipText("Disconnect and change user");
 		if (AppFrame.color == 54)
 			logoutLabel.setIcon(new ImageIcon("rsc\\preSetting\\logoutWhite.PNG"));
@@ -72,7 +73,8 @@ public class OptionPanel extends JPanel {
 		quitLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(quitLabel);
 		quitLabel.setToolTipText("Disconnect user and quit the app");
-		quitLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.WHITE));
+		// quitLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1,
+		// Color.WHITE));
 		if (AppFrame.color == 54)
 			quitLabel.setIcon(new ImageIcon("rsc\\preSetting\\quitWhite.PNG"));
 		else
@@ -85,7 +87,8 @@ public class OptionPanel extends JPanel {
 		settingLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		centerPanel.add(settingLabel);
 		settingLabel.setToolTipText("Go to user's and app's settings");
-		settingLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.WHITE));
+		// settingLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0,
+		// Color.WHITE));
 		if (AppFrame.color == 54)
 			settingLabel.setIcon(new ImageIcon("rsc\\preSetting\\settingWhite.PNG"));
 		else
@@ -99,6 +102,7 @@ public class OptionPanel extends JPanel {
 
 	/**
 	 * Getter for this OptionPanel
+	 * 
 	 * @return this OptionPanel
 	 */
 	public static OptionPanel getOptionPanel() {
@@ -107,6 +111,7 @@ public class OptionPanel extends JPanel {
 
 	/**
 	 * Getter for logoutLabel
+	 * 
 	 * @return the logoutLabel
 	 */
 	public JLabel getLogoutLabel() {
@@ -115,6 +120,7 @@ public class OptionPanel extends JPanel {
 
 	/**
 	 * Getter for quitLabel
+	 * 
 	 * @return the quitLabel
 	 */
 	public JLabel getQuitLabel() {
@@ -123,6 +129,7 @@ public class OptionPanel extends JPanel {
 
 	/**
 	 * Getter for logoutLabel
+	 * 
 	 * @return the logoutLabel
 	 */
 	public JLabel getSettingLabel() {

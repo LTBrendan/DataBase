@@ -115,7 +115,7 @@ public class SettingPanel extends JPanel {
 		else
 			changeUserLabel.setForeground(new Color(0, 0, 0));
 
-		newLogin = new JTextField();
+		newLogin = new JTextField("New Login");
 		newLogin.addFocusListener(new SettingPanelFocusListener());
 		if (AppFrame.color == 54) {
 			newLogin.setBackground(new Color(54, 57, 62));
