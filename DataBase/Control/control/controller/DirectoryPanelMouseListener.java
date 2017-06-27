@@ -68,6 +68,7 @@ public class DirectoryPanelMouseListener implements MouseListener {
 			try {
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connecting to database");
 				AppFrame.setDatabaseControler(new DatabaseControler(uc.getAdresse(), uc.getLogin(), uc.getPassword()));
+				AppFrame.getDataBaseController().setCurrentConnexion(uc);
 				Log.database("connection established");
 				Log.database("statement created");
 				AppFrame.getAppFrame().getMainPanel().getDirectoryPanel().setInfoLabelText("Connected to database");
