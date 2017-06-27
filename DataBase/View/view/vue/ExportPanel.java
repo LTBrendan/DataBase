@@ -17,8 +17,9 @@ public class ExportPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel titlePanel;
+	private JPanel exportPanel;
 	private JLabel titleLabel;
-	private JButton exportButton;
+	private JLabel exportLabel;
 	
 	/**
 	 * The constructor of export panel
@@ -36,13 +37,21 @@ public class ExportPanel extends JPanel {
 		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		this.exportButton = new JButton ("Export database");
-		exportButton.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
-		exportButton.setForeground(Color.WHITE);
-		exportButton.setBorder (null);
+		this.exportLabel = new JLabel ("Export database");
+		f = new Font("Calibri", Font.PLAIN, 30);
+		exportLabel.setFont(f);
+		exportLabel.setForeground(Color.WHITE);
+		exportLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		exportLabel.setToolTipText("Click to export your databas");
+		exportLabel.addMouseListener(new ExportPanelMouseListener ());
 		
+		this.exportPanel = new JPanel ();
+		exportPanel.setBackground(new Color(AppFrame.color, AppFrame.color + 3, AppFrame.color + 8));
+		
+		exportPanel.add(exportLabel);
 		titlePanel.add(titleLabel);
+		
 		this.add(titlePanel, BorderLayout.NORTH);
-		this.add(exportButton, BorderLayout.CENTER);
+		this.add(exportLabel, BorderLayout.CENTER);
 	}
 }
