@@ -1,7 +1,0 @@
-11:12:31	out       Logfile opened
-11:12:31	out       Logfiles cleaned
-11:12:35	out       connexion attempt (login : brendan)
-11:12:35	out       successful connexion
-11:12:39	out       data base connexion attempt : ProjetDB
-11:12:40	out       connected to database : jdbc:oracle:thin:@localhost:1521:PROJETDB
-11:12:41	out       Logfile closed

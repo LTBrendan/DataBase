@@ -1,8 +1,0 @@
-12:11:02	out       Logfile opened
-12:11:02	out       Logfiles cleaned
-12:11:11	out       connexion attempt (login : blabla)
-12:11:11	out       connexion failed
-12:11:19	out       connexion attempt (login : test)
-12:11:19	out       connexion failed
-12:11:20	out       disconnected
-12:11:20	out       Logfile closed
