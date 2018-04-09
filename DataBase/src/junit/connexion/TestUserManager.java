@@ -42,7 +42,6 @@ public class TestUserManager {
 	public void testCreateUser() {
 		UserManager.createUser(user1, password1);
 		assertTrue(testUM.getUser(user1, password1).equals(us1));
-		assertFalse(UserManager.getUserList().contains(user2));
 		assertTrue(UserManager.getUserList().size() == 1);
 		UserManager.createUser(new String("user1"), new String("password1"));
 		assertFalse(UserManager.getUserList().size() == 2);

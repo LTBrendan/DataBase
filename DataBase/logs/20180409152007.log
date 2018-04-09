@@ -1,0 +1,21 @@
+15:15:46	out       Logfile opened
+15:15:46	out       Logfiles cleaned
+15:15:54	out       connection attempt : patate
+15:15:54	err       connection failed
+15:16:03	out       connection attempt : patate
+15:16:03	err       connection failed
+15:16:14	out       connection attempt : admin
+15:16:14	err       connection failed
+15:16:19	out       connection attempt : admin
+15:16:19	out       successful connection
+15:17:31	out       Logfile opened
+15:17:31	out       Logfiles cleaned
+15:17:46	out       Logfile opened
+15:17:46	out       Logfiles cleaned
+15:18:03	out       Logfile opened
+15:18:03	out       Logfiles cleaned
+15:18:26	out       Logfile opened
+15:18:26	out       Logfiles cleaned
+15:19:29	out       Logfile opened
+15:19:29	out       Logfiles cleaned
+15:20:07	out       Logfile closed
